@@ -10,4 +10,6 @@ GTK Theme: Arc-Dark
 Icon theme: Papirus Dark
 Applications: urxvt, ranger, neofetch, gnome-screenshot
 
-Wallpaper/Screenshot: 
+Wallpaper/Screenshot: https://imgur.com/a/fRKle0r
+
+Dotfiles: https://github.com/kesav21/dotfiles
