@@ -1,0 +1,42 @@
+URxvt.font: xft:FiraCode-Regular:size=10
+URxvt.scrollBar: false
+
+URxvt.transparent: true
+URxvt.shading: 30
+
+! special
+URxvt.foreground:   #d8dee9
+URxvt.background:   #2e3440
+URxvt.cursorColor:  #d8dee9
+
+! black
+URxvt.color0:       #3b4252
+URxvt.color8:       #4c566a
+
+! red
+URxvt.color1:       #bf616a
+URxvt.color9:       #bf616a
+
+! green
+URxvt.color2:       #a3be8c
+URxvt.color10:      #a3be8c
+
+! yellow
+URxvt.color3:       #ebcb8b
+URxvt.color11:      #ebcb8b
+
+! blue
+URxvt.color4:       #81a1c1
+URxvt.color12:      #81a1c1
+
+! magenta
+URxvt.color5:       #b48ead
+URxvt.color13:      #b48ead
+
+! cyan
+URxvt.color6:       #88c0d0
+URxvt.color14:      #8fbcbb
+
+! white
+URxvt.color7:       #e5e9f0
+URxvt.color15:      #eceff4
