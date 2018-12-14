@@ -1,8 +1,7 @@
 URxvt.font: xft:FiraCode-Regular:size=10
 URxvt.scrollBar: false
 
-URxvt.transparent: true
-URxvt.shading: 30
+URxvt.transparent: false
 
 ! special
 URxvt.foreground:   #d8dee9
@@ -40,3 +39,4 @@ URxvt.color14:      #8fbcbb
 ! white
 URxvt.color7:       #e5e9f0
 URxvt.color15:      #eceff4
+
