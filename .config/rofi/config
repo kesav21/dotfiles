@@ -1,0 +1,11 @@
+configuration {
+	modi: 			"drun";
+    font: 			"FiraMono-Regular 12";
+	show-match: 		true;
+	hide-scrollbar: 	true;
+	theme:			"~/.config/rofi/nord";
+
+	width: 			750;
+	lines: 			13;
+	separator-style: 	"solid";	
+}

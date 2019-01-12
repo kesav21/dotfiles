@@ -3,23 +3,15 @@
 
 OS: Ubuntu 18.01
 
-Shell: bash
-
-Terminal: urxvt
+Theme: Nord
 
 WM: i3
 
 Bar: polybar
 
-GTK Theme: Arc-Dark
+Shell: bash
 
-Icon theme: Papirus Dark
-
-Applications: urxvt, ranger, neofetch, gnome-screenshot
-
-Theme: Nord
+Terminal: st (suckless terminal)
 
 Wallpaper/Screenshot: https://imgur.com/a/fRKle0r
-
-Dotfiles: https://github.com/kesav21/dotfiles
 
