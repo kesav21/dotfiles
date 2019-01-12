@@ -30,15 +30,10 @@ cp ~/.mpd/mpd.conf ./.mpd/mpd.conf
 mkdir ./.ncmpcpp/
 cp ~/.ncmpcpp/config ./.ncmpcpp/config
 
-# copy all fonts
+# copy fonts and scripts directories
 
-mkdir ./.fonts/
-cp -r ~/.fonts/ ./.fonts/
-
-# copy all scripts
-
-mkdir ./.scripts/
-cp -r ~/.scripts/ ./.scripts/
+cp -r ~/.fonts/ ./
+cp -r ~/.scripts/ ./
 
 # copy other config files
 
