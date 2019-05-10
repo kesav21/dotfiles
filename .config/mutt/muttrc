@@ -1,0 +1,36 @@
+
+# Minimal configuration for Neomutt/Mutt and Gmail
+
+# Decrypts passwords quietly
+# see: https://wiki.archlinux.org/index.php/Mutt#Passwords_management
+source "gpg -dq $HOME/.passwords.gpg/mutt.gpg |"
+
+# Credentials
+set from = 'kkadalazhi2@gmail.com'
+set realname = 'Kesav Kadalazhi'
+
+set imap_user = 'kkadalazhi2@gmail.com'
+set imap_pass = $my_pass
+
+# REMOTE GMAIL FOLDERS
+set folder = 'imaps://imap.gmail.com:993'
+set spoolfile = '+INBOX'
+
+set record = "+[Gmail]/Sent Mail"
+set postponed = "+[Gmail]/Drafts"
+set trash="imaps://imap.gmail.com/[Gmail]/Trash"
+
+# LOCAL FOLDERS FOR CACHED HEADERS AND CERTIFICATES
+set header_cache =~/.mutt/cache/headers
+set message_cachedir =~/.mutt/cache/bodies
+set certificate_file =~/.mutt/certificates
+
+# SMTP SETTINGS
+set smtp_url = 'smtp://kkadalazhi2@smtp.gmail.com:587/'
+set smtp_pass = $my_pass
+set record=""
+
+macro index d "s=trash\n" "move message to trash"
+macro pager d "s=trash\n" "move message to trash"
+
+source colors.muttrc

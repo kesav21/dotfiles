@@ -50,37 +50,66 @@ let g:nord_uniform_diff_background = 1
 colorscheme nord
 
 "" NERDTree settings
-autocmd vimenter * NERDTree | wincmd w
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeWinSize = 50
 map <C-n> :NERDTreeToggle<CR>
 
 "" Airline settings
-set timeoutlen=10
 let g:airline_skip_empty_sections = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
-" miscellaneous settings
 
-set number relativenumber
-set cursorline
-set wildmode=longest,list,full
-set laststatus=0
-set noshowmode
-set noruler
-set noshowcmd
-set hls is
-set modeline
-set tabstop=4
+" autocommands
 
-"" Ctrl-j/k inserts blank line below/above
-nnoremap <silent><C-j> :set paste<CR>m`o<Esc>``:set nopaste<CR>
-nnoremap <silent><C-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
+"" automatically open nerdtree when opening vim
+autocmd vimenter * NERDTree | wincmd w
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 "" Disables automatic commenting on newline:
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 "" Automatically deletes all trailing whitespace on save.
 autocmd BufWritePre * %s/\s\+$//e
+
+
+" miscellaneous settings
+
+set number relativenumber
+" set cursorline
+" set modeline
+set wildmode=longest,list,full
+set laststatus=0
+set noshowmode
+set noruler
+set noshowcmd
+set hls is
+set timeout timeoutlen=1000
+set autoindent noexpandtab tabstop=4 shiftwidth=4
+
+"" listchars and stuff
+
+set showbreak=↪
+
+" set listchars=eol:⏎,tab:├─,trail:␠,nbsp:⎵
+" set listchars=eol:⏎,tab:├─,trail:·
+" set listchars=tab:├─,trail:·
+" set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸─
+" set list listchars=trail:·,tab:»·
+" set list listchars=tab:▸\ ,trail:·,precedes:←,extends:→
+set list listchars=tab:▶‒,nbsp:∙,trail:∙,extends:▶,precedes:◀
+
+" my mappings
+
+inoremap jk <esc>
+
+"" Ctrl-j/k inserts blank line below/above
+nnoremap <silent><C-j> :set paste<CR>m`o<Esc>``:set nopaste<CR>
+nnoremap <silent><C-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
+
+"" leader mappings
+
+let mapleader = "-"
+
+" add mapping to move line up a certain number of lines
+" add mapping to move line down a certain number of lines
 
