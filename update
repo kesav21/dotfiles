@@ -2,42 +2,30 @@
 
 DIR=~/Projects/dotfiles
 
-declare -a StringArray=(\
-	.bash_aliases\
-	.bashrc\
-	.profile\
-	.tmux.conf\
-	.vimrc\
-	.wallpaper\
-	.Xresources\
+declare -a StringArray=( \
+	.bash_aliases \
+	.bashrc \
+	.profile \
+	.tmux.conf \
+	.vimrc \
+	.wallpaper \
+	.Xresources \
+\
+	.config/dunst/dunstrc \
+	.config/i3/config \
+	.config/i3/polybar.sh \
+	.config/mutt/colors.muttrc \
+	.config/mutt/muttrc \
+	.config/polybar/config \
+	.config/ranger/rc.conf \
+	.config/rofi/config \
+	.config/rofi/nord \
+	.config/zathura/zathurarc \
 )
 
-for val in ${StringArray[@]}; do
+for val in ${StringArray[@]}
+do
 	rm ~/$val
 	ln -sv $DIR/$val ~/$val
 done
-
-# rm ~/.bash_aliases
-# rm ~/.bashrc
-# rm ~/.profile
-
-# rm ~/.tmux.conf
-
-# rm ~/.vimrc
-
-# rm ~/.Xresources
-
-# rm ~/.wallpaper
-
-# ln -sv $DIR/.bash_aliases ~/.bash_aliases
-# ln -sv $DIR/.bashrc ~/.bashrc
-# ln -sv $DIR/.profile ~/.profile
-
-# ln -sv $DIR/.tmux.conf ~/.tmux.conf
-
-# ln -sv $DIR/.vimrc ~/.vimrc
-
-# ln -sv $DIR/.Xresources ~/.Xresources
-
-# ln -sv $DIR/.wallpaper ~/.wallpaper
 
