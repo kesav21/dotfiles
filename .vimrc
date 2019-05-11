@@ -51,7 +51,6 @@ colorscheme nord
 
 "" NERDTree settings
 let NERDTreeWinSize = 50
-map <C-n> :NERDTreeToggle<CR>
 
 "" Airline settings
 let g:airline_skip_empty_sections = 1
@@ -62,8 +61,8 @@ let g:airline#extensions#tabline#enabled = 1
 " autocommands
 
 "" automatically open nerdtree when opening vim
-autocmd vimenter * NERDTree | wincmd w
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" autocmd vimenter * NERDTree | wincmd w
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 "" Disables automatic commenting on newline:
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
@@ -100,23 +99,25 @@ set list listchars=tab:▶‒,nbsp:∙,trail:∙,extends:▶,precedes:◀
 
 " my mappings
 
+"" avoid the escape key
 inoremap jk <esc>
 
-"" Ctrl-j/k inserts blank line below/above
+"" nerdtree nerdtree
+map <C-n> :NERDTreeToggle<CR>
+
+"" insert blank line below/above
 " nnoremap <silent><C-j> :set paste<CR>m`o<Esc>``:set nopaste<CR>
 " nnoremap <silent><C-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
+
+" add mapping to move line up/down a certain number of lines
+nnoremap <C-j> :m .+1<CR>==
+nnoremap <C-k> :m .-2<CR>==
 
 "" leader mappings
 
 let mapleader = "-"
 
-" insert a single character before
+" insert a single character before/after
 nnoremap <leader>i i_<esc>r
-" insert a single character after
 nnoremap <leader>a a_<esc>r
-
-" add mapping to move line up a certain number of lines
-nnoremap <C-j> :m .+1<CR>==
-" add mapping to move line down a certain number of lines
-nnoremap <C-k> :m .-2<CR>==
 
