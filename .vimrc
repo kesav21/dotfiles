@@ -103,13 +103,20 @@ set list listchars=tab:▶‒,nbsp:∙,trail:∙,extends:▶,precedes:◀
 inoremap jk <esc>
 
 "" Ctrl-j/k inserts blank line below/above
-nnoremap <silent><C-j> :set paste<CR>m`o<Esc>``:set nopaste<CR>
-nnoremap <silent><C-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
+" nnoremap <silent><C-j> :set paste<CR>m`o<Esc>``:set nopaste<CR>
+" nnoremap <silent><C-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
 
 "" leader mappings
 
 let mapleader = "-"
 
+" insert a single character before
+nnoremap <leader>i i_<esc>r
+" insert a single character after
+nnoremap <leader>a a_<esc>r
+
 " add mapping to move line up a certain number of lines
+nnoremap <C-j> :m .+1<CR>==
 " add mapping to move line down a certain number of lines
+nnoremap <C-k> :m .-2<CR>==
 
