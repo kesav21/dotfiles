@@ -19,14 +19,15 @@ set $ws4 4
 set $ws5 5
 set $ws6 6
 
-set $gap 10
-set $dgap 10
+set $gap 2
+set $dgap 20
 
 set $wallpaper "`cat ~/.wallpaper`"
 
 ## misc
 
 font pango:FiraMono-Regular 10
+# font pango:FiraCode-Retina 10
 floating_modifier $mod
 
 ## key bindings
@@ -35,10 +36,11 @@ floating_modifier $mod
 
 bindsym $mod+Shift+r restart
 bindsym $mod+Shift+q kill
+bindsym $mod+Shift+w exec ~/.scripts/i3cmds/i3lock-color
 
 ### window commands
 # I rarely use these
-# bindsym $mod+f fullscreen toggle
+bindsym $mod+f fullscreen toggle
 # bindsym $mod+e layout toggle split
 
 ### change focus
@@ -80,12 +82,23 @@ bindsym $mod+Return exec st
 bindsym $mod+r exec st -e ranger
 bindsym $mod+m exec st -e ncmpcpp
 bindsym $mod+g exec google-chrome
-bindsym $mod+d exec rofi -show run -theme "~/.config/rofi/nord"
-bindsym $mod+Shift+d exec rofi -show window -theme "~/.config/rofi/nord"
+
+#### application launcher
+# bindsym $mod+d exec rofi -show run -theme "~/.config/rofi/nord"
+bindsym $mod+d exec dmenu_run -x 5 -w 1910 -y 5 -h 25 -nb '#2E3440' -nf '#4C566A' -sb '#2E3440' -sf '#ECEFF4' -fn 'Monospace-10:normal'
+
+# bindsym $mod+Shift+d exec rofi -show window -theme "~/.config/rofi/nord"
+
+#### notification daemon
+# figure out original daemon name
+# exec killall -q <notification daemon>
+exec --no-startup-id dunst
 
 ### gestures
-bindsym $mod+Tab workspace --no-auto-back-and-forth next
-bindsym $mod+Shift+Tab workspace --no-auto-back-and-forth prev
+# bindsym $mod+Tab workspace --no-auto-back-and-forth next
+bindsym $mod+Tab workspace next
+# bindsym $mod+Shift+Tab workspace --no-auto-back-and-forth prev
+bindsym $mod+Shift+Tab workspace prev
 
 ### switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -104,9 +117,9 @@ bindsym $mod+Shift+5 move container to workspace $ws5
 bindsym $mod+Shift+6 move container to workspace $ws6
 
 ### pulseaudio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume `~/.scripts/audio/get_running_sink` +5%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume `~/.scripts/audio/get_running_sink` -5%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute `~/.scripts/audio/get_running_sink` toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 
 ### media player controls
 bindsym XF86AudioPlay exec playerctl play
@@ -115,8 +128,8 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 ### screen brightness controls
-bindsym XF86MonBrightnessUp exec ~/.scripts/chbright 0.1
-bindsym XF86MonBrightnessDown exec ~/.scripts/chbright -0.1
+bindsym XF86MonBrightnessUp exec ~/Projects/external/brightlight/brightlight -i 150
+bindsym XF86MonBrightnessDown exec ~/Projects/external/brightlight/brightlight -d 150
 
 ## theming
 

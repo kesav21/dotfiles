@@ -8,8 +8,8 @@ declare -a StringArray=(\
 	.profile\
 	.tmux.conf\
 	.vimrc\
-	.Xresources\
 	.wallpaper\
+	.Xresources\
 )
 
 for val in ${StringArray[@]}; do

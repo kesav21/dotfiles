@@ -2,19 +2,33 @@
 
 [colors]
 
-red = ${xrdb:URxvt.color1:#222}
-green = ${xrdb:URxvt.color2:#222}
-yellow = ${xrdb:URxvt.color3:#222}
-blue = ${xrdb:URxvt.color4:#222}
-purple = ${xrdb:URxvt.color5:#222}
-cyan = ${xrdb:URxvt.color6:#222}
-
-background = ${xrdb:URxvt.background:#222}
-foreground = ${xrdb:URxvt.foreground:#222}
-
-primary = ${self.cyan}
-secondary = ${self.blue}
-alert = ${self.red}
+; special
+foreground =   #d8dee9
+background =   #2e3440
+; black
+color0 =       #3b4252
+color8 =       #4c566a
+; red
+color1 =       #bf616a
+color9 =       #bf616a
+; green
+color2 =       #a3be8c
+color10 =      #a3be8c
+; yellow
+color3 =       #ebcb8b
+color11 =      #ebcb8b
+; blue
+color4 =       #81a1c1
+color12 =      #81a1c1
+; magenta
+color5 =       #b48ead
+color13 =      #b48ead
+; cyan
+color6 =       #88c0d0
+color14 =      #8fbcbb
+; white
+color7 =       #e5e9f0
+color15 =      #eceff4
 
 [bar/top]
 
@@ -24,15 +38,11 @@ height = 25
 bottom = false
 fixed-center = true
 
-background = #00000000
-;background = ${colors.background}
-foreground = ${colors.green}
+background = ${colors.background}
+foreground = ${colors.foreground}
 
-border-size = 10
+border-size = 5
 border-color = #00000000
-
-line-size = 3
-line-color = ${colors.background}
 
 padding-left = 1
 padding-right = 1
@@ -40,7 +50,7 @@ padding-right = 1
 module-margin-left = 1
 module-margin-right = 0
 
-font-0 = "FiraMono-Regular:size=11;1"
+font-0 = "FiraMono-Regular:size=10;1"
 font-1 = "Font Awesome 5 Free:style=Solid:pixelsize=12;3"
 font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=12;3"
 font-3 = "Font Awesome 5 Brands:pixelsize=12;3"
@@ -48,11 +58,9 @@ font-3 = "Font Awesome 5 Brands:pixelsize=12;3"
 modules-left = temperature memory cpu eth wlan
 modules-right = pulseaudio brightness battery date
 
-wm-restack = i3
-
-enable-scroll = false
-
-cursor-click = pointer
+; wm-restack = i3
+; enable-scroll = false
+; cursor-click = pointer
 
 [bar/bottom]
 
@@ -62,35 +70,28 @@ height = 25
 bottom = true
 fixed-center = true
 
-background = #00000000
-;background = ${colors.background}
-foreground = ${colors.green}
+background = ${colors.background}
+foreground = ${colors.foreground}
 
-border-size = 10
+border-size = 5
 border-color = #00000000
 
-line-size = 3
-line-color = ${colors.background}
+padding-left = 0
+padding-right = 0
 
-padding-left = 1
-padding-right = 1
-
-module-margin-left = 1
+module-margin-left = 0
 module-margin-right = 0
 
-font-0 = "FiraMono-Regular:size=11;1"
+font-0 = "FiraMono-Regular:size=10;1"
 font-1 = "Font Awesome 5 Free:style=Solid:pixelsize=12;3"
 font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=12;3"
 font-3 = "Font Awesome 5 Brands:pixelsize=12;3"
 
 modules-left = i3
-# modules-center = i3
 modules-right = powermenu
 
 wm-restack = i3
-
 enable-scroll = false
-
 cursor-click = pointer
 cursor-scroll = ns-resize
 
@@ -102,18 +103,14 @@ cursor-scroll = ns-resize
 
 type = internal/temperature
 thermal-zone = 0
-warn-temperature = 60
+warn-temperature = 30
 
 format = "TEMP <label>"
+label = %temperature-c%
 
 format-warn = "TEMP <label-warn>"
-format-warn-foreground = ${colors.foreground}
-format-warn-background = ${colors.alert}
-format-warn-underline = ${self.format-warn-background}
-
-label = %temperature-c%
+format-warn-foreground = ${colors.color1}
 label-warn = %temperature-c%
-label-warn-foreground = ${colors.secondary}
 
 [module/memory]
 
@@ -135,10 +132,6 @@ type = internal/network
 interface = enp1s0
 interval = 3.0
 
-; format-connected-prefix = ""
-format-connected-background = ${colors.background}
-format-connected-underline = ${self.format-connected-background}
-
 ; label-connected = %ifname%
 label-connected = ""
 
@@ -149,9 +142,6 @@ interface = wlp2s0
 interval = 3.0
 
 format-connected = " <label-connected>"
-format-connected-background = ${colors.background}
-format-connected-underline = ${self.format-connected-background}
-
 label-connected = %essid%
 
 ; do more research into this
@@ -173,7 +163,7 @@ index-sort = true
 wrapping-scroll = false
 
 format-padding = 0
-; 
+
 ws-icon-0 = "1;"
 ws-icon-1 = "2;"
 ws-icon-2 = "3;"
@@ -181,40 +171,20 @@ ws-icon-3 = "4;"
 ws-icon-4 = "5;"
 ws-icon-5 = "6;"
 
-label-mode-background = ${colors.background}
-label-mode-foreground = ${colors.foreground}
-label-mode-padding = 0
+label-mode = %index% %icon%
 
-; focused = Active workspace on focused monitor
-label-focused = %index% %icon%
-label-focused-background = ${colors.background}
-label-focused-foreground = ${colors.blue}
-label-focused-underline = ${self.label-focused-background}
-# label-focused-underline = ${self.label-focused-foreground}
+label-focused-foreground = ${colors.color15}
+label-unfocused-foreground = ${colors.color8}
+label-urgent-foreground = ${colors.color1}
+label-visible-foreground = ${self.label-focused-foreground}
+
+label-urgent-padding = 1
 label-focused-padding = 1
-
-; unfocused = Inactive workspace on any monitor
-label-unfocused = %index% %icon%
-label-unfocused-background = ${colors.background}
-label-unfocused-foreground = ${colors.green}
-label-unfocused-underline = ${self.label-unfocused-background}
-# label-unfocused-underline = ${self.label-unfocused-foreground}
 label-unfocused-padding = 1
-
-; visible = Active workspace on unfocused monitor
-label-visible = %index% %icon%
-label-visible-background = ${self.label-focused-background}
-label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
-; urgent = Workspace with urgency hint set
-label-urgent = %index% %icon%
-label-urgent-background = ${colors.background}
-label-urgent-underline = ${self.label-urgent-background}
-label-urgent-foreground = ${colors.red}
-label-urgent-padding = 1
-
 ; Only show workspaces on the same output as the bar
+; idk what this means
 pin-workspaces = true
 
 ;;;;;;;;;;;;;;;;;;;;
@@ -222,6 +192,7 @@ pin-workspaces = true
 ;;;;;;;;;;;;;;;;;;;;
 
 [module/powermenu]
+
 type = custom/menu
 
 expand-right = false
@@ -234,54 +205,50 @@ label-close = ""
 label-separator = "|"
 
 menu-0-0 = "restart"
-menu-0-0-exec = "sudo /sbin/shutdown -r now"
+menu-0-0-exec = "shutdown -r now"
 menu-0-1 = "shutdown"
-menu-0-1-exec = "sudo /sbin/shutdown -h now"
+menu-0-1-exec = "shutdown -h now"
 menu-0-2 = "logout"
 menu-0-2-exec = "i3-msg exit"
+menu-0-3 = "lock"
+; menu-0-3-exec = "i3lock -e -f -c "#2e3440""
+menu-0-3-exec = ". ~/.scripts/i3cmds/i3lock-color &"
 
 [module/pulseaudio]
+
 type = internal/pulseaudio
 format-volume = "<label-volume>"
 label-volume = " %percentage%%"
 label-muted = " %percentage%%"
 
 [module/brightness]
-type = custom/script
 
+type = internal/backlight
+card = intel_backlight
 format =  <label>
-label = %output%
-
-exec = ~/.scripts/getbright
-tail = true
-interval = 1
+label = %percentage%%
+interval = 0.5
 
 [module/battery]
 
 type = internal/battery
 battery = BAT0
 adapter = AC
-full-at = 98
+full-at = 100
+; full-at = 60
 
 format-full-prefix = " "
-format-full-prefix-foreground = ${colors.blue}
-format-full-background = ${colors.background}
-format-full-underline = ${self.format-full-background}
+format-full-foreground = ${colors.color12}
 
 format-charging = " <label-charging>"
-format-charging-foreground = ${colors.blue}
-format-charging-background = ${colors.background}
-format-charging-underline = ${self.format-charging-background}
+format-charging-foreground = ${colors.color4}
 
 format-discharging = " <label-discharging>"
-format-discharging-foreground = ${colors.green}
-format-discharging-background = ${colors.background}
-format-discharging-underline = ${self.format-discharging-background}
 
 [module/date]
 
 type = internal/date
-interval = 5
+interval = 1
 
 format-prefix = " "
 label = %date% %time%
@@ -297,22 +264,11 @@ time-alt = "%H:%M:%S"
 ;;;;;;;;;;;;;;;;;;;
 
 [settings]
+
 screenchange-reload = true
-
-format-background = ${colors.background}
-format-underline = ${self.format-background}
-
-format-connected-background = ${colors.background}
-format-connected-underline = ${self.format-connected-background}
-
-format-warn-background = ${colors.alert}
-format-warn-underline = ${self.format-warn-background}
-
-format-disconnected-background = ${colors.alert}
-format-disconnected-underline = ${self.format-disconnected-background}
-
 format-padding = 1
 
 [global/wm]
+
 margin-top = 5
 margin-bottom = 5
