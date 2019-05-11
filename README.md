@@ -11,13 +11,11 @@ Bar: polybar
 
 Shell: bash
 
-Terminal: st (suckless terminal)
-
-Wallpaper/Screenshot: https://imgur.com/a/fRKle0r
+Terminal: st (suckless terminal) + tmux (terminal multiplexer)
 
 ## Vim theming
 
-to enable nord theme:
+To enable nord theme:
 
 ```
 "" Nord settings
@@ -30,9 +28,11 @@ let g:nord_uniform_diff_background = 1
 colorscheme nord
 ```
 
-to enable atom onedark theme:
+To enable atom onedark theme:
 
 ```
+"" OneDark settings
+
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
 "(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
@@ -52,3 +52,4 @@ endif
 syntax on
 colorscheme onedark
 ```
+
