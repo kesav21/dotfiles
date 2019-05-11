@@ -84,8 +84,8 @@ bindsym $mod+m exec st -e ncmpcpp
 bindsym $mod+g exec google-chrome
 
 #### application launcher
-# bindsym $mod+d exec rofi -show run -theme "~/.config/rofi/nord"
-bindsym $mod+d exec dmenu_run -x 5 -w 1910 -y 5 -h 25 -nb '#2E3440' -nf '#4C566A' -sb '#2E3440' -sf '#ECEFF4' -fn 'Monospace-10:normal'
+# bindsym $mod+d exec ~/.scripts/i3cmds/rofi
+bindsym $mod+d exec ~/.scripts/i3cmds/dmenu
 
 # bindsym $mod+Shift+d exec rofi -show window -theme "~/.config/rofi/nord"
 
