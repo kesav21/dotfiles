@@ -159,7 +159,7 @@ for_window [class="^.*"] border pixel 1
 # activate gestures - doesn't do anything
 # exec fusuma
 exec_always feh --bg-scale $wallpaper
-exec_always --no-startup-id ~/.config/i3/polybar.sh &
+exec_always --no-startup-id ~/.scripts/i3cmds/polybar &
 exec_always compton
 
 # set gaps
