@@ -83,7 +83,7 @@ autocmd FileType python setlocal autoindent noexpandtab tabstop=4 shiftwidth=4
 
 set number relativenumber
 " set cursorline
-" set modeline
+set modeline
 set wildmode=longest,list,full
 set laststatus=0
 set noshowmode
