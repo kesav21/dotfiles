@@ -15,6 +15,9 @@ Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-commentary'
 " git plugin (airline requires)
 Plug 'tpope/vim-fugitive'
+" adds delays to certain keys
+Plug 'takac/vim-hardtime'
+
 
 " adds virtualenv support
 " Plug 'plytophogy/vim-virtualenv'
@@ -57,6 +60,8 @@ let g:airline_skip_empty_sections = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
+"" hard time settings
+let g:hardtime_default_on = 1
 
 " autocommands
 
@@ -69,6 +74,9 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 "" Automatically deletes all trailing whitespace on save.
 autocmd BufWritePre * %s/\s\+$//e
+
+"" python files have tabs set to 4
+autocmd FileType python setlocal autoindent noexpandtab tabstop=4 shiftwidth=4
 
 
 " miscellaneous settings
@@ -83,6 +91,12 @@ set noruler
 set noshowcmd
 set hls is
 set timeout timeoutlen=1000
+
+filetype indent plugin on
+syntax on
+
+"" enable tabs
+
 set autoindent noexpandtab tabstop=4 shiftwidth=4
 
 "" listchars and stuff
@@ -118,6 +132,7 @@ nnoremap <C-k> :m .-2<CR>==
 let mapleader = "-"
 
 " insert a single character before/after
+nnoremap <space> i_<esc>r
 nnoremap <leader>i i_<esc>r
 nnoremap <leader>a a_<esc>r
 
