@@ -26,7 +26,11 @@ set $wallpaper "`cat ~/.wallpaper`"
 
 ## misc
 
-font pango:FiraMono-Regular 10
+# font-0 = "Fira Mono:style=Regular:size=12;3"
+# font-0 = "Fira Code Retina:style=Regular:size=12;3"
+# font-0 = "Fira Mono for Powerline:style=Regular:size=12;3"
+
+font pango:Fira Mono Regular 10
 # font pango:FiraCode-Retina 10
 floating_modifier $mod
 
@@ -62,19 +66,19 @@ bindsym $mod+i exec --no-startup-id ~/.scripts/i3cmds/i3resize up
 bindsym $mod+o exec --no-startup-id ~/.scripts/i3cmds/i3resize right
 
 ### edit gaps
-bindsym $mod+z gaps left current plus $dgap
-bindsym $mod+x gaps bottom current plus $dgap
-bindsym $mod+c gaps top current plus $dgap
-bindsym $mod+v gaps right current plus $dgap
+# bindsym $mod+z gaps left current plus $dgap
+# bindsym $mod+x gaps bottom current plus $dgap
+# bindsym $mod+c gaps top current plus $dgap
+# bindsym $mod+v gaps right current plus $dgap
 
 ### move window on screen
-bindsym $mod+Shift+z gaps left current minus $dgap; gaps right current plus $dgap
-bindsym $mod+Shift+x gaps bottom current minus $dgap; gaps top current plus $dgap
-bindsym $mod+Shift+c gaps top current minus $dgap; gaps bottom current plus $dgap
-bindsym $mod+Shift+v gaps right current minus $dgap; gaps left current plus $dgap
+# bindsym $mod+Shift+z gaps left current minus $dgap; gaps right current plus $dgap
+# bindsym $mod+Shift+x gaps bottom current minus $dgap; gaps top current plus $dgap
+# bindsym $mod+Shift+c gaps top current minus $dgap; gaps bottom current plus $dgap
+# bindsym $mod+Shift+v gaps right current minus $dgap; gaps left current plus $dgap
 
 ### default gaps
-bindsym $mod+Shift+a gaps inner current set $gap; gaps outer current set $gap
+# bindsym $mod+Shift+a gaps inner current set $gap; gaps outer current set $gap
 
 ### applications
 
@@ -161,6 +165,11 @@ for_window [class="^.*"] border pixel 1
 exec_always feh --bg-scale $wallpaper
 exec_always --no-startup-id ~/.scripts/i3cmds/polybar &
 exec_always compton
+
+# screensaver
+
+exec --no-startup-id xset dpms 300
+exec --no-startup-id xautolock -time 5 -locker ~/.scripts/i3cmds/i3lock-color
 
 # set gaps
 gaps inner $gap
