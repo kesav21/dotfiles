@@ -30,44 +30,11 @@ color14 =      #8fbcbb
 color7 =       #e5e9f0
 color15 =      #eceff4
 
-[bar/top]
+[global/common]
 
 width = 100%
 height = 25
 
-bottom = false
-fixed-center = true
-
-background = ${colors.background}
-foreground = ${colors.foreground}
-
-border-size = 5
-border-color = #00000000
-
-padding-left = 1
-padding-right = 1
-
-module-margin-left = 1
-module-margin-right = 0
-
-font-0 = "FiraMono-Regular:size=10;1"
-font-1 = "Font Awesome 5 Free:style=Solid:pixelsize=12;3"
-font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=12;3"
-font-3 = "Font Awesome 5 Brands:pixelsize=12;3"
-
-modules-left = temperature memory cpu eth wlan
-modules-right = pulseaudio brightness battery date
-
-; wm-restack = i3
-; enable-scroll = false
-; cursor-click = pointer
-
-[bar/bottom]
-
-width = 100%
-height = 25
-
-bottom = true
 fixed-center = true
 
 background = ${colors.background}
@@ -82,10 +49,31 @@ padding-right = 0
 module-margin-left = 0
 module-margin-right = 0
 
-font-0 = "FiraMono-Regular:size=10;1"
+; font-0 = "Fira Mono:style=Regular:size=12;3"
+; font-0 = "FuraMono Nerd Font:style=Regular:size=12;3"
+; font-0 = "Fira Code Retina:style=Retina:size=12;3"
+font-0 = "FuraCode Nerd Font:style=Retina:size=12;3"
+
 font-1 = "Font Awesome 5 Free:style=Solid:pixelsize=12;3"
 font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=12;3"
 font-3 = "Font Awesome 5 Brands:pixelsize=12;3"
+
+;    
+
+[bar/top]
+
+inherit = global/common
+
+bottom = false
+
+modules-left = temperature memory cpu eth wlan
+modules-right = pulseaudio brightness battery date
+
+[bar/bottom]
+
+inherit = global/common
+
+bottom = true
 
 modules-left = i3
 modules-right = powermenu
@@ -94,10 +82,6 @@ wm-restack = i3
 enable-scroll = false
 cursor-click = pointer
 cursor-scroll = ns-resize
-
-;;;;;;;;;;;;;;;;;;;
-;;; left tray   ;;;
-;;;;;;;;;;;;;;;;;;;
 
 [module/temperature]
 
@@ -151,10 +135,6 @@ ramp-signal-2 = c
 ramp-signal-3 = d
 ramp-signal-4 = e
 
-;;;;;;;;;;;;;;;;;;;;
-;;;;; middle   ;;;;;
-;;;;;;;;;;;;;;;;;;;;
-
 [module/i3]
 
 type = internal/i3
@@ -186,10 +166,6 @@ label-visible-padding = ${self.label-focused-padding}
 ; Only show workspaces on the same output as the bar
 ; idk what this means
 pin-workspaces = true
-
-;;;;;;;;;;;;;;;;;;;;
-;;; right tray   ;;;
-;;;;;;;;;;;;;;;;;;;;
 
 [module/powermenu]
 
@@ -259,10 +235,6 @@ date-alt = " %m/%d/%Y"
 time = "%I:%M %P"
 time-alt = "%H:%M:%S"
 
-;;;;;;;;;;;;;;;;;;;
-;;;; general   ;;;;
-;;;;;;;;;;;;;;;;;;;
-
 [settings]
 
 screenchange-reload = true
@@ -272,3 +244,4 @@ format-padding = 1
 
 margin-top = 5
 margin-bottom = 5
+
