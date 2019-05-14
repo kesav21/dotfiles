@@ -1,5 +1,9 @@
 
-# documentation: https://i3wm.org/docs/userguide.html
+# i3 config
+
+
+## documentation: https://i3wm.org/docs/userguide.html
+
 
 ## constants
 
@@ -24,23 +28,95 @@ set $dgap 20
 
 set $wallpaper "`cat ~/.wallpaper`"
 
+
 ## misc
+
+
+### font
 
 # font-0 = "Fira Mono:style=Regular:size=12;3"
 # font-0 = "Fira Code Retina:style=Regular:size=12;3"
 # font-0 = "Fira Mono for Powerline:style=Regular:size=12;3"
-
-font pango:Fira Mono Regular 10
 # font pango:FiraCode-Retina 10
+font pango:Fira Mono Regular 10
+
 floating_modifier $mod
+
+
+### gaps
+
+gaps inner $gap
+gaps outer $gap
+gaps horizontal $gap
+gaps vertical $gap
+gaps top $gap
+gaps right $gap
+gaps bottom $gap
+gaps left $gap
+
+
+### theming
+
+# set colors from Xresources
+set_from_resource $bg URxvt.background #f0f0f0
+set_from_resource $fg URxvt.foreground #f0f0f0
+set_from_resource $focus URxvt.color4 #f0f0f0
+set_from_resource $urgent URxvt.color1 #f0f0f0
+
+# class                 border  backgr. text    indicator child_border
+client.focused          $focus     $focus     $focus     $focus       $focus
+client.focused_inactive $bg     $bg     $bg     $bg       $bg
+client.unfocused        $bg     $bg     $bg     $bg       $bg
+client.urgent           $urgent     $urgent     $urgent     $urgent       $urgent
+client.placeholder      $bg     $bg     $bg     $bg       $bg
+
+client.background       $bg
+
+for_window [class="^.*"] border pixel 1
+
+
+## startup applications
+
+exec_always --no-startup-id ~/.scripts/i3cmds/polybar &
+exec_always compton &
+
+### wallpaper
+
+exec --no-startup-id hsetroot -solid "#2e3440"
+# exec_always feh --bg-scale $wallpaper
+
+### battery low/full notifications
+
+exec --no-startup-id ~/.scripts/battery/batterylow &
+exec --no-startup-id ~/.scripts/battery/batteryfull &
+
+### screensaver
+
+exec --no-startup-id ~/.scripts/i3cmds/screensaver &
+
+### notification daemon
+# figure out original daemon name
+# exec killall -q <notification daemon>
+exec --no-startup-id dunst &
+
 
 ## key bindings
 
-### i3 commands
 
-bindsym $mod+Shift+r restart
-bindsym $mod+Shift+q kill
-bindsym $mod+Shift+w exec ~/.scripts/i3cmds/i3lock-color
+### applications
+
+bindsym $mod+Return exec st
+bindsym $mod+g exec google-chrome
+bindsym $mod+d exec ~/.scripts/i3cmds/dmenu
+# bindsym $mod+r exec st -e ranger
+# bindsym $mod+m exec st -e ncmpcpp
+
+
+### general commands
+
+bindsym $mod+q kill
+bindsym $mod+w exec ~/.scripts/i3cmds/i3lock-color
+bindsym $mod+r restart
 
 ### window commands
 # I rarely use these
@@ -80,28 +156,8 @@ bindsym $mod+o exec --no-startup-id ~/.scripts/i3cmds/i3resize right
 ### default gaps
 # bindsym $mod+Shift+a gaps inner current set $gap; gaps outer current set $gap
 
-### applications
-
-bindsym $mod+Return exec st
-bindsym $mod+r exec st -e ranger
-bindsym $mod+m exec st -e ncmpcpp
-bindsym $mod+g exec google-chrome
-
-#### application launcher
-# bindsym $mod+d exec ~/.scripts/i3cmds/rofi
-bindsym $mod+d exec ~/.scripts/i3cmds/dmenu
-
-# bindsym $mod+Shift+d exec rofi -show window -theme "~/.config/rofi/nord"
-
-#### notification daemon
-# figure out original daemon name
-# exec killall -q <notification daemon>
-exec --no-startup-id dunst
-
-### gestures
-# bindsym $mod+Tab workspace --no-auto-back-and-forth next
+### switch workspace
 bindsym $mod+Tab workspace next
-# bindsym $mod+Shift+Tab workspace --no-auto-back-and-forth prev
 bindsym $mod+Shift+Tab workspace prev
 
 ### switch to workspace
@@ -135,49 +191,4 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86MonBrightnessUp exec ~/Projects/external/brightlight/brightlight -i 150
 bindsym XF86MonBrightnessDown exec ~/Projects/external/brightlight/brightlight -d 150
 
-## theming
-
-# set colors from Xresources
-set_from_resource $bg URxvt.background #f0f0f0
-set_from_resource $fg URxvt.foreground #f0f0f0
-set_from_resource $focus URxvt.color4 #f0f0f0
-set_from_resource $urgent URxvt.color1 #f0f0f0
-
-# class                 border  backgr. text    indicator child_border
-client.focused          $focus     $focus     $focus     $focus       $focus
-client.focused_inactive $bg     $bg     $bg     $bg       $bg
-client.unfocused        $bg     $bg     $bg     $bg       $bg
-client.urgent           $urgent     $urgent     $urgent     $urgent       $urgent
-client.placeholder      $bg     $bg     $bg     $bg       $bg
-
-client.background       $bg
-
-for_window [class="^.*"] border pixel 1
-
-# startup applications
-
-# gnome stuff
-# exec --no-startup-id gnome-settings-daemon
-# exec --no-startup-id nm-applet
-# exec --no-startup-id gnome-sound-applet
-# activate gestures - doesn't do anything
-# exec fusuma
-exec_always feh --bg-scale $wallpaper
-exec_always --no-startup-id ~/.scripts/i3cmds/polybar &
-exec_always compton
-
-# screensaver
-
-exec --no-startup-id xset dpms 300
-exec --no-startup-id xautolock -time 5 -locker ~/.scripts/i3cmds/i3lock-color
-
-# set gaps
-gaps inner $gap
-gaps outer $gap
-gaps horizontal $gap
-gaps vertical $gap
-gaps top $gap
-gaps right $gap
-gaps bottom $gap
-gaps left $gap
 
