@@ -61,7 +61,7 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
 "" hard time settings
-let g:hardtime_default_on = 1
+let g:hardtime_default_on = 0
 
 " autocommands
 
