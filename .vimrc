@@ -109,7 +109,7 @@ set showbreak=↪
 " set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸─
 " set list listchars=trail:·,tab:»·
 " set list listchars=tab:▸\ ,trail:·,precedes:←,extends:→
-set list listchars=tab:▶‒,nbsp:∙,trail:∙,extends:▶,precedes:◀
+set list listchars=tab:▶─,nbsp:∙,trail:∙,extends:▶,precedes:◀
 
 " my mappings
 
