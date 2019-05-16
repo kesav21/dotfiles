@@ -5,6 +5,9 @@ alias ls="ls -AlF --color=always"
 
 alias nuke="rm -rf"
 
+# get size of directory
+alias dirsize="du -h --max-depth=1 | sort -hr"
+
 function path() {
 	sed 's/:/\n/g' <<< "$PATH"
 }
