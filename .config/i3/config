@@ -77,7 +77,7 @@ for_window [class="^.*"] border pixel 1
 
 ## startup applications
 
-exec_always --no-startup-id ~/.scripts/i3cmds/polybar &
+exec_always --no-startup-id ~/.scripts/i3cmds/polybar
 exec_always compton &
 
 ### wallpaper
@@ -87,17 +87,17 @@ exec --no-startup-id hsetroot -solid "#2e3440"
 
 ### battery low/full notifications
 
-exec --no-startup-id ~/.scripts/battery/batterylow &
-exec --no-startup-id ~/.scripts/battery/batteryfull &
+exec --no-startup-id ~/.scripts/battery/batterylow
+exec --no-startup-id ~/.scripts/battery/batteryfull
 
 ### screensaver
 
-exec --no-startup-id ~/.scripts/i3cmds/screensaver &
+exec --no-startup-id ~/.scripts/i3cmds/screensaver
 
 ### notification daemon
 # figure out original daemon name
 # exec killall -q <notification daemon>
-exec --no-startup-id dunst &
+exec --no-startup-id dunst
 
 
 ## key bindings
