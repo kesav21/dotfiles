@@ -284,7 +284,7 @@ format-suffix-foreground = ${colors.color0}
 type = internal/battery
 battery = BAT0
 adapter = AC
-full-at = 95
+full-at = 100
 
 
 format-full-prefix = ""
