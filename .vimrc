@@ -138,3 +138,24 @@ nnoremap <space> i_<esc>r
 nnoremap <leader>i i_<esc>r
 nnoremap <leader>a a_<esc>r
 
+"" habit breaking
+
+""" in normal mode, disable arrow keys
+
+nnoremap <Up> <Nop>
+nnoremap <Down> <Nop>
+nnoremap <Left> <Nop>
+nnoremap <Right> <Nop>
+
+""" in normal mode, disable backspace/delete
+
+nnoremap <BS> <Nop>
+nnoremap <Del> <Nop>
+
+""" in insert mode, disable arrow keys
+
+inoremap <Up> <Nop>
+inoremap <Down> <Nop>
+inoremap <Left> <Nop>
+inoremap <Right> <Nop>
+
