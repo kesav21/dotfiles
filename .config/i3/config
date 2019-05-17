@@ -77,8 +77,8 @@ for_window [class="^.*"] border pixel 1
 
 ## startup applications
 
-exec_always --no-startup-id ~/.scripts/i3cmds/polybar
-exec_always compton
+exec_always --no-startup-id ~/.scripts/i3cmds/launch_polybar
+exec_always --no-startup-id compton
 
 ### wallpaper
 
@@ -106,7 +106,7 @@ exec --no-startup-id dunst
 
 bindsym $mod+Return exec st
 bindsym $mod+g exec google-chrome
-bindsym $mod+d exec ~/.scripts/i3cmds/dmenu
+bindsym $mod+d exec --no-startup-id ~/.scripts/i3cmds/dmenu
 # bindsym $mod+r exec st -e ranger
 # bindsym $mod+m exec st -e ncmpcpp
 
@@ -181,13 +181,13 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 
 ### media player controls
-bindsym XF86AudioPlay exec playerctl play
-bindsym XF86AudioPause exec playerctl pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioPlay exec --no-startup-id playerctl play
+bindsym XF86AudioPause exec --no-startup-id playerctl pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
 ### screen brightness controls
-bindsym XF86MonBrightnessUp exec ~/Projects/external/brightlight/brightlight -i 150
-bindsym XF86MonBrightnessDown exec ~/Projects/external/brightlight/brightlight -d 150
+bindsym XF86MonBrightnessUp exec --no-startup-id ~/Projects/external/brightlight/brightlight -i 150
+bindsym XF86MonBrightnessDown exec --no-startup-id ~/Projects/external/brightlight/brightlight -d 150
 
 
