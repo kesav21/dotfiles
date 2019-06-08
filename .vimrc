@@ -133,8 +133,12 @@ map <C-n> :NERDTreeToggle<CR>
 " nnoremap <silent><C-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
 
 " add mapping to move line up/down a certain number of lines
-nnoremap <C-j> :m .+1<CR>==
-nnoremap <C-k> :m .-2<CR>==
+nnoremap <c-j> :m .+1<cr>==
+nnoremap <c-k> :m .-2<cr>==
+
+"" switching between buffers
+nnoremap <c-l> :bn<cr>
+nnoremap <c-h> :bp<cr>
 
 "" leader mappings
 
