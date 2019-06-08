@@ -146,6 +146,8 @@ cfrc="~/.config/ranger/rc.conf"
 cfrr="~/.config/ranger/rifle.conf"
 cfro="~/.config/rofi/config"
 
+# set -o vi
+
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]
 then
 	tmux a -t default || tmux new -s default
