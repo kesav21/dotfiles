@@ -22,4 +22,19 @@ function refresh() {
 
 alias r="ranger"
 alias n="nmtui"
+alias z="zathura -d . &"
 
+## temporary functions
+
+# disable () {
+# 	sudo systemctl disable lightdm.service
+# }
+
+# enable () {
+# 	sudo dpkg-reconfigure lightdm
+# }
+
+### # testing launching different chrome profiles
+
+# alias gasu="google-chrome --user-data-dir='/home/kesav/.config/google-chrome/Kesav ASU'"
+# alias ghome="google-chrome --user-data-dir='/home/kesav/.config/google-chrome/Kesav Home'"
