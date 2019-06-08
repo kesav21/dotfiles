@@ -91,7 +91,7 @@ exec --no-startup-id ~/.scripts/battery/notifications
 
 ### screensaver
 
-exec --no-startup-id ~/.scripts/i3cmds/screensaver
+exec --no-startup-id ~/.scripts/screensaver/set_screensaver
 
 ### notification daemon
 # figure out original daemon name
@@ -106,7 +106,7 @@ exec --no-startup-id dunst
 
 bindsym $mod+Return exec st
 bindsym $mod+g exec google-chrome
-bindsym $mod+d exec --no-startup-id ~/.scripts/i3cmds/dmenu
+bindsym $mod+d exec --no-startup-id ~/.scripts/i3cmds/dmenu_run
 # bindsym $mod+r exec st -e ranger
 # bindsym $mod+m exec st -e ncmpcpp
 
