@@ -82,6 +82,9 @@ autocmd BufWritePre * %s/\s\+$//e
 "" python files have tabs set to 4
 autocmd FileType python setlocal autoindent noexpandtab tabstop=4 shiftwidth=4
 
+"" commenstrings
+autocmd FileType markdown setlocal commentstring=<!--\ %s\ -->
+
 
 " miscellaneous settings
 
