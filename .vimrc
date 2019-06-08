@@ -15,10 +15,14 @@ Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-commentary'
 " git plugin (airline requires)
 Plug 'tpope/vim-fugitive'
+" helps surround things
+Plug 'tpope/vim-surround'
+
+
 " adds delays to certain keys
-Plug 'takac/vim-hardtime'
-
-
+" Plug 'takac/vim-hardtime'
+" adds MIPS support
+" Plug 'vim-scripts/mips.vim'
 " adds virtualenv support
 " Plug 'plytophogy/vim-virtualenv'
 " adds git support to nerdtree
