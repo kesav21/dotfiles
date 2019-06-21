@@ -118,7 +118,7 @@ fi
 
 # set environment variables
 
-export EDITOR=vim
+export EDITOR=/usr/bin/nvim
 
 # update bash prompt
 
