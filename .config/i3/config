@@ -156,8 +156,10 @@ bindsym $mod+o exec --no-startup-id ~/.scripts/i3cmds/i3resize right
 # bindsym $mod+Shift+a gaps inner current set $gap; gaps outer current set $gap
 
 ### switch workspace
-bindsym $mod+Tab workspace next
-bindsym $mod+Shift+Tab workspace prev
+# bindsym $mod+Tab workspace next
+# bindsym $mod+Shift+Tab workspace prev
+bindsym $mod+n workspace prev
+bindsym $mod+m workspace next
 
 ### switch to workspace
 bindsym $mod+1 workspace $ws1
