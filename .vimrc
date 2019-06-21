@@ -114,7 +114,7 @@ let g:airline#extensions#tabline#enabled = 1
 " autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " When shortcut files are updated, renew bash and vifm configs with new material
-autocmd BufWritePost ~/.config/bmdirs,~/.config/bmfiles !~/Projects/dotfiles/bmgen
+autocmd BufWritePost ~/.config/bmdirs,~/.config/bmfiles !~/.scripts/bookmarks/bmgen
 
 "" Disables automatic commenting on newline:
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
