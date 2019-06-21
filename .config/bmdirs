@@ -1,0 +1,15 @@
+
+# comments
+
+b ~/Books/
+dc ~/Documents/
+dw ~/Downloads/
+pc ~/Pictures/
+
+c ~/.config/
+s ~/.scripts/
+
+pr ~/Projects/
+dt ~/Projects/dotfiles
+e ~/Projects/external
+
