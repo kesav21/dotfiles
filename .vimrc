@@ -105,7 +105,7 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
 "" hard time settings
-let g:hardtime_default_on = 0
+" let g:hardtime_default_on = 0
 
 " autocommands
 
@@ -116,7 +116,7 @@ let g:hardtime_default_on = 0
 "" Disables automatic commenting on newline:
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
-"" Automatically deletes all trailing whitespace on save.
+"" automatically deletes all trailing whitespace on save.
 autocmd BufWritePre * %s/\s\+$//e
 
 "" python files have tabs set to 4
@@ -124,6 +124,7 @@ autocmd FileType python setlocal autoindent noexpandtab tabstop=4 shiftwidth=4
 
 "" commenstrings
 autocmd FileType markdown setlocal commentstring=<!--\ %s\ -->
+autocmd FileType xdefaults set commentstring=!\ %s
 
 
 " miscellaneous settings
@@ -179,13 +180,16 @@ nnoremap <c-k> :m .-2<cr>==
 "" switching between buffers
 nnoremap <c-l> :bn<cr>
 nnoremap <c-h> :bp<cr>
+"" deleting buffer
+" :bd<cr>
 
 "" leader mappings
 
-let mapleader = "-"
+" let mapleader = "-"
+let mapleader = " "
 
 " insert a single character before/after
-nnoremap <space> i_<esc>r
+" nnoremap <space> i_<esc>r
 nnoremap <leader>i i_<esc>r
 nnoremap <leader>a a_<esc>r
 
