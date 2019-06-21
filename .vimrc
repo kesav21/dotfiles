@@ -7,8 +7,6 @@ call plug#begin()
 Plug 'PotatoesMaster/i3-vim-syntax'
 " adds a directory tree
 Plug 'scrooloose/nerdtree'
-" adds nord theme to vim
-Plug 'arcticicestudio/nord-vim'
 " adds airline status bar to vim
 Plug 'vim-airline/vim-airline'
 " faster commenting
@@ -18,6 +16,26 @@ Plug 'tpope/vim-fugitive'
 " helps surround things
 Plug 'tpope/vim-surround'
 
+" language pack for vim
+Plug 'sheerun/vim-polyglot'
+" make gvim colorschemes work in terminal vim
+" Plug 'godlygeek/csapprox'
+
+" mips syntax highlighting
+Plug 'harenome/vim-mipssyntax'
+
+
+"" colorscheme
+
+" nord theme
+Plug 'arcticicestudio/nord-vim'
+
+" one dark colorscheme
+" this one is pretty good
+Plug 'joshdick/onedark.vim'
+
+" challenger theme
+" Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 
 " adds delays to certain keys
 " Plug 'takac/vim-hardtime'
@@ -46,15 +64,37 @@ Plug 'tpope/vim-surround'
 
 call plug#end()
 
-" Plugin settings
+" plugin settings
 
-"" Nord settings
+"" nord settings
 let g:nord_italic = 1
 let g:nord_underline = 1
 let g:nord_uniform_status_lines = 1
 let g:nord_cursor_line_number_background = 1
 let g:nord_uniform_diff_background = 1
 colorscheme nord
+
+"" onedark settings
+" set termguicolors
+" colorscheme onedark
+
+"" one settings
+" syntax on
+" colorscheme one
+" set termguicolors
+
+"" onehalfdark settings
+" syntax on
+" set termguicolors
+" set t_Co=256
+" colorscheme onehalfdark
+" let g:airline_theme='onehalfdark'
+
+"" challenger settings
+" colorscheme challenger_deep
+" if has('nvim') || has('termguicolors')
+" 	set termguicolors
+" endif
 
 "" NERDTree settings
 let NERDTreeWinSize = 50
