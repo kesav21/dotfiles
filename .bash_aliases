@@ -21,7 +21,9 @@ function refresh() {
 # alias settings="sudo env XDG_CURRENT_DESKTOP=GNOME gnome-control-center"
 
 alias r="ranger"
+alias f="vifm"
 alias n="nmtui"
+alias v="nvim"
 alias z="zathura -d . &"
 
 ## temporary functions
