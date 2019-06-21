@@ -3,14 +3,16 @@
 DIR=~/Projects/dotfiles
 
 declare -a StringArray=( \
+
 	.bash_aliases \
 	.bashrc \
 	.profile \
+
 	.tmux.conf \
 	.vimrc \
 	.wallpaper \
 	.Xresources \
-\
+
 	.config/dunst/dunstrc \
 	.config/i3/config \
 	.config/i3/polybar.sh \
@@ -20,6 +22,7 @@ declare -a StringArray=( \
 	.config/ranger/rc.conf \
 	.config/rofi/config \
 	.config/rofi/nord \
+	.config/vifm/vifmrc \
 	.config/zathura/zathurarc \
 )
 
