@@ -210,7 +210,9 @@ let mapleader = " "
 " insert a single character before/after
 " nnoremap <space> i_<esc>r
 nnoremap <leader>i i_<esc>r
+nnoremap <leader>I I_<esc>r
 nnoremap <leader>a a_<esc>r
+nnoremap <leader>A A_<esc>r
 
 "" habit breaking
 
