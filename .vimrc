@@ -32,7 +32,16 @@ Plug 'arcticicestudio/nord-vim'
 
 " one dark colorscheme
 " this one is pretty good
-Plug 'joshdick/onedark.vim'
+" the markdown coloring is pretty bad
+" Plug 'joshdick/onedark.vim'
+
+" another one dark colorscheme
+" markdown is alright, but not great
+" Plug 'sonph/onehalf', {'rtp': 'vim/'}
+
+" yet another one dark colorscheme
+" markdown support isn't great
+" Plug 'rakr/vim-one'
 
 " challenger theme
 " Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
@@ -84,11 +93,14 @@ colorscheme nord
 " set termguicolors
 
 "" onehalfdark settings
-" syntax on
 " set termguicolors
-" set t_Co=256
 " colorscheme onehalfdark
 " let g:airline_theme='onehalfdark'
+
+"" vim-one settings
+" set termguicolors
+" colorscheme onehalfdark
+" let g:airline_theme='one'
 
 "" challenger settings
 " colorscheme challenger_deep
