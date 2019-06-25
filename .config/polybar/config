@@ -37,6 +37,9 @@ format-padding = 0
 
 [global/common]
 
+; this might be needed for dwm
+; override-redirect = true
+
 width = 100%
 height = 20
 
