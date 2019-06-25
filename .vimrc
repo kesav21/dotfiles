@@ -140,6 +140,10 @@ autocmd FileType python setlocal autoindent noexpandtab tabstop=4 shiftwidth=4
 "" commenstrings
 autocmd FileType markdown setlocal commentstring=<!--\ %s\ -->
 autocmd FileType xdefaults set commentstring=!\ %s
+autocmd FileType cpp set commentstring=//\ %s
+
+"" enable spellcheck for markdown files
+autocmd BufRead,BufNewFile *.md setlocal spell
 
 
 " miscellaneous settings
