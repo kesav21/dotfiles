@@ -1,7 +1,7 @@
 
 alias clear='echo "you stop that"'
 
-alias ls="ls -AlF --color=always"
+alias ll="ls -AlF --color=always"
 
 alias nuke="rm -rf"
 
@@ -21,7 +21,7 @@ function refresh() {
 # alias settings="sudo env XDG_CURRENT_DESKTOP=GNOME gnome-control-center"
 
 alias r="ranger"
-alias f="vifm"
+alias f="vifm ."
 alias n="nmtui"
 alias v="nvim"
 alias z="zathura -d . &"
