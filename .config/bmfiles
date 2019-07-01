@@ -20,4 +20,5 @@ cfz ~/.config/zathura/zathurarc
 cfm ~/.ncmpcpp/config
 
 cfs ~/Projects/external/st-0.8.2/config.h
+cfdw /usr/local/src/dwm-6.2/config.h
 
