@@ -218,31 +218,54 @@ nnoremap <c-h> :bp<cr>
 " let mapleader = "-"
 let mapleader = " "
 
-" insert a single character before/after
-" nnoremap <space> i_<esc>r
-nnoremap <leader>i i_<esc>r
-nnoremap <leader>I I_<esc>r
-nnoremap <leader>a a_<esc>r
-nnoremap <leader>A A_<esc>r
-
 "" habit breaking
 
 """ in normal mode, disable arrow keys
-
 nnoremap <Up> <Nop>
 nnoremap <Down> <Nop>
 nnoremap <Left> <Nop>
 nnoremap <Right> <Nop>
 
-""" in normal mode, disable backspace/delete
-
-nnoremap <BS> <Nop>
-nnoremap <Del> <Nop>
-
 """ in insert mode, disable arrow keys
-
 inoremap <Up> <Nop>
 inoremap <Down> <Nop>
 inoremap <Left> <Nop>
 inoremap <Right> <Nop>
+
+""" in visual mode, disable arrow keys
+vnoremap <Up> <Nop>
+vnoremap <Down> <Nop>
+vnoremap <Left> <Nop>
+vnoremap <Right> <Nop>
+
+""" in normal mode, disable backspace/delete
+nnoremap <BS> <Nop>
+nnoremap <Del> <Nop>
+
+"" in normal mode, insert a single character before/after
+nnoremap <leader>i i_<esc>r
+nnoremap <leader>I I_<esc>r
+nnoremap <leader>a a_<esc>r
+nnoremap <leader>A A_<esc>r
+
+""" in normal mode, clear line
+nnoremap <leader>d 0d$
+
+""" in normal mode, toggle spellcheck
+nnoremap <leader>s :setlocal spell! spelllang=en_us<CR>
+
+"" markdown mappings
+
+""" in normal mode, italicizes text
+nnoremap <leader>e A_<esc>I_<esc>
+""" in normal mode, bolds text
+nnoremap <leader>b A__<esc>I__<esc>
+""" in normal mode, makes line a list item
+nnoremap <leader>l I- <esc>j
+""" in normal mode, add period to end of line
+nnoremap <leader>p A.<esc>j
+
+
+"" toggle ColorHighlight
+nnoremap <leader>ch :ColorToggle<cr>
 
