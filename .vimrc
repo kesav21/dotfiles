@@ -49,6 +49,9 @@ Plug 'arcticicestudio/nord-vim'
 " challenger theme
 " Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 
+" solarized theme
+" Plug 'romainl/flattened'
+
 " adds delays to certain keys
 " Plug 'takac/vim-hardtime'
 " adds MIPS support
@@ -110,6 +113,11 @@ colorscheme nord
 " if has('nvim') || has('termguicolors')
 " 	set termguicolors
 " endif
+
+"" solarized settings
+" set termguicolors
+" colorscheme flattened_dark
+" colorscheme flattened_light
 
 "" NERDTree settings
 let NERDTreeWinSize = 50
