@@ -535,5 +535,5 @@ content-foreground = ${colors.foreground}
 content-suffix-background = ${colors.color8}
 content-suffix-foreground = ${colors.color0}
 
-click-left = ". ~/.scripts/i3cmds/i3lock-color &"
+click-left = ". ~/.bin/i3_lockcolor &"
 

@@ -77,7 +77,7 @@ for_window [class="^.*"] border pixel 1
 
 ## startup applications
 
-exec_always --no-startup-id ~/.scripts/i3cmds/launch_polybar
+exec_always --no-startup-id ~/.bin/poly_launch
 exec_always --no-startup-id compton
 
 ### wallpaper
@@ -87,11 +87,11 @@ exec --no-startup-id hsetroot -solid "#2e3440"
 
 ### battery low/full notifications
 
-exec --no-startup-id ~/.scripts/battery/notifications
+exec --no-startup-id ~/.bin/batt_notifier
 
 ### screensaver
 
-exec --no-startup-id ~/.scripts/screensaver/set_screensaver
+exec --no-startup-id ~/.bin/screensaver_set
 
 ### notification daemon
 # figure out original daemon name
@@ -106,7 +106,7 @@ exec --no-startup-id dunst
 
 bindsym $mod+Return exec st
 bindsym $mod+g exec google-chrome
-bindsym $mod+d exec --no-startup-id ~/.scripts/i3cmds/dmenu_run
+bindsym $mod+d exec --no-startup-id ~/.bin/mydmenu_run
 # bindsym $mod+r exec st -e ranger
 # bindsym $mod+m exec st -e ncmpcpp
 
@@ -114,7 +114,7 @@ bindsym $mod+d exec --no-startup-id ~/.scripts/i3cmds/dmenu_run
 ### general commands
 
 bindsym $mod+q kill
-bindsym $mod+w exec ~/.scripts/i3cmds/i3lock-color
+bindsym $mod+w exec ~/.bin/i3_lockcolor
 bindsym $mod+r restart
 
 ### window commands
@@ -135,10 +135,10 @@ bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
 ### resize window
-bindsym $mod+y exec --no-startup-id ~/.scripts/i3cmds/i3resize left
-bindsym $mod+u exec --no-startup-id ~/.scripts/i3cmds/i3resize down
-bindsym $mod+i exec --no-startup-id ~/.scripts/i3cmds/i3resize up
-bindsym $mod+o exec --no-startup-id ~/.scripts/i3cmds/i3resize right
+bindsym $mod+y exec --no-startup-id ~/.bin/i3_resize left
+bindsym $mod+u exec --no-startup-id ~/.bin/i3_resize down
+bindsym $mod+i exec --no-startup-id ~/.bin/i3_resize up
+bindsym $mod+o exec --no-startup-id ~/.bin/i3_resize right
 
 ### edit gaps
 # bindsym $mod+z gaps left current plus $dgap
