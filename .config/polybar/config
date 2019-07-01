@@ -41,7 +41,8 @@ format-padding = 0
 ; override-redirect = true
 
 width = 100%
-height = 20
+; height = 20
+height = 16
 
 fixed-center = true
 
@@ -62,12 +63,12 @@ module-margin-right = 0
 
 ; font-0 = "Fira Mono:style=Regular:size=12;3"
 ; font-0 = "FuraMono Nerd Font:style=Regular:size=12;3"
-font-0 = "Fira Code Retina:style=Retina:size=13;3"
+font-0 = "Fira Code Retina:style=Retina:size=10;3"
 ; font-0 = "FuraCode Nerd Font:style=Retina:size=12;3"
 
-font-1 = "Font Awesome 5 Free:style=Solid:pixelsize=12;3"
-font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=12;3"
-font-3 = "Font Awesome 5 Brands:pixelsize=12;3"
+font-1 = "Font Awesome 5 Free:style=Solid:pixelsize=10;3"
+font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=10;3"
+font-3 = "Font Awesome 5 Brands:pixelsize=10;3"
 
 [bar/top]
 
