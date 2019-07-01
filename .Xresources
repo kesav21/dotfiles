@@ -52,7 +52,7 @@ URxvt.color14:      #8fbcbb
 
 ! white
 URxvt.color7:       #e5e9f0
-! URxvt.color15:      #eceff4
+URxvt.color15:      #eceff4
 
 ! atom one dark theme
 
