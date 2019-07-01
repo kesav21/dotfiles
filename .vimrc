@@ -21,6 +21,9 @@ Plug 'sheerun/vim-polyglot'
 " make gvim colorschemes work in terminal vim
 " Plug 'godlygeek/csapprox'
 
+" display hex color codes
+Plug 'chrisbra/Colorizer'
+
 " mips syntax highlighting
 Plug 'harenome/vim-mipssyntax'
 
