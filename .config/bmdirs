@@ -10,6 +10,9 @@ c ~/.config/
 s ~/.scripts/
 
 pr ~/Projects/
-dt ~/Projects/dotfiles
-e ~/Projects/external
+dt ~/Projects/dotfiles/
+e ~/Projects/external/
+pa ~/Projects/AsuProjects/cse230/
+
+ls /usr/local/src/
 
