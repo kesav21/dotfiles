@@ -72,7 +72,7 @@ client.placeholder      $bg     $bg     $bg     $bg       $bg
 
 client.background       $bg
 
-for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 5
 
 
 ## startup applications
