@@ -82,7 +82,7 @@ exec_always --no-startup-id compton
 
 ### wallpaper
 
-exec --no-startup-id hsetroot -solid "#2e3440"
+exec_always --no-startup-id hsetroot -solid "#2e3440"
 # exec_always feh --bg-scale $wallpaper
 
 ### battery low/full notifications
