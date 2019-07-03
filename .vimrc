@@ -265,6 +265,9 @@ nnoremap <leader>l I- <esc>j
 """ in normal mode, add period to end of line
 nnoremap <leader>p A.<esc>j
 
+""" in normal mode, make line a heading
+nnoremap <leader>h 0i# <esc>
+
 
 "" toggle ColorHighlight
 nnoremap <leader>ch :ColorToggle<cr>
