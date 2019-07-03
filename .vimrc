@@ -33,6 +33,9 @@ Plug 'harenome/vim-mipssyntax'
 " nord theme
 Plug 'arcticicestudio/nord-vim'
 
+" gruvbox theme
+Plug 'morhetz/gruvbox'
+
 " one dark colorscheme
 " this one is pretty good
 " the markdown coloring is pretty bad
@@ -82,12 +85,26 @@ call plug#end()
 " plugin settings
 
 "" nord settings
-let g:nord_italic = 1
-let g:nord_underline = 1
-let g:nord_uniform_status_lines = 1
-let g:nord_cursor_line_number_background = 1
-let g:nord_uniform_diff_background = 1
-colorscheme nord
+" let g:nord_bold = 1
+" let g:nord_italic = 1
+" let g:nord_underline = 1
+" let g:nord_italic_comments = 1
+" let g:nord_underline = 1
+" let g:nord_uniform_status_lines = 1
+" let g:nord_cursor_line_number_background = 1
+" let g:nord_uniform_diff_background = 1
+" set termguicolors
+" colorscheme nord
+
+"" gruvbox settings
+set background=dark
+set termguicolors
+
+let g:gruvbox_italic = 1
+" let g:gruvbox_contrast_dark = "soft"
+let g:gruvbox_contrast_dark = "medium"
+" let g:gruvbox_contrast_dark = "hard"
+colorscheme gruvbox
 
 "" onedark settings
 " set termguicolors
