@@ -107,28 +107,34 @@ call plug#end()
 
 "" autocommands/misc
 
-	" when shortcut files are updated, renew bash and vifm configs with new material
-	autocmd BufWritePost ~/.config/bmdirs,~/.config/bmfiles !~/.bin/bm_gen
-
-	" disables automatic commenting on newline
-	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-
-	" automatically deletes all trailing whitespace on save
-	autocmd BufWritePre * %s/\s\+$//e
-
-	" enable spellcheck for markdown files
-	autocmd BufRead,BufNewFile *.md setlocal spell
+	augroup misc
+		autocmd!
+		" when shortcut files are updated, renew bash and vifm configs with new material
+		autocmd BufWritePost ~/.config/bmdirs,~/.config/bmfiles !~/.bin/bm_gen
+		" disables automatic commenting on newline
+		autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+		" automatically deletes all trailing whitespace on save
+		autocmd BufWritePre * %s/\s\+$//e
+		" enable spellcheck for markdown files
+		autocmd BufRead,BufNewFile *.md setlocal spell
+	augroup END
 
 "" autocommands/filetype-settings
 
-	" python files have tabs set to 4
-	autocmd FileType python setlocal autoindent noexpandtab tabstop=4 shiftwidth=4
+	augroup filetype_settings
+		autocmd!
+		" python files have tabs set to 4
+		autocmd FileType python setlocal autoindent noexpandtab tabstop=4 shiftwidth=4
+	augroup END
 
 "" autocommands/commenstrings
 
-	autocmd FileType markdown setlocal commentstring=<!--\ %s\ -->
-	autocmd FileType xdefaults set commentstring=!\ %s
-	autocmd FileType cpp set commentstring=//\ %s
+	augroup commentstrings
+		autocmd!
+		autocmd FileType markdown setlocal commentstring=<!--\ %s\ -->
+		autocmd FileType xdefaults set commentstring=!\ %s
+		autocmd FileType cpp set commentstring=//\ %s
+	augroup END
 
 
 " mappings
