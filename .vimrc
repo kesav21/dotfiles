@@ -96,6 +96,8 @@ call plug#end()
 """ settings/plugins/nerdtree
 
 	let NERDTreeWinSize = 50
+	let NERDTreeShowLineNumbers = 1
+	let NERDTreeShowHidden = 1
 
 """ settings/plugins/airline
 
@@ -157,7 +159,7 @@ call plug#end()
 "" mappings/plugins
 
 	" toggle nerdtree
-	noremap <C-n> :NERDTreeToggle<cr>
+	noremap <leader>n :NERDTreeToggle<cr>
 
 	" toggle colorhighlight
 	nnoremap <leader>ch :ColorToggle<cr>
@@ -169,7 +171,7 @@ call plug#end()
 	" switch to previous buffer
 	nnoremap <c-h> :bp<cr>
 	" delete buffer
-	" nnoremap <leader>bd :bd<cr>
+	nnoremap <leader>bd :bd<cr>
 
 "" mappings/habit-breaking
 
