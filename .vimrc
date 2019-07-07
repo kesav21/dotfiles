@@ -1,291 +1,226 @@
 
-" Plugins
+" readme
+
+	"
+	" categories versus descriptions
+	" if the comment is not tabbed over, then it is a category
+	" if the comment if tabbed over, then it is a description
+	"
+	" categories:
+	" heading 1: "
+	" heading 2: ""
+	" heading 3: """
+	"
+	" descriptions: 0\t"
+	"
+
+" plugins
 
 call plug#begin()
 
-" syntax highlighting for i3 config
-Plug 'PotatoesMaster/i3-vim-syntax'
-" adds a directory tree
-Plug 'scrooloose/nerdtree'
-" adds airline status bar to vim
-Plug 'vim-airline/vim-airline'
-" faster commenting
-Plug 'tpope/vim-commentary'
-" git plugin (airline requires)
-Plug 'tpope/vim-fugitive'
-" helps surround things
-Plug 'tpope/vim-surround'
+"" plugins/misc
 
-" language pack for vim
-Plug 'sheerun/vim-polyglot'
-" make gvim colorschemes work in terminal vim
-" Plug 'godlygeek/csapprox'
+	" syntax highlighting for i3 config
+	Plug 'PotatoesMaster/i3-vim-syntax'
+	" adds a directory tree
+	Plug 'scrooloose/nerdtree'
+	" adds airline status bar to vim
+	Plug 'vim-airline/vim-airline'
+	" faster commenting
+	Plug 'tpope/vim-commentary'
+	" git plugin (airline requires)
+	Plug 'tpope/vim-fugitive'
+	" helps surround things
+	Plug 'tpope/vim-surround'
+	" language pack for vim
+	Plug 'sheerun/vim-polyglot'
+	" display hex color codes
+	Plug 'chrisbra/Colorizer'
 
-" display hex color codes
-Plug 'chrisbra/Colorizer'
+"" plugins/colorscheme
 
-" mips syntax highlighting
-Plug 'harenome/vim-mipssyntax'
+	" gruvbox theme
+	Plug 'morhetz/gruvbox'
 
+"" plugins/school
 
-"" colorscheme
-
-" nord theme
-Plug 'arcticicestudio/nord-vim'
-
-" gruvbox theme
-Plug 'morhetz/gruvbox'
-
-" one dark colorscheme
-" this one is pretty good
-" the markdown coloring is pretty bad
-" Plug 'joshdick/onedark.vim'
-
-" another one dark colorscheme
-" markdown is alright, but not great
-" Plug 'sonph/onehalf', {'rtp': 'vim/'}
-
-" yet another one dark colorscheme
-" markdown support isn't great
-" Plug 'rakr/vim-one'
-
-" challenger theme
-" Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
-
-" solarized theme
-" Plug 'romainl/flattened'
-
-" adds delays to certain keys
-" Plug 'takac/vim-hardtime'
-" adds MIPS support
-" Plug 'vim-scripts/mips.vim'
-" adds virtualenv support
-" Plug 'plytophogy/vim-virtualenv'
-" adds git support to nerdtree
-" Plug 'Xuyuanp/nerdtree-git-plugin'
-" adds git support to the gutter
-" Plug 'airblade/vim-gitgutter'
-" adds editorconfig support for vim
-" Plug 'editorconfig/editorconfig-vim'
-" adds file finding capabilities
-" Plug 'junegunn/fzf'
-" fzf plugin for vim
-" Plug 'junegunn/fzf.vim'
-" adds emmet support to vim
-" Plug 'mattn/emmet-vim'
-" enables vim to show multiple cursors
-" Plug 'terryma/vim-multiple-cursors'
-" adds brackets to both sides of selectted text
-" Plug 'tpope/vim-surround'
-" ranger support for vim
-" Plug 'francoiscabrol/ranger.vim'
+	" mips syntax highlighting
+	Plug 'harenome/vim-mipssyntax'
 
 call plug#end()
 
-" plugin settings
 
-"" nord settings
-" let g:nord_bold = 1
-" let g:nord_italic = 1
-" let g:nord_underline = 1
-" let g:nord_italic_comments = 1
-" let g:nord_underline = 1
-" let g:nord_uniform_status_lines = 1
-" let g:nord_cursor_line_number_background = 1
-" let g:nord_uniform_diff_background = 1
-" set termguicolors
-" colorscheme nord
+" settings
 
-"" gruvbox settings
-set background=dark
-set termguicolors
+"" settings/misc
 
-let g:gruvbox_italic = 1
-" let g:gruvbox_contrast_dark = "soft"
-let g:gruvbox_contrast_dark = "medium"
-" let g:gruvbox_contrast_dark = "hard"
-colorscheme gruvbox
+	set number relativenumber
+	set cursorline
+	set modeline
+	set wildmode=longest,list,full
+	set laststatus=0
+	set noshowmode
+	set noruler
+	set noshowcmd
+	set hls is
+	set timeout timeoutlen=1000
 
-"" onedark settings
-" set termguicolors
-" colorscheme onedark
+"" settings/tabs
+	set autoindent noexpandtab tabstop=4 shiftwidth=4
 
-"" one settings
-" syntax on
-" colorscheme one
-" set termguicolors
+"" settings/syntax-highlighting
 
-"" onehalfdark settings
-" set termguicolors
-" colorscheme onehalfdark
-" let g:airline_theme='onehalfdark'
+	filetype indent plugin on
+	syntax on
 
-"" vim-one settings
-" set termguicolors
-" colorscheme onehalfdark
-" let g:airline_theme='one'
+"" settings/listchars
 
-"" challenger settings
-" colorscheme challenger_deep
-" if has('nvim') || has('termguicolors')
-" 	set termguicolors
-" endif
+	set showbreak=↪
+	set list listchars=tab:›─,nbsp:∙,trail:∙,extends:▶,precedes:◀
 
-"" solarized settings
-" set termguicolors
-" colorscheme flattened_dark
-" colorscheme flattened_light
+"" settings/colors
 
-"" NERDTree settings
-let NERDTreeWinSize = 50
+	set background=dark
+	set termguicolors
 
-"" Airline settings
-let g:airline_skip_empty_sections = 1
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
+"" settings/plugin
 
-"" hard time settings
-" let g:hardtime_default_on = 0
+""" settings/plugins/gruvbox
+
+	let g:gruvbox_italic = 1
+	let g:gruvbox_contrast_dark = "medium"
+
+	colorscheme gruvbox
+
+""" settings/plugins/nerdtree
+
+	let NERDTreeWinSize = 50
+
+""" settings/plugins/airline
+
+	let g:airline_skip_empty_sections = 1
+	let g:airline_powerline_fonts = 1
+	let g:airline#extensions#tabline#enabled = 1
+
 
 " autocommands
 
-"" automatically open nerdtree when opening vim
-" autocmd vimenter * NERDTree | wincmd w
-" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+"" autocommands/misc
 
-" When shortcut files are updated, renew bash and vifm configs with new material
-autocmd BufWritePost ~/.config/bmdirs,~/.config/bmfiles !~/.bin/bm_gen
+	" when shortcut files are updated, renew bash and vifm configs with new material
+	autocmd BufWritePost ~/.config/bmdirs,~/.config/bmfiles !~/.bin/bm_gen
 
-"" Disables automatic commenting on newline:
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+	" disables automatic commenting on newline
+	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
-"" automatically deletes all trailing whitespace on save.
-autocmd BufWritePre * %s/\s\+$//e
+	" automatically deletes all trailing whitespace on save
+	autocmd BufWritePre * %s/\s\+$//e
 
-"" python files have tabs set to 4
-autocmd FileType python setlocal autoindent noexpandtab tabstop=4 shiftwidth=4
+	" enable spellcheck for markdown files
+	autocmd BufRead,BufNewFile *.md setlocal spell
 
-"" commenstrings
-autocmd FileType markdown setlocal commentstring=<!--\ %s\ -->
-autocmd FileType xdefaults set commentstring=!\ %s
-autocmd FileType cpp set commentstring=//\ %s
+"" autocommands/filetype-settings
 
-"" enable spellcheck for markdown files
-autocmd BufRead,BufNewFile *.md setlocal spell
+	" python files have tabs set to 4
+	autocmd FileType python setlocal autoindent noexpandtab tabstop=4 shiftwidth=4
 
+"" autocommands/commenstrings
 
-" miscellaneous settings
-
-set number relativenumber
-" set cursorline
-set modeline
-set wildmode=longest,list,full
-set laststatus=0
-set noshowmode
-set noruler
-set noshowcmd
-set hls is
-set timeout timeoutlen=1000
-
-filetype indent plugin on
-syntax on
-
-"" enable tabs
-
-set autoindent noexpandtab tabstop=4 shiftwidth=4
-
-"" listchars and stuff
-
-set showbreak=↪
-
-" set listchars=eol:⏎,tab:├─,trail:␠,nbsp:⎵
-" set listchars=eol:⏎,tab:├─,trail:·
-" set listchars=tab:├─,trail:·
-" set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸─
-" set list listchars=trail:·,tab:»·
-" set list listchars=tab:▸\ ,trail:·,precedes:←,extends:→
-" set list listchars=tab:▶─,nbsp:∙,trail:∙,extends:▶,precedes:◀
-set list listchars=tab:›─,nbsp:∙,trail:∙,extends:▶,precedes:◀
+	autocmd FileType markdown setlocal commentstring=<!--\ %s\ -->
+	autocmd FileType xdefaults set commentstring=!\ %s
+	autocmd FileType cpp set commentstring=//\ %s
 
 
-" my mappings
+" mappings
 
-"" avoid the escape key
-inoremap jk <esc>
+"" mappings/settings
 
-"" nerdtree nerdtree
-map <C-n> :NERDTreeToggle<CR>
+	" set leader key
+	let mapleader = " "
 
-"" insert blank line below/above
-" nnoremap <silent><C-j> :set paste<CR>m`o<Esc>``:set nopaste<CR>
-" nnoremap <silent><C-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
+"" mappings/misc
 
-" add mapping to move line up/down a certain number of lines
-nnoremap <c-j> :m .+1<cr>==
-nnoremap <c-k> :m .-2<cr>==
+	" the escape key is too far
+	inoremap jk <esc>
 
-"" switching between buffers
-nnoremap <c-l> :bn<cr>
-nnoremap <c-h> :bp<cr>
-"" deleting buffer
-" :bd<cr>
+	" insert blank line below
+	" nnoremap <silent><C-j> :set paste<cr>m`o<esc>``:set nopaste<cr>
+	" insert blank line above
+	" nnoremap <silent><C-k> :set paste<cr>m`O<esc>``:set nopaste<cr>
 
-"" leader mappings
+	" move line up
+	nnoremap <c-j> :m .+1<cr>==
+	" move line down
+	nnoremap <c-k> :m .-2<cr>==
 
-" let mapleader = "-"
-let mapleader = " "
+"" mappings/plugins
 
-"" habit breaking
+	" toggle nerdtree
+	noremap <C-n> :NERDTreeToggle<cr>
 
-""" in normal mode, disable arrow keys
-nnoremap <Up> <Nop>
-nnoremap <Down> <Nop>
-nnoremap <Left> <Nop>
-nnoremap <Right> <Nop>
+	" toggle colorhighlight
+	nnoremap <leader>ch :ColorToggle<cr>
 
-""" in insert mode, disable arrow keys
-inoremap <Up> <Nop>
-inoremap <Down> <Nop>
-inoremap <Left> <Nop>
-inoremap <Right> <Nop>
+"" mappings/buffers
 
-""" in visual mode, disable arrow keys
-vnoremap <Up> <Nop>
-vnoremap <Down> <Nop>
-vnoremap <Left> <Nop>
-vnoremap <Right> <Nop>
+	" switch to next buffer
+	nnoremap <c-l> :bn<cr>
+	" switch to previous buffer
+	nnoremap <c-h> :bp<cr>
+	" delete buffer
+	" nnoremap <leader>bd :bd<cr>
 
-""" in normal mode, disable backspace/delete
-nnoremap <BS> <Nop>
-nnoremap <Del> <Nop>
+"" mappings/habit-breaking
 
-"" in normal mode, insert a single character before/after
-nnoremap <leader>i i_<esc>r
-nnoremap <leader>I I_<esc>r
-nnoremap <leader>a a_<esc>r
-nnoremap <leader>A A_<esc>r
+	" disable arrow keys, in normal mode
+	nnoremap <up> <nop>
+	nnoremap <down> <nop>
+	nnoremap <left> <nop>
+	nnoremap <right> <nop>
 
-""" in normal mode, clear line
-nnoremap <leader>d 0d$
+	" disable arrow keys, in insert mode
+	inoremap <up> <nop>
+	inoremap <down> <nop>
+	inoremap <left> <nop>
+	inoremap <right> <nop>
 
-""" in normal mode, toggle spellcheck
-nnoremap <leader>s :setlocal spell! spelllang=en_us<CR>
+	" disable arrow keys, in visual mode
+	vnoremap <up> <nop>
+	vnoremap <down> <nop>
+	vnoremap <left> <nop>
+	vnoremap <right> <nop>
 
-"" markdown mappings
+	" disable some keys, in normal mode
+	nnoremap <bs> <nop>
+	nnoremap <del> <nop>
+	nnoremap <space> <nop>
 
-""" in normal mode, italicizes text
-nnoremap <leader>e A_<esc>I_<esc>
-""" in normal mode, bolds text
-nnoremap <leader>b A__<esc>I__<esc>
-""" in normal mode, makes line a list item
-nnoremap <leader>l I- <esc>j
-""" in normal mode, add period to end of line
-nnoremap <leader>p A.<esc>j
+"" mappings/leader
 
-""" in normal mode, make line a heading
-nnoremap <leader>h 0i# <esc>
+	" in normal mode, insert a single character before/after
+	nnoremap <leader>i i_<esc>r
+	nnoremap <leader>I I_<esc>r
+	nnoremap <leader>a a_<esc>r
+	nnoremap <leader>A A_<esc>r
 
+	" in normal mode, clear line
+	nnoremap <leader>d 0d$
 
-"" toggle ColorHighlight
-nnoremap <leader>ch :ColorToggle<cr>
+	" in normal mode, toggle spellcheck
+	nnoremap <leader>s :setlocal spell! spelllang=en_us<cr>
+
+"" mappings/markdown
+
+	" italicize text
+	nnoremap <leader>e A_<esc>I_<esc>
+	" bold text
+	nnoremap <leader>b A__<esc>I__<esc>
+	" make line a list item
+	nnoremap <leader>l I- <esc>j
+	" add period to end of line
+	nnoremap <leader>p A.<esc>j
+
+	" make line a heading
+	nnoremap <leader>h 0i# <esc>
+
 
