@@ -66,6 +66,7 @@ call plug#end()
 	set timeout timeoutlen=1000
 
 "" settings/tabs
+
 	set autoindent noexpandtab tabstop=4 shiftwidth=4
 
 "" settings/syntax-highlighting
@@ -83,7 +84,7 @@ call plug#end()
 	set background=dark
 	set termguicolors
 
-"" settings/plugin
+"" settings/plugins
 
 """ settings/plugins/gruvbox
 
