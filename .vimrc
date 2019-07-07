@@ -22,8 +22,6 @@ call plug#begin()
 
 	" syntax highlighting for i3 config
 	Plug 'PotatoesMaster/i3-vim-syntax'
-	" adds a directory tree
-	Plug 'scrooloose/nerdtree'
 	" adds airline status bar to vim
 	Plug 'vim-airline/vim-airline'
 	" faster commenting
@@ -93,11 +91,10 @@ call plug#end()
 
 	colorscheme gruvbox
 
-""" settings/plugins/nerdtree
+""" settings/plugins/netrw
 
-	let NERDTreeWinSize = 50
-	let NERDTreeShowLineNumbers = 1
-	let NERDTreeShowHidden = 1
+	let g:netrw_banner = 0
+	let g:netrw_liststyle = 3
 
 """ settings/plugins/airline
 
@@ -159,7 +156,7 @@ call plug#end()
 "" mappings/plugins
 
 	" toggle nerdtree
-	noremap <leader>n :NERDTreeToggle<cr>
+	noremap <leader>n :Explore<cr>
 
 	" toggle colorhighlight
 	nnoremap <leader>ch :ColorToggle<cr>
