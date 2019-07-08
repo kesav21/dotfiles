@@ -230,3 +230,10 @@ call plug#end()
 	nnoremap <leader>h 0i# <esc>
 
 
+" omappings
+
+" omappings/misc
+
+	onoremap in( :<c-u>normal! f(vi(<cr>
+	onoremap il( :<c-u>normal! F)vi(<cr>
+
