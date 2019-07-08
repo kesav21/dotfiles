@@ -1,5 +1,5 @@
 
-" readme
+" readme {{{
 
 	"
 	" categories versus descriptions
@@ -14,11 +14,14 @@
 	" descriptions: 0\t"
 	"
 
-" plugins
+" }}}
+
+
+" plugins {{{
 
 call plug#begin()
 
-"" plugins/misc
+"" plugins/misc {{{
 
 	" syntax highlighting for i3 config
 	Plug 'PotatoesMaster/i3-vim-syntax'
@@ -35,25 +38,33 @@ call plug#begin()
 	" display hex color codes
 	Plug 'chrisbra/Colorizer'
 
-"" plugins/colorscheme
+"" }}}
+
+"" plugins/colorscheme {{{
 
 	" gruvbox theme
 	Plug 'morhetz/gruvbox'
 
-"" plugins/school
+"" }}}
+
+"" plugins/school {{{
 
 	" mips syntax highlighting
 	Plug 'harenome/vim-mipssyntax'
 
+"" }}}
+
 call plug#end()
 
+" }}}
 
-" settings
 
-"" settings/misc
+" settings {{{
+
+"" settings/misc {{{
 
 	set number relativenumber
-	set cursorline
+	" set cursorline
 	set modeline
 	set wildmode=longest,list,full
 	set laststatus=0
@@ -63,49 +74,69 @@ call plug#end()
 	set hls is
 	set timeout timeoutlen=1000
 
-"" settings/tabs
+"" }}}
+
+"" settings/tabs {{{
 
 	set autoindent noexpandtab tabstop=4 shiftwidth=4
 
-"" settings/syntax-highlighting
+"" }}}
+
+"" settings/syntax-highlighting {{{
 
 	filetype indent plugin on
 	syntax on
 
-"" settings/listchars
+"" }}}
+
+"" settings/listchars {{{
 
 	set showbreak=↪
 	set list listchars=tab:›─,nbsp:∙,trail:∙,extends:▶,precedes:◀
 
-"" settings/colors
+"" }}}
+
+"" settings/colors {{{
 
 	set background=dark
 	set termguicolors
 
-"" settings/plugins
+"" }}}
 
-""" settings/plugins/gruvbox
+"" settings/plugins {{{
+
+""" settings/plugins/gruvbox {{{
 
 	let g:gruvbox_italic = 1
 	let g:gruvbox_contrast_dark = "medium"
 
 	colorscheme gruvbox
 
-""" settings/plugins/netrw
+""" }}}
+
+""" settings/plugins/netrw {{{
 
 	let g:netrw_banner = 0
 	let g:netrw_liststyle = 3
 
-""" settings/plugins/airline
+""" }}}
+
+""" settings/plugins/airline {{{
 
 	let g:airline_skip_empty_sections = 1
 	let g:airline_powerline_fonts = 1
 	let g:airline#extensions#tabline#enabled = 1
 
+""" }}}
 
-" autocommands
+"" }}}
 
-"" autocommands/misc
+" }}}
+
+
+" autocommands {{{
+
+"" autocommands/misc {{{
 
 	augroup misc
 		autocmd!
@@ -119,15 +150,33 @@ call plug#end()
 		autocmd BufRead,BufNewFile *.md setlocal spell
 	augroup END
 
-"" autocommands/filetype-settings
+"" }}}
 
-	augroup filetype_settings
+"" autocommands/filetype {{{
+
+""" autocommands/filetype/python {{{
+
+	augroup filetype_python
 		autocmd!
 		" python files have tabs set to 4
 		autocmd FileType python setlocal autoindent noexpandtab tabstop=4 shiftwidth=4
 	augroup END
 
-"" autocommands/commenstrings
+""" }}}
+
+""" autocommands/filetype/vim {{{
+
+	augroup filetype_vim
+		autocmd!
+		" for vim files, enable fold
+		autocmd FileType vim setlocal foldmethod=marker
+	augroup END
+
+""" }}}
+
+"" }}}
+
+"" autocommands/commenstrings {{{
 
 	augroup commentstrings
 		autocmd!
@@ -136,15 +185,21 @@ call plug#end()
 		autocmd FileType cpp set commentstring=//\ %s
 	augroup END
 
+"" }}}
 
-" mappings
+" }}}
 
-"" mappings/settings
+
+" mappings {{{
+
+"" mappings/settings {{{
 
 	" set leader key
 	let mapleader = " "
 
-"" mappings/misc
+"" }}}
+
+"" mappings/misc {{{
 
 	" the escape key is too far
 	inoremap jk <esc>
@@ -159,7 +214,9 @@ call plug#end()
 	" move line down
 	nnoremap <c-k> :m .-2<cr>==
 
-"" mappings/plugins
+"" }}}
+
+"" mappings/plugins {{{
 
 	" toggle nerdtree
 	noremap <leader>n :Explore<cr>
@@ -167,7 +224,9 @@ call plug#end()
 	" toggle colorhighlight
 	nnoremap <leader>ch :ColorToggle<cr>
 
-"" mappings/buffers
+"" }}}
+
+"" mappings/buffers {{{
 
 	" switch to next buffer
 	nnoremap <c-l> :bn<cr>
@@ -176,7 +235,9 @@ call plug#end()
 	" delete buffer
 	nnoremap <leader>bd :bd<cr>
 
-"" mappings/habit-breaking
+"" }}}
+
+"" mappings/habit-breaking {{{
 
 	" disable arrow keys, in normal mode
 	nnoremap <up> <nop>
@@ -201,7 +262,9 @@ call plug#end()
 	nnoremap <del> <nop>
 	nnoremap <space> <nop>
 
-"" mappings/leader
+"" }}}
+
+"" mappings/leader {{{
 
 	" in normal mode, insert a single character before/after
 	nnoremap <leader>i i_<esc>r
@@ -215,7 +278,9 @@ call plug#end()
 	" in normal mode, toggle spellcheck
 	nnoremap <leader>s :setlocal spell! spelllang=en_us<cr>
 
-"" mappings/markdown
+"" }}}
+
+"" mappings/markdown {{{
 
 	" italicize text
 	nnoremap <leader>e A_<esc>I_<esc>
@@ -229,11 +294,19 @@ call plug#end()
 	" make line a heading
 	nnoremap <leader>h 0i# <esc>
 
+"" }}}
 
-" omappings
+" }}}
 
-" omappings/misc
+
+" omappings {{{
+
+"" omappings/misc {{{
 
 	onoremap in( :<c-u>normal! f(vi(<cr>
 	onoremap il( :<c-u>normal! F)vi(<cr>
+
+"" }}}
+
+" }}}
 
