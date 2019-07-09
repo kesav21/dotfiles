@@ -24,7 +24,7 @@ call plug#begin()
 "" plugins/misc {{{
 
 	" syntax highlighting for i3 config
-	Plug 'PotatoesMaster/i3-vim-syntax'
+	" Plug 'PotatoesMaster/i3-vim-syntax'
 	" adds airline status bar to vim
 	Plug 'vim-airline/vim-airline'
 	" faster commenting
