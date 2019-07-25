@@ -26,6 +26,15 @@ alias n="nmtui"
 alias v="nvim"
 alias z="zathura -d . &"
 
+# git shortcuts
+
+alias gis="git status"
+alias gid="git diff"
+alias gia="git add"
+alias gil="git add ."
+alias gic="git commit"
+alias gip="git push"
+
 ## temporary functions
 
 # disable () {
