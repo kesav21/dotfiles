@@ -9,6 +9,14 @@
 
 source ~/.config/vifm/vifm_shortcuts
 
+set number relativenumber
+
+command! ozf zathura %c &
+command! ozd zathura %c -d . &
+
+nnoremap ozf :ozf<cr>
+nnoremap ozd :ozd<cr>
+
 " This is the actual command used to start vi.  The default is vim.
 " If you would like to use another vi clone such as Elvis or Vile
 " you will need to change this setting.
@@ -134,6 +142,7 @@ mark h ~/
 " %d the current directory name.
 " %D the other window directory name.
 " %m run the command in a menu window
+
 
 command! df df -h %m 2> /dev/null
 command! diff vim -d %f %F
