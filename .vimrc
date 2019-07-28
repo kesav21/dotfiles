@@ -289,6 +289,8 @@ call plug#end()
 	nnoremap <leader>mb A__<esc>I__<esc>
 	" make line a list item
 	nnoremap <leader>ml I- <esc>j
+	" make line a quote
+	nnoremap <leader>mq I> <esc>j
 	" add period to end of line
 	nnoremap <leader>mp A.<esc>j
 
