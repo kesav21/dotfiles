@@ -1,15 +1,7 @@
 
-alias clear='echo "you stop that"'
+# vim: set foldmethod=marker:
 
-alias ll="ls -AlF --color=always"
-
-alias nuke="rm -rf"
-
-# get size of directory
-alias dirsize="du -h --max-depth=1 | sort -hr"
-
-# alias gnome-control-center="env XDG_CURRENT_DESKTOP=GNOME gnome-control-center"
-# alias settings="sudo env XDG_CURRENT_DESKTOP=GNOME gnome-control-center"
+# aliases {{{
 
 alias f="vifm . ~"
 alias n="nmtui"
@@ -17,7 +9,12 @@ alias v="nvim"
 alias z="zathura -d . &"
 alias t="tree -a -I '.git'"
 
-# git shortcuts
+alias clear='echo "you stop that"'
+alias ll="ls -AlF --color=always"
+alias nuke="rm -rf"
+alias ytdl="youtube-dl -f bestaudio"
+
+# aliases/git {{{
 
 alias gis="git status"
 alias gid="git diff"
@@ -26,17 +23,37 @@ alias gil="git add ."
 alias gic="git commit"
 alias gip="git push"
 
+# }}}
 
-function path() {
+# aliases/chrome {{{
+
+# testing launching different chrome profiles
+# alias gasu="google-chrome --user-data-dir='/home/kesav/.config/google-chrome/Kesav ASU'"
+# alias ghome="google-chrome --user-data-dir='/home/kesav/.config/google-chrome/Kesav Home'"
+
+# }}}
+
+# }}}
+
+# functions {{{
+
+# get size of directory
+dirsize () {
+	du -h --max-depth=1 | sort -hr
+}
+
+# print out path neatly
+path () {
 	sed 's/:/\n/g' <<< "$PATH"
 }
 
-function refresh() {
+# reload Xresources
+refresh () {
 	xrdb -merge ~/.Xresources
 	exit
 }
 
-## temporary functions
+# functions/display-manager {{{
 
 # disable () {
 # 	sudo systemctl disable lightdm.service
@@ -46,7 +63,7 @@ function refresh() {
 # 	sudo dpkg-reconfigure lightdm
 # }
 
-### # testing launching different chrome profiles
+# }}}
 
-# alias gasu="google-chrome --user-data-dir='/home/kesav/.config/google-chrome/Kesav ASU'"
-# alias ghome="google-chrome --user-data-dir='/home/kesav/.config/google-chrome/Kesav Home'"
+# }}}
+
