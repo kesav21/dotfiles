@@ -283,7 +283,7 @@ call plug#end()
 
 "" mappings/markdown {{{
 
-	" italicize text
+	" emphasize text
 	nnoremap <leader>me A_<esc>I_<esc>
 	" bold text
 	nnoremap <leader>mb A__<esc>I__<esc>
@@ -293,6 +293,17 @@ call plug#end()
 	nnoremap <leader>mq I> <esc>j
 	" add period to end of line
 	nnoremap <leader>mp A.<esc>j
+
+	" removes emphasis
+	nnoremap <leader>mde 0x$x
+	" removes bold
+	nnoremap <leader>mdb 02x$xx
+	" delete list symbol
+	nnoremap <leader>mdl 02x
+	" delete quote symbol
+	nnoremap <leader>mdq 02x
+	" delete period
+	nnoremap <leader>mdp $x
 
 	" make line a heading
 	nnoremap <leader>mh 0i# <esc>
