@@ -38,6 +38,9 @@ call plug#begin()
 	" display hex color codes
 	Plug 'chrisbra/Colorizer'
 
+	" python folding
+	Plug 'tmhedberg/SimpylFold'
+
 "" }}}
 
 "" plugins/colorscheme {{{
@@ -177,7 +180,7 @@ call plug#end()
 
 """ autocommands/filetype/json {{{
 
-	augroup filetype_vim
+	augroup filetype_json
 		autocmd!
 		" for vim files, enable fold by syntax
 		autocmd FileType json setlocal foldmethod=syntax
