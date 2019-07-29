@@ -175,6 +175,16 @@ call plug#end()
 
 """ }}}
 
+""" autocommands/filetype/json {{{
+
+	augroup filetype_vim
+		autocmd!
+		" for vim files, enable fold by syntax
+		autocmd FileType json setlocal foldmethod=syntax
+	augroup END
+
+""" }}}
+
 "" }}}
 
 "" autocommands/commenstrings {{{
