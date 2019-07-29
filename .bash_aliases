@@ -53,17 +53,5 @@ refresh () {
 	exit
 }
 
-# functions/display-manager {{{
-
-# disable () {
-# 	sudo systemctl disable lightdm.service
-# }
-
-# enable () {
-# 	sudo dpkg-reconfigure lightdm
-# }
-
-# }}}
-
 # }}}
 
