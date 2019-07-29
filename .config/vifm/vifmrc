@@ -11,11 +11,6 @@ source ~/.config/vifm/vifm_shortcuts
 
 set number relativenumber
 
-command! ozf zathura %c &
-command! ozd zathura %c -d . &
-
-nnoremap ozf :ozf<cr>
-nnoremap ozd :ozd<cr>
 
 " This is the actual command used to start vi.  The default is vim.
 " If you would like to use another vi clone such as Elvis or Vile
@@ -144,6 +139,7 @@ mark h ~/
 " %m run the command in a menu window
 
 
+
 command! df df -h %m 2> /dev/null
 command! diff vim -d %f %F
 command! zip zip -r %f.zip %f
@@ -152,6 +148,14 @@ command! make !!make %a
 command! mkcd :mkdir %a | cd %a
 command! vgrep vim "+grep %a"
 command! reload :write | restart
+
+" my commands
+
+command! ozf zathura %c &
+command! ozd zathura %c -d . &
+
+command! mkwal echo "%d/%c"
+
 
 " ------------------------------------------------------------------------------
 
@@ -456,6 +460,11 @@ nnoremap <f6> :move<cr>
 nnoremap <f7> :mkdir<space>
 nnoremap <f8> :delete<cr>
 
+" my mappings
+
+nnoremap ozf :ozf<cr>
+nnoremap ozd :ozd<cr>
+
 " ------------------------------------------------------------------------------
 
 " Various customization examples
@@ -480,3 +489,4 @@ nnoremap <f8> :delete<cr>
 "     vifm --server-name "$VIFM_SERVER_NAME" --remote +"cd '$PWD'"
 "
 " let $VIFM_SERVER_NAME = v:servername
+
