@@ -15,6 +15,7 @@ alias f="vifm . ~"
 alias n="nmtui"
 alias v="nvim"
 alias z="zathura -d . &"
+alias t="tree -a -I '.git'"
 
 # git shortcuts
 
