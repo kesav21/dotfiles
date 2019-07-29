@@ -107,7 +107,6 @@ exec --no-startup-id dunst
 bindsym $mod+Return exec st
 bindsym $mod+g exec google-chrome
 bindsym $mod+d exec --no-startup-id ~/.bin/mydmenu_run
-# bindsym $mod+r exec st -e ranger
 # bindsym $mod+m exec st -e ncmpcpp
 
 

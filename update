@@ -19,9 +19,6 @@ declare -a StringArray=( \
 	.config/mutt/colors.muttrc \
 	.config/mutt/muttrc \
 	.config/polybar/config \
-	.config/ranger/rc.conf \
-	.config/rofi/config \
-	.config/rofi/nord \
 	.config/vifm/vifmrc \
 	.config/zathura/zathurarc \
 )

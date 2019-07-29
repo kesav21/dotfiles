@@ -8,20 +8,10 @@ alias nuke="rm -rf"
 # get size of directory
 alias dirsize="du -h --max-depth=1 | sort -hr"
 
-function path() {
-	sed 's/:/\n/g' <<< "$PATH"
-}
-
-function refresh() {
-	xrdb -merge ~/.Xresources
-	exit
-}
-
 # alias gnome-control-center="env XDG_CURRENT_DESKTOP=GNOME gnome-control-center"
 # alias settings="sudo env XDG_CURRENT_DESKTOP=GNOME gnome-control-center"
 
-alias r="ranger"
-alias f="vifm ."
+alias f="vifm . ~"
 alias n="nmtui"
 alias v="nvim"
 alias z="zathura -d . &"
@@ -34,6 +24,16 @@ alias gia="git add"
 alias gil="git add ."
 alias gic="git commit"
 alias gip="git push"
+
+
+function path() {
+	sed 's/:/\n/g' <<< "$PATH"
+}
+
+function refresh() {
+	xrdb -merge ~/.Xresources
+	exit
+}
 
 ## temporary functions
 

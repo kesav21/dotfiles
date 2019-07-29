@@ -12,8 +12,6 @@ cfx ~/.Xresources
 cfd ~/.config/dunst/dunstrc
 cfi ~/.config/i3/config
 cfp ~/.config/polybar/config
-cfrc ~/.config/ranger/rc.conf
-cfrr ~/.config/ranger/rifle.conf
 cfvf ~/.config/vifm/vifmrc
 cfz ~/.config/zathura/zathurarc
 
