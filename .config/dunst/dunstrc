@@ -282,18 +282,15 @@
 	#icon = /path/to/icon
 
 [urgency_normal]
-	# background = "#2e3440"
-	# foreground = "#d8dee9"
-	# timeout = 10
-	# Icon for notifications with normal urgency, uncomment to enable
-	#icon = /path/to/icon
 
-	background = "#2e3440"
-	frame_color = "#d8dee9"
-	# frame_color = "#81a1c1"
-	foreground = "#d8dee9"
-	# foreground = "#81a1c1"
+	background = "#282828" # gruvbox background
+	frame_color = "#ebdbb2" # gruvbox foreground
+	foreground = "#ebdbb2"  # gruvbox foreground
+
 	timeout = 10
+
+	# Icon for notifications with normal urgency, uncomment to enable
+	# icon = /path/to/icon
 
 [urgency_critical]
 	background = "#900000"
