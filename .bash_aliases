@@ -14,6 +14,9 @@ alias ll="ls -AlF --color=always"
 alias nuke="rm -rf"
 alias ytdl="youtube-dl -f bestaudio"
 
+alias mone="~/.bin/monitor_extend"
+alias mond="~/.bin/monitor_disconnect"
+
 # aliases/git {{{
 
 alias gis="git status"
