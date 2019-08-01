@@ -37,7 +37,7 @@ call plug#begin()
 	Plug 'chrisbra/Colorizer'
 
 	" python folding
-	Plug 'tmhedberg/SimpylFold'
+	Plug 'vim-scripts/python_fold'
 
 "" }}}
 
