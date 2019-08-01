@@ -310,11 +310,11 @@ call plug#end()
 	" removes bold
 	nnoremap <leader>mdb 02x$xx
 	" delete list symbol
-	nnoremap <leader>mdl 02x
+	nnoremap <leader>mdl 02xj
 	" delete quote symbol
-	nnoremap <leader>mdq 02x
+	nnoremap <leader>mdq 02xj
 	" delete period
-	nnoremap <leader>mdp $x
+	nnoremap <leader>mdp $xj
 
 	" make line a heading
 	nnoremap <leader>mh 0i# <esc>
