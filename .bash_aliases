@@ -3,10 +3,11 @@
 
 # aliases {{{
 
-alias nv="nvim $(fzf)"
+alias v='nvim $(fzf)'
+alias nv='nvim'
 alias vf="vifm . ~"
 alias nm="nmtui"
-alias zf="zathura $(fzf) &"
+alias zf='zathura $(fzf) &'
 alias zd="zathura -d . &"
 alias t="tree -a -I '.git'"
 

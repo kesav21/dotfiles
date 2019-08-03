@@ -133,6 +133,9 @@ PS1="$PS1"'\[\033[0m\]'         # reset color
 
 # set -o vi
 
+# set fzf to exclude hidden git files
+export FZF_DEFAULT_COMMAND='find . -type f | grep -v '\.git/''
+
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]
 then
 	tmux a -t default || tmux new -s default
