@@ -3,19 +3,19 @@
 
 # aliases {{{
 
-alias f="vifm . ~"
-alias n="nmtui"
-alias v="nvim"
-alias z="zathura -d . &"
+alias nv="nvim $(fzf)"
+alias vf="vifm . ~"
+alias nm="nmtui"
+alias zf="zathura $(fzf) &"
+alias zd="zathura -d . &"
 alias t="tree -a -I '.git'"
 
-alias clear='echo "you stop that"'
 alias ll="ls -AlF --color=always"
 alias nuke="rm -rf"
-alias ytdl="youtube-dl -f bestaudio"
+alias yta="youtube-dl -f bestaudio"
 
-alias mone="~/.bin/monitor_extend"
-alias mond="~/.bin/monitor_disconnect"
+alias me="~/.bin/monitor_extend"
+alias md="~/.bin/monitor_disconnect"
 
 # aliases/git {{{
 
