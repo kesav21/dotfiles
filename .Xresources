@@ -15,81 +15,43 @@ URxvt.transparent: false
 ! URxvt.transparent: true
 ! URxvt.shading: 20
 
-! nord theme
+! theme/gruvbox
 
 ! special
-URxvt.foreground:   #d8dee9
-URxvt.background:   #2e3440
-URxvt.cursorColor:  #d8dee9
+*.foreground:   #ebdbb2
+*.background:   #282828
+*.cursorColor:  #ebdbb2
 
 ! black
-URxvt.color0:       #3b4252
-URxvt.color8:       #4c566a
+*.color0:       #282828
+*.color8:       #928374
 
 ! red
-URxvt.color1:       #bf616a
-URxvt.color9:       #bf616a
+*.color1:       #cc241d
+*.color9:       #fb4934
 
 ! green
-URxvt.color2:       #a3be8c
-URxvt.color10:      #a3be8c
+*.color2:       #98971a
+*.color10:      #b8bb26
 
 ! yellow
-URxvt.color3:       #ebcb8b
-URxvt.color11:      #ebcb8b
+*.color3:       #d79921
+*.color11:      #fabd2f
 
 ! blue
-URxvt.color4:       #81a1c1
-URxvt.color12:      #81a1c1
+*.color4:       #458588
+*.color12:      #83a598
 
 ! magenta
-URxvt.color5:       #b48ead
-URxvt.color13:      #b48ead
+*.color5:       #b16286
+*.color13:      #d3869b
 
 ! cyan
-URxvt.color6:       #88c0d0
-URxvt.color14:      #8fbcbb
+*.color6:       #689d6a
+*.color14:      #8ec07c
 
 ! white
-URxvt.color7:       #e5e9f0
-URxvt.color15:      #eceff4
+*.color7:       #a89984
+*.color15:      #ebdbb2
 
-! atom one dark theme
-
-! ! special
-! URxvt.foreground:   #dcdfe4
-! URxvt.background:   #282c34
-! URxvt.cursorColor:  #dcdfe4
-
-! ! black
-! URxvt.color0:       #282c34
-! URxvt.color8:       #282c34
-
-! ! red
-! URxvt.color1:       #e06c75
-! URxvt.color9:       #e06c75
-
-! ! green
-! URxvt.color2:       #98c379
-! URxvt.color10:      #98c379
-
-! ! yellow
-! URxvt.color3:       #e5c07b
-! URxvt.color11:      #e5c07b
-
-! ! blue
-! URxvt.color4:       #61afef
-! URxvt.color12:      #61afef
-
-! ! magenta
-! URxvt.color5:       #c678dd
-! URxvt.color13:      #c678dd
-
-! ! cyan
-! URxvt.color6:       #56b6c2
-! URxvt.color14:      #56b6c2
-
-! ! white
-! URxvt.color7:       #dcdfe4
-! URxvt.color15:      #dcdfe4
 
