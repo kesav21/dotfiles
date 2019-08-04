@@ -1,3 +1,5 @@
+" vim: set foldmethod=marker:
+
 
 " readme {{{
 
@@ -154,45 +156,11 @@ call plug#end()
 
 "" }}}
 
-"" autocommands/filetype {{{
-
-""" autocommands/filetype/python {{{
-
-	augroup filetype_python
-		autocmd!
-		" python files have tabs set to 4
-		autocmd FileType python setlocal autoindent noexpandtab tabstop=4 shiftwidth=4
-	augroup END
-
-""" }}}
-
-""" autocommands/filetype/vim {{{
-
-	augroup filetype_vim
-		autocmd!
-		" for vim files, enable fold
-		autocmd FileType vim setlocal foldmethod=marker
-	augroup END
-
-""" }}}
-
-""" autocommands/filetype/json {{{
-
-	augroup filetype_json
-		autocmd!
-		" for vim files, enable fold by syntax
-		autocmd FileType json setlocal foldmethod=syntax
-	augroup END
-
-""" }}}
-
-"" }}}
-
 "" autocommands/commenstrings {{{
 
 	augroup commentstrings
 		autocmd!
-		autocmd FileType markdown setlocal commentstring=<!--\ %s\ -->
+		autocmd FileType markdown set commentstring=<!--\ %s\ -->
 		autocmd FileType xdefaults set commentstring=!\ %s
 		autocmd FileType cpp set commentstring=//\ %s
 	augroup END
@@ -238,17 +206,6 @@ call plug#end()
 
 "" }}}
 
-"" mappings/buffers {{{
-
-	" switch to next buffer
-	nnoremap <c-l> :bn<cr>
-	" switch to previous buffer
-	nnoremap <c-h> :bp<cr>
-	" delete buffer
-	nnoremap <leader>bd :bd<cr>
-
-"" }}}
-
 "" mappings/habit-breaking {{{
 
 	" disable arrow keys, in normal mode
@@ -276,7 +233,7 @@ call plug#end()
 
 "" }}}
 
-"" mappings/leader {{{
+"" mappings/leader-misc {{{
 
 	" in normal mode, insert a single character before/after
 	nnoremap <leader>i i_<esc>r
@@ -292,32 +249,14 @@ call plug#end()
 
 "" }}}
 
-"" mappings/markdown {{{
+"" mappings/buffers {{{
 
-	" emphasize text
-	nnoremap <leader>me A_<esc>I_<esc>
-	" bold text
-	nnoremap <leader>mb A__<esc>I__<esc>
-	" make line a list item
-	nnoremap <leader>ml I- <esc>j
-	" make line a quote
-	nnoremap <leader>mq I> <esc>j
-	" add period to end of line
-	nnoremap <leader>mp A.<esc>j
-
-	" removes emphasis
-	nnoremap <leader>mde 0x$x
-	" removes bold
-	nnoremap <leader>mdb 02x$xx
-	" delete list symbol
-	nnoremap <leader>mdl 02xj
-	" delete quote symbol
-	nnoremap <leader>mdq 02xj
-	" delete period
-	nnoremap <leader>mdp $xj
-
-	" make line a heading
-	nnoremap <leader>mh 0i# <esc>
+	" switch to next buffer
+	nnoremap <leader>l :bn<cr>
+	" switch to previous buffer
+	nnoremap <leader>h :bp<cr>
+	" delete buffer
+	nnoremap <leader>bd :bd<cr>
 
 "" }}}
 

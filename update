@@ -21,6 +21,10 @@ declare -a StringArray=( \
 	.config/polybar/config \
 	.config/vifm/vifmrc \
 	.config/zathura/zathurarc \
+
+	.vim/ftplugin/python.vim \
+	.vim/ftplugin/json.vim \
+	.vim/ftplugin/markdown.vim \
 )
 
 for val in ${StringArray[@]}
