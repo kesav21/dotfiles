@@ -9,7 +9,7 @@ alias vf="vifm . ~"
 alias nm="nmtui"
 alias zf='zathura $(fzf) &'
 alias zd="zathura -d . &"
-alias t="tree -a -I '.git'"
+alias t="tree -a -I '.git|__pycache__'"
 
 alias ll="ls -AlF --color=always"
 alias nuke="rm -rf"
@@ -17,6 +17,9 @@ alias yta="youtube-dl -f bestaudio"
 
 alias me="~/.bin/monitor_extend"
 alias md="~/.bin/monitor_disconnect"
+
+alias mi="sudo make install"
+alias mic="sudo make install && make clean"
 
 # aliases/git {{{
 
