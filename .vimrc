@@ -41,6 +41,9 @@ call plug#begin()
 	" python folding
 	Plug 'vim-scripts/python_fold'
 
+	" fuzzy file finder
+	Plug 'kien/ctrlp.vim'
+
 "" }}}
 
 "" plugins/colorscheme {{{
@@ -144,8 +147,12 @@ call plug#end()
 
 	augroup misc
 		autocmd!
+
 		" when shortcut files are updated, renew bash and vifm configs with new material
 		autocmd BufWritePost ~/.config/bmdirs,~/.config/bmfiles !~/.bin/bm_gen
+		" when dunstrc is updated, restart dunst
+		autocmd BufWritePost ~/.config/dunst/dunstrc !~/.bin/dunst_restart
+
 		" disables automatic commenting on newline
 		autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 		" automatically deletes all trailing whitespace on save
@@ -155,6 +162,20 @@ call plug#end()
 	augroup END
 
 "" }}}
+
+"" autocommands/filetype {{{
+
+""" autocommands/filetype/python {{{
+
+	augroup filetype_python
+		autocmd!
+		" python files have tabs set to 4
+		autocmd FileType python setlocal autoindent noexpandtab tabstop=4 shiftwidth=4
+	augroup END
+
+""" }}}
+
+""" }}}
 
 "" autocommands/commenstrings {{{
 
