@@ -3,7 +3,7 @@
 
 # aliases {{{
 
-alias v='nvim $(fzf)'
+alias v='nvim $(fzf -m)'
 alias nv='nvim'
 alias vf="vifm . ~"
 alias nm="nmtui"
@@ -24,11 +24,22 @@ alias mic="sudo make install && make clean"
 # aliases/git {{{
 
 alias gis="git status"
-alias gid="git diff"
-alias gia="git add"
-alias gil="git add ."
 alias gic="git commit"
 alias gip="git push"
+
+alias gid="git diff"
+# git diff unstaged file
+alias gidf='git diff $(git diff --name-only | fzf -m)'
+
+alias gia="git add"
+alias giaa="git add ."
+
+# git add unstaged/untracked file
+
+giaf () {
+	all=$(git diff --name-only && git ls-files --others --exclude-standard)
+	git add $(printf '%s\n' "${all[@]}" | fzf -m)
+}
 
 # }}}
 
