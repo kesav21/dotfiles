@@ -6,6 +6,7 @@ declare -a StringArray=( \
 
 	.bash_aliases \
 	.bashrc \
+	.inputrc \
 	.profile \
 
 	.tmux.conf \

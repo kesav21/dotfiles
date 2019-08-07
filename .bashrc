@@ -131,8 +131,6 @@ PS1="$PS1"'\[\033[0m\]'         # reset color
 
 [ -f ~/.bash_shortcuts ] && . ~/.bash_shortcuts
 
-# set -o vi
-
 # set fzf to exclude hidden git files
 export FZF_DEFAULT_COMMAND='find . -type f | grep -v '\.git/''
 
