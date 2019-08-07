@@ -211,9 +211,9 @@ call plug#end()
 	" nnoremap <silent><C-k> :set paste<cr>m`O<esc>``:set nopaste<cr>
 
 	" move line up
-	nnoremap <c-j> :m .+1<cr>==
+	" nnoremap <c-j> :m .+1<cr>==
 	" move line down
-	nnoremap <c-k> :m .-2<cr>==
+	" nnoremap <c-k> :m .-2<cr>==
 
 "" }}}
 
@@ -267,6 +267,9 @@ call plug#end()
 
 	" in normal mode, toggle spellcheck
 	nnoremap <leader>s :setlocal spell! spelllang=en_us<cr>
+
+	" in normal mode, run ctrlp
+	nnoremap <leader>p :CtrlP<cr>
 
 "" }}}
 
