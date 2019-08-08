@@ -3,6 +3,8 @@
 
 # aliases {{{
 
+# aliases/misc {{{
+
 alias v='nvim $(fzf -m)'
 alias nv='nvim'
 alias vf="vifm . ~"
@@ -13,6 +15,8 @@ alias t="tree -a -I '.git|__pycache__'"
 
 alias ll="ls -AlF --color=always"
 alias nuke="rm -rf"
+
+alias ytu="sudo youtube-dl -U"
 alias yta="youtube-dl -f bestaudio"
 
 alias me="~/.bin/monitor_extend"
@@ -21,15 +25,17 @@ alias md="~/.bin/monitor_disconnect"
 alias mi="sudo make install"
 alias mic="sudo make install && make clean"
 
+ # }}}
+
 # aliases/git {{{
 
-alias gis="git status"
+alias gis="clear && git status"
 alias gic="git commit"
 alias gip="git push"
 
 alias gid="git diff"
 # git diff unstaged file
-alias gidf='git diff $(git diff --name-only | fzf -m)'
+alias gidf='clear && git diff $(git diff --name-only | fzf -m)'
 
 alias gia="git add"
 alias giaa="git add ."
