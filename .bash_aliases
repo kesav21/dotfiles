@@ -61,6 +61,24 @@ giaf () {
 
 # functions {{{
 
+# functions/fzf {{{
+
+#
+# ex: f less -> less $(fzf)
+#
+f () {
+	$1 $(fzf)
+}
+
+#
+# ex: f less -> less $(fzf -m)
+#
+fm () {
+	$1 $(fzf -m)
+}
+
+# }}}
+
 # get size of directory
 dirsize () {
 	du -h --max-depth=1 | sort -hr
