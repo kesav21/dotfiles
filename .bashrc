@@ -132,10 +132,13 @@ PS1="$PS1"'\[\033[0m\]'         # reset color
 [ -f ~/.bash_shortcuts ] && . ~/.bash_shortcuts
 
 # set fzf to exclude hidden git files
-export FZF_DEFAULT_COMMAND='find . -type f | grep -v '\.git/''
+# set fzf to exclude __pycache__ files
+export FZF_DEFAULT_COMMAND='find . -type f | grep -v '\.git/' | grep -v '__pycache__/''
 
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]
 then
 	tmux a -t default || tmux new -s default
 fi
 
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
