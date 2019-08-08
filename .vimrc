@@ -282,19 +282,17 @@ call plug#end()
 	" in normal mode, toggle spellcheck
 	nnoremap <leader>s :setlocal spell! spelllang=en_us<cr>
 
-	" in normal mode, run ctrlp
-	nnoremap <leader>p :CtrlP<cr>
 
 "" }}}
 
 "" mappings/buffers {{{
 
-	" switch to next buffer
-	nnoremap <leader>l :bn<cr>
 	" switch to previous buffer
-	nnoremap <leader>h :bp<cr>
+	nnoremap <leader>j :bp<cr>
+	" switch to next buffer
+	nnoremap <leader>k :bn<cr>
 	" delete buffer
-	nnoremap <leader>bd :bd<cr>
+	nnoremap <leader>x :bd<cr>
 
 "" }}}
 
