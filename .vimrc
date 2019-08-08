@@ -41,10 +41,7 @@ call plug#begin()
 	" python folding
 	Plug 'vim-scripts/python_fold'
 
-	" fuzzy file finder
-	" Plug 'kien/ctrlp.vim'
-
-	" fzf vim
+	" fzf for vim
 	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 	Plug 'junegunn/fzf.vim'
 
@@ -227,14 +224,11 @@ call plug#end()
 	noremap <leader>pi :PlugInstall<cr>
 	noremap <leader>pc :PlugClean<cr>
 
-	" toggle nerdtree
+	" toggle netrw
 	noremap <leader>n :Explore<cr>
 
 	" toggle colorhighlight
 	nnoremap <leader>ch :ColorToggle<cr>
-
-	" run ctrlp
-	" nnoremap <leader>p :CtrlP<cr>
 
 	" run fzf.vim
 	nnoremap <leader>f :Files<cr>
