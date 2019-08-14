@@ -25,6 +25,10 @@ alias md="~/.bin/monitor_disconnect"
 alias mi="sudo make install"
 alias mic="sudo make install && make clean"
 
+alias vc="virtualenv -p $(which python3) .env"
+alias va="source .env/bin/activate"
+alias vd="deactivate"
+
  # }}}
 
 # aliases/git {{{
