@@ -45,6 +45,9 @@ call plug#begin()
 	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 	Plug 'junegunn/fzf.vim'
 
+	" source code browsing
+	Plug 'majutsushi/tagbar'
+
 "" }}}
 
 "" plugins/colorscheme {{{
@@ -232,6 +235,9 @@ call plug#end()
 
 	" run fzf.vim
 	nnoremap <leader>f :Files<cr>
+
+	" toggle tagbar
+	nnoremap <leader>t :TagbarToggle<cr>
 
 "" }}}
 
