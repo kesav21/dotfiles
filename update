@@ -15,12 +15,17 @@ declare -a StringArray=( \
 	.Xresources \
 
 	.config/dunst/dunstrc \
+
 	.config/i3/config \
 	.config/i3/polybar.sh \
+
 	.config/mutt/colors.muttrc \
 	.config/mutt/muttrc \
 	.config/polybar/config \
+
 	.config/vifm/vifmrc \
+	.config/vifm/scripts/vifmimg \
+
 	.config/zathura/zathurarc \
 
 	.vim/ftplugin/python.vim \

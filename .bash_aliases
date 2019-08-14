@@ -7,7 +7,7 @@
 
 alias v='nvim $(fzf -m)'
 alias nv='nvim'
-alias vf="vifm . ~"
+alias vf="~/.bin/vifm_run . ~"
 alias nm="nmtui"
 alias zf='zathura $(fzf) &'
 alias zd="zathura -d . &"
