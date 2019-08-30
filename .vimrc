@@ -161,8 +161,6 @@ call plug#end()
 		autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 		" automatically deletes all trailing whitespace on save
 		autocmd BufWritePre * %s/\s\+$//e
-		" enable spellcheck for markdown files
-		autocmd BufRead,BufNewFile *.md setlocal spell
 	augroup END
 
 "" }}}
