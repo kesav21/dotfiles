@@ -131,8 +131,11 @@ PS1="$PS1"'\[\033[0m\]'         # reset color
 
 [ -f ~/.bash_shortcuts ] && . ~/.bash_shortcuts
 
-# set fzf to exclude hidden git files
-# set fzf to exclude __pycache__ files
+# set fzf to exclude
+# hidden git files
+# __pycache__ files
+# hidden pytest files
+# virtual environment files
 export FZF_DEFAULT_COMMAND='find . -type f | grep -v '\.git/' | grep -v '__pycache__/' | grep -v '\.pytest_cache' | grep -v '\.env''
 
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]

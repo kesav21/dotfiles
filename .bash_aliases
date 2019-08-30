@@ -11,7 +11,7 @@ alias vf="~/.bin/vifm_run . ~"
 alias nm="nmtui"
 alias zf='zathura $(fzf) &'
 alias zd="zathura -d . &"
-alias t="tree -a -I '.git|__pycache__'"
+alias t="tree -a -I '.git|__pycache__|.pytest_cache|.env'"
 
 alias ll="ls -AlF --color=always"
 alias nuke="rm -rf"
