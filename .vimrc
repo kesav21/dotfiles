@@ -48,6 +48,9 @@ call plug#begin()
 	" source code browsing
 	Plug 'majutsushi/tagbar'
 
+	" code alignment
+	Plug 'junegunn/vim-easy-align'
+
 "" }}}
 
 "" plugins/colorscheme {{{
@@ -236,6 +239,12 @@ call plug#end()
 
 	" toggle tagbar
 	nnoremap <leader>t :TagbarToggle<cr>
+
+	" start interactive EasyAlign in visual mode (e.g. vipga)
+	xmap ga <Plug>(EasyAlign)
+
+	" start interactive EasyAlign for a motion/text object (e.g. gaip)
+	nmap ga <Plug>(EasyAlign)
 
 "" }}}
 
