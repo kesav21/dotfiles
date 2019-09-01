@@ -63,8 +63,8 @@ giaf () {
 
 # aliases/firefox {{{
 
-alias fa="firefox -P asu"
-alias fh="firefox -P default"
+alias fa="firefox -P asu &"
+alias fh="firefox -P default &"
 
 # }}}
 
