@@ -1,18 +1,22 @@
 #!/bin/bash
 
-DIR=~/Projects/dotfiles
+DIR=~/.files
 
 declare -a StringArray=( \
 
 	.bash_aliases \
 	.bashrc \
+	.bash_profile \
 	.inputrc \
-	.profile \
+	.xinitrc \
 
 	.tmux.conf \
 	.vimrc \
 	.wallpaper \
 	.Xresources \
+	
+	.config/bmfiles \
+	.config/bmdirs \
 
 	.config/dunst/dunstrc \
 
