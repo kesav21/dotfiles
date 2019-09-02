@@ -1,24 +1,6 @@
 " vim: set foldmethod=marker:
 
 
-" readme {{{
-
-	"
-	" categories versus descriptions
-	" if the comment is not tabbed over, then it is a category
-	" if the comment if tabbed over, then it is a description
-	"
-	" categories:
-	" heading 1: "
-	" heading 2: ""
-	" heading 3: """
-	"
-	" descriptions: 0\t"
-	"
-
-" }}}
-
-
 " plugins {{{
 
 call plug#begin()

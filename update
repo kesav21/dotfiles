@@ -14,7 +14,7 @@ declare -a StringArray=( \
 	.vimrc \
 	.wallpaper \
 	.Xresources \
-	
+
 	.config/bmfiles \
 	.config/bmdirs \
 
@@ -25,16 +25,18 @@ declare -a StringArray=( \
 
 	.config/mutt/colors.muttrc \
 	.config/mutt/muttrc \
+
+	.config/nvim/init.vim \
+	.config/nvim/after/ftplugin/python.vim \
+	.config/nvim/after/ftplugin/json.vim \
+	.config/nvim/after/ftplugin/markdown.vim \
+
 	.config/polybar/config \
 
 	.config/vifm/vifmrc \
 	.config/vifm/scripts/vifmimg \
 
 	.config/zathura/zathurarc \
-
-	.vim/ftplugin/python.vim \
-	.vim/ftplugin/json.vim \
-	.vim/ftplugin/markdown.vim \
 )
 
 for val in ${StringArray[@]}
