@@ -37,6 +37,9 @@ declare -a StringArray=( \
 	.config/vifm/scripts/vifmimg \
 
 	.config/zathura/zathurarc \
+
+	.fonts/FiraMono-Regular.ttf \
+
 )
 
 for val in ${StringArray[@]}
