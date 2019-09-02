@@ -7,11 +7,11 @@ declare -a StringArray=( \
 	.bash_aliases \
 	.bashrc \
 	.bash_profile \
+	.ff_profiles \
 	.inputrc \
 	.xinitrc \
 
 	.tmux.conf \
-	.vimrc \
 	.wallpaper \
 	.Xresources \
 
