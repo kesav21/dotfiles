@@ -138,9 +138,9 @@ call plug#end()
 		autocmd!
 
 		" when shortcut files are updated, renew bash and vifm configs with new material
-		autocmd BufWritePost ~/.config/bmdirs,~/.config/bmfiles !~/.bin/bm_gen
+		autocmd BufWritePost ~/.config/bmdirs,~/.config/bmfiles !~/.local/bin/bm_gen
 		" when dunstrc is updated, restart dunst
-		autocmd BufWritePost ~/.config/dunst/dunstrc !~/.bin/dunst_restart
+		autocmd BufWritePost ~/.config/dunst/dunstrc !~/.local/bin/dunst_restart
 
 		" disables automatic commenting on newline
 		autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o

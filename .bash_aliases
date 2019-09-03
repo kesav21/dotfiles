@@ -7,7 +7,7 @@
 
 alias v='nvim $(fzf -m)'
 alias nv='nvim'
-alias vf="~/.bin/vifm_run . ~"
+alias vf="~/.local/bin/vifm_run . ~"
 alias nm="nmtui"
 alias zf='zathura $(fzf) &'
 alias zd="zathura -d . &"
@@ -19,8 +19,8 @@ alias nuke="rm -rf"
 alias ytu="sudo youtube-dl -U"
 alias yta="youtube-dl -f bestaudio"
 
-alias me="~/.bin/monitor_extend"
-alias md="~/.bin/monitor_disconnect"
+alias me="~/.local/bin/monitor_extend"
+alias md="~/.local/bin/monitor_disconnect"
 
 alias mi="sudo make install"
 alias mic="sudo make install && make clean"

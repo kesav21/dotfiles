@@ -1,3 +1,4 @@
+#!/bin/bash
 
-exec ~/.scripts/dwm/dwm_loop
+exec ~/.local/bin/dwm_loop
 
