@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DIR=~/.files
+DIR=~/.local/dotfiles
 
 declare -a StringArray=( \
 
@@ -8,6 +8,7 @@ declare -a StringArray=( \
 	.bashrc \
 	.bash_profile \
 	.ff_profiles \
+	.gitconfig \
 	.inputrc \
 	.xinitrc \
 
