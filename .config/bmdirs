@@ -1,17 +1,19 @@
 
 # comments
 
-b ~/Books/
-dc ~/Documents/
-dw ~/Downloads/
-pc ~/Pictures/
+h ~
 
 c ~/.config/
-s ~/.scripts/
 
-pr ~/Projects/
-dt ~/Projects/dotfiles/
-pa ~/Projects/AsuProjects/cse230/
+d ~/.local/dotfiles/
+s ~/.local/scripts/
+ls ~/.local/src/
+lb ~/.local/bin/
 
-ls /usr/local/src/
+# a ~/ASU/
+# b ~/Books/
+# dc ~/Documents/
+# dw ~/Downloads/
+# pc ~/Pictures/
+# pr ~/Projects/
 
