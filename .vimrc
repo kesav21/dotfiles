@@ -1,24 +1,6 @@
 " vim: set foldmethod=marker:
 
 
-" readme {{{
-
-	"
-	" categories versus descriptions
-	" if the comment is not tabbed over, then it is a category
-	" if the comment if tabbed over, then it is a description
-	"
-	" categories:
-	" heading 1: "
-	" heading 2: ""
-	" heading 3: """
-	"
-	" descriptions: 0\t"
-	"
-
-" }}}
-
-
 " plugins {{{
 
 call plug#begin()
@@ -37,19 +19,20 @@ call plug#begin()
 	Plug 'sheerun/vim-polyglot'
 	" display hex color codes
 	Plug 'chrisbra/Colorizer'
-
 	" python folding
 	Plug 'vim-scripts/python_fold'
-
 	" fzf for vim
 	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 	Plug 'junegunn/fzf.vim'
-
 	" source code browsing
 	Plug 'majutsushi/tagbar'
-
 	" code alignment
 	Plug 'junegunn/vim-easy-align'
+	" latex
+	Plug 'lervag/vimtex'
+	Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'}
+	" snippets
+	Plug 'sirver/ultisnips'
 
 "" }}}
 
@@ -57,13 +40,6 @@ call plug#begin()
 
 	" gruvbox theme
 	Plug 'morhetz/gruvbox'
-
-"" }}}
-
-"" plugins/school {{{
-
-	" mips syntax highlighting
-	Plug 'harenome/vim-mipssyntax'
 
 "" }}}
 
@@ -98,7 +74,7 @@ call plug#end()
 
 "" settings/syntax-highlighting {{{
 
-	filetype indent plugin on
+	filetype plugin indent on
 	syntax on
 
 "" }}}
@@ -140,6 +116,28 @@ call plug#end()
 	let g:airline_skip_empty_sections = 1
 	let g:airline_powerline_fonts = 1
 	let g:airline#extensions#tabline#enabled = 1
+
+""" }}}
+
+""" settings/plugins/vimtex {{{
+
+	let g:tex_flavor='latex'
+	let g:vimtex_view_method='zathura'
+	let g:vimtex_quickfix_mode=0
+	set conceallevel=2
+	let g:tex_conceal='abdmg'
+
+""" }}}
+
+""" settings/plugins/ultisnips {{{
+
+	let g:UltiSnipsExpandTrigger = '<tab>'
+	let g:UltiSnipsListSnippets = '<c-tab>'
+	let g:UltiSnipsJumpForwardTrigger = '<tab>'
+	let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+
+	let g:UltiSnipsSnippetsDir = "~/.config/nvim/ultisnips"
+	let g:UltiSnipsSnippetDirectories = ["ultisnips"]
 
 """ }}}
 
