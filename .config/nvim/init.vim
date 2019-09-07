@@ -19,19 +19,19 @@ call plug#begin()
 	Plug 'sheerun/vim-polyglot'
 	" display hex color codes
 	Plug 'chrisbra/Colorizer'
-
 	" python folding
 	Plug 'vim-scripts/python_fold'
-
 	" fzf for vim
 	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 	Plug 'junegunn/fzf.vim'
-
 	" source code browsing
 	Plug 'majutsushi/tagbar'
-
 	" code alignment
 	Plug 'junegunn/vim-easy-align'
+	" latex plugin
+	Plug 'lervag/vimtex'
+	" snippets
+	Plug 'sirver/ultisnips'
 
 "" }}}
 
@@ -39,13 +39,6 @@ call plug#begin()
 
 	" gruvbox theme
 	Plug 'morhetz/gruvbox'
-
-"" }}}
-
-"" plugins/school {{{
-
-	" mips syntax highlighting
-	Plug 'harenome/vim-mipssyntax'
 
 "" }}}
 
@@ -122,6 +115,27 @@ call plug#end()
 	let g:airline_skip_empty_sections = 1
 	let g:airline_powerline_fonts = 1
 	let g:airline#extensions#tabline#enabled = 1
+
+""" }}}
+
+""" settings/plugins/vimtex {{{
+
+	let g:tex_flavor='latex'
+	let g:vimtex_view_method='zathura'
+	let g:vimtex_quickfix_mode=0
+	set conceallevel=1
+	let g:tex_conceal='abdmg'
+
+""" }}}
+
+""" settings/plugins/ultisnips {{{
+
+	let g:UltiSnipsExpandTrigger = '<tab>'
+	let g:UltiSnipsJumpForwardTrigger = '<tab>'
+	let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+
+	let g:UltiSnipsSnippetsDir = '/home/kesav/.config/nvim/ultisnips'
+	let g:UltiSnipsSnippetDirectories = ['ultisnips']
 
 """ }}}
 
@@ -298,4 +312,5 @@ call plug#end()
 "" }}}
 
 " }}}
+
 
