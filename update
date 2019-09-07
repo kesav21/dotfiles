@@ -15,6 +15,9 @@ declare -a StringArray=( \
 	.wallpaper \
 	.Xresources \
 
+	.Xmodmap \
+	.Xmodmap.default \
+
 	.config/dunst/dunstrc \
 
 	.config/i3/config \
