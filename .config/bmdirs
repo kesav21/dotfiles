@@ -10,9 +10,9 @@ s ~/.local/scripts/
 ls ~/.local/src/
 lb ~/.local/bin/
 
-# a ~/ASU/
+a ~/asu/
 # b ~/Books/
-# dc ~/Documents/
+dc ~/Documents/
 # dw ~/Downloads/
 # pc ~/Pictures/
 # pr ~/Projects/

@@ -10,7 +10,7 @@ cfbr ~/.bashrc
 # cfp ~/.config/polybar/config
 cfv ~/.config/nvim/init.vim
 # cfvf ~/.config/vifm/vifmrc
-# cfz ~/.config/zathura/zathurarc
+cfz ~/.config/zathura/zathurarc
 
 # cft ~/.tmux.conf
 # cfx ~/.Xresources
