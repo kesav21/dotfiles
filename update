@@ -6,6 +6,7 @@ declare -a StringArray=( \
 
 	.bash_aliases \
 	.bashrc \
+	.bt_devices \
 	.inputrc \
 	.profile \
 
