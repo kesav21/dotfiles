@@ -21,7 +21,7 @@ declare -a StringArray=( \
 	.config/bmfiles \
 	.config/bmdirs \
 
-	# .config/dunst/dunstrc \
+	.config/dunst/dunstrc \
 
 	# .config/i3/config \
 	# .config/i3/polybar.sh \
