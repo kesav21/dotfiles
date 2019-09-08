@@ -30,8 +30,6 @@ call plug#begin()
 	Plug 'junegunn/vim-easy-align'
 	" latex plugin
 	Plug 'lervag/vimtex'
-	" latex
-	Plug 'lervag/vimtex'
 	Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'}
 	" snippets
 	Plug 'sirver/ultisnips'
