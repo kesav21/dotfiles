@@ -30,6 +30,9 @@ call plug#begin()
 	Plug 'junegunn/vim-easy-align'
 	" latex plugin
 	Plug 'lervag/vimtex'
+	" latex
+	Plug 'lervag/vimtex'
+	Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'}
 	" snippets
 	Plug 'sirver/ultisnips'
 
@@ -73,7 +76,7 @@ call plug#end()
 
 "" settings/syntax-highlighting {{{
 
-	filetype indent plugin on
+	filetype plugin indent on
 	syntax on
 
 "" }}}
@@ -124,6 +127,7 @@ call plug#end()
 	let g:vimtex_view_method='zathura'
 	let g:vimtex_quickfix_mode=0
 	set conceallevel=1
+	set conceallevel=2
 	let g:tex_conceal='abdmg'
 
 """ }}}
@@ -131,6 +135,7 @@ call plug#end()
 """ settings/plugins/ultisnips {{{
 
 	let g:UltiSnipsExpandTrigger = '<tab>'
+	let g:UltiSnipsListSnippets = '<c-tab>'
 	let g:UltiSnipsJumpForwardTrigger = '<tab>'
 	let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 

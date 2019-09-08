@@ -7,14 +7,16 @@ declare -a StringArray=( \
 	.bash_aliases \
 	.bashrc \
 	.bash_profile \
+	.bt_devices \
 	.ff_profiles \
 	.gitconfig \
 	.inputrc \
-	.xinitrc \
-
 	.tmux.conf \
 	.wallpaper \
+	.xinitrc \
 	.Xresources \
+	.Xmodmap \
+	.Xmodmap.default \
 
 	.config/bmfiles \
 	.config/bmdirs \
