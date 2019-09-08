@@ -3,7 +3,7 @@
 
 " plugins {{{
 
-call plug#begin()
+call plug#begin('~/.local/share/nvim/plugged')
 
 "" plugins/misc {{{
 
