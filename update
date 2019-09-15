@@ -39,7 +39,7 @@ declare -a StringArray=( \
 	# .config/vifm/vifmrc \
 	# .config/vifm/scripts/vifmimg \
 
-	# .config/zathura/zathurarc \
+	.config/zathura/zathurarc \
 
 	.fonts/FiraMono-Regular.ttf \
 
