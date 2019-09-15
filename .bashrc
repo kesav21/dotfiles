@@ -33,6 +33,9 @@ fi
 # set environment variables
 
 export EDITOR=/usr/bin/nvim
+export ICONPATH="$HOME/.icons/fa-5.10.2-desktop"
+export SCRIPTSPATH="$HOME/.local/scripts"
+export BINPATH="$HOME/.local/bin"
 
 # update bash prompt
 
