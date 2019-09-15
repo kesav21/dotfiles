@@ -9,8 +9,8 @@ alias v='nvim $(fzf -m)'
 alias nv='nvim'
 alias vf="~/.local/bin/vifm_run . ~"
 alias nm="nmtui"
-alias zf='zathura $(fzf) &'
-alias zd="zathura -d . &"
+alias zf='nohup zathura "$(fzf)" > /dev/null &'
+alias zd="nohup zathura -d . > /dev/null &"
 alias t="tree -a -I '.git|__pycache__|.pytest_cache|.env'"
 
 alias ll="ls -AlF --color=always"
@@ -28,6 +28,8 @@ alias mic="sudo make install && make clean"
 alias vc="virtualenv -p $(which python3) .env"
 alias va="source .env/bin/activate"
 alias vd="deactivate"
+
+alias xm="xmodmap ~/.Xmodmap"
 
  # }}}
 
