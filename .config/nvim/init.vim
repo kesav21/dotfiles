@@ -228,29 +228,39 @@ call plug#end()
 
 "" }}}
 
+"" mappings/autoclose {{{
+
+	inoremap " ""<left>
+	inoremap ' ''<left>
+	inoremap ( ()<left>
+	inoremap [ []<left>
+	inoremap { {}<left>
+	inoremap {<CR> {<CR>}<ESC>O
+	inoremap {;<CR> {<CR>};<ESC>O
+
+"" }}}
+
 "" mappings/plugins {{{
 
 	" plug mappings
 	noremap <leader>pi :PlugInstall<cr>
 	noremap <leader>pc :PlugClean<cr>
-
 	" toggle netrw
 	noremap <leader>n :Explore<cr>
-
 	" toggle colorhighlight
 	nnoremap <leader>ch :ColorToggle<cr>
-
 	" run fzf.vim
 	nnoremap <leader>f :Files<cr>
-
 	" toggle tagbar
 	nnoremap <leader>t :TagbarToggle<cr>
-
 	" start interactive EasyAlign in visual mode (e.g. vipga)
 	xmap ga <Plug>(EasyAlign)
-
 	" start interactive EasyAlign for a motion/text object (e.g. gaip)
 	nmap ga <Plug>(EasyAlign)
+	" start interactive EasyAlign for a motion/text object (e.g. gaip)
+	nnoremap <leader>ue :UltiSnipsEdit<cr>
+	" launch live preview of latex file
+	nnoremap <leader>lp :LLPStartPreview<cr>
 
 "" }}}
 
