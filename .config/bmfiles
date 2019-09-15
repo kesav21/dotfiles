@@ -5,7 +5,7 @@ cfba ~/.bash_aliases
 cfbp ~/.bash_profile
 cfbr ~/.bashrc
 
-# cfd ~/.config/dunst/dunstrc
+cfd ~/.config/dunst/dunstrc
 # cfi ~/.config/i3/config
 # cfp ~/.config/polybar/config
 cfv ~/.config/nvim/init.vim

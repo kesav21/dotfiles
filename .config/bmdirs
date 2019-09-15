@@ -11,9 +11,14 @@ ls ~/.local/src/
 lb ~/.local/bin/
 
 a ~/asu/
+ac ~/asu/cse310/
+am ~/asu/mat343/
+ap ~/asu/phy131/
+apl ~/asu/phy132/
+
 # b ~/Books/
 dc ~/Documents/
-# dw ~/Downloads/
+dw ~/Downloads/
 # pc ~/Pictures/
-# pr ~/Projects/
+pr ~/projects/
 
