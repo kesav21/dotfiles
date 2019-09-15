@@ -31,6 +31,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 	" latex plugin
 	Plug 'lervag/vimtex'
 	Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'}
+	Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 	" snippets
 	Plug 'sirver/ultisnips'
 
@@ -124,7 +125,6 @@ call plug#end()
 	let g:tex_flavor='latex'
 	let g:vimtex_view_method='zathura'
 	let g:vimtex_quickfix_mode=0
-	set conceallevel=1
 	set conceallevel=2
 	let g:tex_conceal='abdmg'
 
@@ -139,6 +139,12 @@ call plug#end()
 
 	let g:UltiSnipsSnippetsDir = '/home/kesav/.config/nvim/ultisnips'
 	let g:UltiSnipsSnippetDirectories = ['ultisnips']
+
+""" }}}
+
+""" settings/plugins/vim-latex-live-preview {{{
+
+	let g:livepreview_previewer = 'zathura'
 
 """ }}}
 
