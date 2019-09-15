@@ -36,8 +36,8 @@ declare -a StringArray=( \
 
 	# .config/polybar/config \
 
-	# .config/vifm/vifmrc \
-	# .config/vifm/scripts/vifmimg \
+	.config/vifm/vifmrc \
+	.config/vifm/scripts/vifmimg \
 
 	.config/zathura/zathurarc \
 
