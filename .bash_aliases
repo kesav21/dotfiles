@@ -1,9 +1,8 @@
 
 # vim: set foldmethod=marker:
 
-# aliases {{{
 
-# aliases/misc {{{
+# misc {{{
 
 alias v='nvim $(fzf -m)'
 alias nv='nvim'
@@ -29,52 +28,6 @@ alias vd="deactivate"
 
 alias xm="xmodmap ~/.Xmodmap"
 
- # }}}
-
-# aliases/git {{{
-
-alias gis="clear && git status"
-alias gic="git commit"
-alias gip="git push"
-
-alias gid="git diff"
-# git diff unstaged file
-alias gidf='clear && git diff $(git diff --name-only | fzf -m)'
-
-alias gia="git add"
-alias giaa="git add ."
-
-# git add unstaged/untracked file
-
-giaf () {
-	all=$(git diff --name-only && git ls-files --others --exclude-standard)
-	git add $(printf '%s\n' "${all[@]}" | fzf -m)
-}
-
-# }}}
-
-# aliases/chrome {{{
-
-# testing launching different chrome profiles
-# alias gasu="google-chrome --user-data-dir='/home/kesav/.config/google-chrome/Kesav ASU'"
-# alias ghome="google-chrome --user-data-dir='/home/kesav/.config/google-chrome/Kesav Home'"
-
-# }}}
-
-# aliases/firefox {{{
-
-alias fa="firefox -P asu &"
-alias fh="firefox -P default &"
-
-# }}}
-
-
-# }}}
-
-# functions {{{
-
-# function/misc {{{
-
 # get size of directory
 dirsize () {
 	du -h --max-depth=1 | sort -hr
@@ -93,7 +46,35 @@ refresh () {
 
 # }}}
 
-# functions/fzf {{{
+# git {{{
+
+alias gis="clear && git status"
+alias gic="git commit"
+alias gip="git push"
+
+alias gid="git diff"
+# git diff unstaged file
+alias gidf='clear && git diff $(git diff --name-only | fzf -m)'
+
+alias gia="git add"
+alias giaa="git add ."
+
+# git add unstaged/untracked file
+giaf () {
+	all=$(git diff --name-only && git ls-files --others --exclude-standard)
+	git add $(printf '%s\n' "${all[@]}" | fzf -m)
+}
+
+# }}}
+
+# firefox {{{
+
+alias fa="firefox -P asu &"
+alias fh="firefox -P default &"
+
+# }}}
+
+# fzf {{{
 
 #
 # ex: f less -> less $(fzf)
@@ -111,14 +92,14 @@ fm () {
 
 # }}}
 
-# functions/zathura {{{
+# zathura {{{
+
+alias zd="nohup zathura -d . >/dev/null 2>&1 &"
 
 zf () {
 	file="$(fzf)"
 	nohup zathura $file >/dev/null 2>&1 &
 }
-
-# }}}
 
 # }}}
 
