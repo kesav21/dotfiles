@@ -7,10 +7,8 @@
 
 alias v='nvim $(fzf -m)'
 alias nv='nvim'
-alias vf="~/.local/bin/vifm_run . ~"
+alias vf="vifm_run . ~"
 alias nm="nmtui"
-alias zf='nohup zathura "$(fzf)" > /dev/null &'
-alias zd="nohup zathura -d . > /dev/null &"
 alias t="tree -a -I '.git|__pycache__|.pytest_cache|.env'"
 
 alias ll="ls -AlF --color=always"
@@ -19,8 +17,8 @@ alias nuke="rm -rf"
 alias ytu="sudo youtube-dl -U"
 alias yta="youtube-dl -f bestaudio"
 
-alias me="~/.local/bin/monitor_extend"
-alias md="~/.local/bin/monitor_disconnect"
+alias me="monitor_extend"
+alias md="monitor_disconnect"
 
 alias mi="sudo make install"
 alias mic="sudo make install && make clean"
@@ -75,6 +73,26 @@ alias fh="firefox -P default &"
 
 # functions {{{
 
+# function/misc {{{
+
+# get size of directory
+dirsize () {
+	du -h --max-depth=1 | sort -hr
+}
+
+# print out path neatly
+path () {
+	sed 's/:/\n/g' <<< "$PATH"
+}
+
+# reload Xresources
+refresh () {
+	xrdb -merge ~/.Xresources
+	exit
+}
+
+# }}}
+
 # functions/fzf {{{
 
 #
@@ -93,21 +111,14 @@ fm () {
 
 # }}}
 
-# get size of directory
-dirsize () {
-	du -h --max-depth=1 | sort -hr
+# functions/zathura {{{
+
+zf () {
+	file="$(fzf)"
+	nohup zathura $file >/dev/null 2>&1 &
 }
 
-# print out path neatly
-path () {
-	sed 's/:/\n/g' <<< "$PATH"
-}
-
-# reload Xresources
-refresh () {
-	xrdb -merge ~/.Xresources
-	exit
-}
+# }}}
 
 # }}}
 
