@@ -39,15 +39,16 @@ export BINPATH="$HOME/.local/bin"
 
 # update bash prompt
 
-PS1='\[\033]0;[\u] $PWD\007\]'  # set window title
-PS1="$PS1"'\[\033[34m\]'        # set color to blue
-PS1="$PS1"'[\w]'                  # current working directory
-PS1="$PS1"'\[\033[35m\]'        # set color to purple
-# PS1="$PS1"'`__git_ps1`'         # git branch
-PS1="$PS1"'\[\033[34m\]'        # set color to blue
-# PS1="$PS1"'\[\033[0m\]'         # reset color
-PS1="$PS1"' $ '                 # prompt: $
-PS1="$PS1"'\[\033[0m\]'         # reset color
+source $BINPATH/git-prompt.sh
+
+PS1='\[\033]0;[\u] $PWD\007\]' # set window title
+PS1="$PS1"'\[\033[34m\]'       # set color to blue
+PS1="$PS1"'[\w]'               # current working directory
+PS1="$PS1"'\[\033[35m\]'       # set color to purple
+PS1="$PS1"'`__git_ps1`'        # git branch
+PS1="$PS1"'\[\033[34m\]'       # set color to blue
+PS1="$PS1"' $ '                # prompt: $
+PS1="$PS1"'\[\033[0m\]'        # reset color
 
 # alias definitions
 
