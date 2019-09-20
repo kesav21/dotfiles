@@ -3,6 +3,8 @@
 
 " plugins {{{
 
+source ~/.config/nvim/config/autoclose.vim
+
 call plug#begin('~/.local/share/nvim/plugged')
 
 "" plugins/misc {{{
@@ -216,54 +218,23 @@ call plug#end()
 	" the escape key is too far
 	inoremap jk <esc>
 
-	" insert blank line below
-	" nnoremap <silent><C-j> :set paste<cr>m`o<esc>``:set nopaste<cr>
-	" insert blank line above
-	" nnoremap <silent><C-k> :set paste<cr>m`O<esc>``:set nopaste<cr>
-
-	" move line up
-	" nnoremap <c-j> :m .+1<cr>==
-	" move line down
-	" nnoremap <c-k> :m .-2<cr>==
+	" clear search
+	nnoremap <silent> <leader>, :nohlsearch<cr>
 
 "" }}}
 
 "" mappings/autoclose {{{
 
-	inoremap " ""<left>
-	inoremap ' ''<left>
-	inoremap ( ()<left>
-	inoremap [ []<left>
-	inoremap { {}<left>
+	" inoremap " ""<left>
+	" inoremap ' ''<left>
+	" inoremap ( ()<left>
+	" inoremap [ []<left>
+	" inoremap { {}<left>
 	" inoremap {<CR> {<CR>}<ESC>O
 
 "" }}}
 
-"" mappings/plugins {{{
-
-	" plug mappings
-	noremap <leader>pi :PlugInstall<cr>
-	noremap <leader>pc :PlugClean<cr>
-	" toggle netrw
-	noremap <leader>n :Explore<cr>
-	" toggle colorhighlight
-	nnoremap <leader>ch :ColorToggle<cr>
-	" run fzf.vim
-	nnoremap <leader>f :Files<cr>
-	" toggle tagbar
-	nnoremap <leader>t :TagbarToggle<cr>
-	" start interactive EasyAlign in visual mode (e.g. vipga)
-	xmap ga <Plug>(EasyAlign)
-	" start interactive EasyAlign for a motion/text object (e.g. gaip)
-	nmap ga <Plug>(EasyAlign)
-	" start interactive EasyAlign for a motion/text object (e.g. gaip)
-	nnoremap <leader>ue :UltiSnipsEdit<cr>
-	" launch live preview of latex file
-	nnoremap <leader>lp :LLPStartPreview<cr>
-
-"" }}}
-
-"" mappings/habit-breaking {{{
+"" mappings/movement {{{
 
 	" disable arrow keys, in normal mode
 	nnoremap <up> <nop>
@@ -290,20 +261,27 @@ call plug#end()
 
 "" }}}
 
-"" mappings/leader-misc {{{
+"" mappings/plugins {{{
 
-	" in normal mode, insert a single character before/after
-	nnoremap <leader>i i_<esc>r
-	nnoremap <leader>I I_<esc>r
-	nnoremap <leader>a a_<esc>r
-	nnoremap <leader>A A_<esc>r
-
-	" in normal mode, clear line
-	nnoremap <leader>d 0d$
-
-	" in normal mode, toggle spellcheck
-	nnoremap <leader>s :setlocal spell! spelllang=en_us<cr>
-
+	" plug mappings
+	noremap <leader>pi :PlugInstall<cr>
+	noremap <leader>pc :PlugClean<cr>
+	" toggle netrw
+	noremap <leader>n :Explore<cr>
+	" toggle colorhighlight
+	nnoremap <leader>ch :ColorToggle<cr>
+	" run fzf.vim
+	nnoremap <leader>f :Files<cr>
+	" toggle tagbar
+	nnoremap <leader>t :TagbarToggle<cr>
+	" start interactive EasyAlign in visual mode (e.g. vipga)
+	xmap ga <Plug>(EasyAlign)
+	" start interactive EasyAlign for a motion/text object (e.g. gaip)
+	nmap ga <Plug>(EasyAlign)
+	" start interactive EasyAlign for a motion/text object (e.g. gaip)
+	nnoremap <leader>ue :UltiSnipsEdit<cr>
+	" launch live preview of latex file
+	nnoremap <leader>lp :LLPStartPreview<cr>
 
 "" }}}
 
