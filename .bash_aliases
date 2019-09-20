@@ -97,7 +97,7 @@ fm () {
 alias zd="nohup zathura -d . >/dev/null 2>&1 &"
 
 zf () {
-	file="$(fzf)"
+	file="$(find . -iname '*.pdf' | fzf)"
 	nohup zathura $file >/dev/null 2>&1 &
 }
 
