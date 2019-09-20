@@ -223,17 +223,6 @@ call plug#end()
 
 "" }}}
 
-"" mappings/autoclose {{{
-
-	" inoremap " ""<left>
-	" inoremap ' ''<left>
-	" inoremap ( ()<left>
-	" inoremap [ []<left>
-	" inoremap { {}<left>
-	" inoremap {<CR> {<CR>}<ESC>O
-
-"" }}}
-
 "" mappings/movement {{{
 
 	" disable arrow keys, in normal mode
@@ -288,11 +277,11 @@ call plug#end()
 "" mappings/buffers {{{
 
 	" switch to previous buffer
-	nnoremap <leader>j :bp<cr>
+	nnoremap <silent> <leader>j :bp<cr>
 	" switch to next buffer
-	nnoremap <leader>k :bn<cr>
+	nnoremap <silent> <leader>k :bn<cr>
 	" delete buffer
-	nnoremap <leader>x :bd<cr>
+	nnoremap <silent> <leader>x :bd<cr>
 
 "" }}}
 
