@@ -39,7 +39,7 @@ export BINPATH="$HOME/.local/bin"
 
 # update bash prompt
 
-source $BINPATH/git-prompt.sh
+source $BINPATH/git_prompt
 
 PS1='\[\033]0;[\u] $PWD\007\]' # set window title
 PS1="$PS1"'\[\033[34m\]'       # set color to blue

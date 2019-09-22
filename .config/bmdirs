@@ -12,6 +12,7 @@ lb ~/.local/bin/
 
 a ~/asu/
 ac ~/asu/cse310/
+ai ~/asu/iee380/
 am ~/asu/mat343/
 ap ~/asu/phy131/
 apl ~/asu/phy132/
