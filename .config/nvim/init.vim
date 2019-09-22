@@ -3,9 +3,7 @@
 
 " plugins {{{
 
-source ~/.config/nvim/config/autoclose.vim
-
-call plug#begin('~/.local/share/nvim/plugged')
+call plug#begin('~/.local/share/nvim/vim-plug')
 
 "" plugins/misc {{{
 
@@ -22,12 +20,11 @@ call plug#begin('~/.local/share/nvim/plugged')
 	" display hex color codes
 	Plug 'chrisbra/Colorizer'
 	" python folding
-	Plug 'vim-scripts/python_fold'
+	" Plug 'vim-scripts/python_fold'
+	Plug 'kalekundert/vim-coiled-snake'
 	" fzf for vim
 	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 	Plug 'junegunn/fzf.vim'
-	" source code browsing
-	Plug 'majutsushi/tagbar'
 	" code alignment
 	Plug 'junegunn/vim-easy-align'
 	" latex plugin
@@ -206,20 +203,31 @@ call plug#end()
 
 " mappings {{{
 
-"" mappings/settings {{{
+"" mappings/misc {{{
 
 	" set leader key
 	let mapleader = " "
-
-"" }}}
-
-"" mappings/misc {{{
-
+	" clear all mappings
+	mapclear | mapclear <buffer> | mapclear! | mapclear! <buffer>
+	" add autoclose mappings
+	" source ~/.config/nvim/config/autoclose.vim
 	" the escape key is too far
 	inoremap jk <esc>
-
 	" clear search
 	nnoremap <silent> <leader>, :nohlsearch<cr>
+
+	" inoremap <expr> <leader>k ExitAutoClose()
+	" inoremap <leader>k :<c-u>:call ExitAutoClose()<cr>
+
+	" function! ExitAutoClose()
+	" 	let chr = getline('.')[col('.')-1]
+
+	" 	if chr == ')'
+	" 		execute "normal! a"
+	" 	else
+	" 		execute "normal! a"
+	" 	endif
+	" endfunction
 
 "" }}}
 
@@ -293,7 +301,12 @@ call plug#end()
 "" omappings/misc {{{
 
 	onoremap in( :<c-u>normal! f(vi(<cr>
+	onoremap in{ :<c-u>normal! f{vi{<cr>
+	onoremap in[ :<c-u>normal! f[vi[<cr>
+
 	onoremap il( :<c-u>normal! F)vi(<cr>
+	onoremap il{ :<c-u>normal! F)vi{<cr>
+	onoremap il[ :<c-u>normal! F)vi[<cr>
 
 "" }}}
 
