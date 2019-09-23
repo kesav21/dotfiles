@@ -4,19 +4,18 @@ DIR=~/.local/dotfiles
 
 declare -a StringArray=( \
 
-	.bash_aliases \
-	.bashrc \
-	.bash_profile \
 	.bt_devices \
 	.ff_profiles \
 	.gitconfig \
 	.inputrc \
+	.profile \
 	# .tmux.conf \
 	# .wallpaper \
 	.xinitrc \
 	# .Xresources \
 	.Xmodmap \
 	.Xmodmap.default \
+	.zprofile \
 
 	.config/bmfiles \
 	.config/bmdirs \
@@ -36,10 +35,14 @@ declare -a StringArray=( \
 
 	# .config/polybar/config \
 
+	.config/shell/aliases \
+
 	.config/vifm/vifmrc \
 	.config/vifm/scripts/vifmimg \
 
 	.config/zathura/zathurarc \
+
+	.config/zsh/.zshrc \
 
 	.fonts/FiraMono-Regular.ttf \
 
