@@ -63,6 +63,7 @@ call plug#end()
 	set hlsearch
 	set is
 	set timeout timeoutlen=1000
+	set clipboard+=unnamedplus
 
 "" }}}
 
