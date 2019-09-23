@@ -1,9 +1,9 @@
 
 # config files
 
-cfba ~/.bash_aliases
-cfbp ~/.bash_profile
-cfbr ~/.bashrc
+cfp ~/.profile
+cfsa ~/.config/shell/aliases
+cfzr ~/.config/zsh/.zshrc
 
 cfd ~/.config/dunst/dunstrc
 # cfi ~/.config/i3/config
