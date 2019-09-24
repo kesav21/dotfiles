@@ -3,7 +3,9 @@ echo "sourced .zshrc"
 
 # enable colors and change prompt
 autoload -U colors && colors
-PS1="$fg[blue][%~] $ %{$reset_color%}"
+source $BINPATH/git_prompt
+setopt PROMPT_SUBST
+PS1='$fg[blue][%~]$fg[magenta]$(__git_ps1 " (%s)")$fg[blue] \$ %{$reset_color%}'
 
 # history in cache directory
 HISTSIZE=10000
