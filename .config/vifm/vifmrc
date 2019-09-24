@@ -7,7 +7,7 @@
 
 " ------------------------------------------------------------------------------
 
-source ~/.config/vifm/vifm_shortcuts
+source ~/.config/vifm/vifm_bookmarks
 
 set number relativenumber
 
