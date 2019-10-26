@@ -9,7 +9,7 @@ cfd ~/.config/dunst/dunstrc
 # cfi ~/.config/i3/config
 # cfp ~/.config/polybar/config
 cfv ~/.config/nvim/init.vim
-# cfvf ~/.config/vifm/vifmrc
+cfvf ~/.config/vifm/vifmrc
 cfz ~/.config/zathura/zathurarc
 
 # cft ~/.tmux.conf
