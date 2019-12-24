@@ -2,4 +2,5 @@
 
 echo "sourced .zprofile"
 
-source .profile
+source $HOME/.config/shell/profile
+
