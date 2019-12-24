@@ -17,7 +17,9 @@
 	#
 	# If this option is set to mouse or keyboard, the monitor option
 	# will be ignored.
-	follow = mouse
+	follow = keyboard
+
+	font = "Fira Mono 12"
 
 	# The geometry of the window:
 	#   [{width}]x{height}[+/-{x}+/-{y}]
@@ -31,7 +33,11 @@
 	# the top and down respectively.
 	# The width can be negative.  In this case the actual width is the
 	# screen width minus the width defined in within the geometry option.
-	geometry = "360x6-22+39"
+
+	# dwm two windows open
+	# geometry = "450x5-5+27"
+	# dwm one window open
+	geometry = "450x5-11+27"
 
 	# Show how many messages are currently hidden (because of geometry).
 	indicate_hidden = yes
