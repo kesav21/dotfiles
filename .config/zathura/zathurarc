@@ -17,6 +17,8 @@ map J zoom out
 
 map i recolor
 
+set selection-clipboard clipboard
+
 set font "Fira Mono regular 10"
 
 set default-bg "#282828"
