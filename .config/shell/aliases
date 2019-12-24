@@ -61,59 +61,57 @@ refresh () {
 
 # }}}
 
+# bookmarks {{{
+
+# navigate to bookmarked directory
+cdb () {
+	cd $(awk '/#/ {next} NF {print $2}' ~/.config/bmdirs | fzf | sed "s|\~|$HOME|g")
+}
+
+# open bookmarked file
+vb () {
+	file=$(awk '/#/ {next} NF {print $2}' ~/.config/bmfiles | fzf | sed "s|\~|$HOME|g")
+	if [ -n "$file" ]
+	then
+		$EDITOR "$file"
+	fi
+}
+
+# }}}
+
 # git {{{
 
 alias gis="clear && git status"
-alias gic="git commit"
+alias gic="git commit -S"
+
+# git checkout branch
+gich() {
+  local branches branch
+  branches=$(git --no-pager branch -vv) &&
+  branch=$(echo "$branches" | fzf +m) &&
+  git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
+}
+
+alias gichm="git checkout master"
+alias gim="git merge"
+alias gib="git branch"
 alias gip="git push"
 
-alias gid="git diff"
-# git diff unstaged file
-alias gidf='clear && git diff $(git diff --name-only | fzf -m)'
+# git log pretty
+alias gil="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
-alias gia="git add"
+# git diff unstaged file
+alias gid='clear && git diff $(git diff --name-only | fzf -m)'
+# git view staged changes
+alias gids="git diff --staged"
+
+# git add all
 alias giaa="git add ."
 
 # git add unstaged/untracked file
-giaf () {
+gia () {
 	all=$(git diff --name-only && git ls-files --others --exclude-standard)
 	git add $(printf '%s\n' "${all[@]}" | fzf -m)
-}
-
-# }}}
-
-# firefox {{{
-
-alias fa="firefox -P asu &"
-alias fh="firefox -P default &"
-
-# }}}
-
-# fzf {{{
-
-#
-# ex: f less -> less $(fzf)
-#
-f () {
-	$1 $(fzf)
-}
-
-#
-# ex: f less -> less $(fzf -m)
-#
-fm () {
-	$1 $(fzf -m)
-}
-
-# }}}
-
-# zathura {{{
-
-alias zd="nohup zathura -d . >/dev/null 2>&1 &"
-
-zf () {
-	file="$(find . -iname '*.pdf' | fzf)"
-	nohup zathura "$file" >/dev/null 2>&1 &
 }
 
 # }}}
