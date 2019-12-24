@@ -4,45 +4,34 @@ DIR=~/.local/dotfiles
 
 declare -a StringArray=( \
 
-	.bt_devices \
-	.ff_profiles \
 	.gitconfig \
-	.inputrc \
-	.profile \
-	# .tmux.conf \
-	# .wallpaper \
 	.xinitrc \
-	# .Xresources \
-	.Xmodmap \
-	.Xmodmap.default \
-	.zprofile \
+	.zshenv \
 
 	.config/bmfiles \
 	.config/bmdirs \
 
 	.config/dunst/dunstrc \
 
-	# .config/i3/config \
-	# .config/i3/polybar.sh \
-
-	# .config/mutt/colors.muttrc \
-	# .config/mutt/muttrc \
-
 	.config/nvim/init.vim \
-	# .config/nvim/after/ftplugin/python.vim \
-	# .config/nvim/after/ftplugin/json.vim \
-	# .config/nvim/after/ftplugin/markdown.vim \
+	.config/nvim/ftplugin/json.vim \
 
-	# .config/polybar/config \
+	.config/scripts/bt_devices \
+	.config/scripts/ff_profiles \
 
 	.config/shell/aliases \
+	.config/shell/profile \
 
 	.config/vifm/vifmrc \
 	.config/vifm/scripts/vifmimg \
 
+	.config/X/.Xmodmap \
+	.config/X/.Xmodmap.default \
+
 	.config/zathura/zathurarc \
 
 	.config/zsh/.zshrc \
+	.config/zsh/.zprofile \
 
 	.fonts/FiraMono-Regular.ttf \
 
