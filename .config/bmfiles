@@ -1,21 +1,14 @@
 
 # config files
 
-cfp ~/.profile
 cfsa ~/.config/shell/aliases
+cfsp ~/.config/shell/profile
 cfzr ~/.config/zsh/.zshrc
 
 cfd ~/.config/dunst/dunstrc
-# cfi ~/.config/i3/config
-# cfp ~/.config/polybar/config
 cfv ~/.config/nvim/init.vim
 cfvf ~/.config/vifm/vifmrc
 cfz ~/.config/zathura/zathurarc
-
-# cft ~/.tmux.conf
-# cfx ~/.Xresources
-
-# cfm ~/.ncmpcpp/config
 
 cfdm ~/.local/src/dmenu-4.9/config.h
 cfdw ~/.local/src/dwm-6.2/config.h
