@@ -4,18 +4,17 @@ DIR=~/.local/dotfiles
 
 declare -a StringArray=( \
 
-	.gitconfig \
-	.xinitrc \
 	.zshenv \
-
-	.config/bmfiles \
-	.config/bmdirs \
 
 	.config/dunst/dunstrc \
 
-	.config/nvim/init.vim \
-	.config/nvim/ftplugin/json.vim \
+	.config/git/config \
 
+	.config/nvim/init.vim \
+	.config/nvim/after/ftplugin/json.vim \
+
+	.config/scripts/bmfiles \
+	.config/scripts/bmdirs \
 	.config/scripts/bt_devices \
 	.config/scripts/ff_profiles \
 
@@ -25,15 +24,16 @@ declare -a StringArray=( \
 	.config/vifm/vifmrc \
 	.config/vifm/scripts/vifmimg \
 
-	.config/X/.Xmodmap \
-	.config/X/.Xmodmap.default \
+	.config/X11/xinitrc \
+	.config/X11/xmodmaprc \
+	.config/X11/xmodmaprc.default \
 
 	.config/zathura/zathurarc \
 
 	.config/zsh/.zshrc \
 	.config/zsh/.zprofile \
 
-	.fonts/FiraMono-Regular.ttf \
+	.local/share/fonts/FiraMono-Regular.ttf \
 
 )
 
