@@ -100,7 +100,6 @@ call plug#end()
 
 	set number relativenumber
 	set cursorline
-	set colorcolumn=88
 	set modeline
 	set wildmode=longest,list,full
 	set laststatus=0
@@ -316,30 +315,13 @@ call plug#end()
 
 " }}}
 
-" autocommands/filetype/python {{{
+" autocommands/filetype/colorcolumn {{{
 
-	augroup filetype_python
+	augroup filetype_colorcolumn
 		autocmd!
 
 		autocmd FileType python setlocal colorcolumn=88
-		" format on save
-		" more robust option (file doesn't have to end in .py)
-		" autocmd BufWritePre *.py execute ':Black'
-		" autocmd BufWritePre * if &filetype ==# 'python' | execute ':Black'
-	augroup END
-
-" }}}
-
-" autocommands/filetype/c++ {{{
-
-	augroup filetype_cpp
-		autocmd!
-		" format on save
-		" autocmd BufWritePre *.cpp execute '%!astyle'
-		" autoformat doesn't work
-		" autocmd FileType cpp ClangFormatAutoEnable
-		autocmd FileType cpp nnoremap <leader>cf :ClangFormat<cr>
-		" g:clang_format#auto_format
+		autocmd FileType gitcommit setlocal colorcolumn=50
 	augroup END
 
 " }}}
