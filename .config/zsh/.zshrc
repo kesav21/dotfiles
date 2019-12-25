@@ -34,7 +34,7 @@ setopt PROMPT_SUBST
 # PROMPT='%{${ret_status}%}%{$fg[blue]%}[%~]%{$fg[magenta]%}$(__git_ps1) %{$fg[blue]%}$ %{$reset_color%}'
 
 PROMPT='%{${ret_status}%}%{$fg[blue]%}[%~] $ %{$reset_color%}'
-RPROMPT='%{$fg[magenta]%}$(__git_ps1)'
+RPROMPT='%{$fg[magenta]%}$(__git_ps1)%{$reset_color%}'
 
 # zsh specific env variables
 export PROMPT_EOL_MARK=''
