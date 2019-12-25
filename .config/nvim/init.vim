@@ -272,7 +272,7 @@ call plug#end()
 	augroup misc
 		autocmd!
 		" when shortcut files are updated, renew bash and vifm configs with new material
-		autocmd BufWritePost ~/.config/bmdirs,~/.config/bmfiles !~/.local/bin/bm_gen
+		autocmd BufWritePost ~/.config/scripts/bmdirs,~/.config/scripts/bmfiles !~/.local/bin/bm_gen
 		" when dunstrc is updated, restart dunst
 		autocmd BufWritePost ~/.config/dunst/dunstrc !~/.local/bin/dunst_restart
 

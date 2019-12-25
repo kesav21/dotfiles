@@ -3,8 +3,11 @@
 
 h ~
 
-c ~/.config/
-ps ~/.config/pass/
+co $XDG_CONFIG_HOME
+ca $XDG_CACHE_HOME
+da $XDG_DATA_HOME
+
+ps $PASSWORD_STORE_DIR
 
 d ~/.local/dotfiles/
 s ~/.local/scripts/
