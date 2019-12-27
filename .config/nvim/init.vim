@@ -34,6 +34,12 @@ call plug#begin('~/.local/share/nvim/vim-plug')
 	" text object for camelcase words
 	Plug 'bkad/CamelCaseMotion'
 
+	" syntax file for sxhkd
+	Plug 'kovetskiy/sxhkd-vim'
+
+	" i'm not entirely sure what this does
+	Plug 'ryanoasis/vim-devicons'
+
 	" listchars but for spaces
 	" Plug 'Yggdroot/indentLine'
 	" display hex color codes
@@ -100,6 +106,7 @@ call plug#end()
 
 	set number relativenumber
 	set cursorline
+	set colorcolumn=88
 	set modeline
 	set wildmode=longest,list,full
 	set laststatus=0
