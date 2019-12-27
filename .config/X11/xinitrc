@@ -1,6 +1,7 @@
 #!/bin/bash
 
-export _JAVA_AWT_WM_NONREPARENTING=1
-
+# bind keys
+sxhkd &
+# launch dwm
 exec ~/.local/bin/dwm_loop
 
