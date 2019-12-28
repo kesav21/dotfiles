@@ -11,7 +11,6 @@
 " https://github.com/tommcdo/vim-lion
 " https://github.com/wellle/targets.vim
 
-
 " plugins {{{
 
 " replace with nvim_get_dir('data').'vim-plug'
@@ -54,6 +53,10 @@ call plug#begin('~/.local/share/nvim/vim-plug')
 
 	" better searching
 	Plug 'junegunn/vim-slash'
+
+	" code align
+	Plug 'tommcdo/vim-lion'
+
 
 	" listchars but for spaces
 	" Plug 'Yggdroot/indentLine'
@@ -293,10 +296,9 @@ call plug#end()
 	augroup misc
 		autocmd!
 		" when bookmark files are updated, re-run bookmark generator
-		" replace with $XDG_CONFIG_HOME
-		autocmd BufWritePost ~/.local/scripts/bookmarks/bm_dirs,~/.local/scripts/bookmarks/bm_files !bm_gen
+		autocmd BufWritePost $XDG_CONFIG_HOME/bin/bm_dirs,$XDG_CONFIG_HOME/bin/bm_files !bm_gen
 		" when dunstrc is updated, restart dunst
-		autocmd BufWritePost ~/.config/dunst/dunstrc !dunst_restart
+		autocmd BufWritePost $XDG_CONFIG_HOME/dunst/dunstrc !dunst_restart
 
 		" disables automatic commenting on newline
 		autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
