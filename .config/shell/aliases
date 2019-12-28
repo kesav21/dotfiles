@@ -8,7 +8,7 @@ echo "sourced aliases"
 
 alias ..="cd .."
 
-alias v='fzf -m | xargs -r nvim'
+alias v='fzf -m --preview="bat {1}" | xargs -r nvim'
 alias vf="vifm_run . ~"
 
 alias nview="ll /home/kesav/.local/share/nvim/swap"
@@ -57,24 +57,6 @@ path () {
 refresh () {
 	xrdb -merge ~/.Xresources
 	exit
-}
-
-# }}}
-
-# bookmarks {{{
-
-# navigate to bookmarked directory
-cdb () {
-	cd $(awk '/#/ {next} NF {print $2}' ~/.config/bmdirs | fzf | sed "s|\~|$HOME|g")
-}
-
-# open bookmarked file
-vb () {
-	file=$(awk '/#/ {next} NF {print $2}' ~/.config/bmfiles | fzf | sed "s|\~|$HOME|g")
-	if [ -n "$file" ]
-	then
-		$EDITOR "$file"
-	fi
 }
 
 # }}}

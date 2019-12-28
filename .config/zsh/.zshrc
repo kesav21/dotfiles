@@ -28,7 +28,7 @@ _comp_options+=(globdots)
 
 # enable colors and change prompt
 autoload -U colors && colors
-source $XDG_BIN_DIR/git_prompt
+source $(which git_prompt)
 setopt PROMPT_SUBST
 
 PROMPT='%{${ret_status}%}%{$fg[blue]%}[%~] $ %{$reset_color%}'
