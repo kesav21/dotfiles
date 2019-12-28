@@ -113,7 +113,20 @@ source /usr/share/fzf/completion.zsh
 
 # }}}
 
-# zplug {{{
+# plugins {{{
+
+# plugins/forgit {{{
+
+forgit_add=gia
+forgit_diff=gid
+forgit_log=gil
+forgit_reset_head=girh
+forgit_ignore=gii
+forgit_restore=gicf
+forgit_clean=giclean
+forgit_stash_show=giss
+
+# }}}
 
 ZPLUG_HOME=$HOME/.local/src/zplug
 
@@ -123,6 +136,7 @@ zplug "zplug/zplug"
 zplug "hlissner/zsh-autopair"
 zplug "zdharma/fast-syntax-highlighting"
 zplug "zsh-users/zsh-autosuggestions"
+zplug 'wfxr/forgit'
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then

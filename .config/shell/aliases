@@ -97,22 +97,8 @@ alias gim="git merge"
 alias gib="git branch"
 alias gip="git push"
 
-# git log pretty
-alias gil="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-
-# git diff unstaged file
-alias gid='clear && git diff $(git diff --name-only | fzf -m)'
 # git view staged changes
 alias gids="git diff --staged"
-
-# git add all
-alias giaa="git add ."
-
-# git add unstaged/untracked file
-gia () {
-	all=$(git diff --name-only && git ls-files --others --exclude-standard)
-	git add $(printf '%s\n' "${all[@]}" | fzf -m)
-}
 
 # }}}
 
