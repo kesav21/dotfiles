@@ -1,5 +1,16 @@
 " vim: set foldmethod=marker:
 
+" TODO: check these out
+" https://www.reddit.com/r/vim/comments/m2k76/vim_porn_that_is_show_me_your_vim/
+" https://www.reddit.com/r/vim/comments/4a4b1j/vim_porn_2_post_your_vim_screenshots/
+" https://github.com/junegunn/vim-slash
+" https://github.com/airblade/vim-gitgutter
+" https://github.com/unblevable/quick-scope
+" https://github.com/Konfekt/FastFold
+" https://github.com/tpope/vim-repeat
+" https://github.com/tommcdo/vim-lion
+" https://github.com/wellle/targets.vim
+
 
 " plugins {{{
 
@@ -39,6 +50,9 @@ call plug#begin('~/.local/share/nvim/vim-plug')
 
 	" i'm not entirely sure what this does
 	Plug 'ryanoasis/vim-devicons'
+
+	" better searching
+	Plug 'junegunn/vim-slash'
 
 	" listchars but for spaces
 	" Plug 'Yggdroot/indentLine'
