@@ -7,6 +7,6 @@
 - Shell: zsh
 - Terminal: [st](https://st.suckless.org/)
 - GTK Theme: Arc-Dark
-- Icon Theme: Arc-Dark
-- Font: Fira Mono
+- Icon Theme: Papirus-Dark
+- Font: FiraMono Nerd Font
 
