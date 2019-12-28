@@ -14,6 +14,7 @@
 
 " plugins {{{
 
+" replace with nvim_get_dir('data').'vim-plug'
 call plug#begin('~/.local/share/nvim/vim-plug')
 
 " plugins/misc {{{
@@ -292,9 +293,10 @@ call plug#end()
 	augroup misc
 		autocmd!
 		" when bookmark files are updated, re-run bookmark generator
-		autocmd BufWritePost ~/.local/scripts/bookmarks/bm_dirs,~/.local/scripts/bookmarks/bm_files !~/.local/bin/bm_gen
+		" replace with $XDG_CONFIG_HOME
+		autocmd BufWritePost ~/.local/scripts/bookmarks/bm_dirs,~/.local/scripts/bookmarks/bm_files !bm_gen
 		" when dunstrc is updated, restart dunst
-		autocmd BufWritePost ~/.config/dunst/dunstrc !~/.local/bin/dunst_restart
+		autocmd BufWritePost ~/.config/dunst/dunstrc !dunst_restart
 
 		" disables automatic commenting on newline
 		autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o

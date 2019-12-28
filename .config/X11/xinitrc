@@ -3,5 +3,5 @@
 # bind keys
 sxhkd &
 # launch dwm
-exec ~/.local/bin/dwm_loop
+exec dwm_loop
 

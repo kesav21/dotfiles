@@ -28,10 +28,8 @@ _comp_options+=(globdots)
 
 # enable colors and change prompt
 autoload -U colors && colors
-source $BINPATH/git_prompt
+source $XDG_BIN_DIR/git_prompt
 setopt PROMPT_SUBST
-
-# PROMPT='%{${ret_status}%}%{$fg[blue]%}[%~]%{$fg[magenta]%}$(__git_ps1) %{$fg[blue]%}$ %{$reset_color%}'
 
 PROMPT='%{${ret_status}%}%{$fg[blue]%}[%~] $ %{$reset_color%}'
 RPROMPT='%{$fg[magenta]%}$(__git_ps1)%{$reset_color%}'
@@ -126,11 +124,11 @@ forgit_restore=gicf
 forgit_clean=giclean
 forgit_stash_show=giss
 
+FORGIT_FZF_DEFAULT_OPTS="--height 100% --border --cycle "
+
 # }}}
 
-ZPLUG_HOME=$HOME/.local/src/zplug
-
-source $ZPLUG_HOME/init.zsh
+source $XDG_SRC_DIR/zplug/init.zsh
 
 zplug "zplug/zplug"
 zplug "hlissner/zsh-autopair"
