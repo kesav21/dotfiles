@@ -40,7 +40,6 @@ export ZPLUG_HOME="$HOME"/.local/src/zplug
 # set my env variables
 
 export XDG_DOTFILES_DIR="$HOME"/.local/dotfiles
-export XDG_SCRIPTS_DIR="$HOME"/.local/scripts
 export XDG_SRC_DIR="$HOME"/.local/src
 export XDG_BIN_DIR="$HOME"/.local/bin
 
@@ -54,9 +53,14 @@ export XDG_PROJECTS_DIR="$HOME"/projects
 
 # add local scripts to PATH
 
-# if scripts not in path, add it to path
-# if [[ ":$PATH:" != *":$XDG_BIN_DIR:"* ]] && PATH="$XDG_BIN_DIR:$PATH"
-PATH="$XDG_BIN_DIR:$PATH"
+cd $XDG_BIN_DIR
+bin=$(find . -type d -path '*/\.*' -prune -o -not -name '.*' -type d -print \
+	| xargs -I DIR realpath DIR \
+	| tr '\n' ':' \
+	| sed 's/:*$//' \
+	&& printf ":$XDG_BIN_DIR")
+PATH="$PATH:$bin"
+cd
 
 # set colored output
 
