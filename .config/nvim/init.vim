@@ -3,12 +3,8 @@
 " TODO: check these out
 " https://www.reddit.com/r/vim/comments/m2k76/vim_porn_that_is_show_me_your_vim/
 " https://www.reddit.com/r/vim/comments/4a4b1j/vim_porn_2_post_your_vim_screenshots/
-" https://github.com/junegunn/vim-slash
 " https://github.com/airblade/vim-gitgutter
-" https://github.com/unblevable/quick-scope
 " https://github.com/Konfekt/FastFold
-" https://github.com/tpope/vim-repeat
-" https://github.com/tommcdo/vim-lion
 " https://github.com/wellle/targets.vim
 
 " plugins {{{
@@ -47,16 +43,16 @@ call plug#begin('~/.local/share/nvim/vim-plug')
 
 	" syntax file for sxhkd
 	Plug 'kovetskiy/sxhkd-vim'
-
 	" i'm not entirely sure what this does
 	Plug 'ryanoasis/vim-devicons'
-
 	" better searching
 	Plug 'junegunn/vim-slash'
-
 	" code align
 	Plug 'tommcdo/vim-lion'
-
+	" better repeating for plugins
+	Plug 'tpope/vim-repeat'
+	" better line searching
+	Plug 'unblevable/quick-scope'
 
 	" listchars but for spaces
 	" Plug 'Yggdroot/indentLine'
@@ -198,6 +194,8 @@ call plug#end()
 	let g:airline_powerline_fonts = 1
 	let g:airline#extensions#tabline#enabled = 1
 
+	let g:airline_section_z = ''
+
 " }}}
 
 " settings/plugins/vimtex {{{
@@ -285,6 +283,12 @@ call plug#end()
 
 " }}}
 
+" settings/plugins/camelcase {{{
+
+	let g:camelcasemotion_key = '<leader>'
+
+ " }}}
+
 " }}}
 
 " }}}
@@ -334,7 +338,7 @@ call plug#end()
 		autocmd!
 		autocmd FileType markdown set commentstring=<!--\ %s\ -->
 		autocmd FileType xdefaults set commentstring=!\ %s
-		autocmd FileType cpp set commentstring=//\ %s
+		autocmd FileType c,cpp set commentstring=//\ %s
 		autocmd FileType matlab set commentstring=%\ %s
 	augroup END
 
