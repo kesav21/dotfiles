@@ -3,6 +3,7 @@
 
 source ~/.config/vifm/vifm_bookmarks
 
+
 " settings {{{
 
 " show line numbers
@@ -73,9 +74,6 @@ fileviewer *.gif
 
 " mappings {{{
 
-" Start shell in current directory
-nnoremap s :shell<cr>
-
 " Toggle visibility of preview window
 nnoremap w :view<cr>
 vnoremap w :view<cr>gv
@@ -84,5 +82,10 @@ vnoremap w :view<cr>gv
 nnoremap I cw<c-a>
 nnoremap cc cw<c-u>
 nnoremap A cw
+
+" easier exit command
+" on exit, print directory to file
+command Q :execute "!echo %d > $XDG_CONFIG_HOME/vifm/lastdir" | quit
+nnoremap Q :Q<cr>
 
 " }}}
