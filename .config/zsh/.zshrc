@@ -44,7 +44,11 @@ export PROMPT_EOL_MARK=''
 # edit line in vim with ctrl-e
 autoload edit-command-line
 zle -N edit-command-line
-bindkey '^e' edit-command-line
+bindkey '^i' edit-command-line
+
+# go to end of line
+# this is for zsh-autosuggestions
+bindkey '^e' vi-end-of-line
 
 # keymap/completion-menu {{{
 
@@ -97,6 +101,20 @@ preexec() { echo -ne '\e[5 q' ;}
 
 # }}}
 
+# keymap/movement {{{
+
+# use vifm to switch directories
+vifmcd () {
+	rm "$XDG_CONFIG_HOME"/vifm/lastdir
+	vifm_run
+	cd $(cat "$XDG_CONFIG_HOME"/vifm/lastdir)
+}
+
+# bind to ctrl-o
+bindkey -s '^o' 'vifmcd\n'
+
+# }}}
+
 # }}}
 
 # load {{{
@@ -138,10 +156,10 @@ zplug 'wfxr/forgit'
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
+	printf "Install? [y/N]: "
+	if read -q; then
+		echo; zplug install
+	fi
 fi
 
 echo 'loading zplug'
