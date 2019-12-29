@@ -41,10 +41,11 @@ export PROMPT_EOL_MARK=''
 
 # keymap {{{
 
-# edit line in vim with ctrl-e
+# edit line in vim
 autoload edit-command-line
 zle -N edit-command-line
-bindkey '^i' edit-command-line
+bindkey '^k' edit-command-line
+bindkey -M vicmd '^k' edit-command-line
 
 # go to end of line
 # this is for zsh-autosuggestions
@@ -105,13 +106,15 @@ preexec() { echo -ne '\e[5 q' ;}
 
 # use vifm to switch directories
 vifmcd () {
-	rm "$XDG_CONFIG_HOME"/vifm/lastdir
+	file="$XDG_CONFIG_HOME"/vifm/lastdir
+	[ -f "$file" ] && rm "$file"
 	vifm_run
-	cd $(cat "$XDG_CONFIG_HOME"/vifm/lastdir)
+	[ -f "$file" ] && cd $(cat "$file") || echo "no $file"
 }
 
 # bind to ctrl-o
 bindkey -s '^o' 'vifmcd\n'
+bindkey -s -M vicmd '^o' 'ivifmcd\n'
 
 # }}}
 
