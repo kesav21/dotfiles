@@ -1,10 +1,8 @@
-#!/bin/bash
+#!/bin/sh
 
-files=$(git ls-files --exclude .gitignore | grep -Ev '\.gitignore|README\.md|update')
-
-for file in $files
+git ls-files | grep -Ev '\.gitignore|README\.md|update' | while read -r file
 do
-	rm ~/$file
-	ln -sv $(pwd)/$file ~/$file
+	rm ~/"$file"
+	ln -sv "$(pwd)"/"$file" ~/"$file"
 done
 
