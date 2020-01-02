@@ -33,7 +33,7 @@ lc() {
 }
 
 # print out path neatly
-path () {
+path() {
 	echo "$PATH" | tr ':' '\n'
 }
 
@@ -52,22 +52,21 @@ path () {
 
 alias gis="clear && git status"
 alias gic="git commit -S"
-
-# git checkout branch
-gich() {
-	local branches branch
-	branches=$(git --no-pager branch -vv) &&
-	branch=$(echo "$branches" | fzf +m) &&
-	git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
-}
-
-alias gichm="git checkout master"
-alias gim="git merge"
-alias gib="git branch"
+alias gids="git diff --staged"
 alias gip="git push"
 
-# git view staged changes
-alias gids="git diff --staged"
+# branching
+
+alias mkb='git checkout -b'
+alias delb='git branch -d'
+
+mergeb() {
+	branch=$(git branch | awk '/\*/ {print $2}')
+	git checkout master && git merge "$branch"
+}
+
+useb() {
+	git branch | awk '{print $2}' | fzf | xargs -r -I b git checkout b
+}
 
 # }}}
-
