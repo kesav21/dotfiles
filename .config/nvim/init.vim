@@ -312,10 +312,14 @@ call plug#end()
 
 	augroup misc
 		autocmd!
+
 		" when bookmark files are updated, re-run bookmark generator
-		autocmd BufWritePost $XDG_CONFIG_HOME/bin/bm_dirs,$XDG_CONFIG_HOME/bin/bm_files !bm_gen
+		autocmd BufWritePost *bm_dirs,*bm_files !bmgen
 		" when dunstrc is updated, restart dunst
-		autocmd BufWritePost $XDG_CONFIG_HOME/dunst/dunstrc !dunst_restart
+		" figure out how to restart a process
+		autocmd BufWritePost *dunstrc !killall -q dunst; dunst &
+
+		autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd
 
 		" disables automatic commenting on newline
 		autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
@@ -353,6 +357,7 @@ call plug#end()
 		autocmd FileType xdefaults set commentstring=!\ %s
 		autocmd FileType c,cpp set commentstring=//\ %s
 		autocmd FileType matlab set commentstring=%\ %s
+		autocmd FileType crontab set commentstring=#\ %s
 	augroup END
 
 " }}}
