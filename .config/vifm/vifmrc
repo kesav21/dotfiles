@@ -12,6 +12,8 @@ set number relativenumber
 set dotfiles
 " editor
 set vicmd=nvim
+" don't show ../
+set dotdirs=''
 
 " }}}
 
@@ -46,17 +48,14 @@ mark h ~/
 
 " file-open {{{
 
-" Pdf
-filextype *.pdf zathura %c %i &, apvlv %c, xpdf %c
+" pdf
+filextype *.pdf zathura %c %i &
 fileviewer *.pdf pdftotext -nopgbrk %c -
 
-" Web
-filextype *.html,*.htm
-	\ {Open with firefox}
-	\ firefox %f &,
-	filetype *.html,*.htm links, lynx
+" web
+filextype *.html,*.htm firefox %f &
 
-" Images
+" images
 filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
 	\ {View in sxiv}
 	\ sxiv %f,
@@ -89,3 +88,4 @@ command Q :execute "!echo %d > $XDG_CONFIG_HOME/vifm/lastdir" | quit
 nnoremap Q :Q<cr>
 
 " }}}
+
