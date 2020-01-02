@@ -61,6 +61,9 @@ bin=$(find . -type d -path '*/\.*' -prune -o -not -name '.*' -type d -print \
 PATH="$PATH:$bin"
 cd
 
+# clear cache on startup
+rm -rf "$XDG_CACHE_HOME"/bin && mkdir "$XDG_CACHE_HOME"/bin
+
 # set colored output
 
 alias diff='diff --color=auto'
@@ -70,17 +73,17 @@ alias ls='ls --color=always'
 # colored man pages
 
 export LESS=-R
-export LESS_TERMCAP_mb=$'\E[1;31m'
-export LESS_TERMCAP_md=$'\E[1;36m'
-export LESS_TERMCAP_me=$'\E[0m'
-export LESS_TERMCAP_so=$'\E[01;44;33m'
-export LESS_TERMCAP_se=$'\E[0m'
-export LESS_TERMCAP_us=$'\E[1;32m'
-export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_mb="$(printf '\e[1;31m')"
+export LESS_TERMCAP_md="$(printf '\e[1;36m')"
+export LESS_TERMCAP_me="$(printf '\e[0m')"
+export LESS_TERMCAP_so="$(printf '\e[01;44;33m')"
+export LESS_TERMCAP_se="$(printf '\e[0m')"
+export LESS_TERMCAP_us="$(printf '\e[1;32m')"
+export LESS_TERMCAP_ue="$(printf '\e[0m')"
 
 # set up node version manager
-export NVM_SOURCE=/usr/share/nvm                     # The AUR package installs it to here.
-[ -s "$NVM_SOURCE"/nvm.sh ] && . "$NVM_SOURCE"/nvm.sh  # Load NVMource /usr/share/nvm/init-nvm.sh
+export NVM_SOURCE=/usr/share/nvm
+[ -s "$NVM_SOURCE"/nvm.sh ] && . "$NVM_SOURCE"/nvm.sh
 
 # set up fzf
 
@@ -92,10 +95,8 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' --color=fg:#a89984,bg:#282828,hl:#83a
 
 # start x
 
-if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]
-then
+if systemctl -q is-active graphical.target && [ ! "$DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ]; then
 	exec startx "$XDG_CONFIG_HOME"/X11/xinitrc
 fi
 
 export GPG_TTY="$(tty)"
-
