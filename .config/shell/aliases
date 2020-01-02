@@ -32,21 +32,19 @@ lc() {
 	rm *.toc
 }
 
-# get size of directory
-dirsize () {
-	du -h --max-depth=1 | sort -hr
-}
-
 # print out path neatly
 path () {
-	sed 's/:/\n/g' <<< "$PATH"
+	echo "$PATH" | tr ':' '\n'
 }
 
-# reload Xresources
-refresh () {
-	xrdb -merge ~/.Xresources
-	exit
-}
+# }}}
+
+# packages {{{
+
+# pacman -Slq | fzf -m --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S
+# pacman -Q | awk '{print $1}' | fzf -m --preview 'pacman -Qi {1}'
+# pac_list | xargs -ro sudo pacman -Rns
+# yay -Slq | fzf -m --preview 'yay -Si {1}'| xargs -ro yay -S
 
 # }}}
 
