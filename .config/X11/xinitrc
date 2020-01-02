@@ -1,7 +1,16 @@
-#!/bin/bash
+#!/bin/sh
 
 # bind keys
 sxhkd &
-# launch dwm
-exec dwm_loop
+# notification daemon
+dunst &
+
+# dwm startup script
+dwmrc &
+# execute dwm on loop, to add "refresh" functionality
+while true
+do
+	dwm 2> $XDG_CACHE_HOME/bin/dwm.log
+done
+
 
