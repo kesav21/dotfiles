@@ -9,21 +9,12 @@ echo "sourced aliases"
 alias ..="cd .."
 
 alias v='fzf -m --preview="bat {1}" | xargs -r nvim'
-alias vf="vifm_run . ~"
-
-alias nview="ll /home/kesav/.local/share/nvim/swap"
-alias nclear="sudo rm /home/kesav/.local/share/nvim/swap/*"
-
-alias t="tree -a -I '.git|__pycache__|.pytest_cache|.env'"
-
+alias vf="vifmu . ~"
 alias ll="ls -AlF --color=always"
-alias nuke="sudo rm -rf"
+alias xm="xmodmap $(readlink -f "$XDG_CONFIG_HOME"/X11/xmodmaprc)"
 
-alias ytu="sudo youtube-dl -U"
-alias yta="youtube-dl -f bestaudio"
-
-alias me="monitor_extend"
-alias md="monitor_disconnect"
+alias me="monctl --extend"
+alias md="monctl --disconnect"
 
 alias mi="sudo make install"
 alias mic="sudo make install && make clean"
@@ -31,8 +22,6 @@ alias mic="sudo make install && make clean"
 alias vc='virtualenv --no-site-packages -p $(which python3) .env'
 alias va="source .env/bin/activate"
 alias vd="deactivate"
-
-alias xm="xmodmap $(readlink -f ~/.config/X11/xmodmaprc)"
 
 # compile latex file and delete output files (except for pdf)
 lc() {
