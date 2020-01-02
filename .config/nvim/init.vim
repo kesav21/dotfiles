@@ -1,5 +1,6 @@
 " vim: set foldmethod=marker:
 
+
 " TODO: check these out
 " https://www.reddit.com/r/vim/comments/m2k76/vim_porn_that_is_show_me_your_vim/
 " https://www.reddit.com/r/vim/comments/4a4b1j/vim_porn_2_post_your_vim_screenshots/
@@ -35,11 +36,13 @@ call plug#begin('~/.local/share/nvim/vim-plug')
 	Plug 'tpope/vim-surround'
 
 	" text object based on indentation
-	Plug 'michaeljsmith/vim-indent-object'
+	" Plug 'michaeljsmith/vim-indent-object'
 	" text object for function arguments
 	Plug 'vim-scripts/argtextobj.vim'
 	" text object for camelcase words
-	Plug 'bkad/CamelCaseMotion'
+	" Plug 'bkad/CamelCaseMotion'
+	" more text objects
+	Plug 'wellle/targets.vim'
 
 	" syntax file for sxhkd
 	Plug 'kovetskiy/sxhkd-vim'
@@ -52,14 +55,14 @@ call plug#begin('~/.local/share/nvim/vim-plug')
 	" better repeating for plugins
 	Plug 'tpope/vim-repeat'
 	" better line searching
-	Plug 'unblevable/quick-scope'
-
+	" Plug 'unblevable/quick-scope'
 	" listchars but for spaces
-	" Plug 'Yggdroot/indentLine'
-	" display hex color codes
-	" Plug 'chrisbra/Colorizer'
-	" code alignment
-	" Plug 'junegunn/vim-easy-align'
+	Plug 'Yggdroot/indentLine'
+	" faster folding
+	Plug 'Konfekt/FastFold'
+
+	" code formatter
+	Plug 'sbdchd/neoformat'
 
 " }}}
 
@@ -82,15 +85,8 @@ call plug#begin('~/.local/share/nvim/vim-plug')
 	Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'}
 	Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 
-	" python code formatter
-	Plug 'dimbleby/black.vim'
 	" python folding
 	Plug 'kalekundert/vim-coiled-snake'
-
-	" cpp code formatter
-	Plug 'rhysd/vim-clang-format'
-	" haskell code formatter
-	Plug 'nbouscal/vim-stylish-haskell'
 
 " }}}
 
@@ -289,6 +285,23 @@ call plug#end()
 
  " }}}
 
+" settings/plugins/neoformat {{{
+
+	let g:neoformat_enabled_python = [ 'black' ]
+
+	let g:neoformat_enabled_haskell = [ 'stylish_haskell' ]
+	let g:neoformat_haskell_stylish_haskell = {
+		\ 'exe': 'stylish-haskell',
+	  \ }
+
+	let g:neoformat_enabled_sh = [ 'shfmt' ]
+	let g:neoformat_sh_shfmt = {
+            \ 'exe': 'shfmt',
+            \ 'args': ['-i 0', '-p', '-bn', '-ci', '-sr'],
+            \ }
+
+ " }}}
+
 " }}}
 
 " }}}
@@ -351,6 +364,15 @@ call plug#end()
 
 		autocmd FileType python setlocal colorcolumn=88
 		autocmd FileType gitcommit setlocal colorcolumn=50
+	augroup END
+
+" }}}
+
+" autocommands/filetype/formatting {{{
+
+	augroup fmt
+		autocmd!
+		autocmd BufWritePre * | Neoformat
 	augroup END
 
 " }}}
@@ -457,7 +479,7 @@ call plug#end()
 
 	function! s:check_back_space() abort
 		let col = col('.') - 1
-		return !col || getline('.')[col - 1]  =~# '\s'
+		return !col || getline('.')[col - 1] =~# '\s'
 	endfunction
 
 	" navigate tab completion
@@ -502,11 +524,11 @@ call plug#end()
 
 " omappings/misc {{{
 
-	onoremap in( :<c-u>normal! f(vi(<cr>
-	onoremap in{ :<c-u>normal! f{vi{<cr>
-	onoremap in[ :<c-u>normal! f[vi[<cr>
-	onoremap in" :<c-u>normal! f"vi"<cr>
-	onoremap in' :<c-u>normal! f'vi'<cr>
+	" onoremap in( :<c-u>normal! f(vi(<cr>
+	" onoremap in{ :<c-u>normal! f{vi{<cr>
+	" onoremap in[ :<c-u>normal! f[vi[<cr>
+	" onoremap in" :<c-u>normal! f"vi"<cr>
+	" onoremap in' :<c-u>normal! f'vi'<cr>
 
 	" onoremap il( :<c-u>normal! F)vi(<cr>
 	" onoremap il{ :<c-u>normal! F)vi{<cr>
