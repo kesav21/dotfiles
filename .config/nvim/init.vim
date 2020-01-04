@@ -289,6 +289,15 @@ call plug#end()
 
 	let g:neoformat_enabled_python = [ 'black' ]
 
+
+	let g:neoformat_enabled_cpp = []
+	" let g:neoformat_enabled_cpp = [ 'astyle' ]
+	" let g:neoformat_cpp_astyle = {
+	" 	\ 'exe': 'astyle',
+	" 	\ 'args': ['-T4', '-A2'],
+	" 	\ 'stdin': 1,
+	"   \ }
+
 	let g:neoformat_enabled_haskell = [ 'stylish_haskell' ]
 	let g:neoformat_haskell_stylish_haskell = {
 		\ 'exe': 'stylish-haskell',
