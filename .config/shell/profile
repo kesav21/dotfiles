@@ -50,6 +50,11 @@ export XDG_PICTURES_DIR="$HOME"/Pictures
 export XDG_ASU_DIR="$HOME"/asu
 export XDG_PROJECTS_DIR="$HOME"/projects
 
+# cse365 stuff
+
+export WECHALLUSER="kkadalaz"
+export WECHALLTOKEN="DDC9C-1DDAD-79B2A-1C974-20488-EDD35"
+
 # add local scripts to PATH
 
 cd $XDG_BIN_DIR
