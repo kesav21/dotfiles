@@ -283,7 +283,7 @@ call plug#end()
 
 	let g:camelcasemotion_key = '<leader>'
 
- " }}}
+" }}}
 
 " settings/plugins/neoformat {{{
 
@@ -301,15 +301,15 @@ call plug#end()
 	let g:neoformat_enabled_haskell = [ 'stylish_haskell' ]
 	let g:neoformat_haskell_stylish_haskell = {
 		\ 'exe': 'stylish-haskell',
-	  \ }
+	\ }
 
 	let g:neoformat_enabled_sh = [ 'shfmt' ]
 	let g:neoformat_sh_shfmt = {
-            \ 'exe': 'shfmt',
-            \ 'args': ['-i 0', '-p', '-bn', '-ci', '-sr'],
-            \ }
+		\ 'exe': 'shfmt',
+		\ 'args': ['-i 0', '-p', '-bn', '-ci', '-sr'],
+	\ }
 
- " }}}
+" }}}
 
 " }}}
 
@@ -384,10 +384,10 @@ call plug#end()
 
 " autocommands/filetype/formatting {{{
 
-	augroup fmt
-		autocmd!
-		autocmd BufWritePre * | Neoformat
-	augroup END
+	" augroup fmt
+	" 	autocmd!
+	" 	autocmd BufWritePre * | Neoformat
+	" augroup END
 
 " }}}
 
