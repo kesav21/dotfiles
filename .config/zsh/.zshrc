@@ -108,7 +108,7 @@ preexec() { echo -ne '\e[5 q' ;}
 vifmcd () {
 	file="$XDG_CONFIG_HOME"/vifm/lastdir
 	[ -f "$file" ] && rm "$file"
-	vifm_run
+	vifmu
 	[ -f "$file" ] && cd $(cat "$file") || echo "no $file"
 }
 
@@ -129,6 +129,9 @@ source /usr/share/fzf/completion.zsh
 # load aliases and bookmarks
 [ -f ~/.config/shell/aliases ] && source ~/.config/shell/aliases
 [ -f ~/.config/shell/bookmarks ] && source ~/.config/shell/bookmarks
+
+# load fuck
+eval $(thefuck --alias)
 
 # }}}
 
