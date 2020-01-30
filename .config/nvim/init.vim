@@ -1,24 +1,11 @@
 " vim: set foldmethod=marker:
 
 
-" TODO: check these out
-" https://www.reddit.com/r/vim/comments/m2k76/vim_porn_that_is_show_me_your_vim/
-" https://www.reddit.com/r/vim/comments/4a4b1j/vim_porn_2_post_your_vim_screenshots/
-" https://github.com/airblade/vim-gitgutter
-" https://github.com/Konfekt/FastFold
-" https://github.com/wellle/targets.vim
-
-" plugins {{{
-
 " replace with nvim_get_dir('data').'vim-plug'
 call plug#begin('~/.local/share/nvim/vim-plug')
 
 " plugins/misc {{{
 
-	" status bar
-	Plug 'vim-airline/vim-airline'
-	" statusbar git plugin
-	Plug 'tpope/vim-fugitive'
 	" commenting
 	Plug 'tpope/vim-commentary'
 
@@ -38,14 +25,12 @@ call plug#begin('~/.local/share/nvim/vim-plug')
 	" text object based on indentation
 	" Plug 'michaeljsmith/vim-indent-object'
 	" text object for function arguments
-	Plug 'vim-scripts/argtextobj.vim'
+	" Plug 'vim-scripts/argtextobj.vim'
 	" text object for camelcase words
 	" Plug 'bkad/CamelCaseMotion'
 	" more text objects
 	Plug 'wellle/targets.vim'
 
-	" syntax file for sxhkd
-	Plug 'kovetskiy/sxhkd-vim'
 	" i'm not entirely sure what this does
 	Plug 'ryanoasis/vim-devicons'
 	" better searching
@@ -61,21 +46,27 @@ call plug#begin('~/.local/share/nvim/vim-plug')
 	" faster folding
 	Plug 'Konfekt/FastFold'
 
+	" tag management
+	Plug 'ludovicchabant/vim-gutentags'
+
 	" code formatter
 	Plug 'sbdchd/neoformat'
 
 " }}}
 
-" plugins/colorscheme {{{
+" plugins/appearance {{{
 
 	" gruvbox theme
 	Plug 'gruvbox-community/gruvbox'
 
+	" status bar
+	Plug 'vim-airline/vim-airline'
+	" statusbar git plugin
+	Plug 'tpope/vim-fugitive'
+
 " }}}
 
 " plugins/language {{{
-
-" plugins/language/misc {{{
 
 	" markdown bulleting
 	Plug 'dkarter/bullets.vim'
@@ -88,12 +79,7 @@ call plug#begin('~/.local/share/nvim/vim-plug')
 	" python folding
 	Plug 'kalekundert/vim-coiled-snake'
 
-" }}}
-
-" plugins/language/syntax-highlighting {{{
-
-	" language pack
-	" Plug 'sheerun/vim-polyglot'
+	" plugins/language/syntax-highlighting
 
 	" c++
 	Plug 'octol/vim-cpp-enhanced-highlight'
@@ -102,15 +88,14 @@ call plug#begin('~/.local/share/nvim/vim-plug')
 	" python
 	Plug 'vim-python/python-syntax'
 
-" }}}
+	" syntax file for sxhkd
+	Plug 'kovetskiy/sxhkd-vim'
 
 " }}}
+
 
 call plug#end()
 
-" }}}
-
-" settings {{{
 
 " settings/misc {{{
 
@@ -131,9 +116,7 @@ call plug#end()
 	" increases startup time by 10ms
 	set guioptions=M
 
-" }}}
-
-" settings/tabs {{{
+	" tabs
 
 	" value of \t
 	set tabstop=4
@@ -144,24 +127,18 @@ call plug#end()
 	" expandtab: tab will generate spaces (in insert mode)
 	set noexpandtab
 
-" }}}
-
-" settings/syntax-highlighting {{{
+	" syntax-highlighting
 
 	filetype plugin indent on
 	syntax on
 
-" }}}
-
-" settings/listchars {{{
+	" listchars
 
 	set showbreak=↪
 	set list
 	set listchars=tab:›─,nbsp:∙,trail:∙,extends:▶,precedes:◀
 
-" }}}
-
-" settings/colors {{{
+	" colors
 
 	set background=dark
 	set termguicolors
@@ -170,7 +147,7 @@ call plug#end()
 
 " settings/plugins {{{
 
-" settings/plugins/gruvbox {{{
+	" gruvbox
 
 	let g:gruvbox_italic = 1
 	let g:gruvbox_invert_selection = 0
@@ -182,9 +159,7 @@ call plug#end()
 
 	colorscheme gruvbox
 
-" }}}
-
-" settings/plugins/airline {{{
+	" airline
 
 	let g:airline_skip_empty_sections = 1
 	let g:airline_powerline_fonts = 1
@@ -192,9 +167,7 @@ call plug#end()
 
 	let g:airline_section_z = ''
 
-" }}}
-
-" settings/plugins/vimtex {{{
+	" vimtex
 
 	let g:tex_flavor='latex'
 	" let g:tex_flavor='lualatex'
@@ -202,11 +175,10 @@ call plug#end()
 	let g:vimtex_view_method='zathura'
 	let g:vimtex_quickfix_mode=0
 	set conceallevel=2
+	" set conceallevel=0
 	let g:tex_conceal='abdmg'
 
-" }}}
-
-" settings/plugins/ultisnips {{{
+	" ultisnips
 
 	let g:UltiSnipsSnippetsDir = '/home/kesav/.config/nvim/ultisnips'
 	let g:UltiSnipsSnippetDirectories = ['ultisnips']
@@ -215,36 +187,26 @@ call plug#end()
 	let g:UltiSnipsJumpForwardTrigger = '<c-j>'
 	let g:UltiSnipsJumpBackwardTrigger = '<c-k>'
 
-" }}}
-
-" settings/plugins/vim-latex-live-preview {{{
+	" vim-latex-live-preview
 
 	let g:livepreview_previewer = 'zathura'
 
-" }}}
-
-" settings/plugins/fzf {{{
+	" fzf
 
 	" command to generate tags file
 	let g:fzf_tags_command = 'ctags -R'
 
-" }}}
-
-" settings/plugins/indentLine {{{
+	" indentLine
 
 	" let g:indentLine_char = '|'
 	let g:indentLine_char = '›'
 	" let g:indentLine_char = '▏'
 
-" }}}
-
-" settings/plugins/python {{{
+	" python
 
 	let g:python_highlight_all = 1
 
-" }}}
-
-" settings/plugins/vim_polyglot {{{
+	" vim_polyglot
 
 	let g:cpp_class_scope_highlight = 1
 	let g:cpp_member_variable_highlight = 1
@@ -253,9 +215,7 @@ call plug#end()
 	let g:cpp_experimental_template_highlight = 1
 	let g:cpp_concepts_highlight = 1
 
-" }}}
-
-" settings/plugins/coc.nvim {{{
+	" coc.nvim
 
 	" if hidden is not set, TextEdit might fail.
 	set hidden
@@ -271,32 +231,32 @@ call plug#end()
 	" always show signcolumns
 	set signcolumn=yes
 
-" }}}
+	" auto-pairs
 
-" settings/plugins/auto-pairs {{{
+	let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', "`":"`", '```':'```', '"""':'"""', "'''":"'''", }
 
-	let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', "`":"`", '```':'```', '"""':'"""', "'''":"'''"}
-
-" }}}
-
-" settings/plugins/camelcase {{{
+	" camelcase
 
 	let g:camelcasemotion_key = '<leader>'
 
-" }}}
-
-" settings/plugins/neoformat {{{
+	" neoformat
 
 	let g:neoformat_enabled_python = [ 'black' ]
 
+	let g:neoformat_enabled_c = [ 'astyle' ]
+	let g:neoformat_c_astyle = {
+		\ 'exe': 'astyle',
+		\ 'args': ['-T4', '-A2'],
+		\ 'stdin': 1,
+	  \ }
 
-	let g:neoformat_enabled_cpp = []
-	" let g:neoformat_enabled_cpp = [ 'astyle' ]
-	" let g:neoformat_cpp_astyle = {
-	" 	\ 'exe': 'astyle',
-	" 	\ 'args': ['-T4', '-A2'],
-	" 	\ 'stdin': 1,
-	"   \ }
+	" let g:neoformat_enabled_cpp = []
+	let g:neoformat_enabled_cpp = [ 'astyle' ]
+	let g:neoformat_cpp_astyle = {
+		\ 'exe': 'astyle',
+		\ 'args': ['-T4', '-A2'],
+		\ 'stdin': 1,
+	  \ }
 
 	let g:neoformat_enabled_haskell = [ 'stylish_haskell' ]
 	let g:neoformat_haskell_stylish_haskell = {
@@ -306,18 +266,15 @@ call plug#end()
 	let g:neoformat_enabled_sh = [ 'shfmt' ]
 	let g:neoformat_sh_shfmt = {
 		\ 'exe': 'shfmt',
-		\ 'args': ['-i 0', '-p', '-bn', '-ci', '-sr'],
+		\ 'args': ['-p', '-i 0', '-bn', '-ci', '-sr'],
 	\ }
 
 " }}}
 
-" }}}
-
-" }}}
 
 " autocommands {{{
 
-" autocommands/misc {{{
+	" autocommands/misc
 
 	augroup misc
 		autocmd!
@@ -344,11 +301,9 @@ call plug#end()
 		autocmd VimEnter * :nnoremap gcc <Nop>
 	augroup END
 
-" }}}
+	" autocommands/filetype
 
-" autocommands/filetype {{{
-
-" autocommands/filetype/tabs {{{
+	" autocommands/filetype/tabs
 
 	augroup au_tabs
 		autocmd!
@@ -356,9 +311,7 @@ call plug#end()
 		autocmd FileType python,haskell setlocal expandtab
 	augroup END
 
-" }}}
-
-" autocommands/filetype/commenstrings {{{
+	" autocommands/filetype/commenstrings
 
 	augroup commentstrings
 		autocmd!
@@ -369,9 +322,7 @@ call plug#end()
 		autocmd FileType crontab set commentstring=#\ %s
 	augroup END
 
-" }}}
-
-" autocommands/filetype/colorcolumn {{{
+	" autocommands/filetype/colorcolumn
 
 	augroup filetype_colorcolumn
 		autocmd!
@@ -380,31 +331,25 @@ call plug#end()
 		autocmd FileType gitcommit setlocal colorcolumn=50
 	augroup END
 
-" }}}
+	" autocommands/filetype/formatting
 
-" autocommands/filetype/formatting {{{
+	set shortmess=filnxtToOc
+	augroup filetype_neoformat
+		autocmd!
+		autocmd BufWritePre * if &filetype == 'sh' | Neoformat
+		autocmd BufWritePre * if &filetype == 'c' | Neoformat
+		autocmd BufWritePre * if &filetype == 'cpp' | Neoformat
+	augroup END
 
-	" augroup fmt
-	" 	autocmd!
-	" 	autocmd BufWritePre * | Neoformat
-	" augroup END
-
-" }}}
-
-" }}}
-
-" autocommands/plugins/coc.nvim {{{
+	" autocommands/plugins/coc.nvim
 
 	" highlight symbol under cursor on CursorHold
 	autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " }}}
 
-" }}}
 
 " mappings {{{
-
-" mappings/misc {{{
 
 	" set leader key
 	let mapleader = " "
@@ -414,21 +359,10 @@ call plug#end()
 	inoremap jk <esc>
 	" clear search
 	nnoremap <silent> <leader>, :nohlsearch<cr>
-
-	" switch background colors
-	function! ToggleBackground()
-		if &background == 'dark'
-			set background=light
-		else
-			set background=dark
-		endif
-	endfunction
-	nnoremap <silent> <leader>b :call ToggleBackground()<cr>
-
-	" comment/uncomment
-	nnoremap <silent> <c-_> :Commentary<cr>
-	vnoremap <silent> <c-_> :Commentary<cr>
-	inoremap <silent> <c-_> <c-o>:Commentary<cr>
+	" buffers
+	nnoremap <silent> <leader>j :bp<cr>
+	nnoremap <silent> <leader>k :bn<cr>
+	nnoremap <silent> <leader>x :bd<cr>
 
 " }}}
 
@@ -459,27 +393,20 @@ call plug#end()
 
 " }}}
 
-" mappings/buffers {{{
-
-	" switch to previous buffer
-	nnoremap <silent> <leader>j :bp<cr>
-	" switch to next buffer
-	nnoremap <silent> <leader>k :bn<cr>
-	" delete buffer
-	nnoremap <silent> <leader>x :bd<cr>
-
-" }}}
-
 " mappings/plugins {{{
 
-" mappings/plugins/misc {{{
+	" mappings/plugins/misc
 
+	" commenting
+	nnoremap <silent> <c-_> :Commentary<cr>
+	vnoremap <silent> <c-_> :Commentary<cr>
+	inoremap <silent> <c-_> <c-o>:Commentary<cr>
 	" plug mappings
 	noremap <leader>pi :PlugInstall<cr>
 	noremap <leader>pc :PlugClean<cr>
 	" run fzf.vim
-	nnoremap <leader>f :Files<cr>
-	nnoremap <leader>t :BTags<cr>
+	nnoremap <silent> <leader>f :Files<cr>
+	nnoremap <silent> <leader>t :Tags<cr>
 	" edit common snippets file
 	nnoremap <leader>ua :UltiSnipsEdit all<cr>
 	" edit language-specific snippets file
@@ -487,9 +414,7 @@ call plug#end()
 	" launch live preview of latex file
 	nnoremap <leader>lp :LLPStartPreview<cr>
 
-" }}}
-
-" mappings/plugins/coc.nvim {{{
+	" mappings/plugins/coc.nvim
 
 	function! s:check_back_space() abort
 		let col = col('.') - 1
@@ -530,27 +455,4 @@ call plug#end()
 
 " }}}
 
-" }}}
-
-" }}}
-
-" omappings {{{
-
-" omappings/misc {{{
-
-	" onoremap in( :<c-u>normal! f(vi(<cr>
-	" onoremap in{ :<c-u>normal! f{vi{<cr>
-	" onoremap in[ :<c-u>normal! f[vi[<cr>
-	" onoremap in" :<c-u>normal! f"vi"<cr>
-	" onoremap in' :<c-u>normal! f'vi'<cr>
-
-	" onoremap il( :<c-u>normal! F)vi(<cr>
-	" onoremap il{ :<c-u>normal! F)vi{<cr>
-	" onoremap il[ :<c-u>normal! F)vi[<cr>
-	" onoremap il" :<c-u>normal! f"vi"<cr>
-	" onoremap in' :<c-u>normal! f'vi'<cr>
-
-" }}}
-
-" }}}
 
