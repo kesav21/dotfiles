@@ -4,6 +4,9 @@
 sxhkd &
 # notification daemon
 dunst &
+# compositor
+picom -b
+flashfocus &
 
 # dwm startup script
 dwmrc &
