@@ -92,10 +92,7 @@ export NVM_SOURCE=/usr/share/nvm
 
 # set up fzf
 
-# export FZF_DEFAULT_COMMAND='find .'
-export FZF_DEFAULT_COMMAND='find . -type f | grep -v '\.git/' | grep -v '__pycache__/' | grep -v '\.pytest_cache' | grep -v '\.env''
-
-export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' --reverse'
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' --reverse --height=99%'
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' --color=fg:#a89984,bg:#282828,hl:#83a598 --color=fg+:#ebdbb2,bg+:#262626,hl+:#83a598 --color=info:#afaf87,prompt:#cc241d,pointer:#d3869b --color=marker:#8ec07c,spinner:#d3869b,header:#83a598'
 
 # start x
