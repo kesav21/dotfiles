@@ -1,0 +1,42 @@
+
+alt + Return
+	$TERMINAL
+
+alt + p
+	dmenu_run
+
+alt + q
+	lockmenu
+
+XF86AudioRaiseVolume
+	volctl --set-volume +5%
+
+XF86AudioLowerVolume
+	volctl --set-volume -5%
+
+XF86AudioMute
+	volctl --toggle-mute
+
+XF86MonBrightnessUp
+	chbright +5%
+
+XF86MonBrightnessDown
+	chbright -5%
+
+
+# close/kill window
+alt + {_,shift + }w
+	bspc node -{c,k}
+
+# select/move windows
+alt + {_,shift + }{k,j}
+	bspc node -{f,s} {prev,next}.local
+
+# resize windows
+alt + {h,l}
+	bspc node -z {left -10 0,right 10 0}
+
+# focus or send to the given desktop
+alt + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+

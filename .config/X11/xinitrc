@@ -8,12 +8,5 @@ dunst &
 picom -b
 flashfocus &
 
-# dwm startup script
-dwmrc &
-# execute dwm on loop, to add "refresh" functionality
-while true
-do
-	dwm 2> $XDG_CACHE_HOME/bin/dwm.log
-done
-
-
+# run wm
+exec bspwm
