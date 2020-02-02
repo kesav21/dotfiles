@@ -8,5 +8,10 @@ dunst &
 picom -b
 flashfocus &
 
+# set lock screen timeout
+lockrc &
+
+# set wallpaper
+hsetroot -solid "#1d2021"
 # run wm
 exec bspwm
