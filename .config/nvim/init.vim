@@ -82,6 +82,7 @@ call plug#begin('~/.local/share/nvim/vim-plug')
 	" plugins/language/syntax-highlighting
 
 	" c++
+	Plug 'vim-jp/vim-cpp'
 	Plug 'octol/vim-cpp-enhanced-highlight'
 	" haskell
 	Plug 'neovimhaskell/haskell-vim'
@@ -153,9 +154,9 @@ call plug#end()
 	let g:gruvbox_invert_selection = 0
 
 	" dark theme
-	let g:gruvbox_contrast_dark = "medium"
+	let g:gruvbox_contrast_dark = 'medium'
 	" light theme
-	let g:gruvbox_contrast_light = "soft"
+	let g:gruvbox_contrast_light = 'hard'
 
 	colorscheme gruvbox
 
@@ -333,12 +334,9 @@ call plug#end()
 
 	" autocommands/filetype/formatting
 
-	set shortmess=filnxtToOc
-	augroup filetype_neoformat
+	augroup fmt
 		autocmd!
-		autocmd BufWritePre * if &filetype == 'sh' | Neoformat
-		autocmd BufWritePre * if &filetype == 'c' | Neoformat
-		autocmd BufWritePre * if &filetype == 'cpp' | Neoformat
+		autocmd BufWritePre * undojoin | Neoformat
 	augroup END
 
 	" autocommands/plugins/coc.nvim
@@ -402,17 +400,18 @@ call plug#end()
 	vnoremap <silent> <c-_> :Commentary<cr>
 	inoremap <silent> <c-_> <c-o>:Commentary<cr>
 	" plug mappings
-	noremap <leader>pi :PlugInstall<cr>
-	noremap <leader>pc :PlugClean<cr>
+	noremap <silent> <leader>pi :PlugInstall<cr>
+	noremap <silent> <leader>pc :PlugClean<cr>
 	" run fzf.vim
 	nnoremap <silent> <leader>f :Files<cr>
+	nnoremap <silent> <leader>b :BTags<cr>
 	nnoremap <silent> <leader>t :Tags<cr>
 	" edit common snippets file
-	nnoremap <leader>ua :UltiSnipsEdit all<cr>
+	nnoremap <silent> <leader>ua :UltiSnipsEdit all<cr>
 	" edit language-specific snippets file
-	nnoremap <leader>ue :UltiSnipsEdit<cr>
+	nnoremap <silent> <leader>ue :UltiSnipsEdit<cr>
 	" launch live preview of latex file
-	nnoremap <leader>lp :LLPStartPreview<cr>
+	nnoremap <silent> <leader>lp :LLPStartPreview<cr>
 
 	" mappings/plugins/coc.nvim
 
