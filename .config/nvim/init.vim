@@ -1,5 +1,6 @@
 " vim: set foldmethod=marker:
 
+
 " plugins {{{
 
 call plug#begin($XDG_DATA_HOME.'/nvim/vim-plug')
@@ -53,281 +54,244 @@ call plug#end()
 " }}}
 
 
-" settings/misc {{{
+" settings {{{
 
-	set number relativenumber
-	set cursorline
-	set colorcolumn=88
-	set modeline
-	set wildmode=longest,list,full
-	set laststatus=0
-	set noshowmode
-	set noruler
-	set noshowcmd
-	set hlsearch incsearch
-	set timeout timeoutlen=1000
-	set clipboard+=unnamedplus
-	set shortmess+=c
+" misc
 
-	" increases startup time by 10ms
-	set guioptions=M
+set number relativenumber
+set cursorline
+set colorcolumn=88
+set modeline
+set wildmode=longest,list,full
+set laststatus=0
+set noshowmode
+set noruler
+set noshowcmd
+set hlsearch incsearch
+set timeout timeoutlen=1000
+set clipboard+=unnamedplus
+set shortmess+=c
 
-	" tabs
+set guioptions=M " increases startup time by 10ms
 
-	" value of \t
-	set tabstop=4
-	" how many columns << and >> will add/remove
-	set shiftwidth=4
-	" how many columns tab will add (in insert mode)
-	set softtabstop=4
-	" expandtab: tab will generate spaces (in insert mode)
-	set noexpandtab
+" tabs
 
-	" syntax-highlighting
+set tabstop=4     " value of a \\t
+set shiftwidth=4  " how many columns << and >> will add/remove
+set softtabstop=4 " how many columns tab will add (in insert mode)
+set noexpandtab   " expandtab: tab will generate spaces (in insert mode)
 
-	filetype plugin indent on
-	syntax on
+" syntax-highlighting
 
-	" listchars
+filetype plugin indent on
+syntax on
 
-	set showbreak=↪
-	set list
-	set listchars=tab:›─,nbsp:∙,trail:∙,extends:▶,precedes:◀
+" listchars
 
-	" colors
+set showbreak=↪
+set list
+set listchars=tab:›─,nbsp:∙,trail:∙,extends:▶,precedes:◀
 
-	set background=dark
-	set termguicolors
+" colors
 
-" }}}
+set background=dark
+set termguicolors
 
-" settings/plugins {{{
+" gruvbox
 
-	" gruvbox
+let g:gruvbox_italic = 1
+let g:gruvbox_invert_selection = 0
+let g:gruvbox_contrast_dark = 'medium' " dark theme
+let g:gruvbox_contrast_light = 'hard' " light theme
+colorscheme gruvbox
 
-	let g:gruvbox_italic = 1
-	let g:gruvbox_invert_selection = 0
+" airline
 
-	" dark theme
-	let g:gruvbox_contrast_dark = 'medium'
-	" light theme
-	let g:gruvbox_contrast_light = 'hard'
+let g:airline_section_z = ''
+let g:airline_skip_empty_sections = 1
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
 
-	colorscheme gruvbox
+" vimtex
 
-	" airline
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+set conceallevel=2
+let g:tex_conceal='abdmg'
 
-	let g:airline_section_z = ''
+" vim-latex-live-preview
 
-	let g:airline_skip_empty_sections = 1
-	let g:airline_powerline_fonts = 1
-	let g:airline#extensions#tabline#enabled = 1
+let g:livepreview_previewer = 'zathura'
 
-	" vimtex
+" fzf
 
-	let g:tex_flavor='latex'
+let g:fzf_tags_command = 'ctags -R' " generates tags
 
-	let g:vimtex_view_method='zathura'
-	let g:vimtex_quickfix_mode=0
-	set conceallevel=2
-	let g:tex_conceal='abdmg'
+" indentLine
 
-	" vim-latex-live-preview
+let g:indentLine_char = '›'
 
-	let g:livepreview_previewer = 'zathura'
+" python
 
-	" fzf
+let g:python_highlight_all = 1
 
-	" command to generate tags file
-	let g:fzf_tags_command = 'ctags -R'
+" vim_polyglot
 
-	" indentLine
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
+let g:cpp_experimental_simple_template_highlight = 1
+let g:cpp_experimental_template_highlight = 1
+let g:cpp_concepts_highlight = 1
 
-	let g:indentLine_char = '›'
+" auto-pairs
 
-	" python
+let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', "`":"`", '```':'```', '"""':'"""', "'''":"'''", }
 
-	let g:python_highlight_all = 1
+" camelcase
 
-	" vim_polyglot
+let g:camelcasemotion_key = '<leader>'
 
-	let g:cpp_class_scope_highlight = 1
-	let g:cpp_member_variable_highlight = 1
-	let g:cpp_class_decl_highlight = 1
-	let g:cpp_experimental_simple_template_highlight = 1
-	let g:cpp_experimental_template_highlight = 1
-	let g:cpp_concepts_highlight = 1
+" neoformat
 
-	" auto-pairs
+let g:neoformat_enabled_python = [ 'black' ]
 
-	let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', "`":"`", '```':'```', '"""':'"""', "'''":"'''", }
+let g:neoformat_enabled_c = [ 'astyle' ]
+let g:neoformat_c_astyle = {
+	\ 'exe': 'astyle',
+	\ 'args': ['-T4', '-A2'],
+	\ 'stdin': 1,
+\ }
 
-	" camelcase
+let g:neoformat_enabled_cpp = [ 'astyle' ]
+let g:neoformat_cpp_astyle = {
+	\ 'exe': 'astyle',
+	\ 'args': ['-T4', '-A2'],
+	\ 'stdin': 1,
+\ }
 
-	let g:camelcasemotion_key = '<leader>'
+let g:neoformat_enabled_haskell = [ 'stylish_haskell' ]
+let g:neoformat_haskell_stylish_haskell = {
+	\ 'exe': 'stylish-haskell',
+\ }
 
-	" neoformat
-
-	let g:neoformat_enabled_python = [ 'black' ]
-
-	let g:neoformat_enabled_c = [ 'astyle' ]
-	let g:neoformat_c_astyle = {
-		\ 'exe': 'astyle',
-		\ 'args': ['-T4', '-A2'],
-		\ 'stdin': 1,
-	\ }
-
-	let g:neoformat_enabled_cpp = [ 'astyle' ]
-	let g:neoformat_cpp_astyle = {
-		\ 'exe': 'astyle',
-		\ 'args': ['-T4', '-A2'],
-		\ 'stdin': 1,
-	\ }
-
-	let g:neoformat_enabled_haskell = [ 'stylish_haskell' ]
-	let g:neoformat_haskell_stylish_haskell = {
-		\ 'exe': 'stylish-haskell',
-	\ }
-
-	let g:neoformat_enabled_sh = [ 'shfmt' ]
-	let g:neoformat_sh_shfmt = {
-		\ 'exe': 'shfmt',
-		\ 'args': ['-p', '-i 0', '-bn', '-ci', '-sr'],
-	\ }
+let g:neoformat_enabled_sh = [ 'shfmt' ]
+let g:neoformat_sh_shfmt = {
+	\ 'exe': 'shfmt',
+	\ 'args': ['-p', '-i 0', '-bn', '-ci', '-sr'],
+\ }
 
 " }}}
 
 
 " autocommands {{{
 
-	" autocommands/misc
+augroup misc
+	autocmd!
+	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+	autocmd BufWritePre * %s/\s\+$//e
+augroup END
 
-	augroup misc
-		autocmd!
+augroup refresh
+	autocmd!
+	autocmd BufWritePost *bm_dirs,*bm_files !bmgen
+	autocmd BufWritePost *dunstrc !killall -q dunst; dunst &
+	autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd
+augroup END
 
-		" when bookmark files are updated, re-run bookmark generator
-		autocmd BufWritePost *bm_dirs,*bm_files !bmgen
-		" when dunstrc is updated, restart dunst
-		" figure out how to restart a process
-		autocmd BufWritePost *dunstrc !killall -q dunst; dunst &
+augroup disablemappings
+	autocmd!
+	autocmd VimEnter * :xnoremap gc <Nop>
+	autocmd VimEnter * :nnoremap gcgc <Nop>
+	autocmd VimEnter * :onoremap gc <Nop>
+	autocmd VimEnter * :nnoremap gcc <Nop>
+augroup END
 
-		autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd
+augroup fmt
+	autocmd!
+	autocmd BufWritePre * Neoformat
+augroup END
 
-		" disables automatic commenting on newline
-		autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-		" automatically deletes all trailing whitespace on save
-		autocmd BufWritePre * %s/\s\+$//e
-	augroup END
+augroup ft_tabs
+	autocmd!
+	autocmd FileType python,haskell,java setlocal expandtab
+augroup END
 
-	augroup disablemappings
-		autocmd!
-		autocmd VimEnter * :xnoremap gc <Nop>
-		autocmd VimEnter * :nnoremap gcgc <Nop>
-		autocmd VimEnter * :onoremap gc <Nop>
-		autocmd VimEnter * :nnoremap gcc <Nop>
-	augroup END
+augroup ft_commentstrings
+	autocmd!
+	autocmd FileType markdown set commentstring=<!--\ %s\ -->
+	autocmd FileType xdefaults set commentstring=!\ %s
+	autocmd FileType c,cpp set commentstring=//\ %s
+	autocmd FileType matlab set commentstring=%\ %s
+	autocmd FileType crontab set commentstring=#\ %s
+augroup END
 
-	" autocommands/filetype
-
-	" autocommands/filetype/tabs
-
-	augroup au_tabs
-		autocmd!
-
-		autocmd FileType python,haskell,java setlocal expandtab
-	augroup END
-
-	" autocommands/filetype/commenstrings
-
-	augroup commentstrings
-		autocmd!
-		autocmd FileType markdown set commentstring=<!--\ %s\ -->
-		autocmd FileType xdefaults set commentstring=!\ %s
-		autocmd FileType c,cpp set commentstring=//\ %s
-		autocmd FileType matlab set commentstring=%\ %s
-		autocmd FileType crontab set commentstring=#\ %s
-	augroup END
-
-	" autocommands/filetype/colorcolumn
-
-	augroup filetype_colorcolumn
-		autocmd!
-
-		autocmd FileType python setlocal colorcolumn=88
-		autocmd FileType gitcommit setlocal colorcolumn=50
-	augroup END
-
-	" autocommands/filetype/formatting
-
-	augroup fmt
-		autocmd!
-		autocmd BufWritePre * Neoformat
-	augroup END
+augroup ft_colorcolumn
+	autocmd!
+	autocmd FileType python setlocal colorcolumn=88
+	autocmd FileType gitcommit setlocal colorcolumn=50
+augroup END
 
 " }}}
 
 
 " mappings {{{
 
-	" set leader key
-	let mapleader = " "
-	" clear all mappings
-	mapclear | mapclear <buffer> | mapclear! | mapclear! <buffer>
+let mapleader = " "
+mapclear | mapclear <buffer> | mapclear! | mapclear! <buffer>
 
-	" the escape key is too far
-	inoremap jk <esc>
-	" alias replace all to S
-	nnoremap S :%s//g<Left><Left>
+inoremap jk <esc>
+nnoremap S :%s//g<Left><Left>
 
-	" buffers
-	nnoremap <silent> <c-j> :bp<cr>
-	nnoremap <silent> <c-k> :bn<cr>
-	nnoremap <silent> <c-x> :bd<cr>
-
-	" commenting
-	nnoremap <silent> <c-_> :Commentary<cr>
-	vnoremap <silent> <c-_> :Commentary<cr>
-	inoremap <silent> <c-_> <c-o>:Commentary<cr>
-	" plug mappings
-	noremap <silent> <leader>pi :PlugInstall<cr>
-	noremap <silent> <leader>pc :PlugClean<cr>
-	" run fzf.vim
-	nnoremap <silent> <leader>f :Files<cr>
-	nnoremap <silent> <leader>b :BTags<cr>
-	nnoremap <silent> <leader>t :Tags<cr>
-	" launch live preview of latex file
-	nnoremap <silent> <leader>lp :LLPStartPreview<cr>
+" buffers
+nnoremap <silent> <c-j> :bp<cr>
+nnoremap <silent> <c-k> :bn<cr>
+nnoremap <silent> <c-x> :bd<cr>
+" commenting
+nnoremap <silent> <c-_> :Commentary<cr>
+vnoremap <silent> <c-_> :Commentary<cr>
+inoremap <silent> <c-_> <c-o>:Commentary<cr>
+" plug mappings
+noremap <silent> <leader>pi :PlugInstall<cr>
+noremap <silent> <leader>pc :PlugClean<cr>
+" fzf.vim
+nnoremap <silent> <leader>f :Files<cr>
+nnoremap <silent> <leader>b :BTags<cr>
+nnoremap <silent> <leader>t :Tags<cr>
+" launch live preview of latex file
+nnoremap <silent> <leader>lp :LLPStartPreview<cr>
 
 " }}}
 
 
 " autocomplete {{{
 
-	" dictionary
+" dictionary
 
-	" TODO: turn this on/off through a function
-	augroup spell
-		autocmd!
-		autocmd Filetype markdown set dictionary+=/usr/share/dict/words
-		autocmd Filetype markdown set complete+=k
-		autocmd Filetype markdown set spell
-	augroup END
+" TODO: turn this on/off through a function
+augroup spell
+	autocmd!
+	autocmd Filetype markdown set dictionary+=/usr/share/dict/words
+	autocmd Filetype markdown set complete+=k
+	autocmd Filetype markdown set spell
+augroup END
 
-	" ultisnips
+" ultisnips
 
-	let g:UltiSnipsSnippetsDir = $XDG_CONFIG_HOME.'ultisnips'
-	let g:UltiSnipsSnippetDirectories = ['ultisnips']
+let g:UltiSnipsSnippetsDir = $XDG_CONFIG_HOME.'ultisnips'
+let g:UltiSnipsSnippetDirectories = ['ultisnips']
 
-	let g:UltiSnipsExpandTrigger = '<c-l>'
-	let g:UltiSnipsJumpForwardTrigger = '<c-j>'
-	let g:UltiSnipsJumpBackwardTrigger = '<c-k>'
+let g:UltiSnipsExpandTrigger = '<c-l>'
+let g:UltiSnipsJumpForwardTrigger = '<c-j>'
+let g:UltiSnipsJumpBackwardTrigger = '<c-k>'
 
-	" deoplete
+" deoplete
 
-	let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup = 1
 
-	inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<TAB>"
-	inoremap <expr><s-tab> pumvisible() ? "\<C-p>" : "\<TAB>"
+inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><s-tab> pumvisible() ? "\<C-p>" : "\<TAB>"
 
 " }}}
 
