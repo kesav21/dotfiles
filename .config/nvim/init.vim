@@ -1,89 +1,57 @@
 " vim: set foldmethod=marker:
 
+" plugins {{{
+
 call plug#begin($XDG_DATA_HOME.'/nvim/vim-plug')
 
-" plugins/misc {{{
+" misc
 
-	" commenting
-	Plug 'tpope/vim-commentary'
-	" file search
-	Plug 'junegunn/fzf.vim'
-	" bracket matching
-	Plug 'jiangmiao/auto-pairs'
-	" helps surround things
-	Plug 'tpope/vim-surround'
-	" more text objects
-	Plug 'wellle/targets.vim'
-	" icons
-	Plug 'ryanoasis/vim-devicons'
-	" better searching
-	Plug 'junegunn/vim-slash'
-	" code align
-	Plug 'tommcdo/vim-lion'
-	" better repeating for plugins
-	Plug 'tpope/vim-repeat'
-	" listchars but for spaces
-	Plug 'Yggdroot/indentLine'
-	" faster folding
-	Plug 'Konfekt/FastFold'
-	" tag management
-	Plug 'ludovicchabant/vim-gutentags'
-	" code formatter
-	Plug 'sbdchd/neoformat'
+Plug 'tpope/vim-commentary'         " commenting
+Plug 'junegunn/fzf.vim'             " file search
+Plug 'jiangmiao/auto-pairs'         " bracket matching
+Plug 'tpope/vim-surround'           " helps surround things
+Plug 'wellle/targets.vim'           " more text objects
+Plug 'ryanoasis/vim-devicons'       " icons
+Plug 'junegunn/vim-slash'           " better searching
+Plug 'tommcdo/vim-lion'             " code align
+Plug 'tpope/vim-repeat'             " better repeating for plugins
+Plug 'Yggdroot/indentLine'          " listchars but for spaces
+Plug 'Konfekt/FastFold'             " faster folding
+Plug 'ludovicchabant/vim-gutentags' " tag management
+Plug 'sbdchd/neoformat'             " code formatter
 
-	" autocomplete
+" autocomplete
 
-	" completion
-	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-	" dictionary i think
-	Plug 'deathlyfrantic/deoplete-spell'
-	" snippets
-	Plug 'sirver/ultisnips'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " completion
+Plug 'deathlyfrantic/deoplete-spell'                          " dictionary i think
+Plug 'sirver/ultisnips'                                       " snippets
 
+" appearance
 
-" }}}
+Plug 'gruvbox-community/gruvbox' " gruvbox theme
+Plug 'vim-airline/vim-airline'   " status bar
+Plug 'tpope/vim-fugitive'        " statusbar git plugin
 
-" plugins/appearance {{{
+" language-specific
 
-	" gruvbox theme
-	Plug 'gruvbox-community/gruvbox'
+Plug 'dkarter/bullets.vim'                             " markdown bulleting
+Plug 'lervag/vimtex'                                   " latex
+Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'}   " latex conceal
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' } " latex preview
+Plug 'kalekundert/vim-coiled-snake'                    " python folding
 
-	" status bar
-	Plug 'vim-airline/vim-airline'
-	" statusbar git plugin
-	Plug 'tpope/vim-fugitive'
+" syntax-highlighting
 
-" }}}
-
-" plugins/language {{{
-
-	" markdown bulleting
-	Plug 'dkarter/bullets.vim'
-
-	" latex
-	Plug 'lervag/vimtex'
-	Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'}
-	Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
-
-	" python folding
-	Plug 'kalekundert/vim-coiled-snake'
-
-	" plugins/language/syntax-highlighting
-
-	" c++
-	Plug 'vim-jp/vim-cpp'
-	Plug 'octol/vim-cpp-enhanced-highlight'
-	" haskell
-	Plug 'neovimhaskell/haskell-vim'
-	" python
-	Plug 'vim-python/python-syntax'
-
-	" syntax file for sxhkd
-	Plug 'kovetskiy/sxhkd-vim'
-
-" }}}
+Plug 'vim-jp/vim-cpp'                   " c++
+Plug 'octol/vim-cpp-enhanced-highlight' " c++
+Plug 'neovimhaskell/haskell-vim'        " haskell
+Plug 'vim-python/python-syntax'         " python
+Plug 'kovetskiy/sxhkd-vim'              " syntax file for sxhkd
 
 call plug#end()
+
+" }}}
+
 
 " settings/misc {{{
 
