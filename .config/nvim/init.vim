@@ -1,37 +1,20 @@
 " vim: set foldmethod=marker:
 
-
-" replace with nvim_get_dir('data').'vim-plug'
-call plug#begin('~/.local/share/nvim/vim-plug')
+call plug#begin($XDG_DATA_HOME.'/nvim/vim-plug')
 
 " plugins/misc {{{
 
 	" commenting
 	Plug 'tpope/vim-commentary'
-
 	" file search
 	Plug 'junegunn/fzf.vim'
-
-	" snippets
-	Plug 'sirver/ultisnips'
-	" intellisense
-	Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
 	" bracket matching
 	Plug 'jiangmiao/auto-pairs'
 	" helps surround things
 	Plug 'tpope/vim-surround'
-
-	" text object based on indentation
-	" Plug 'michaeljsmith/vim-indent-object'
-	" text object for function arguments
-	" Plug 'vim-scripts/argtextobj.vim'
-	" text object for camelcase words
-	" Plug 'bkad/CamelCaseMotion'
 	" more text objects
 	Plug 'wellle/targets.vim'
-
-	" i'm not entirely sure what this does
+	" icons
 	Plug 'ryanoasis/vim-devicons'
 	" better searching
 	Plug 'junegunn/vim-slash'
@@ -39,18 +22,24 @@ call plug#begin('~/.local/share/nvim/vim-plug')
 	Plug 'tommcdo/vim-lion'
 	" better repeating for plugins
 	Plug 'tpope/vim-repeat'
-	" better line searching
-	" Plug 'unblevable/quick-scope'
 	" listchars but for spaces
 	Plug 'Yggdroot/indentLine'
 	" faster folding
 	Plug 'Konfekt/FastFold'
-
 	" tag management
 	Plug 'ludovicchabant/vim-gutentags'
-
 	" code formatter
 	Plug 'sbdchd/neoformat'
+
+	" autocomplete
+
+	" completion
+	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+	" dictionary i think
+	Plug 'deathlyfrantic/deoplete-spell'
+	" snippets
+	Plug 'sirver/ultisnips'
+
 
 " }}}
 
@@ -94,9 +83,7 @@ call plug#begin('~/.local/share/nvim/vim-plug')
 
 " }}}
 
-
 call plug#end()
-
 
 " settings/misc {{{
 
@@ -109,10 +96,10 @@ call plug#end()
 	set noshowmode
 	set noruler
 	set noshowcmd
-	set hlsearch
-	set is
+	set hlsearch incsearch
 	set timeout timeoutlen=1000
 	set clipboard+=unnamedplus
+	set shortmess+=c
 
 	" increases startup time by 10ms
 	set guioptions=M
@@ -162,31 +149,20 @@ call plug#end()
 
 	" airline
 
+	let g:airline_section_z = ''
+
 	let g:airline_skip_empty_sections = 1
 	let g:airline_powerline_fonts = 1
 	let g:airline#extensions#tabline#enabled = 1
 
-	let g:airline_section_z = ''
-
 	" vimtex
 
 	let g:tex_flavor='latex'
-	" let g:tex_flavor='lualatex'
 
 	let g:vimtex_view_method='zathura'
 	let g:vimtex_quickfix_mode=0
 	set conceallevel=2
-	" set conceallevel=0
 	let g:tex_conceal='abdmg'
-
-	" ultisnips
-
-	let g:UltiSnipsSnippetsDir = '/home/kesav/.config/nvim/ultisnips'
-	let g:UltiSnipsSnippetDirectories = ['ultisnips']
-
-	let g:UltiSnipsExpandTrigger = '<c-l>'
-	let g:UltiSnipsJumpForwardTrigger = '<c-j>'
-	let g:UltiSnipsJumpBackwardTrigger = '<c-k>'
 
 	" vim-latex-live-preview
 
@@ -199,9 +175,7 @@ call plug#end()
 
 	" indentLine
 
-	" let g:indentLine_char = '|'
 	let g:indentLine_char = '›'
-	" let g:indentLine_char = '▏'
 
 	" python
 
@@ -215,22 +189,6 @@ call plug#end()
 	let g:cpp_experimental_simple_template_highlight = 1
 	let g:cpp_experimental_template_highlight = 1
 	let g:cpp_concepts_highlight = 1
-
-	" coc.nvim
-
-	" if hidden is not set, TextEdit might fail.
-	set hidden
-	" Some servers have issues with backup files, see #649
-	set nobackup
-	set nowritebackup
-	" Better display for messages
-	set cmdheight=2
-	" You will have bad experience for diagnostic messages when it's default 4000.
-	set updatetime=300
-	" don't give |ins-completion-menu| messages.
-	set shortmess+=c
-	" always show signcolumns
-	set signcolumn=yes
 
 	" auto-pairs
 
@@ -249,15 +207,14 @@ call plug#end()
 		\ 'exe': 'astyle',
 		\ 'args': ['-T4', '-A2'],
 		\ 'stdin': 1,
-	  \ }
+	\ }
 
-	" let g:neoformat_enabled_cpp = []
 	let g:neoformat_enabled_cpp = [ 'astyle' ]
 	let g:neoformat_cpp_astyle = {
 		\ 'exe': 'astyle',
 		\ 'args': ['-T4', '-A2'],
 		\ 'stdin': 1,
-	  \ }
+	\ }
 
 	let g:neoformat_enabled_haskell = [ 'stylish_haskell' ]
 	let g:neoformat_haskell_stylish_haskell = {
@@ -309,7 +266,7 @@ call plug#end()
 	augroup au_tabs
 		autocmd!
 
-		autocmd FileType python,haskell setlocal expandtab
+		autocmd FileType python,haskell,java setlocal expandtab
 	augroup END
 
 	" autocommands/filetype/commenstrings
@@ -336,13 +293,8 @@ call plug#end()
 
 	augroup fmt
 		autocmd!
-		autocmd BufWritePre * undojoin | Neoformat
+		autocmd BufWritePre * Neoformat
 	augroup END
-
-	" autocommands/plugins/coc.nvim
-
-	" highlight symbol under cursor on CursorHold
-	autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " }}}
 
@@ -353,47 +305,16 @@ call plug#end()
 	let mapleader = " "
 	" clear all mappings
 	mapclear | mapclear <buffer> | mapclear! | mapclear! <buffer>
+
 	" the escape key is too far
 	inoremap jk <esc>
-	" clear search
-	nnoremap <silent> <leader>, :nohlsearch<cr>
+	" alias replace all to S
+	nnoremap S :%s//g<Left><Left>
+
 	" buffers
-	nnoremap <silent> <leader>j :bp<cr>
-	nnoremap <silent> <leader>k :bn<cr>
-	nnoremap <silent> <leader>x :bd<cr>
-
-" }}}
-
-" mappings/movement {{{
-
-	" disable arrow keys, in normal mode
-	nnoremap <up> <nop>
-	nnoremap <down> <nop>
-	nnoremap <left> <nop>
-	nnoremap <right> <nop>
-
-	" disable arrow keys, in insert mode
-	inoremap <up> <nop>
-	inoremap <down> <nop>
-	inoremap <left> <nop>
-	inoremap <right> <nop>
-
-	" disable arrow keys, in visual mode
-	vnoremap <up> <nop>
-	vnoremap <down> <nop>
-	vnoremap <left> <nop>
-	vnoremap <right> <nop>
-
-	" disable some keys, in normal mode
-	nnoremap <bs> <nop>
-	nnoremap <del> <nop>
-	" nnoremap <space> <nop>
-
-" }}}
-
-" mappings/plugins {{{
-
-	" mappings/plugins/misc
+	nnoremap <silent> <c-j> :bp<cr>
+	nnoremap <silent> <c-k> :bn<cr>
+	nnoremap <silent> <c-x> :bd<cr>
 
 	" commenting
 	nnoremap <silent> <c-_> :Commentary<cr>
@@ -406,52 +327,39 @@ call plug#end()
 	nnoremap <silent> <leader>f :Files<cr>
 	nnoremap <silent> <leader>b :BTags<cr>
 	nnoremap <silent> <leader>t :Tags<cr>
-	" edit common snippets file
-	nnoremap <silent> <leader>ua :UltiSnipsEdit all<cr>
-	" edit language-specific snippets file
-	nnoremap <silent> <leader>ue :UltiSnipsEdit<cr>
 	" launch live preview of latex file
 	nnoremap <silent> <leader>lp :LLPStartPreview<cr>
 
-	" mappings/plugins/coc.nvim
-
-	function! s:check_back_space() abort
-		let col = col('.') - 1
-		return !col || getline('.')[col - 1] =~# '\s'
-	endfunction
-
-	" navigate tab completion
-	inoremap <silent><expr> <tab>
-		\ pumvisible() ? "\<c-n>" :
-		\ <sid>check_back_space() ? "\<tab>" :
-		\ coc#refresh()
-	" navigate backwards
-	inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<c-h>"
-	" confirm completion
-	inoremap <silent><expr> <cr>
-		\ pumvisible() ? coc#_select_confirm() :
-		\ "\<c-g>u\<cr>\<c-r>=coc#on_enter()\<cr>"
-
-	" trigger completion
-	inoremap <silent><expr> <c-space> coc#refresh()
-
-	" go to definition
-	nmap <silent> gd <Plug>(coc-definition)
-
-	function! s:show_documentation()
-		if (index(['vim','help'], &filetype) >= 0)
-			execute 'h '.expand('<cword>')
-		else
-			call CocAction('doHover')
-		endif
-	endfunction
-
-	" show documentation
-	nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-	" refactor current word
-	nmap <leader>rn <Plug>(coc-rename)
-
 " }}}
 
+
+" autocomplete {{{
+
+	" dictionary
+
+	" TODO: turn this on/off through a function
+	augroup spell
+		autocmd!
+		autocmd Filetype markdown set dictionary+=/usr/share/dict/words
+		autocmd Filetype markdown set complete+=k
+		autocmd Filetype markdown set spell
+	augroup END
+
+	" ultisnips
+
+	let g:UltiSnipsSnippetsDir = $XDG_CONFIG_HOME.'ultisnips'
+	let g:UltiSnipsSnippetDirectories = ['ultisnips']
+
+	let g:UltiSnipsExpandTrigger = '<c-l>'
+	let g:UltiSnipsJumpForwardTrigger = '<c-j>'
+	let g:UltiSnipsJumpBackwardTrigger = '<c-k>'
+
+	" deoplete
+
+	let g:deoplete#enable_at_startup = 1
+
+	inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<TAB>"
+	inoremap <expr><s-tab> pumvisible() ? "\<C-p>" : "\<TAB>"
+
+" }}}
 
