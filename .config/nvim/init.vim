@@ -245,9 +245,9 @@ inoremap jk <esc>
 nnoremap S :%s//g<Left><Left>
 
 " buffers
-nnoremap <silent> <c-j> :bp<cr>
-nnoremap <silent> <c-k> :bn<cr>
-nnoremap <silent> <c-x> :bd<cr>
+nnoremap <silent> <leader>j :bp<cr>
+nnoremap <silent> <leader>k :bn<cr>
+nnoremap <silent> <leader>x :bd<cr>
 " commenting
 nnoremap <silent> <c-_> :Commentary<cr>
 vnoremap <silent> <c-_> :Commentary<cr>
@@ -290,8 +290,26 @@ let g:UltiSnipsJumpBackwardTrigger = '<c-k>'
 
 let g:deoplete#enable_at_startup = 1
 
-inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><s-tab> pumvisible() ? "\<C-p>" : "\<TAB>"
+inoremap <expr> <tab> pumvisible() ? "\<C-n>" : "\<tab>"
+inoremap <expr> <s-tab> pumvisible() ? "\<C-p>" : "\<tab>"
+inoremap <buffer> <silent> <cr> <c-r>=Expand()<CR>
+
+function! Expand()
+	" if popup menu visible, cr is expand or select
+	if pumvisible()
+		" try to expand snippet
+		call UltiSnips#ExpandSnippet()
+		" if no expansion was done
+		if g:ulti_expand_res == 0
+			return "\<c-y>"
+		else
+			return ""
+		endif
+	" if no popup menu, cr is cr
+	else
+		return "\<cr>"
+	endif
+endfunction
 
 " }}}
 
