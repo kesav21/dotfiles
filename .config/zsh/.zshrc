@@ -31,7 +31,7 @@ autoload -U colors && colors
 source $(which git_prompt)
 setopt PROMPT_SUBST
 
-PROMPT='%{${ret_status}%}%{$fg[blue]%}[%~] $ %{$reset_color%}'
+PROMPT='%{${ret_status}%}%{$fg[blue]%}[%~] ❯ %{$reset_color%}'
 RPROMPT='%{$fg[magenta]%}$(__git_ps1)%{$reset_color%}'
 
 # zsh specific env variables
