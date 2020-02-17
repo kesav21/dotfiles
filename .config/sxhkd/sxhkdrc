@@ -1,5 +1,5 @@
 
-alt + Return
+alt + shift + Return
 	$TERMINAL
 
 alt + p
@@ -7,6 +7,9 @@ alt + p
 
 alt + q
 	lockmenu
+
+alt + o
+	readpdf
 
 XF86AudioRaiseVolume
 	volctl --set-volume +5%
@@ -23,6 +26,8 @@ XF86MonBrightnessUp
 XF86MonBrightnessDown
 	chbright -5%
 
+alt + Return
+	bspc node -s biggest.local
 
 # close/kill window
 alt + {_,shift + }w
@@ -37,6 +42,10 @@ alt + {h,l}
 	bspc node -z {left -10 0,right 10 0}
 
 # focus or send to the given desktop
-alt + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}'
+alt + {_,shift + } {1-9}
+	bspc {desktop -f,node -d} '^{1-9}'
+
+# set the window state
+alt + {t,shift + t,f,shift + f}
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
