@@ -35,6 +35,4 @@ bspc config window_gap 10
 # set window rules
 bspc rule -a \* state=tiled
 bspc rule -a 'Pinentry-gtk-2' state=floating
-# bspc rule -a 'Eclipse' state=floating
 bspc rule -a 'fzf' -o state=floating
-bspc rule -a 'Wicd-client.py' -o state=floating
