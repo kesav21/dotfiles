@@ -23,9 +23,14 @@ Plug 'sbdchd/neoformat'             " code formatter
 
 " autocomplete
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " completion
-Plug 'deathlyfrantic/deoplete-spell'                          " dictionary i think
-Plug 'sirver/ultisnips'                                       " snippets
+Plug 'Shougo/deoplete.nvim', {
+	\ 'do': ':UpdateRemotePlugins'
+	\ }                              " completion
+Plug 'sirver/ultisnips'              " snippets
+Plug 'autozimu/LanguageClient-neovim', {
+	\ 'branch': 'next',
+	\ 'do': 'bash install.sh',
+	\ }                              " intellisense
 
 " appearance
 
@@ -35,19 +40,22 @@ Plug 'tpope/vim-fugitive'        " statusbar git plugin
 
 " language-specific
 
-Plug 'dkarter/bullets.vim'                             " markdown bulleting
-Plug 'lervag/vimtex'                                   " latex
-Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'}   " latex conceal
-Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' } " latex preview
-Plug 'kalekundert/vim-coiled-snake'                    " python folding
-
-" syntax-highlighting
-
-Plug 'vim-jp/vim-cpp'                   " c++
-Plug 'octol/vim-cpp-enhanced-highlight' " c++
-Plug 'neovimhaskell/haskell-vim'        " haskell
-Plug 'vim-python/python-syntax'         " python
-Plug 'kovetskiy/sxhkd-vim'              " syntax file for sxhkd
+" misc
+Plug 'kalekundert/vim-coiled-snake' " python folding
+Plug 'neovimhaskell/haskell-vim'    " haskell
+Plug 'vim-python/python-syntax'     " python
+Plug 'kovetskiy/sxhkd-vim'          " sxhkd highlighting
+" c++
+Plug 'vim-jp/vim-cpp'                   " c++ syntax highlighting
+Plug 'octol/vim-cpp-enhanced-highlight' " c++ syntax highlighting
+" markdown
+Plug 'godlygeek/tabular'       " dependency for vim-markdown
+Plug 'plasticboy/vim-markdown' " fold, conceal
+Plug 'dkarter/bullets.vim'     " bulleting
+" latex
+Plug 'lervag/vimtex'                                   " stuff
+Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'}   " conceal
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' } " preview
 
 call plug#end()
 
@@ -92,12 +100,22 @@ set showbreak=↪
 set list
 set listchars=tab:›─,nbsp:∙,trail:∙,extends:▶,precedes:◀
 
+" misc
+
+let g:livepreview_previewer = 'readpdf -n'    " vim-latex-live-preview
+let g:fzf_tags_command = ''                   " fzf don't generate tags
+let g:indentLine_char = '›'                   " indentLine
+let g:python_highlight_all = 1                " python
+let g:vim_markdown_folding_style_pythonic = 1 " pythonic folding
+
+" auto-pairs
+
+let g:AutoPairs = { '(':')', '[':']', '{':'}',"'":"'",'"':'"', "`":"`", '```':'```', '"""':'"""', "'''":"'''", }
+
 " colors
 
 set background=dark
 set termguicolors
-
-" gruvbox
 
 let g:gruvbox_italic = 1
 let g:gruvbox_invert_selection = 0
@@ -117,24 +135,10 @@ let g:airline#extensions#tabline#enabled = 1
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
+" both of these are getting overriden
 set conceallevel=2
+set concealcursor-=n
 let g:tex_conceal='abdmg'
-
-" vim-latex-live-preview
-
-let g:livepreview_previewer = 'zathura'
-
-" fzf
-
-let g:fzf_tags_command = 'ctags -R' " generates tags
-
-" indentLine
-
-let g:indentLine_char = '›'
-
-" python
-
-let g:python_highlight_all = 1
 
 " vim_polyglot
 
@@ -144,14 +148,6 @@ let g:cpp_class_decl_highlight = 1
 let g:cpp_experimental_simple_template_highlight = 1
 let g:cpp_experimental_template_highlight = 1
 let g:cpp_concepts_highlight = 1
-
-" auto-pairs
-
-let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', "`":"`", '```':'```', '"""':'"""', "'''":"'''", }
-
-" camelcase
-
-let g:camelcasemotion_key = '<leader>'
 
 " neoformat
 
@@ -265,51 +261,135 @@ nnoremap <silent> <leader>lp :LLPStartPreview<cr>
 " }}}
 
 
-" autocomplete {{{
+" " autocomplete {{{
 
-" dictionary
+" " what i want to accomplish:
+" " when i type a word, i should see a list of completions (from dictionary, languageclient and snippets)
+" " i should be able to scroll through the completions using tab and s-tab
+" " i should be able to select a completion using cr
+" " i should be able to jump forwards/backwards through the completion using c-j and c-k
 
-" TODO: turn this on/off through a function
-augroup spell
-	autocmd!
-	autocmd Filetype markdown set dictionary+=/usr/share/dict/words
-	autocmd Filetype markdown set complete+=k
-	autocmd Filetype markdown set spell
-augroup END
+" " dictionary
 
-" ultisnips
+" " TODO: turn this on/off through a function
+" augroup spell
+" 	autocmd!
+" 	autocmd Filetype markdown set dictionary+=/usr/share/dict/words
+" 	autocmd Filetype markdown set complete+=k
+" 	autocmd Filetype markdown set spell
+" augroup END
 
-let g:UltiSnipsSnippetsDir = $XDG_CONFIG_HOME.'ultisnips'
-let g:UltiSnipsSnippetDirectories = ['ultisnips']
+" " ultisnips
 
-let g:UltiSnipsExpandTrigger = '<c-l>'
-let g:UltiSnipsJumpForwardTrigger = '<c-j>'
-let g:UltiSnipsJumpBackwardTrigger = '<c-k>'
+" let g:UltiSnipsSnippetsDir = $XDG_CONFIG_HOME.'ultisnips'
+" let g:UltiSnipsSnippetDirectories = ['ultisnips']
 
-" deoplete
+" " let g:UltiSnipsExpandTrigger = '<c-l>'
+" let g:UltiSnipsJumpForwardTrigger = '<c-j>'
+" let g:UltiSnipsJumpBackwardTrigger = '<c-k>'
+" let g:UltiSnipsRemoveSelectModeMappings = 0
+
+" " deoplete
+
+" " let g:deoplete#enable_at_startup = 1
+
+" inoremap <expr> <tab> pumvisible() ? "\<C-n>" : "\<tab>"
+" inoremap <expr> <s-tab> pumvisible() ? "\<C-p>" : "\<tab>"
+" inoremap <buffer> <silent> <cr> <c-r>=Expand()<CR>
+
+" function! Expand()
+" 	" if popup menu visible, cr is expand or select
+" 	if pumvisible()
+" 		" try to expand snippet
+" 		call UltiSnips#ExpandSnippet()
+" 		" if no expansion was done
+" 		if g:ulti_expand_res == 0
+" 			return "\<c-y>"
+" 		else
+" 			return ""
+" 		endif
+" 	" if no popup menu, cr is cr
+" 	else
+" 		return "\<cr>"
+" 	endif
+" endfunction
+
+" " ncm2
+
+" set shortmess+=c
+" inoremap <c-c> <ESC>
+
+" autocmd BufEnter * call ncm2#enable_for_buffer()
+" set completeopt=noinsert,menuone,noselect
+
+" " TODO: fix this
+" " autocmd VimEnter * inoremap <expr> <cr> (pumvisible() ? "\<c-y>\<cr>" : "\<cr>")
+" " autocmd VimEnter * inoremap <expr> <tab> pumvisible() ? "\<c-n>" : "\<tab>"
+" " autocmd VimEnter * inoremap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
+" " autocmd InsertEnter * <esc>zzi
+
+" " inoremap <silent> <buffer> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
+" " let g:UltiSnipsExpandTrigger		= "<Plug>(ultisnips_expand)"
+
+" " autocmd BufNewFile,BufRead * inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+" " autocmd BufNewFile,BufRead * inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" " autocmd BufNewFile,BufRead * inoremap <silent> <expr> <CR> ((pumvisible() && empty(v:completed_item)) ?  "\<c-y>\<cr>" : (!empty(v:completed_item) ? ncm2_ultisnips#expand_or("", 'n') : "\<CR>" ))
+" " autocmd BufNewFile,BufRead * inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<cr>", 'n')
+
+" " language-client
+
+" set hidden
+" set signcolumn=yes
+
+" let g:LanguageClient_serverCommands = {
+" 	\ 'cpp': ['ccls'],
+" 	\ }
+
+" " g:LanguageClient_settingsPath
+
+" function LC_maps()
+
+" 	nnoremap <buffer> <silent> K :call LanguageClient#textDocument_hover()<cr>
+
+" 	nnoremap <buffer> <silent> gd :call LanguageClient#textDocument_definition()<cr>
+" 	nnoremap <buffer> <silent> gt :call LanguageClient#textDocument_typeDefinition()<cr>
+" 	nnoremap <buffer> <silent> gi :call LanguageClient#textDocument_implementation()<cr>
+
+" 	" rename, camelCase, snake_case, UPPERCASE
+" 	noremap <leader>rn :call LanguageClient#textDocument_rename()<cr>
+" 	noremap <leader>rc :call LanguageClient#textDocument_rename(
+" 		\ {'newName': Abolish.camelcase(expand('<cword>'))})<cr>
+" 	noremap <leader>rs :call LanguageClient#textDocument_rename(
+" 		\ {'newName': Abolish.snakecase(expand('<cword>'))})<cr>
+" 	noremap <leader>ru :call LanguageClient#textDocument_rename(
+" 		\ {'newName': Abolish.uppercase(expand('<cword>'))})<cr>
+
+" 	" list all references
+" 	" :call LanguageClient_textDocument_references()<cr>
+
+" 	" highlight usages of symbol under cursor
+" 	" :call LanguageClient_textDocument_documentHighlight()<cr>
+
+" 	" clear highlight usages of symbol under cursor
+" 	" :call LanguageClient_clearDocumentHighlight()<cr>
+
+" endfunction
+
+" augroup languageclient
+" 	autocmd!
+" 	autocmd FileType cpp call LC_maps()
+" augroup END
+
+" " }}}
 
 let g:deoplete#enable_at_startup = 1
 
-inoremap <expr> <tab> pumvisible() ? "\<C-n>" : "\<tab>"
-inoremap <expr> <s-tab> pumvisible() ? "\<C-p>" : "\<tab>"
-inoremap <buffer> <silent> <cr> <c-r>=Expand()<CR>
-
-function! Expand()
-	" if popup menu visible, cr is expand or select
-	if pumvisible()
-		" try to expand snippet
-		call UltiSnips#ExpandSnippet()
-		" if no expansion was done
-		if g:ulti_expand_res == 0
-			return "\<c-y>"
-		else
-			return ""
-		endif
-	" if no popup menu, cr is cr
-	else
-		return "\<cr>"
-	endif
-endfunction
-
-" }}}
+augroup autocomplete
+	autocmd!
+	" autocmd BufEnter * call ncm2#enable_for_buffer()
+	autocmd FileType markdown call foo#autocomplete#setup_spell()
+	autocmd BufEnter * call foo#autocomplete#setup_menu()
+	autocmd BufEnter * call foo#autocomplete#setup_snippets()
+	autocmd FileType cpp call foo#autocomplete#setup_lc()
+augroup END
 
