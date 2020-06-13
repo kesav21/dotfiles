@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/bin/zsh
 
-echo "sourced .zprofile"
+echo sourced zprofile
 
 source $HOME/.config/shell/profile
 

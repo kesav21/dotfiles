@@ -1,7 +1,10 @@
+#!/bin/zsh
+
 # vim: set foldmethod=marker:
 
-echo "sourced .zshrc"
+echo sourced zshrc
 
+setopt interactivecomments
 
 # history {{{
 
@@ -15,7 +18,9 @@ HISTFILE=~/.cache/zsh/history
 # completion {{{
 
 # basic auto/tab complete
+
 autoload -U compinit
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
@@ -122,23 +127,21 @@ bindkey -s -M vicmd '^o' 'ivifmcd\n'
 
 # load {{{
 
-# load fzf stuff
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
-
 # load aliases and bookmarks
 [ -f ~/.config/shell/aliases ] && source ~/.config/shell/aliases
 [ -f ~/.config/shell/bookmarks ] && source ~/.config/shell/bookmarks
 
+# load fzf stuff
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
+
 # load fuck
-eval $(thefuck --alias)
+# eval $(thefuck --alias)
 
-# }}}
+# load nvm
+# source /usr/share/nvm/init-nvm.sh
 
-# plugins {{{
-
-# plugins/forgit {{{
-
+# set forgit settings
 forgit_add=gia
 forgit_diff=gid
 forgit_log=gil
@@ -148,25 +151,23 @@ forgit_restore=gicf
 forgit_clean=giclean
 forgit_stash_show=giss
 
-FORGIT_FZF_DEFAULT_OPTS="--height 100% --border --cycle "
-
-# }}}
+FORGIT_FZF_DEFAULT_OPTS="--height 100% --border "
 
 source $XDG_SRC_DIR/zplug/init.zsh
 
 zplug "zplug/zplug"
 zplug "hlissner/zsh-autopair"
 zplug "zdharma/fast-syntax-highlighting"
-zplug "zsh-users/zsh-autosuggestions"
+# zplug "zsh-users/zsh-autosuggestions"
 zplug 'wfxr/forgit'
 
-# Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
-	printf "Install? [y/N]: "
-	if read -q; then
-		echo; zplug install
-	fi
-fi
+# # Install plugins if there are plugins that have not been installed
+# if ! zplug check --verbose; then
+# 	printf "Install? [y/N]: "
+# 	if read -q; then
+# 		echo; zplug install
+# 	fi
+# fi
 
 echo 'loading zplug'
 
