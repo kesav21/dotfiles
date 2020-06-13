@@ -8,44 +8,70 @@ alt + p
 alt + q
 	lockmenu
 
-alt + o
+alt + o; p
 	readpdf
 
-XF86AudioRaiseVolume
-	volctl --set-volume +5%
+alt + o; s
+	st -n 'scratchpad' -e zsh
 
-XF86AudioLowerVolume
-	volctl --set-volume -5%
+alt + o; c
+	st -n 'calculator' -e bc -iql
 
 XF86AudioMute
-	volctl --toggle-mute
+	togglemute && pkill -RTMIN+1 dwmblocks
 
-XF86MonBrightnessUp
-	chbright +5%
+XF86AudioLowerVolume
+	chvol -5% && pkill -RTMIN+1 dwmblocks
+
+XF86AudioRaiseVolume
+	chvol +5% && pkill -RTMIN+1 dwmblocks
 
 XF86MonBrightnessDown
-	chbright -5%
+	chbright -5% && pkill -RTMIN+2 dwmblocks
 
-alt + Return
-	bspc node -s biggest.local
+XF86MonBrightnessUp
+	chbright +5% && pkill -RTMIN+2 dwmblocks
 
-# close/kill window
-alt + {_,shift + }w
-	bspc node -{c,k}
+Print
+	sshot -u
 
-# select/move windows
-alt + {_,shift + }{k,j}
-	bspc node -{f,s} {prev,next}.local
+# # focus node
+# alt + {k,j}
+# 	bspc node -f {prev,next}.local.tiled
 
-# resize windows
-alt + {h,l}
-	bspc node -z {left -10 0,right 10 0}
+# # focus desktop
+# alt + {1-9}
+# 	bspc desktop -f '{1-9}'
 
-# focus or send to the given desktop
-alt + {_,shift + } {1-9}
-	bspc {desktop -f,node -d} '^{1-9}'
+# # send node to desktop
+# alt + shift + {1-9}
+# 	bspc node -d '{1-9}' --follow
 
-# set the window state
-alt + {t,shift + t,f,shift + f}
-	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+# # focus monitor
+# alt + {comma, period}
+# 	bspc monitor -f {west, east}
+
+# # send node to monitor
+# alt + shift + {comma, period}
+# 	bspc node -m {west, east} --follow
+
+# # close node
+# alt + w
+# 	bspc node -c
+
+# # resize node
+# alt + {h,l}
+# 	bspc node '@/1' -z right {-10,10} 0
+
+# # swap node with master
+# alt + Return
+# 	bspc node -s '@/1'
+
+# # set node state
+# alt + {t,shift + t,f,shift + f}
+# 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# # toggle desktop layout
+# alt + m
+# 	bspc desktop -l prev
 
