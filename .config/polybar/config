@@ -1,13 +1,15 @@
 ; vim: set foldmethod=marker:
-; vim:ft=dosini
+; vim: ft=dosini
 
 ; colors {{{
 
 [colors]
 
 ; special
+
+
 foreground   = #ebdbb2
-background   = #282828
+background   = #1d2021
 background2  = #504945
 cursorColor  = #ebdbb2
 ; black
@@ -61,7 +63,7 @@ module-margin-right = 1
 font-0 = FiraMono Nerd Font:style=Regular:size=10;0
 
 modules-left = bspwm
-modules-right = pulseaudio backlight battery wlan time date
+modules-right = pulseaudio backlight battery bluetooth ethernet wifi time date
 
 ; needed to hide polybar on video fullscreen
 wm-restack = bspwm
@@ -74,30 +76,19 @@ wm-restack = bspwm
 
 type = internal/bspwm
 
-ws-icon-0 = "0;0"
-ws-icon-1 = "1;"
-ws-icon-2 = "2;"
-ws-icon-3 = "3;"
-ws-icon-4 = "4;"
-ws-icon-5 = "5;"
-ws-icon-6 = "6;"
-ws-icon-7 = "7;"
-ws-icon-8 = "8;"
-ws-icon-9 = "9;"
-
-label-empty = %icon%
+label-empty = %name%
 label-empty-underline = ${colors.background}
 label-empty-padding = 1
 
-label-occupied = %icon%
+label-occupied = %name%
 label-occupied-underline= ${colors.background2}
 label-occupied-padding = 1
 
-label-focused = %icon%
+label-focused = %name%
 label-focused-underline= ${colors.color7}
 label-focused-padding = 1
 
-label-urgent = %icon%
+label-urgent = %name%
 label-urgent-underline = ${colors.color1}
 label-urgent-padding = 1
 
@@ -143,6 +134,9 @@ bar-volume-empty-font = 2
 type = internal/backlight
 card = intel_backlight
 
+; TODO: implement
+; exec-if = [ "$MONITOR" = 'eDP-1' ]
+
 format = <label> <bar>
 format-underline = ${colors.color5}
 label =   %percentage%%
@@ -184,23 +178,47 @@ ramp-capacity-4 = " "
 
 format-full = <label-full>
 label-full = "  %percentage%%"
-format-full-underline = ${colors.color1}
+format-full-underline = ${colors.color4}
 
 ; }}}
 
-; module/wlan {{{
+; module/bluetooth {{{
 
-[module/wlan]
+[module/bluetooth]
+type = custom/script
+exec = btstatus
+format-underline = ${colors.color3}
+interval = 1
+tail = true
+
+; }}}
+
+; module/ethernet {{{
+
+[module/ethernet]
+type = internal/network
+interface = enp1s0
+
+format-connected = "  "
+format-connected-underline = ${colors.color2}
+
+format-disconnected = "  "
+format-disconnected-underline = ${colors.color1}
+
+; }}}
+
+; module/wifi {{{
+
+[module/wifi]
 
 type = internal/network
 interface = wlp2s0
-interval = 3.0
 
 format-connected = 直  <label-connected>
-format-connected-underline = ${colors.color2}
 label-connected = %essid%
+format-connected-underline = ${colors.color2}
 
-format-disconnected = 睊  disconnected
+format-disconnected = " 睊  "
 format-disconnected-underline = ${colors.color1}
 
 ; }}}
