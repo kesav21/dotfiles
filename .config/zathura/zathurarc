@@ -37,6 +37,6 @@ set inputbar-fg "#ebdbb2"
 set notification-error-fg "#ebdbb2"
 set statusbar-fg "#ebdbb2"
 
-set recolor-lightcolor "#282828"
-set recolor-darkcolor "#ebdbb2"
+set recolor-lightcolor "#1d2021"
+set recolor-darkcolor "#f9f5d7"
 
