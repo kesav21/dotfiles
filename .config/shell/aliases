@@ -2,11 +2,35 @@
 
 # vim: set foldmethod=marker:
 
-echo "sourced aliases"
+echo sourced aliases
 
 # misc {{{
 
-alias ..="cd .."
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
+
+# alias vf='vifmu . ~'
+alias ll='ls -AlF --color=always'
+# alias xm="xmodmap $(readlink -f "$XDG_CONFIG_HOME"/X11/xmodmaprc)"
+
+# alias me='monctl --extend'
+# alias md='monctl --disconnect'
+
+alias mi='sudo make install'
+alias mic='sudo make install && make clean'
+
+# alias mkenv='virtualenv --no-site-packages -p $(which python3) .env'
+alias mkenv='virtualenv -p $(which python3) .env'
+alias stenv='source .env/bin/activate'
+alias killenv='deactivate'
+
+alias tf='terraform'
+alias tfi='terraform init'
+alias tfp='terraform plan -out=out'
+alias tfa='terraform apply out'
 
 v() {
 	# fd --hidden --follow --type f --max-depth 2 \
@@ -16,24 +40,10 @@ v() {
 		-E '*.db' -E '*.tdb' -E '*.sqlite' \
 		-E '*.o' -E '*.pkl' -E '*.tar' \
 		-E '.git' -E '__pycache__' -E '.pytest_cache' -E '.env' \
-		| fzf --multi --preview="bat {}" \
-		| xargs -r nvim
-
+		-E 'clion' -E 'node_modules' |
+		fzf --multi --preview="bat {}" |
+		xargs -r nvim -p
 }
-
-alias vf="vifmu . ~"
-alias ll="ls -AlF --color=always"
-alias xm="xmodmap $(readlink -f "$XDG_CONFIG_HOME"/X11/xmodmaprc)"
-
-alias me="monctl --extend"
-alias md="monctl --disconnect"
-
-alias mi="sudo make install"
-alias mic="sudo make install && make clean"
-
-alias vc='virtualenv --no-site-packages -p $(which python3) .env'
-alias va="source .env/bin/activate"
-alias vd="deactivate"
 
 # compile latex file and delete output files (except for pdf)
 lc() {
@@ -62,10 +72,10 @@ path() {
 
 # git {{{
 
-alias gis="clear && git status"
-alias gic="git commit -S"
-alias gids="git diff --staged"
-alias gip="git push"
+alias gis='clear && git status'
+alias gic='git commit -S'
+alias gids='git diff --staged'
+alias gip='git push'
 
 # branching
 
