@@ -60,6 +60,11 @@ filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
 	\ {View in sxiv}
 	\ sxiv %f,
 
+" video
+filextype *.webm,*.mkv,*.mp4
+	\ {View in ffplay}
+	\ ffplay %f,
+
 fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.xpm
 	\ vifmimg draw %px %py %pw %ph %c
 	\ %pc
