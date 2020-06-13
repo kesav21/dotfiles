@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo "sourced profile"
+echo sourced profile
 
 # set system env variables
 
@@ -58,12 +58,11 @@ export WECHALLTOKEN="DDC9C-1DDAD-79B2A-1C974-20488-EDD35"
 # add local scripts to PATH
 
 cd $XDG_BIN_DIR
-bin=$(find . -type d -path '*/\.*' -prune -o -not -name '.*' -type d -print \
-	| xargs -I DIR realpath DIR \
-	| tr '\n' ':' \
-	| sed 's/:*$//' \
-	&& printf ":$XDG_BIN_DIR")
-PATH="$PATH:$bin"
+bin=$(find . -type d -path '*/\.*' -prune -o -type d -not -name '.*' -print |
+	xargs realpath |
+	tr '\n' ':' |
+	sed 's/:*$//')
+PATH="$PATH:$XDG_BIN_DIR:$bin"
 cd
 
 # clear cache on startup
@@ -93,7 +92,7 @@ export NVM_SOURCE=/usr/share/nvm
 # set up fzf
 
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' --reverse --height=99%'
-export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' --color=fg:#a89984,bg:#282828,hl:#83a598 --color=fg+:#ebdbb2,bg+:#262626,hl+:#83a598 --color=info:#afaf87,prompt:#cc241d,pointer:#d3869b --color=marker:#8ec07c,spinner:#d3869b,header:#83a598'
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' --color=fg:#a89984,bg:#1d2021,hl:#83a598 --color=fg+:#ebdbb2,bg+:#1d2021,hl+:#83a598 --color=info:#afaf87,prompt:#cc241d,pointer:#d3869b --color=marker:#8ec07c,spinner:#1d2021,header:#83a598'
 
 # start x
 
