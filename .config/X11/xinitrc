@@ -1,17 +1,11 @@
 #!/bin/sh
 
-# bind keys
-sxhkd &
-# notification daemon
-dunst &
-# compositor
-picom -b
-flashfocus &
+hsetroot -solid "#1d2021" # set wallpaper
 
-# set lock screen timeout
-lockrc &
+sxhkd &  # bind keys
+dunst &  # notification daemon
+picom -b # compositor
 
-# set wallpaper
-hsetroot -solid "#1d2021"
-# run wm
-exec bspwm
+lockrc &     # set lock screen timeout
+dwmblocks &  # run dwm statusbar
+exec dwmloop # run dwm
