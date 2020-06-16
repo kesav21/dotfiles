@@ -16,15 +16,10 @@ alias ......='cd ../../../../..'
 
 # alias vf='vifmu . ~'
 alias ll='ls -AlF --color=always'
-# alias xm="xmodmap $(readlink -f "$XDG_CONFIG_HOME"/X11/xmodmaprc)"
-
-# alias me='monctl --extend'
-# alias md='monctl --disconnect'
 
 alias mi='sudo make install'
 alias mic='sudo make install && make clean'
 
-# alias mkenv='virtualenv --no-site-packages -p $(which python3) .env'
 alias mkenv='virtualenv -p $(which python3) .env'
 alias stenv='source .env/bin/activate'
 alias killenv='deactivate'
@@ -34,25 +29,7 @@ alias tfi='terraform init'
 alias tfp='terraform plan -out=out'
 alias tfa='terraform apply out'
 
-# compile latex file and delete output files (except for pdf)
-lc() {
-	pdflatex $1
-	pdflatex $1
-	rm *.log
-	rm *.aux
-	rm *.toc
-}
-
 alias path='echo ${PATH//:/\\n}'
-
-# }}}
-
-# packages {{{
-
-# pacman -Slq | fzf -m --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S
-# pacman -Q | awk '{print $1}' | fzf -m --preview 'pacman -Qi {1}'
-# pac_list | xargs -ro sudo pacman -Rns
-# yay -Slq | fzf -m --preview 'yay -Si {1}'| xargs -ro yay -S
 
 # }}}
 
