@@ -6,6 +6,8 @@ echo sourced aliases
 
 # misc {{{
 
+alias v='fzf -m --preview="bat {}" | xargs -r nvim -p'
+
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
@@ -31,19 +33,6 @@ alias tf='terraform'
 alias tfi='terraform init'
 alias tfp='terraform plan -out=out'
 alias tfa='terraform apply out'
-
-v() {
-	# fd --hidden --follow --type f --max-depth 2 \
-	fd --hidden --follow --type f \
-		-E '*.pdf' -E '*.epub' -E '*.opf' \
-		-E '*.webm' -E '*.png' -E '*.jpg' \
-		-E '*.db' -E '*.tdb' -E '*.sqlite' \
-		-E '*.o' -E '*.pkl' -E '*.tar' \
-		-E '.git' -E '__pycache__' -E '.pytest_cache' -E '.env' \
-		-E 'clion' -E 'node_modules' |
-		fzf --multi --preview="bat {}" |
-		xargs -r nvim -p
-}
 
 # compile latex file and delete output files (except for pdf)
 lc() {
