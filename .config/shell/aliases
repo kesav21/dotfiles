@@ -43,10 +43,7 @@ lc() {
 	rm *.toc
 }
 
-# print out path neatly
-path() {
-	echo "$PATH" | tr ':' '\n'
-}
+alias path='echo ${PATH//:/\\n}'
 
 # }}}
 
