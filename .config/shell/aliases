@@ -7,7 +7,7 @@ echo sourced aliases
 # misc {{{
 
 alias v='fzf -m --preview="bat {}" | xargs -r nvim -p'
-alias o='vifmu . ~'
+alias o='vifmu . ~ && cd "$(cat "$XDG_CONFIG_HOME"/vifm/lastdir)"'
 
 alias ..='cd ..'
 alias ...='cd ../..'
