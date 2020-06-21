@@ -82,6 +82,8 @@ let g:neoformat_sh_shfmt = {
 	\ 'args': ['-p', '-i 0', '-ci'],
 \ }
 
+let g:neoformat_enabled_typescript = [ 'prettier' ]
+
 let g:deoplete#enable_at_startup = 1
 
 " }}}
