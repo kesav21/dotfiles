@@ -106,13 +106,6 @@ nnoremap S :%s//g<left><left>
 nnoremap Q <nop>
 nnoremap <c-a> :source $XDG_CONFIG_HOME/nvim/init.vim<cr>
 
-" save/quit/quit!, one/all tabs
-nnoremap <c-s> :w<cr>
-nnoremap <c-s-s> :wa<cr>
-nnoremap <c-w> :q<cr>
-nnoremap <c-s-w> :qa<cr>
-nnoremap <c-q> :q!<cr>
-nnoremap <c-s-q> :qa!<cr>
 " tab movement
 nnoremap <silent> <tab> :tabnext<cr>
 nnoremap <silent> <s-tab> :tabprevious<cr>
