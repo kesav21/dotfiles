@@ -128,10 +128,6 @@ nnoremap <silent> <s-tab> :tabprevious<cr>
 " move lines in visual mode
 xnoremap K :move '<-2<cr>gv-gv
 xnoremap J :move '>+1<cr>gv-gv
-" commenting
-nnoremap <silent> <c-_> :Commentary<cr>
-vnoremap <silent> <c-_> :Commentary<cr>
-inoremap <silent> <c-_> <c-o>:Commentary<cr>
 " plugin manager
 noremap <silent> <leader>pi :PlugInstall<cr>
 noremap <silent> <leader>pup :PlugUpdate<cr>
