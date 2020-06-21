@@ -93,14 +93,6 @@ augroup refresh
 	autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd
 augroup END
 
-augroup disablemappings
-	autocmd!
-	autocmd VimEnter * :xnoremap gc <Nop>
-	autocmd VimEnter * :nnoremap gcgc <Nop>
-	autocmd VimEnter * :onoremap gc <Nop>
-	autocmd VimEnter * :nnoremap gcc <Nop>
-augroup END
-
 " }}}
 
 
