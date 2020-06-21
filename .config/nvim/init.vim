@@ -123,11 +123,6 @@ nnoremap <silent> <s-tab> :tabprevious<cr>
 " move lines in visual mode
 xnoremap K :move '<-2<cr>gv-gv
 xnoremap J :move '>+1<cr>gv-gv
-" plugin manager
-noremap <silent> <leader>pi :PlugInstall<cr>
-noremap <silent> <leader>pup :PlugUpdate<cr>
-noremap <silent> <leader>pug :PlugUpgrade<cr>
-noremap <silent> <leader>pc :PlugClean<cr>
 " center on search
 nnoremap <plug>(slash-after) zz
 
