@@ -17,6 +17,7 @@ call plug#begin($XDG_DATA_HOME.'/nvim/vim-plug')
 	Plug 'sbdchd/neoformat'          " code formatter
 	Plug 'kovetskiy/sxhkd-vim'       " sxhkd highlighting
 	Plug 'dkarter/bullets.vim'       " markdown bulleting
+	Plug 'neovim/nvim-lsp'           " built-in lsp
 call plug#end()
 
 " }}}
