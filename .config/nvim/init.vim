@@ -18,6 +18,10 @@ call plug#begin($XDG_DATA_HOME.'/nvim/vim-plug')
 	Plug 'kovetskiy/sxhkd-vim'       " sxhkd highlighting
 	Plug 'dkarter/bullets.vim'       " markdown bulleting
 	Plug 'neovim/nvim-lsp'           " built-in lsp
+	Plug 'Shougo/deoplete.nvim', {
+		\ 'do': ':UpdateRemotePlugins'
+		\ }                          " completion menu
+	Plug 'Shougo/deoplete-lsp'       " lsp completion
 call plug#end()
 
 " }}}
@@ -76,6 +80,8 @@ let g:neoformat_sh_shfmt = {
 	\ 'exe': 'shfmt',
 	\ 'args': ['-p', '-i 0', '-ci'],
 \ }
+
+let g:deoplete#enable_at_startup = 1
 
 " }}}
 
