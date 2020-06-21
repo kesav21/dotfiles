@@ -4,24 +4,25 @@
 " plugins {{{
 
 call plug#begin($XDG_DATA_HOME.'/nvim/vim-plug')
-	Plug 'gruvbox-community/gruvbox' " gruvbox theme
-	Plug 'tpope/vim-commentary'      " commenting
-	Plug 'junegunn/fzf.vim'          " file search
-	Plug 'jiangmiao/auto-pairs'      " bracket matching
-	Plug 'tpope/vim-surround'        " helps surround things
-	Plug 'wellle/targets.vim'        " more text objects
-	Plug 'ryanoasis/vim-devicons'    " icons
-	" Plug 'junegunn/vim-slash'        " better searching
-	Plug 'tommcdo/vim-lion'          " code align
-	Plug 'tpope/vim-repeat'          " better repeating for plugins
-	Plug 'sbdchd/neoformat'          " code formatter
-	Plug 'kovetskiy/sxhkd-vim'       " sxhkd highlighting
-	Plug 'dkarter/bullets.vim'       " markdown bulleting
-	Plug 'neovim/nvim-lsp'           " built-in lsp
+	Plug 'gruvbox-community/gruvbox'  " gruvbox theme
+	Plug 'tpope/vim-commentary'       " commenting
+	Plug 'junegunn/fzf.vim'           " file search
+	Plug 'jiangmiao/auto-pairs'       " bracket matching
+	Plug 'tpope/vim-surround'         " helps surround things
+	Plug 'wellle/targets.vim'         " more text objects
+	Plug 'ryanoasis/vim-devicons'     " icons
+	" Plug 'junegunn/vim-slash'         " better searching
+	Plug 'tommcdo/vim-lion'           " code align
+	Plug 'tpope/vim-repeat'           " better repeating for plugins
+	Plug 'sbdchd/neoformat'           " code formatter
+	Plug 'kovetskiy/sxhkd-vim'        " sxhkd highlighting
+	Plug 'dkarter/bullets.vim'        " markdown bulleting
+	Plug 'neovim/nvim-lsp'            " built-in lsp
 	Plug 'Shougo/deoplete.nvim', {
 		\ 'do': ':UpdateRemotePlugins'
-		\ }                          " completion menu
-	Plug 'Shougo/deoplete-lsp'       " lsp completion
+		\ }                           " completion menu
+	Plug 'Shougo/deoplete-lsp'        " lsp completion
+	Plug 'leafgarland/typescript-vim' " typescript highlighting
 call plug#end()
 
 " }}}
