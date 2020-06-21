@@ -81,9 +81,8 @@ let g:neoformat_sh_shfmt = {
 
 " autocommands {{{
 
-augroup misc
+augroup whitespace
 	autocmd!
-	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 	autocmd BufWritePre * %s/\s\+$//e
 augroup END
 
@@ -92,7 +91,6 @@ augroup refresh
 	autocmd BufWritePost *bm_dirs,*bm_files !bmgen
 	autocmd BufWritePost *dunstrc !killall -q dunst; dunst &
 	autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd
-	" autocmd BufWritePost ~/.local/src/dwmblocks/config.h !cd ~/.local/src/dwmblocks/; sudo -A make install && { killall -q dwmblocks;setsid dwmblocks & }
 augroup END
 
 augroup disablemappings
@@ -101,34 +99,6 @@ augroup disablemappings
 	autocmd VimEnter * :nnoremap gcgc <Nop>
 	autocmd VimEnter * :onoremap gc <Nop>
 	autocmd VimEnter * :nnoremap gcc <Nop>
-augroup END
-
-" TODO: fix this
-augroup fmt
-	autocmd!
-	autocmd FileType sh autocmd!
-	autocmd FileType sh autocmd BufWritePre * Neoformat
-augroup END
-
-augroup ft_tabs
-	autocmd!
-	autocmd FileType python,haskell,java,javascript,typescript setlocal expandtab
-augroup END
-
-augroup ft_commentstrings
-	autocmd!
-	autocmd FileType markdown set commentstring=<!--\ %s\ -->
-	autocmd FileType xdefaults set commentstring=!\ %s
-	autocmd FileType c,cpp set commentstring=//\ %s
-	autocmd FileType matlab set commentstring=%\ %s
-	autocmd FileType crontab set commentstring=#\ %s
-	autocmd FileType javascript,typescript set commentstring=//\ %s
-augroup END
-
-augroup ft_colorcolumn
-	autocmd!
-	autocmd FileType python setlocal colorcolumn=88
-	autocmd FileType gitcommit setlocal colorcolumn=50
 augroup END
 
 " }}}
