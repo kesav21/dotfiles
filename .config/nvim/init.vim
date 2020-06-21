@@ -11,7 +11,7 @@ call plug#begin($XDG_DATA_HOME.'/nvim/vim-plug')
 	Plug 'tpope/vim-surround'         " helps surround things
 	Plug 'wellle/targets.vim'         " more text objects
 	Plug 'ryanoasis/vim-devicons'     " icons
-	" Plug 'junegunn/vim-slash'         " better searching
+	Plug 'junegunn/vim-slash'         " better searching
 	Plug 'tommcdo/vim-lion'           " code align
 	Plug 'tpope/vim-repeat'           " better repeating for plugins
 	Plug 'sbdchd/neoformat'           " code formatter
@@ -123,8 +123,6 @@ nnoremap <silent> <s-tab> :tabprevious<cr>
 " move lines in visual mode
 xnoremap K :move '<-2<cr>gv-gv
 xnoremap J :move '>+1<cr>gv-gv
-" center on search
-nnoremap <plug>(slash-after) zz
 
 " }}}
 
