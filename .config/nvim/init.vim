@@ -119,8 +119,6 @@ noremap <silent> <leader>pi :PlugInstall<cr>
 noremap <silent> <leader>pup :PlugUpdate<cr>
 noremap <silent> <leader>pug :PlugUpgrade<cr>
 noremap <silent> <leader>pc :PlugClean<cr>
-" open file in new tab
-nnoremap <silent> <Leader>f :call fzf#run({'options': '--multi', 'sink': 'tabnew'})<CR>
 " center on search
 nnoremap <plug>(slash-after) zz
 
