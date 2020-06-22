@@ -75,7 +75,6 @@ call plug#begin($XDG_DATA_HOME.'/nvim/vim-plug')
 	Plug 'jiangmiao/auto-pairs'       " bracket matching
 	Plug 'tpope/vim-surround'         " helps surround things
 	Plug 'wellle/targets.vim'         " more text objects
-	Plug 'ryanoasis/vim-devicons'     " icons
 	Plug 'junegunn/vim-slash'         " better searching
 	Plug 'tommcdo/vim-lion'           " code align
 	Plug 'tpope/vim-repeat'           " better repeating for plugins
