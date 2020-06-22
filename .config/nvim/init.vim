@@ -48,13 +48,18 @@ let mapleader = " "
 inoremap jk <esc>
 nnoremap S :%s//g<left><left>
 nnoremap Q <nop>
-nnoremap <c-a> :source $XDG_CONFIG_HOME/nvim/init.vim<cr>
 " tabs
 nnoremap <silent> <tab> :tabnext<cr>
 nnoremap <silent> <s-tab> :tabprevious<cr>
 " move lines in visual mode
 xnoremap K :move '<-2<cr>gv-gv
 xnoremap J :move '>+1<cr>gv-gv
+" leader mappings
+nnoremap <silent> <leader><leader> :write<cr>
+nnoremap <silent> <leader>w        :quit<cr>
+nnoremap <silent> <leader>q        :quit!<cr>
+nnoremap <silent> <leader>r        :source $XDG_CONFIG_HOME/nvim/init.vim<cr>
+nnoremap          <leader>e        :edit <c-r>=expand('%:p:h') . '/'<cr>
 
 " }}}
 
