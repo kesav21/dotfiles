@@ -80,7 +80,9 @@ call plug#begin($XDG_DATA_HOME.'/nvim/vim-plug')
 	Plug 'tpope/vim-repeat'           " better repeating for plugins
 	Plug 'sbdchd/neoformat'           " code formatter
 	Plug 'kovetskiy/sxhkd-vim'        " sxhkd highlighting
-	Plug 'dkarter/bullets.vim'        " markdown bulleting
+	Plug 'dkarter/bullets.vim', {
+		\ 'for': 'markdown'
+		\ }                           " markdown bulleting
 	Plug 'neovim/nvim-lsp'            " built-in lsp
 	Plug 'Shougo/deoplete.nvim', {
 		\ 'do': ':UpdateRemotePlugins'
