@@ -20,6 +20,8 @@ set shiftwidth=4  " how many columns << and >> will add/remove
 set softtabstop=4 " how many columns tab will add (in insert mode)
 set noexpandtab   " expandtab: tab will generate spaces (in insert mode)
 
+set updatetime=40
+
 set showbreak=↪
 set list
 set listchars=tab:›─,nbsp:∙,trail:∙,extends:▶,precedes:◀
@@ -91,6 +93,7 @@ call plug#begin($XDG_DATA_HOME.'/nvim/vim-plug')
 		\ }                           " completion menu
 	Plug 'Shougo/deoplete-lsp'        " lsp completion
 	Plug 'leafgarland/typescript-vim' " typescript highlighting
+	Plug 'airblade/vim-gitgutter'     " git integration
 call plug#end()
 
 " Plug 'hashivim/vim-terraform' " terraform language server
@@ -119,6 +122,8 @@ let g:neoformat_sh_shfmt = {
 let g:neoformat_enabled_typescript = [ 'prettier' ]
 
 let g:deoplete#enable_at_startup = 1
+
+let g:gitgutter_enabled = 1
 
 " }}}
 
