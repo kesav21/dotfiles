@@ -89,8 +89,8 @@ nnoremap A cw
 
 " easier exit command
 " on exit, print directory to file
-command Q :execute "!echo %d > $XDG_CONFIG_HOME/vifm/lastdir" | quit
-nnoremap Q :Q<cr>
+command here :execute "!echo %d > $XDG_CONFIG_HOME/vifm/lastdir" | quit
+nnoremap q :here<cr>
 
 " }}}
 
