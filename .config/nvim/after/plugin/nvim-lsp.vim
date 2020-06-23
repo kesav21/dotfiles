@@ -10,7 +10,7 @@ nnoremap <silent> gi <cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap <silent> gt <cmd>lua vim.lsp.buf.type_definition()<CR>
 nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> K  <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> rn  <cmd>lua vim.lsp.buf.rename()<CR>
+nnoremap <silent> <F2> <cmd>lua vim.lsp.buf.rename()<CR>
 
 inoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 
