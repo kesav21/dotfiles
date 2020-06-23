@@ -1,12 +1,26 @@
 #!/bin/sh
 
+# vim: set foldmethod=marker:
+
 echo sourced profile
 
-# set system env variables
+# env {{{
 
 export XDG_CONFIG_HOME="$HOME"/.config
 export XDG_CACHE_HOME="$HOME"/.cache
 export XDG_DATA_HOME="$HOME"/.local/share
+
+export XDG_DOTFILES_DIR="$HOME"/.local/dotfiles
+export XDG_SRC_DIR="$HOME"/.local/src
+export XDG_BIN_DIR="$HOME"/.local/bin
+
+export XDG_DOCUMENTS_DIR="$HOME"/Documents
+export XDG_DOWNLOADS_DIR="$HOME"/Downloads
+export XDG_MUSIC_DIR="$HOME"/Music
+export XDG_PICTURES_DIR="$HOME"/Pictures
+
+export XDG_ASU_DIR="$HOME"/asu
+export XDG_PROJECTS_DIR="$HOME"/projects
 
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME"/pass
@@ -36,45 +50,16 @@ export EDITOR=/usr/bin/nvim
 
 export ZPLUG_HOME="$HOME"/.local/src/zplug
 
-# set my env variables
-
-export XDG_DOTFILES_DIR="$HOME"/.local/dotfiles
-export XDG_SRC_DIR="$HOME"/.local/src
-export XDG_BIN_DIR="$HOME"/.local/bin
-
-export XDG_DOCUMENTS_DIR="$HOME"/Documents
-export XDG_DOWNLOADS_DIR="$HOME"/Downloads
-export XDG_MUSIC_DIR="$HOME"/Music
-export XDG_PICTURES_DIR="$HOME"/Pictures
-
-export XDG_ASU_DIR="$HOME"/asu
-export XDG_PROJECTS_DIR="$HOME"/projects
-
-# cse365 stuff
-
 export WECHALLUSER="kkadalaz"
 export WECHALLTOKEN="DDC9C-1DDAD-79B2A-1C974-20488-EDD35"
 
-# add local scripts to PATH
+# }}}
 
-cd $XDG_BIN_DIR
-bin=$(find . -type d -path '*/\.*' -prune -o -type d -not -name '.*' -print |
-	xargs realpath |
-	tr '\n' ':' |
-	sed 's/:*$//')
-PATH="$PATH:$XDG_BIN_DIR:$bin"
-cd
-
-# clear cache on startup
-rm -rf "$XDG_CACHE_HOME"/bin && mkdir "$XDG_CACHE_HOME"/bin
-
-# set colored output
+# colors {{{
 
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
 alias ls='ls --color=always'
-
-# colored man pages
 
 export LESS=-R
 export LESS_TERMCAP_mb="$(printf '\e[1;31m')"
@@ -85,11 +70,9 @@ export LESS_TERMCAP_se="$(printf '\e[0m')"
 export LESS_TERMCAP_us="$(printf '\e[1;32m')"
 export LESS_TERMCAP_ue="$(printf '\e[0m')"
 
-# set up node version manager
-export NVM_SOURCE=/usr/share/nvm
-[ -s "$NVM_SOURCE"/nvm.sh ] && . "$NVM_SOURCE"/nvm.sh
+# }}}
 
-# set up fzf
+# fzf {{{
 
 export FZF_DEFAULT_COMMAND="fd -HIL -t f \
 -E '*.pdf' -E '*.epub' -E '*.opf' \
@@ -102,7 +85,17 @@ export FZF_DEFAULT_COMMAND="fd -HIL -t f \
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' --reverse --height=99%'
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' --color=fg:#a89984,bg:#1d2021,hl:#83a598 --color=fg+:#ebdbb2,bg+:#1d2021,hl+:#83a598 --color=info:#afaf87,prompt:#cc241d,pointer:#d3869b --color=marker:#8ec07c,spinner:#1d2021,header:#83a598'
 
-# start x
+# }}}
+
+# add local scripts to PATH
+SUBDIRS=$(fd -td . $XDG_BIN_DIR)
+PATH="$PATH:$XDG_BIN_DIR:${SUBDIRS//$'\n'/:}"
+
+# clear cache on startup
+rm -rf "$XDG_CACHE_HOME"/bin && mkdir "$XDG_CACHE_HOME"/bin
+
+# load aliases
+[ -f ~/.config/shell/aliases ] && source ~/.config/shell/aliases
 
 systemctl -q is-active graphical.target && [ ! "$DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ] &&
 	exec startx "$XDG_CONFIG_HOME"/X11/xinitrc
