@@ -1,9 +1,5 @@
 " vim: filetype=vim :set foldmethod=marker:
 
-
-source ~/.config/vifm/vifm_bookmarks
-
-
 " settings {{{
 
 " show line numbers
