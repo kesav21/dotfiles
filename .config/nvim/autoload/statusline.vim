@@ -1,6 +1,6 @@
 
 function statusline#createcolors()
-	hi StatusModeGray   guifg=#1d2021 guibg=#a89984 gui=bold
+	hi StatusModeCyan   guifg=#1d2021 guibg=#689d6a gui=bold
 	hi StatusModeBlue   guifg=#1d2021 guibg=#458588 gui=bold
 	hi StatusModeYellow guifg=#1d2021 guibg=#d79921 gui=bold
 	hi StatusModePink   guifg=#1d2021 guibg=#b16286 gui=bold
@@ -27,7 +27,7 @@ endfunction
 
 function statusline#updatemodecolor(mode)
 	if a:mode ==# "N"
-		hi link StatusMode StatusModeGray
+		hi link StatusMode StatusModeCyan
 	elseif a:mode ==# "I"
 		hi link StatusMode StatusModeBlue
 	elseif a:mode ==# 'V'
