@@ -2,18 +2,10 @@
 
 " settings {{{
 
-" show line numbers
 set number relativenumber
-" show hidden files
 set dotfiles
-" editor
 set vicmd=nvim
-" don't show ../
 set dotdirs=''
-
-" }}}
-
-" settings/default {{{
 
 set syscalls
 set trash
@@ -35,13 +27,6 @@ endif
 
 " }}}
 
-" bookmarks {{{
-
-mark b ~/bin/
-mark h ~/
-
-" }}}
-
 " file-open {{{
 
 " pdf
@@ -51,16 +36,10 @@ fileviewer *.pdf pdftotext -nopgbrk %c -
 " web
 filextype *.html,*.htm firefox %f &
 
-" images
+" images/gifs
 filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
 	\ {View in sxiv}
 	\ sxiv %f,
-
-" video
-filextype *.webm,*.mkv,*.mp4
-	\ {View in ffplay}
-	\ ffplay %f,
-
 fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.xpm
 	\ vifmimg draw %px %py %pw %ph %c
 	\ %pc
@@ -70,15 +49,20 @@ fileviewer *.gif
 	\ %pc
 	\ vifmimg clear
 
+" video
+filextype *.webm,*.mkv,*.mp4
+	\ {View in ffplay}
+	\ ffplay %f,
+
 " }}}
 
 " mappings {{{
 
-" Toggle visibility of preview window
+" toggle preview
 nnoremap w :view<cr>
 vnoremap w :view<cr>gv
 
-" Mappings for faster renaming
+" faster renaming
 nnoremap I cw<c-a>
 nnoremap cc cw<c-u>
 nnoremap A cw
