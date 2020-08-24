@@ -8,8 +8,6 @@ endfunction
 
 function tabline#gettabline()
 	let s = ''
-	let s .= '%#TabHeader#'
-	let s .= ' TABS ' " align with signcolumn
 	for i in range(tabpagenr('$'))
 		if i + 1 == tabpagenr()
 			let s .= '%#TabSel#'
@@ -19,7 +17,8 @@ function tabline#gettabline()
 		let buflist = tabpagebuflist(i + 1)
 		let winnr = tabpagewinnr(i + 1) - 1
 		let name = bufname(buflist[winnr])
-		let s .= ' '.name.' '
+		let shortname = fnamemodify(name, ":t")
+		let s .= ' '.shortname.' '
 	endfor
 	let s .= '%#TabClear#'
 	return s
