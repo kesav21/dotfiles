@@ -4,11 +4,9 @@
 
 echo sourced aliases
 
-# misc {{{
-
-alias v='fzf -m --preview="bat {}" | xargs -r nvim -p'
-alias s='cd $XDG_BIN_DIR && v && cd - >/dev/null'
-alias d='cd $XDG_DOTFILES_DIR && v && cd - >/dev/null'
+alias f='fzf -m --preview="bat {}" | xargs -r nvim -p'
+# alias b='cd $XDG_BIN_DIR && v && cd - >/dev/null'
+# alias d='cd $XDG_DOTFILES_DIR && v && cd - >/dev/null'
 alias o='vifmu . ~ && cd "$(< "$XDG_CONFIG_HOME"/vifm/lastdir)"'
 
 alias ..='cd ..'
@@ -32,28 +30,3 @@ alias tfp='terraform plan -out=out'
 alias tfa='terraform apply out'
 
 alias path='echo ${PATH//:/\\n}'
-
-# }}}
-
-# git {{{
-
-alias gis='clear && git status'
-alias gic='git commit -S'
-alias gids='git diff --staged'
-alias gip='git push'
-
-# branching
-
-alias mkb='git checkout -b'
-alias delb='git branch -d'
-
-mergeb() {
-	branch=$(git branch | awk '/\*/ {print $2}')
-	git checkout master && git merge "$branch"
-}
-
-useb() {
-	git branch | awk '{print $2}' | fzf | xargs -r -I b git checkout b
-}
-
-# }}}
