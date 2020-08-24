@@ -18,3 +18,15 @@
 	old = red bold
 	new = green bold
 	whitespace = red reverse
+[alias]
+	s = "!{ clear; git status; }"
+	a = !forgitadd
+	d = !forgitdiff
+	ds = diff --staged
+	c = commit --gpg-sign
+	p = push
+	co = !checkoutbranch
+	mkb = checkout -b
+	rmb = !removebranch
+	mg = !mergebranch
+	l = !forgitlog

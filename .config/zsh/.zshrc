@@ -84,19 +84,12 @@ preexec() { echo -ne "\e[5 q" ;}
 
 # load {{{
 
+source ~/.config/shell/aliases
+
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 
-forgit_add=gia
-forgit_diff=gid
-forgit_log=gil
-forgit_reset_head=girh
-forgit_ignore=gii
-forgit_restore=gicf
-forgit_clean=giclean
-forgit_stash_show=giss
-
-FORGIT_FZF_DEFAULT_OPTS="--height 100% --border "
+FORGIT_NO_ALIASES=1
 
 source $XDG_SRC_DIR/zplug/init.zsh
 
