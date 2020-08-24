@@ -11,6 +11,7 @@ set hlsearch incsearch
 set timeout timeoutlen=1000
 set clipboard+=unnamedplus
 set guioptions=M
+set shortmess+=c
 
 set background=dark
 set termguicolors
@@ -22,7 +23,6 @@ set noexpandtab   " expandtab: tab will generate spaces (in insert mode)
 
 set updatetime=40
 
-set showbreak=↪
 set list
 set listchars=tab:›─,nbsp:∙,trail:∙,extends:▶,precedes:◀
 
@@ -38,6 +38,7 @@ let mapleader = " "
 inoremap jk <esc>
 nnoremap S :%s//g<left><left>
 nnoremap Q <nop>
+nnoremap Y y$
 " tabs
 nnoremap <silent> <tab> :tabnext<cr>
 nnoremap <silent> <s-tab> :tabprevious<cr>
@@ -46,8 +47,8 @@ xnoremap K :move '<-2<cr>gv-gv
 xnoremap J :move '>+1<cr>gv-gv
 " leader mappings
 nnoremap <silent> <leader><leader> :write<cr>
-nnoremap <silent> <leader>w        :quit<cr>
-nnoremap <silent> <leader>q        :quit!<cr>
+" nnoremap <silent> <leader>w        :quit<cr>
+" nnoremap <silent> <leader>q        :quit!<cr>
 nnoremap <silent> <leader>r        :source $XDG_CONFIG_HOME/nvim/init.vim<cr>
 nnoremap          <leader>e        :tabnew <c-r>=expand('%:p:h') . '/'<cr>
 
@@ -90,6 +91,10 @@ call plug#begin($XDG_DATA_HOME.'/nvim/vim-plug')
 	Plug 'Shougo/deoplete-lsp'        " lsp completion
 	Plug 'leafgarland/typescript-vim' " typescript highlighting
 	Plug 'airblade/vim-gitgutter'     " git integration
+	Plug 'Yggdroot/indentLine'
+	Plug 'peitalin/vim-jsx-typescript'
+	" Plug 'Quramy/tsuquyomi', { 'do': 'npm -g install typescript' }
+	" Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 call plug#end()
 
 " Plug 'hashivim/vim-terraform' " terraform language server
@@ -120,6 +125,9 @@ let g:neoformat_enabled_typescript = [ 'prettier' ]
 let g:deoplete#enable_at_startup = 1
 
 let g:gitgutter_enabled = 1
+let g:gitgutter_map_keys = 0
+
+let g:indentLine_char = '›'
 
 " }}}
 
