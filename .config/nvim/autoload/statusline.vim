@@ -20,6 +20,8 @@ function statusline#getmode()
 		return 'V'
 	elseif l:m[0] ==# "c"
 		return 'C'
+	elseif l:m[0] ==# "t"
+		return 'T'
 	else
 		return l:m
 	endif
@@ -42,5 +44,10 @@ function statusline#updatemodecolor(mode)
 endfunction
 
 function statusline#getbranch()
-	return 'שׂ '.system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+	let branch = system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+	if branch ==# ''
+		return ''
+	else
+		return 'שׂ '.branch
+	endif
 endfunction
