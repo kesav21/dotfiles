@@ -87,6 +87,10 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' --color=fg:#a89984,bg:#1d2021,hl:#83a
 
 # }}}
 
+# set up node version manager
+export NVM_SOURCE=/usr/share/nvm
+[ -s "$NVM_SOURCE"/nvm.sh ] && . "$NVM_SOURCE"/nvm.sh
+
 # add local scripts to PATH
 SUBDIRS=$(fd -td . $XDG_BIN_DIR)
 PATH="$PATH:$XDG_BIN_DIR:${SUBDIRS//$'\n'/:}"
@@ -94,8 +98,8 @@ PATH="$PATH:$XDG_BIN_DIR:${SUBDIRS//$'\n'/:}"
 # clear cache on startup
 rm -rf "$XDG_CACHE_HOME"/bin && mkdir "$XDG_CACHE_HOME"/bin
 
-# load aliases
-[ -f ~/.config/shell/aliases ] && source ~/.config/shell/aliases
+# add ghc to path
+export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
 
 systemctl -q is-active graphical.target && [ ! "$DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ] &&
 	exec startx "$XDG_CONFIG_HOME"/X11/xinitrc
