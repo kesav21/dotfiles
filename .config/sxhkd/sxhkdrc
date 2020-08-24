@@ -1,6 +1,6 @@
 
 alt + shift + Return
-	$TERMINAL -e launchtmux
+	st
 
 alt + p
 	dmenu_run
