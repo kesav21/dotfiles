@@ -24,10 +24,13 @@ _comp_options+=(globdots)
 # prompt {{{
 
 autoload -U colors && colors
-source $(which git_prompt)
 setopt PROMPT_SUBST
 
-PROMPT='%{${ret_status}%}%{$fg[blue]%}[%~] ❯ %{$reset_color%}'
+__git_ps1() {
+	[ -d .git ] && echo "($(git branch --show-current))"
+}
+
+PROMPT='%{${ret_status}%}%{$fg[blue]%}[%~] $ %{$reset_color%}'
 RPROMPT='%{$fg[magenta]%}$(__git_ps1)%{$reset_color%}'
 PROMPT_EOL_MARK=''
 
