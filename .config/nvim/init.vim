@@ -52,6 +52,7 @@ nnoremap <silent> <leader><leader> :write<cr>
 " nnoremap <silent> <leader>q        :quit!<cr>
 nnoremap <silent> <leader>r        :source $XDG_CONFIG_HOME/nvim/init.vim<cr>
 nnoremap          <leader>e        :tabnew <c-r>=expand('%:p:h') . '/'<cr>
+nnoremap <silent> <leader>c        :set colorcolumn=<cr>
 
 " }}}
 
