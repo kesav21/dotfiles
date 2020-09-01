@@ -96,7 +96,7 @@ SUBDIRS=$(fd -td . $XDG_BIN_DIR)
 PATH="$PATH:$XDG_BIN_DIR:${SUBDIRS//$'\n'/:}"
 
 # clear cache on startup
-rm -rf "$XDG_CACHE_HOME"/bin && mkdir "$XDG_CACHE_HOME"/bin
+[ -d "$XDG_CACHE_HOME"/bin ] && rm -rf "$XDG_CACHE_HOME"/bin && mkdir "$XDG_CACHE_HOME"/bin
 
 # add ghc to path
 export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
