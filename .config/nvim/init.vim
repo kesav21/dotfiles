@@ -12,6 +12,7 @@ set timeout timeoutlen=1000
 set clipboard+=unnamedplus
 set guioptions=M
 set shortmess+=c
+set signcolumn=yes
 
 set background=dark
 set termguicolors

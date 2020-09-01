@@ -15,7 +15,6 @@ nnoremap <silent> <F2> <cmd>lua vim.lsp.buf.rename()<CR>
 inoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 
 set omnifunc="v:lua.vim.lsp.omnifunc"
-set signcolumn=yes
 sign define LspDiagnosticsErrorSign       text=✖
 sign define LspDiagnosticsWarningSign     text=⚠
 sign define LspDiagnosticsInformationSign text=ℹ
