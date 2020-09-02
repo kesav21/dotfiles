@@ -30,3 +30,5 @@
 	rmb = !removebranch
 	mg = !mergebranch
 	l = !forgitlog
+[pull]
+	rebase = false
