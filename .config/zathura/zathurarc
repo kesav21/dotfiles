@@ -19,7 +19,7 @@ map i recolor
 
 set selection-clipboard clipboard
 
-set font "FiraMono Nerd Font regular 12"
+set font "FiraCode Nerd Font regular 12"
 
 set default-bg "#282828"
 set completion-bg "#282828"
