@@ -9,7 +9,7 @@ alt + q
 	lockmenu
 
 alt + o; p
-	readpdf
+	lspdf | fzfmenu -m | xargs zathura --fork -e "$(tab)"
 
 alt + o; s
 	st -n 'scratchpad' -e zsh
