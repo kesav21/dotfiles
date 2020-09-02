@@ -17,6 +17,8 @@ alias ......='cd ../../../../..'
 
 alias ll='ls -AlF --color=always'
 
+alias mdc='pandoc -s -t html5 --pdf-engine=wkhtmltopdf --katex'
+
 alias mi='sudo make install'
 alias mic='sudo make install && make clean'
 
