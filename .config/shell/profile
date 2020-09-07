@@ -2,6 +2,8 @@
 
 echo sourced profile
 
+source ~/.config/shell/vars && echo sourced vars
+
 # add local scripts to PATH
 bindirs="$(fd -td . $XDG_BIN_DIR | tr '\n' ':')"
 export PATH="$XDG_BIN_DIR:$bindirs$PATH"
