@@ -93,6 +93,10 @@ source ~/.config/fzf/fzfrc
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 
+# set up node version manager
+export NVM_SOURCE=/usr/share/nvm
+[ -s "$NVM_SOURCE"/nvm.sh ] && . "$NVM_SOURCE"/nvm.sh
+
 FORGIT_NO_ALIASES=1
 
 export ZPLUG_HOME="$XDG_SRC_DIR"/zplug

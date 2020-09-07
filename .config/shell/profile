@@ -72,10 +72,6 @@ export LESS_TERMCAP_ue="$(printf '\e[0m')"
 
 # }}}
 
-# set up node version manager
-export NVM_SOURCE=/usr/share/nvm
-[ -s "$NVM_SOURCE"/nvm.sh ] && . "$NVM_SOURCE"/nvm.sh
-
 # add local scripts to PATH
 SUBDIRS=$(fd -td . $XDG_BIN_DIR)
 PATH="$PATH:$XDG_BIN_DIR:${SUBDIRS//$'\n'/:}"
