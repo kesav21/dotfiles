@@ -87,13 +87,14 @@ preexec() { echo -ne "\e[5 q" ;}
 
 # load {{{
 
-source "$XDG_CONFIG_HOME"/shell/aliases
+# set up aliases
+source "$XDG_CONFIG_HOME"/shell/aliases && echo 'sourced aliases'
+# set up fzf
 source "$XDG_CONFIG_HOME"/fzf/fzfrc && echo 'sourced fzfrc'
-
 # set up node version manager
 export NVM_SOURCE="$XDG_CONFIG_HOME"/nvm
 [ -s "$NVM_SOURCE"/nvm.sh ] && source "$NVM_SOURCE"/nvm.sh && echo 'sourced nvm.sh'
-
+# set up ssh
 eval "$(ssh-agent)" > /dev/null && echo 'started ssh agent'
 
 # }}}
@@ -103,8 +104,7 @@ eval "$(ssh-agent)" > /dev/null && echo 'started ssh agent'
 FORGIT_NO_ALIASES=1
 
 export ZPLUG_HOME="$XDG_SRC_DIR"/zplug
-
-source $XDG_SRC_DIR/zplug/init.zsh
+source "$XDG_SRC_DIR"/zplug/init.zsh && echo 'sourced zplug'
 
 zplug "zplug/zplug"
 zplug "hlissner/zsh-autopair"
@@ -113,7 +113,7 @@ zplug 'wfxr/forgit'
 
 zplug check || zplug install && echo 'installed plugins'
 
-zplug load && echo 'loaded zplug'
+zplug load && echo 'loaded plugins'
 
 # }}}
 

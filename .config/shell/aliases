@@ -2,8 +2,6 @@
 
 # vim: set foldmethod=marker:
 
-echo sourced aliases
-
 alias f='fzf -m --preview="bat {}" | xargs -r nvim -p'
 # alias b='cd $XDG_BIN_DIR && v && cd - >/dev/null'
 # alias d='cd $XDG_DOTFILES_DIR && v && cd - >/dev/null'

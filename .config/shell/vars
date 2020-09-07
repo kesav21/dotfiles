@@ -2,7 +2,7 @@
 
 # vim: set foldmethod=marker:
 
-# setup xdg directories {{{
+# set up xdg directories {{{
 
 export XDG_CONFIG_HOME="$HOME"/.config
 export XDG_CACHE_HOME="$HOME"/.cache
@@ -22,7 +22,7 @@ export XDG_PROJECTS_DIR="$HOME"/projects
 
 # }}}
 
-# move configs out of $HOME {{{
+# move stuff out of $HOME {{{
 
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME"/pass
