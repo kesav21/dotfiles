@@ -8,7 +8,7 @@ setopt interactivecomments
 
 HISTSIZE=10000
 SAVEHIST=10000
-HISTFILE=~/.cache/zsh/history
+HISTFILE="$XDG_CACHE_HOME"/zsh/history
 
 # completion {{{
 
@@ -111,11 +111,9 @@ zplug "hlissner/zsh-autopair"
 zplug "zdharma/fast-syntax-highlighting"
 zplug 'wfxr/forgit'
 
-zplug check || zplug install
+zplug check || zplug install && echo 'installed plugins'
 
-echo 'loading zplug'
-
-zplug load
+zplug load && echo 'loaded zplug'
 
 # }}}
 
