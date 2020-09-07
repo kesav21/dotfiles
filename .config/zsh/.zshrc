@@ -87,15 +87,18 @@ preexec() { echo -ne "\e[5 q" ;}
 
 # load {{{
 
-source ~/.config/shell/aliases
-source ~/.config/fzf/fzfrc
-
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
+source "$XDG_CONFIG_HOME"/shell/aliases
+source "$XDG_CONFIG_HOME"/fzf/fzfrc && echo 'sourced fzfrc'
 
 # set up node version manager
-export NVM_SOURCE=/usr/share/nvm
-[ -s "$NVM_SOURCE"/nvm.sh ] && . "$NVM_SOURCE"/nvm.sh
+export NVM_SOURCE="$XDG_CONFIG_HOME"/nvm
+[ -s "$NVM_SOURCE"/nvm.sh ] && source "$NVM_SOURCE"/nvm.sh && echo 'sourced nvm.sh'
+
+eval "$(ssh-agent)" > /dev/null && echo 'started ssh agent'
+
+# }}}
+
+# zplug {{{
 
 FORGIT_NO_ALIASES=1
 
