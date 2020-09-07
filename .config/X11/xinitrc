@@ -6,6 +6,7 @@ sxhkd &  # bind keys
 dunst &  # notification daemon
 picom -b # compositor
 
+sinkd &      # run sink daemon
 lockrc &     # set lock screen timeout
 dwmblocks &  # run dwm statusbar
 exec dwmloop # run dwm
