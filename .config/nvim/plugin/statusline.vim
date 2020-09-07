@@ -14,7 +14,7 @@ set statusline+=\ %{statusline#getmode()}
 set statusline+=\ %#StatusDark#
 set statusline+=\ %{g:branch}
 set statusline+=\ %#StatusDarker#
-set statusline+=\ %f     " file path
+set statusline+=\ %F     " file path
 set statusline+=\ %=
 set statusline+=\ %m     " unsaved changes
 set statusline+=\ %r     " readonly
