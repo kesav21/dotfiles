@@ -73,12 +73,11 @@ export LESS_TERMCAP_ue="$(printf '\e[0m')"
 # }}}
 
 # add local scripts to PATH
-bindirs=$(fd -td . $XDG_BIN_DIR)
-bindirs="${bindirs//$'\n'/:}"
-PATH="$XDG_BIN_DIR:$bindirs:$PATH"
+bindirs="$(fd -td . $XDG_BIN_DIR | tr '\n' ':')"
+export PATH="$XDG_BIN_DIR:$bindirs$PATH"
 
 # add ghc to path
-export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
+export PATH="$HOME"/.cabal/bin:"$HOME"/.ghcup/bin:"$PATH"
 
 systemctl -q is-active graphical.target && [ ! "$DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ] &&
 	exec startx "$XDG_CONFIG_HOME"/X11/xinitrc
