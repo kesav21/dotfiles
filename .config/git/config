@@ -24,7 +24,6 @@
 	d = !forgitdiff
 	ds = diff --staged
 	c = commit --gpg-sign
-	p = push
 	co = !checkoutbranch
 	mkb = checkout -b
 	rmb = !removebranch
