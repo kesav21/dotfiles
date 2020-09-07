@@ -6,6 +6,9 @@ sxhkd &  # bind keys
 dunst &  # notification daemon
 picom -b # compositor
 
+# clear cache on startup
+[ -d "$XDG_CACHE_HOME"/bin ] && rm -rf "$XDG_CACHE_HOME"/bin && mkdir "$XDG_CACHE_HOME"/bin
+
 sinkd &      # run sink daemon
 lockrc &     # set lock screen timeout
 dwmblocks &  # run dwm statusbar
