@@ -88,6 +88,7 @@ preexec() { echo -ne "\e[5 q" ;}
 # load {{{
 
 source ~/.config/shell/aliases
+source ~/.config/fzf/fzfrc
 
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
