@@ -87,6 +87,7 @@ preexec() { echo -ne "\e[5 q" ;}
 
 # load {{{
 
+source "$XDG_CONFIG_HOME"/shell/vars
 source "$XDG_CONFIG_HOME"/shell/aliases
 source "$XDG_CONFIG_HOME"/fzf/fzfrc && echo 'sourced fzfrc'
 
