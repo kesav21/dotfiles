@@ -95,5 +95,11 @@ nnoremap gpr :cd $XDG_PROJECTS_DIR<cr>
 nnoremap gpe :cd $XDG_PROJECTS_DIR/project-euler<cr>
 nnoremap gpp :cd $XDG_PROJECTS_DIR/petasoft<cr>
 
+nnoremap g12 :cd ~/asu/cse412<cr>
+nnoremap g50 :cd ~/asu/cse450<cr>
+nnoremap g66 :cd ~/asu/cse466<cr>
+nnoremap g68 :cd ~/asu/cse468<cr>
+nnoremap g85 :cd ~/asu/cse485<cr>
+
 " }}}
 
