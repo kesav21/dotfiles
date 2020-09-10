@@ -9,4 +9,3 @@
 - GTK Theme: Arc-Dark
 - Icon Theme: Papirus-Dark
 - Font: FiraMono Nerd Font
-
