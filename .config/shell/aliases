@@ -3,6 +3,7 @@
 # vim: set foldmethod=marker:
 
 alias f='fzf -m --preview="bat {}" | xargs -r nvim -p'
+alias d='cd "$(fd -HIL -td -E ".git" | fzf -0 -1)"'
 # alias b='cd $XDG_BIN_DIR && v && cd - >/dev/null'
 # alias d='cd $XDG_DOTFILES_DIR && v && cd - >/dev/null'
 alias o='vifmu . ~ && cd "$(< "$XDG_CONFIG_HOME"/vifm/lastdir)"'
