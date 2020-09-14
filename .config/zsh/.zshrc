@@ -2,8 +2,6 @@
 
 # vim: set foldmethod=marker:
 
-echo sourced zshrc
-
 setopt interactivecomments
 
 HISTSIZE=10000
@@ -88,15 +86,15 @@ preexec() { echo -ne "\e[5 q" ;}
 # load {{{
 
 # set up aliases
-source "$XDG_CONFIG_HOME"/shell/aliases && echo 'sourced aliases'
+source "$XDG_CONFIG_HOME"/shell/aliases
 # set up fzf
-source "$XDG_CONFIG_HOME"/fzf/fzfrc && echo 'sourced fzfrc'
-source /usr/share/fzf/key-bindings.zsh && echo 'sourced fzf key bindings'
+source "$XDG_CONFIG_HOME"/fzf/fzfrc
+source /usr/share/fzf/key-bindings.zsh
 # set up node version manager
 export NVM_SOURCE="$XDG_CONFIG_HOME"/nvm
-[ -s "$NVM_SOURCE"/nvm.sh ] && source "$NVM_SOURCE"/nvm.sh && echo 'sourced nvm.sh'
+[ -s "$NVM_SOURCE"/nvm.sh ] && source "$NVM_SOURCE"/nvm.sh
 # set up ssh
-eval "$(ssh-agent)" > /dev/null && echo 'started ssh agent'
+eval "$(ssh-agent)" > /dev/null
 
 # }}}
 
@@ -105,16 +103,15 @@ eval "$(ssh-agent)" > /dev/null && echo 'started ssh agent'
 FORGIT_NO_ALIASES=1
 
 export ZPLUG_HOME="$XDG_SRC_DIR"/zplug
-source "$XDG_SRC_DIR"/zplug/init.zsh && echo 'sourced zplug'
+source "$XDG_SRC_DIR"/zplug/init.zsh
 
 zplug "zplug/zplug"
 zplug "hlissner/zsh-autopair"
 zplug "zdharma/fast-syntax-highlighting"
 zplug 'wfxr/forgit'
 
-zplug check || zplug install && echo 'installed plugins'
+zplug check || zplug install
 
-zplug load && echo 'loaded plugins'
+zplug load
 
 # }}}
-

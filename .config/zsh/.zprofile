@@ -1,8 +1,6 @@
 #!/bin/sh
 
-echo 'sourced zprofile'
-
-source ~/.config/shell/vars && echo 'sourced vars'
+source ~/.config/shell/vars
 
 # add local scripts to PATH
 bindirs="$(fd -td . $XDG_BIN_DIR | tr '\n' ':')"
