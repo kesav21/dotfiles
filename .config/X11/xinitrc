@@ -2,9 +2,9 @@
 
 hsetroot -solid "#1d2021" # set wallpaper
 
-sxhkd &  # bind keys
-dunst &  # notification daemon
-picom -b # compositor
+sxhkd &             # bind keys
+dunst &             # notification daemon
+picom --no-vsync -b # compositor
 
 # clear cache on startup
 [ -d "$XDG_CACHE_HOME"/bin ] && rm -rf "$XDG_CACHE_HOME"/bin && mkdir "$XDG_CACHE_HOME"/bin
