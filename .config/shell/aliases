@@ -2,12 +2,26 @@
 
 # vim: set foldmethod=marker:
 
-alias f='fzf -m --preview="bat {}" | xargs -r nvim -p'
-alias d='cd "$(fd -HIL -td -E ".git" | fzf -0 -1)"'
-# alias b='cd $XDG_BIN_DIR && v && cd - >/dev/null'
-# alias d='cd $XDG_DOTFILES_DIR && v && cd - >/dev/null'
-alias o='vifmu . ~ && cd "$(< "$XDG_CONFIG_HOME"/vifm/lastdir)"'
-alias g=git
+lsf() {
+	fd -HIL -t f \
+		-E '*.pdf' -E '*.epub' -E '*.opf' -E '*.webm' -E '*.png' -E '*.jpg' \
+		-E '*.db' -E '*.tdb' -E '*.sqlite' -E '*.o' -E '*.pkl' -E '*.tar' \
+		-E '.git' -E '__pycache__' -E '.pytest_cache' -E '.env' -E 'clion' \
+		-E 'node_modules' -E 'dist'
+}
+
+lsd() {
+	fd -HIL -td -E ".git" --full-path .
+}
+
+lsD() {
+	fd -HIL -td -E ".git" --full-path ~
+}
+
+alias f='lsf | fzf -m --preview="bat {}" | xargs -r nvim -p'
+alias d='cd "$(lsd | fzf)"'
+alias D='cd "$(lsD | sed "s|$HOME|~|g" | fzf | sed "s|~|$HOME|g")"'
+alias g='git'
 
 alias ..='cd ..'
 alias ...='cd ../..'
