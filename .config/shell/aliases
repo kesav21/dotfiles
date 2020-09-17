@@ -11,16 +11,12 @@ lsf() {
 }
 
 lsd() {
-	fd -HIL -td -E ".git" --full-path .
-}
-
-lsD() {
-	fd -HIL -td -E ".git" --full-path ~
+	fd -HIL -td -E ".git" '.*' "${1:-.}"
 }
 
 alias f='lsf | fzf -m --preview="bat {}" | xargs -r nvim -p'
-alias d='cd "$(lsd | fzf)"'
-alias D='cd "$(lsD | sed "s|$HOME|~|g" | fzf | sed "s|~|$HOME|g")"'
+alias d='cd "$(lsd . | fzf)"'
+alias D='cd "$(lsd ~ | sed "s|$HOME|~|g" | fzf | sed "s|~|$HOME|g")"'
 alias g='git'
 
 alias ..='cd ..'
