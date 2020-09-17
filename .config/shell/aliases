@@ -45,4 +45,4 @@ alias tfi='terraform init'
 alias tfp='terraform plan -out=out'
 alias tfa='terraform apply out'
 
-alias path='echo ${PATH//:/\\n}'
+alias path='tr ":" "\n" <<< $PATH'
