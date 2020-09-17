@@ -1,11 +1,11 @@
 #!/bin/sh
 
-export FZF_DEFAULT_COMMAND='fd -HIL'
-export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' --reverse --height=99% --exit-0 --select-1'
-export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' --color=fg:#a89984,bg:#1d2021,hl:#83a598 --color=fg+:#ebdbb2,bg+:#1d2021,hl+:#83a598 --color=info:#afaf87,prompt:#cc241d,pointer:#d3869b --color=marker:#8ec07c,spinner:#1d2021,header:#83a598'
+export FZF_DEFAULT_COMMAND='fd -HIL -tf'
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS"' --reverse --height=99% --exit-0 --select-1'
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS"' --color=fg:#a89984,bg:#1d2021,hl:#83a598 --color=fg+:#ebdbb2,bg+:#1d2021,hl+:#83a598 --color=info:#afaf87,prompt:#cc241d,pointer:#d3869b --color=marker:#8ec07c,spinner:#1d2021,header:#83a598'
 
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS="$FZF_DEFAULT_OPTS"
 
-export FZF_ALT_C_COMMAND="fd -HIL -td"
+export FZF_ALT_C_COMMAND='fd -HIL -td'
 export FZF_ALT_C_OPTS="$FZF_DEFAULT_OPTS"
