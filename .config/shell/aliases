@@ -11,7 +11,7 @@ lsf() {
 }
 
 lsd() {
-	fd -HIL -td -E ".git" '.*' "${1:-.}"
+	fd -HIL -td -E '.git' -E 'node_modules' '.*' "${1:-.}"
 }
 
 alias f='lsf | fzf -m --preview="bat {}" | xargs -r nvim -p'
