@@ -1,15 +1,15 @@
 #!/bin/sh
 
-hsetroot -solid "#1d2021" # set wallpaper
-
-sxhkd &             # bind keys
-dunst &             # notification daemon
-picom --no-vsync -b # compositor
-
 # clear cache on startup
 [ -d "$XDG_CACHE_HOME"/bin ] && rm -rf "$XDG_CACHE_HOME"/bin && mkdir "$XDG_CACHE_HOME"/bin
 
-sinkd &      # run sink daemon
-lockrc &     # set lock screen timeout
-dwmblocks &  # run dwm statusbar
-exec dwmloop # run dwm
+hsetroot -solid "#1d2021" # set wallpaper
+
+sxhkd >"$XDG_CACHE_HOME"/bin/sxhkd 2>&1 &             # bind keys
+dunst >"$XDG_CACHE_HOME"/bin/dunst 2>&1 &             # notification daemon
+picom --no-vsync -b >"$XDG_CACHE_HOME"/bin/picom 2>&1 # compositor
+
+sinkd >"$XDG_CACHE_HOME"/bin/sinkd 2>&1 &         # run sink daemon
+lockrc >"$XDG_CACHE_HOME"/bin/lockrc 2>&1         # set lock screen timeout
+dwmblocks >"$XDG_CACHE_HOME"/bin/dwmblocks 2>&1 & # run dwm statusbar
+exec dwmloop                                      # run dwm
