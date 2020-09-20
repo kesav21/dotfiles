@@ -80,7 +80,7 @@ call plug#begin($XDG_DATA_HOME.'/nvim/vim-plug')
 	Plug 'dkarter/bullets.vim', {
 		\ 'for': 'markdown'
 		\ }                           " markdown bulleting
-	Plug 'neovim/nvim-lsp'            " built-in lsp
+	Plug 'neovim/nvim-lspconfig'      " built-in lsp
 	Plug 'Shougo/deoplete.nvim', {
 		\ 'do': ':UpdateRemotePlugins'
 		\ }                           " completion menu
