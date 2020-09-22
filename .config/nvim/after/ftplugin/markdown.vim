@@ -1,6 +1,4 @@
 
-set commentstring=<!--\ %s\ -->
-
 hi! link markdownH1 GruvboxYellowBold
 hi! link markdownH2 GruvboxYellowBold
 hi! link markdownH3 GruvboxYellowBold
