@@ -2,21 +2,9 @@
 
 # vim: set foldmethod=marker:
 
-lsf() {
-	fd -HIL -t f \
-		-E '*.pdf' -E '*.epub' -E '*.opf' -E '*.webm' -E '*.png' -E '*.jpg' \
-		-E '*.db' -E '*.tdb' -E '*.sqlite' -E '*.o' -E '*.pkl' -E '*.tar' \
-		-E '.git' -E '__pycache__' -E '.pytest_cache' -E '.env' -E 'clion' \
-		-E 'node_modules' -E 'dist'
-}
-
-lsd() {
-	fd -HIL -td -E '.git' -E 'node_modules' '.*' "${1:-.}"
-}
-
-alias f='lsf | fzf -m --preview="bat {}" | xargs -r nvim -p'
-alias d='cd "$(lsd . | fzf)"'
-alias D='cd "$(lsd ~ | sed "s|$HOME|~|g" | fzf | sed "s|~|$HOME|g")"'
+alias f='fd -H -tf ".*" . | fzf -m --preview="bat {}" | xargs -r nvim -p'
+alias d='cd "$(fd -H -td ".*" . | fzf)"'
+alias D='cd "$(fd -H -td ".*" ~ | sed "s|$HOME|~|g" | fzf | sed "s|~|$HOME|g")"'
 alias g='git'
 
 alias ..='cd ..'
