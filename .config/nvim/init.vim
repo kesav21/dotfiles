@@ -65,6 +65,9 @@ augroup END
 
 " plugins {{{
 
+" local plugin
+set rtp+=$HOME/projects/vim-statusline
+
 call plug#begin($XDG_DATA_HOME.'/nvim/vim-plug')
 	Plug 'gruvbox-community/gruvbox'  " gruvbox theme
 	Plug 'tpope/vim-commentary'       " commenting
