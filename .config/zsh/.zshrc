@@ -88,7 +88,7 @@ preexec() { echo -ne "\e[5 q" ;}
 # set up aliases
 source "$XDG_CONFIG_HOME"/shell/aliases
 # set up fzf
-source "$XDG_CONFIG_HOME"/fzf/fzfrc
+source "$XDG_CONFIG_HOME"/zsh/fzf.zsh
 # set up node version manager
 export NVM_SOURCE="$XDG_CONFIG_HOME"/nvm
 [ -s "$NVM_SOURCE"/nvm.sh ] && source "$NVM_SOURCE"/nvm.sh
