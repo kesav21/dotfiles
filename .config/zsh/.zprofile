@@ -3,8 +3,8 @@
 source ~/.config/shell/vars
 
 # add local scripts to PATH
-bindirs="$(fd -td . $XDG_BIN_DIR | tr '\n' ':')"
-export PATH="$XDG_BIN_DIR:$bindirs$PATH"
+bindirs="$(du "$XDG_BIN_DIR" --exclude '.git' | cut -f2 | tr '\n' ':')"
+export PATH="$bindirs$PATH"
 
 # add ghc to path
 export PATH="$HOME"/.cabal/bin:"$HOME"/.ghcup/bin:"$PATH"
