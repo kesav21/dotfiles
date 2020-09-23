@@ -23,7 +23,7 @@ fzf-select-file-relative() {
 	return $ret
 }
 zle     -N   fzf-select-file-relative
-bindkey '\ef' fzf-select-file-relative
+bindkey '\et' fzf-select-file-relative
 
 fzf-select-file-absolute() {
 	setopt localoptions pipefail no_aliases 2> /dev/null
@@ -33,7 +33,7 @@ fzf-select-file-absolute() {
 	return $ret
 }
 zle     -N   fzf-select-file-absolute
-bindkey '\eF' fzf-select-file-absolute
+bindkey '\eT' fzf-select-file-absolute
 
 fzf-select-dir-relative() {
 	setopt localoptions pipefail no_aliases 2> /dev/null
