@@ -13,7 +13,10 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 
-alias ll='ls -AlF --color=always'
+alias diff='diff --color=auto'
+alias grep='grep --color=auto'
+alias ls='ls --color=always'
+alias ll='ls -AlF'
 
 alias mdc='pandoc -s -t html5 --pdf-engine=wkhtmltopdf --katex'
 

@@ -52,26 +52,6 @@ export EDITOR=/usr/bin/nvim
 
 export ZPLUG_HOME="$HOME"/.local/src/zplug
 
-export WECHALLUSER="kkadalaz"
-export WECHALLTOKEN="DDC9C-1DDAD-79B2A-1C974-20488-EDD35"
-
-# }}}
-
-# colors {{{
-
-alias diff='diff --color=auto'
-alias grep='grep --color=auto'
-alias ls='ls --color=always'
-
-export LESS=-R
-export LESS_TERMCAP_mb="$(printf '\e[1;31m')"
-export LESS_TERMCAP_md="$(printf '\e[1;36m')"
-export LESS_TERMCAP_me="$(printf '\e[0m')"
-export LESS_TERMCAP_so="$(printf '\e[01;44;33m')"
-export LESS_TERMCAP_se="$(printf '\e[0m')"
-export LESS_TERMCAP_us="$(printf '\e[1;32m')"
-export LESS_TERMCAP_ue="$(printf '\e[0m')"
-
 # }}}
 
 # path {{{
