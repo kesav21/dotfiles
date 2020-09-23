@@ -1,15 +1,95 @@
 #!/bin/sh
 
-source ~/.config/shell/vars
+# vim: set foldmethod=marker:
 
-# add local scripts to PATH
+# set up xdg directories {{{
+
+export XDG_CONFIG_HOME="$HOME"/.config
+export XDG_CACHE_HOME="$HOME"/.cache
+export XDG_DATA_HOME="$HOME"/.local/share
+
+export XDG_DOTFILES_DIR="$HOME"/.local/dotfiles
+export XDG_SRC_DIR="$HOME"/.local/src
+export XDG_BIN_DIR="$HOME"/.local/bin
+
+export XDG_DOCUMENTS_DIR="$HOME"/Documents
+export XDG_DOWNLOADS_DIR="$HOME"/Downloads
+export XDG_MUSIC_DIR="$HOME"/Music
+export XDG_PICTURES_DIR="$HOME"/Pictures
+
+export XDG_ASU_DIR="$HOME"/asu
+export XDG_PROJECTS_DIR="$HOME"/projects
+
+# }}}
+
+# move stuff out of $HOME {{{
+
+export GNUPGHOME="$XDG_DATA_HOME"/gnupg
+export PASSWORD_STORE_DIR="$XDG_DATA_HOME"/pass
+
+export _JAVA_AWT_WM_NONREPARENTING=1
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
+
+export GTK_RC_FILES="$XDG_CONFIG_HOME"/gtk-1.0/gtkrc
+export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
+
+export PYLINTHOME="$XDG_CACHE_HOME"/pylint
+export IPYTHONDIR="$XDG_CONFIG_HOME"/jupyter
+export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME"/jupyter
+
+export LESSKEY="$XDG_CONFIG_HOME"/less/lesskey
+export LESSHISTFILE="$XDG_CACHE_HOME"/less/history
+
+export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
+export NVM_DIR="$XDG_DATA_HOME"/nvm
+
+export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
+export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
+
+export TERMINAL=/usr/local/bin/st
+export EDITOR=/usr/bin/nvim
+
+export ZPLUG_HOME="$HOME"/.local/src/zplug
+
+export WECHALLUSER="kkadalaz"
+export WECHALLTOKEN="DDC9C-1DDAD-79B2A-1C974-20488-EDD35"
+
+# }}}
+
+# colors {{{
+
+alias diff='diff --color=auto'
+alias grep='grep --color=auto'
+alias ls='ls --color=always'
+
+export LESS=-R
+export LESS_TERMCAP_mb="$(printf '\e[1;31m')"
+export LESS_TERMCAP_md="$(printf '\e[1;36m')"
+export LESS_TERMCAP_me="$(printf '\e[0m')"
+export LESS_TERMCAP_so="$(printf '\e[01;44;33m')"
+export LESS_TERMCAP_se="$(printf '\e[0m')"
+export LESS_TERMCAP_us="$(printf '\e[1;32m')"
+export LESS_TERMCAP_ue="$(printf '\e[0m')"
+
+# }}}
+
+# path {{{
+
+# add local scripts
 bindirs="$(du "$XDG_BIN_DIR" --exclude '.git' | cut -f2 | tr '\n' ':')"
 export PATH="$bindirs$PATH"
 
-# add ghc to path
+# add ghc
 export PATH="$HOME"/.cabal/bin:"$HOME"/.ghcup/bin:"$PATH"
+
+# }}}
+
+# start x {{{
 
 systemctl -q is-active graphical.target && [ ! "$DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ] &&
 	exec startx "$XDG_CONFIG_HOME"/X11/xinitrc
 
 export GPG_TTY="$(tty)"
+
+# }}}
