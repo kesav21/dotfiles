@@ -86,10 +86,11 @@ FORGIT_NO_ALIASES=1
 export ZPLUG_HOME="$XDG_SRC_DIR"/zplug
 source "$XDG_SRC_DIR"/zplug/init.zsh
 
-zplug "zplug/zplug"
-zplug "hlissner/zsh-autopair"
-zplug "zdharma/fast-syntax-highlighting"
+zplug 'zplug/zplug'
+zplug 'hlissner/zsh-autopair'
+zplug 'zdharma/fast-syntax-highlighting'
 zplug 'wfxr/forgit'
+zplug 'Aloxaf/fzf-tab'
 
 zplug check || zplug install
 
