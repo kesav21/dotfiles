@@ -68,8 +68,8 @@ export LESS_TERMCAP_ue="$(printf '\e[0m')"
 # set up vi-mode
 source "$XDG_CONFIG_HOME"/zsh/vi-mode.zsh
 # set up aliases
-source "$XDG_CONFIG_HOME"/shell/aliases
-# set up fzf
+source "$XDG_CONFIG_HOME"/zsh/aliases
+# set up fzf bindings
 source "$XDG_CONFIG_HOME"/zsh/fzf.zsh
 # set up node version manager
 export NVM_SOURCE="$XDG_CONFIG_HOME"/nvm
