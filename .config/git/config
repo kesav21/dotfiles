@@ -1,7 +1,6 @@
 [user]
 	email = kkadalazhi2@gmail.com
 	name = Kesav Kadalazhi
-	signingkey = E8815DF3D88CD235
 [core]
 	pager = diff-so-fancy | less --tabs=4 -RFX
 [color]
@@ -31,3 +30,5 @@
 	l = !forgitlog
 [pull]
 	rebase = false
+[include]
+	path = config.personal
