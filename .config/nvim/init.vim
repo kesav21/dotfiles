@@ -40,11 +40,9 @@ inoremap jk <esc>
 nnoremap Q <nop>
 nnoremap Y y$
 " tabs
-nnoremap <silent> <tab> :tabnext<cr>
+nnoremap <silent> <tab>   :tabnext<cr>
 nnoremap <silent> <s-tab> :tabprevious<cr>
 " leader mappings
-nnoremap <silent> <leader><leader> :write<cr>
-nnoremap <silent> <leader>r        :source $XDG_CONFIG_HOME/nvim/init.vim<cr>
 nnoremap          <leader>e        :tabnew <c-r>=expand('%:p:h') . '/'<cr>
 nnoremap <silent> <leader>c        :set colorcolumn=<cr>
 " function key mappings
