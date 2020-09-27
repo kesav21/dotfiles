@@ -87,11 +87,9 @@ call plug#begin($XDG_DATA_HOME.'/nvim/vim-plug')
 	Plug 'dkarter/bullets.vim', {
 		\ 'for': 'markdown'
 		\ }                           " markdown bulleting
-	Plug 'neovim/nvim-lspconfig'      " built-in lsp
 	Plug 'Shougo/deoplete.nvim', {
 		\ 'do': ':UpdateRemotePlugins'
 		\ }                           " completion menu
-	Plug 'Shougo/deoplete-lsp'        " lsp completion
 	Plug 'leafgarland/typescript-vim' " typescript highlighting
 	Plug 'airblade/vim-gitgutter'     " git integration
 	Plug 'Yggdroot/indentLine'
