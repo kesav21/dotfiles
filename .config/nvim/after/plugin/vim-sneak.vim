@@ -1,4 +1,7 @@
 
+unmap s
+unmap S
+
 " 2-character Sneak (default)
 nmap m <Plug>Sneak_s
 nmap M <Plug>Sneak_S
