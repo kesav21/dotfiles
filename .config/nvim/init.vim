@@ -116,11 +116,13 @@ let g:gruvbox_contrast_dark = 'hard' " dark theme
 let g:gruvbox_contrast_light = 'hard' " light theme
 colorscheme gruvbox
 
+let g:neoformat_enabled_python = [ 'black' ]
+
 let g:neoformat_enabled_sh = [ 'shfmt' ]
 let g:neoformat_sh_shfmt = {
 	\ 'exe': 'shfmt',
 	\ 'args': ['-p', '-i 0', '-ci'],
-\ }
+	\ }
 
 let g:neoformat_enabled_typescript = [ 'prettier' ]
 
