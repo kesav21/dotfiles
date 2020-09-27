@@ -18,8 +18,6 @@ alias grep='grep --color=auto'
 alias ls='ls --color=always'
 alias ll='ls -AlF'
 
-alias mdc='pandoc -s -t html5 --pdf-engine=wkhtmltopdf --katex'
-
 alias mi='sudo make install'
 alias mic='sudo make install && make clean'
 
