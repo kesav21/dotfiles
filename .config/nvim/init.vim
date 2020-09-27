@@ -96,6 +96,7 @@ call plug#begin($XDG_DATA_HOME.'/nvim/vim-plug')
 	Plug 'justinmk/vim-sneak'
 	" Plug 'Quramy/tsuquyomi', { 'do': 'npm -g install typescript' }
 	" Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+	Plug 'nvim-treesitter/nvim-treesitter'
 call plug#end()
 
 " Plug 'hashivim/vim-terraform' " terraform language server
