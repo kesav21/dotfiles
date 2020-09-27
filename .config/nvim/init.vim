@@ -71,6 +71,7 @@ augroup END
 " local plugin
 set rtp+=$HOME/projects/vim-statusline
 set rtp+=$HOME/projects/vim-commentary-config
+set rtp+=$HOME/projects/vim-hcl
 
 call plug#begin($XDG_DATA_HOME.'/nvim/vim-plug')
 	Plug 'gruvbox-community/gruvbox'  " gruvbox theme
