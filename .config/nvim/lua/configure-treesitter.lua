@@ -1,5 +1,5 @@
 require'nvim-treesitter.configs'.setup{
-	ensure_installed = {"c", "bash", "python", "typescript" },
+	ensure_installed = {"c", "bash", "python", "typescript", "lua" },
 	highlight = { enable = true },
 	refactor = {
 		smart_rename = {
