@@ -27,53 +27,6 @@ endif
 
 " }}}
 
-" file-open {{{
-
-" pdf
-filextype *.pdf zathura %c %i &
-fileviewer *.pdf pdftotext -nopgbrk %c -
-
-" web
-filextype *.html,*.htm firefox %f &
-
-" images/gifs
-filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
-	\ {View in sxiv}
-	\ sxiv %f,
-fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.xpm
-	\ vifmimg draw %px %py %pw %ph %c
-	\ %pc
-	\ vifmimg clear
-fileviewer *.gif
-	\ vifmimg gifpreview %px %py %pw %ph %c
-	\ %pc
-	\ vifmimg clear
-
-" video
-filextype *.webm,*.mkv,*.mp4
-	\ {View in ffplay}
-	\ ffplay %f,
-
-" }}}
-
-" mappings {{{
-
-" toggle preview
-nnoremap w :view<cr>
-vnoremap w :view<cr>gv
-
-" faster renaming
-nnoremap I cw<c-a>
-nnoremap cc cw<c-u>
-nnoremap A cw
-
-" easier exit command
-" on exit, print directory to file
-command here :execute "!echo %d > $XDG_CONFIG_HOME/vifm/lastdir" | quit
-nnoremap q :here<cr>
-
-" }}}
-
 " bookmarks {{{
 
 nnoremap gh  :cd $HOME<cr>
