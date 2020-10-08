@@ -9,7 +9,7 @@ alt + q
 	lockmenu
 
 alt + p
-	lspdf | dmenu | uniq | xargs -I pdf zathura --fork -e "$(tab)" 'pdf'
+	vifmopen
 
 alt + s
 	st -n centered -e zsh
