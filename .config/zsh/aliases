@@ -3,6 +3,7 @@
 # vim: set foldmethod=marker:
 
 alias f='fd -H -tf ".*" . | fzf -m --preview="bat {}" | xargs -r nvim -p'
+alias F='fd -H -tf ".*" ~ | fzf -m --preview="bat {}" | xargs -r nvim -p'
 alias d='cd "$(fd -H -td ".*" . | fzf)"'
 alias D='cd "$(fd -H -td ".*" ~ | sed "s|$HOME|~|g" | fzf | sed "s|~|$HOME|g")"'
 alias g='git'
