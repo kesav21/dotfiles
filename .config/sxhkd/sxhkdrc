@@ -17,21 +17,6 @@ alt + s
 alt + c
 	st -n centered -e bc -iql
 
-XF86AudioMute
-	togglemute && pkill -RTMIN+1 dwmblocks
-
-XF86AudioLowerVolume
-	chvol -5% && pkill -RTMIN+1 dwmblocks
-
-XF86AudioRaiseVolume
-	chvol +5% && pkill -RTMIN+1 dwmblocks
-
-XF86MonBrightnessDown
-	chbright -5% && pkill -RTMIN+2 dwmblocks
-
-XF86MonBrightnessUp
-	chbright +5% && pkill -RTMIN+2 dwmblocks
-
 Print
 	sshot -u
 
