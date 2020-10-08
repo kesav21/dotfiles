@@ -1,5 +1,14 @@
 require'nvim-treesitter.configs'.setup{
-	ensure_installed = {"c", "bash", "python", "typescript", "lua" },
+	ensure_installed = {
+		"c",
+		"bash",
+		"python",
+		"typescript",
+		"lua",
+		"javascript",
+		"query",
+		"markdown"
+	},
 	highlight = {
 		enable = true,
 		custom_captures = {
