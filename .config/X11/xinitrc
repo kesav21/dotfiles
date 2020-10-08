@@ -5,9 +5,9 @@
 
 hsetroot -solid "#1d2021" # set wallpaper
 
-sxhkd >"$XDG_CACHE_HOME"/bin/sxhkd 2>&1 &             # bind keys
-dunst >"$XDG_CACHE_HOME"/bin/dunst 2>&1 &             # notification daemon
-picom --no-vsync -b >"$XDG_CACHE_HOME"/bin/picom 2>&1 # compositor
+sxhkd "$XDG_CONFIG_HOME"/sxhkd/sxhkdrc.personal >"$XDG_CACHE_HOME"/bin/sxhkd 2>&1 & # bind keys
+dunst >"$XDG_CACHE_HOME"/bin/dunst 2>&1 &                                           # notification daemon
+picom --no-vsync -b >"$XDG_CACHE_HOME"/bin/picom 2>&1                               # compositor
 
 sinkd >"$XDG_CACHE_HOME"/bin/sinkd 2>&1 &         # run sink daemon
 lockrc >"$XDG_CACHE_HOME"/bin/lockrc 2>&1         # set lock screen timeout
