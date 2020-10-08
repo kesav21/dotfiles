@@ -12,10 +12,10 @@ alt + o; p
 	lspdf | dmenu | uniq | xargs -I pdf zathura --fork -e "$(tab)" 'pdf'
 
 alt + o; s
-	st -n 'scratchpad' -e zsh
+	st -n centered -e zsh
 
 alt + o; c
-	st -n 'calculator' -e bc -iql
+	st -n centered -e bc -iql
 
 XF86AudioMute
 	togglemute && pkill -RTMIN+1 dwmblocks
