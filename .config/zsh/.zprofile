@@ -68,7 +68,7 @@ export PATH="$HOME"/.cabal/bin:"$HOME"/.ghcup/bin:"$PATH"
 # start x {{{
 
 systemctl -q is-active graphical.target && [ ! "$DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ] &&
-	exec startx "$XDG_CONFIG_HOME"/X11/xinitrc
+	exec startx "$XDG_CONFIG_HOME"/X11/xinitrc >"$XDG_CONFIG_HOME"/X11/xinitrc 2>&1
 
 export GPG_TTY="$(tty)"
 
