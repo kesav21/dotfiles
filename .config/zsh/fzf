@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 export FZF_DEFAULT_COMMAND='echo I have disabled the default command feature'
-export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS"' --reverse --height=99% --exit-0 --select-1'
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS"' --reverse --height=99% --exit-0'
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS"' --color=fg:#a89984,bg:#1d2021,hl:#83a598 --color=fg+:#ebdbb2,bg+:#1d2021,hl+:#83a598 --color=info:#afaf87,prompt:#cc241d,pointer:#d3869b --color=marker:#8ec07c,spinner:#1d2021,header:#83a598'
 
 fzf-history() {
@@ -17,27 +17,27 @@ bindkey '^R' fzf-history
 
 fzf-select-file-relative() {
 	setopt localoptions pipefail no_aliases 2> /dev/null
-	LBUFFER="${LBUFFER}$(fd -H -tf ".*" . | fzf | tr '\n' ' ')"
+	LBUFFER="${LBUFFER}$(fd -H -tf ".*" . | fzf --select-1 | tr '\n' ' ')"
 	local ret=$?
 	zle reset-prompt
 	return $ret
 }
 zle     -N   fzf-select-file-relative
-bindkey '\eb' fzf-select-file-relative
+bindkey '\es' fzf-select-file-relative
 
 fzf-select-file-absolute() {
 	setopt localoptions pipefail no_aliases 2> /dev/null
-	LBUFFER="${LBUFFER}$(fd -H -tf ".*" ~ | sed "s|$HOME|~|g" | fzf | sed "s|~|$HOME|g" | tr '\n' ' ')"
+	LBUFFER="${LBUFFER}$(fd -H -tf ".*" ~ | sed "s|$HOME|~|g" | fzf --select-1 | sed "s|~|$HOME|g" | tr '\n' ' ')"
 	local ret=$?
 	zle reset-prompt
 	return $ret
 }
 zle     -N   fzf-select-file-absolute
-bindkey '\eB' fzf-select-file-absolute
+bindkey '\eS' fzf-select-file-absolute
 
 fzf-select-dir-relative() {
 	setopt localoptions pipefail no_aliases 2> /dev/null
-	LBUFFER="${LBUFFER}$(fd -H -td ".*" . | fzf | tr '\n' ' ')"
+	LBUFFER="${LBUFFER}$(fd -H -td ".*" . | fzf --select-1 | tr '\n' ' ')"
 	local ret=$?
 	zle reset-prompt
 	return $ret
@@ -47,7 +47,7 @@ bindkey '\ec' fzf-select-dir-relative
 
 fzf-select-dir-absolute() {
 	setopt localoptions pipefail no_aliases 2> /dev/null
-	LBUFFER="${LBUFFER}$(fd -H -td ".*" ~ | sed "s|$HOME|~|g" | fzf | sed "s|~|$HOME|g" | tr '\n' ' ')"
+	LBUFFER="${LBUFFER}$(fd -H -td ".*" ~ | sed "s|$HOME|~|g" | fzf --select-1 | sed "s|~|$HOME|g" | tr '\n' ' ')"
 	local ret=$?
 	zle reset-prompt
 	return $ret
