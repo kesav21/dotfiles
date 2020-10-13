@@ -17,6 +17,9 @@ alt + s
 alt + c
 	st -n centered -e bc -iql
 
+alt + shift + k
+	fzfkill
+
 Print
 	sshot -u
 
