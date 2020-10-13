@@ -67,7 +67,7 @@ augroup END
 " plugins {{{
 
 " local plugin
-set rtp+=$HOME/projects/vim-statusline
+set rtp+=$HOME/projects/miniline.vim
 set rtp+=$HOME/projects/vim-commentary-config
 set rtp+=$HOME/projects/vim-hcl
 
