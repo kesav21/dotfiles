@@ -67,9 +67,13 @@ augroup END
 " plugins {{{
 
 " local plugin
-set rtp+=$HOME/projects/miniline.vim
 set rtp+=$HOME/projects/vim-commentary-config
 set rtp+=$HOME/projects/vim-hcl
+
+" TODO: check out
+" Plug 'hashivim/vim-terraform' " terraform language server
+" Plug 'nvim-lua/completion-nvim'
+" Plug 'sainnhe/edge'
 
 call plug#begin($XDG_DATA_HOME.'/nvim/vim-plug')
 	Plug 'gruvbox-community/gruvbox'  " gruvbox theme
@@ -98,9 +102,8 @@ call plug#begin($XDG_DATA_HOME.'/nvim/vim-plug')
 	" Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 	Plug 'nvim-treesitter/nvim-treesitter'
 	Plug 'neovim/nvim-lspconfig'
+	Plug 'kesav21/miniline.nvim'
 call plug#end()
-
-" Plug 'hashivim/vim-terraform' " terraform language server
 
 " }}}
 
