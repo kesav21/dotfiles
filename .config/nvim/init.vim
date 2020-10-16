@@ -67,7 +67,6 @@ augroup END
 " plugins {{{
 
 " local plugin
-set rtp+=$HOME/projects/miniline.vim
 set rtp+=$HOME/projects/vim-commentary-config
 set rtp+=$HOME/projects/vim-hcl
 
@@ -97,6 +96,7 @@ call plug#begin($XDG_DATA_HOME.'/nvim/vim-plug')
 	" Plug 'Quramy/tsuquyomi', { 'do': 'npm -g install typescript' }
 	" Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 	Plug 'nvim-treesitter/nvim-treesitter'
+	Plug 'kesav21/miniline.nvim', { 'branch': 'main' }
 call plug#end()
 
 " Plug 'hashivim/vim-terraform' " terraform language server
