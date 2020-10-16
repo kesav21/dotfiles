@@ -28,8 +28,9 @@
 	rmb = !removebranch
 	mg = !mergebranch
 	l = !forgitlog
-	pl = "!{ ssh-add -L >/dev/null && git pull || { ssh-add && git pull; }; }"
-	ps = "!{ ssh-add -L >/dev/null && git push || { ssh-add && git push; }; }"
+	pl = "!{ ssh-add -L >/dev/null || ssh-add; git pull; }"
+	ps = "!{ ssh-add -L >/dev/null || ssh-add; git push; }"
+	cl = "!f() { ssh-add -L >/dev/null || ssh-add; git clone $@; }; f"
 	st = stash
 	stc = stash clear
 [pull]
