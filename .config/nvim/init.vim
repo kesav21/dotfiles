@@ -61,7 +61,9 @@ augroup misc
 	autocmd BufWritePost *bm_dirs,*bm_files !bmgen
 	autocmd BufWritePost *dunstrc !killall -q dunst; dunst &
 	autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd
+	autocmd TextYankPost * silent! lua require('vim.highlight').on_yank({higroup='Visual', timeout=250})
 augroup END
+
 
 " }}}
 
