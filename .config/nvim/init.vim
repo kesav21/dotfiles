@@ -73,6 +73,11 @@ augroup END
 set rtp+=$HOME/projects/vim-commentary-config
 set rtp+=$HOME/projects/vim-hcl
 
+" TODO: check out
+" Plug 'hashivim/vim-terraform' " terraform language server
+" Plug 'nvim-lua/completion-nvim'
+" Plug 'sainnhe/edge'
+
 call plug#begin($XDG_DATA_HOME.'/nvim/vim-plug')
 	Plug 'gruvbox-community/gruvbox'  " gruvbox theme
 	Plug 'tpope/vim-commentary'       " commenting
@@ -99,10 +104,9 @@ call plug#begin($XDG_DATA_HOME.'/nvim/vim-plug')
 	" Plug 'Quramy/tsuquyomi', { 'do': 'npm -g install typescript' }
 	" Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 	Plug 'nvim-treesitter/nvim-treesitter'
-	Plug 'kesav21/miniline.nvim', { 'branch': 'main' }
+	Plug 'neovim/nvim-lspconfig'
+	Plug 'kesav21/miniline.nvim'
 call plug#end()
-
-" Plug 'hashivim/vim-terraform' " terraform language server
 
 " }}}
 
