@@ -13,6 +13,7 @@ set clipboard+=unnamedplus
 set guioptions=M
 set shortmess+=c
 set signcolumn=yes
+set inccommand=split
 
 set background=dark
 set termguicolors
