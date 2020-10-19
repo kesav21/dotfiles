@@ -105,7 +105,7 @@ call plug#begin($XDG_DATA_HOME.'/nvim/vim-plug')
 	" Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 	Plug 'nvim-treesitter/nvim-treesitter'
 	Plug 'neovim/nvim-lspconfig'
-	Plug 'kesav21/miniline.nvim'
+	Plug 'kesav21/miniline.nvim', { 'branch': 'main' }
 call plug#end()
 
 " }}}
