@@ -34,7 +34,7 @@ export GTK_RC_FILES="$XDG_CONFIG_HOME"/gtk-1.0/gtkrc
 export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 
 export PYLINTHOME="$XDG_CACHE_HOME"/pylint
-export IPYTHONDIR="$XDG_CONFIG_HOME"/jupyter
+export IPYTHONDIR="$XDG_CONFIG_HOME"/ipython
 export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME"/jupyter
 
 export LESSKEY="$XDG_CONFIG_HOME"/less/lesskey
