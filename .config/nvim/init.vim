@@ -142,3 +142,7 @@ let g:indentLine_char = '›'
 
 " }}}
 
+
+" TODO: figure out where to put this
+" hi! link cStructure None
+
