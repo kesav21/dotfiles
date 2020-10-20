@@ -72,6 +72,7 @@ augroup END
 " local plugin
 set rtp+=$HOME/projects/vim-commentary-config
 set rtp+=$HOME/projects/vim-hcl
+" set rtp+=~/projects/miniline.nvim
 
 " TODO: check out
 " Plug 'hashivim/vim-terraform' " terraform language server
