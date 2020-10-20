@@ -107,6 +107,7 @@ call plug#begin($XDG_DATA_HOME.'/nvim/vim-plug')
 	Plug 'nvim-treesitter/nvim-treesitter'
 	Plug 'neovim/nvim-lspconfig'
 	Plug 'kesav21/miniline.nvim', { 'branch': 'main' }
+	Plug 'tpope/vim-fugitive'
 call plug#end()
 
 " }}}
