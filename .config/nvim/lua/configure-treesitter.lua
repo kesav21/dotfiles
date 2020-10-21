@@ -13,7 +13,11 @@ require'nvim-treesitter.configs'.setup{
 	highlight = {
 		enable = true,
 		custom_captures = {
-			-- ["variable.parameter"] = "TSParameter"
+			-- constant?
+			-- constant.builtin?
+
+			["constant.macro"] = "TSKeyword",
+			["include"] = "TSKeyword",
 
 			["variable.builtin"] = "GruvboxAqua",
 
@@ -33,7 +37,10 @@ require'nvim-treesitter.configs'.setup{
 
 			["punctuation.bracket"] = "TSNone",
 			["punctuation.special"] = "TSNone",
-			["punctuation.delimiter"] = "TSNone"
+			["punctuation.delimiter"] = "TSNone",
+
+			-- ["variable.parameter"] = "TSParameter"
+			["parameter"] = "TSNone", -- for now
 		}
 	},
 	refactor = {
@@ -65,5 +72,14 @@ require'nvim-treesitter.configs'.setup{
 				["<leader>sp"] = "@parameter.inner",
 			}
 		}
+	},
+	incremental_selection = {
+		enable = true,
+		keymaps = {
+			init_selection = "gns",
+			node_incremental = "gni",
+			node_decremental = "gnd",
+			-- scope_incremental = "grc",
+		},
 	}
 }
