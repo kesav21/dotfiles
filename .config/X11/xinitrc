@@ -11,7 +11,7 @@ sxhkd "$XDG_CONFIG_HOME"/sxhkd/sxhkdrc.personal >"$XDG_CACHE_HOME"/bin/sxhkd 2>&
 dunst >"$XDG_CACHE_HOME"/bin/dunst 2>&1 &                                           # notification daemon
 picom --no-vsync -b --log-file "$XDG_CACHE_HOME"/bin/picom
 
-pulsetest &
+unbuffer pulsetest >>"$XDG_CACHE_HOME"/bin/pulsetest 2>&1 &
 sinkd >"$XDG_CACHE_HOME"/bin/sinkd 2>&1 &         # run sink daemon
 lockrc >"$XDG_CACHE_HOME"/bin/lockrc 2>&1         # set lock screen timeout
 dwmblocks >"$XDG_CACHE_HOME"/bin/dwmblocks 2>&1 & # run dwm statusbar
