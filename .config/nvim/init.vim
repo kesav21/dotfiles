@@ -45,7 +45,7 @@ nnoremap <silent> <tab>   :tabnext<cr>
 nnoremap <silent> <s-tab> :tabprevious<cr>
 " leader mappings
 nnoremap          <leader>e        :tabnew <c-r>=expand('%:p:h') . '/'<cr>
-nnoremap <silent> <leader>c        :set colorcolumn=<cr>
+nnoremap <silent> <leader>cc       :set colorcolumn=<cr>
 " function key mappings
 nnoremap <F1> :make<cr>
 nnoremap <F2> :!%:p<cr>
@@ -144,7 +144,5 @@ let g:indentLine_char = '›'
 
 " }}}
 
-
 " TODO: figure out where to put this
 " hi! link cStructure None
-
