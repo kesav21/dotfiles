@@ -18,3 +18,8 @@ nnoremap <silent> <Leader>F :call fzf#run({
 " search vim help
 nnoremap <silent> <leader>hh :Helptags<cr>
 
+" search staged files
+nnoremap <silent> <leader>g :GFiles?<cr>
+
+" search with ag
+nnoremap <silent> <leader>a :Ag<cr>

@@ -13,6 +13,7 @@ set clipboard+=unnamedplus
 set guioptions=M
 set shortmess+=c
 set signcolumn=yes
+set inccommand=split
 
 set background=dark
 set termguicolors
@@ -60,7 +61,9 @@ augroup misc
 	autocmd BufWritePost *bm_dirs,*bm_files !bmgen
 	autocmd BufWritePost *dunstrc !killall -q dunst; dunst &
 	autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd
+	autocmd TextYankPost * silent! lua require('vim.highlight').on_yank({higroup='Visual', timeout=250})
 augroup END
+
 
 " }}}
 
@@ -69,6 +72,7 @@ augroup END
 " local plugin
 set rtp+=$HOME/projects/vim-commentary-config
 set rtp+=$HOME/projects/vim-hcl
+" set rtp+=~/projects/miniline.nvim
 
 " TODO: check out
 " Plug 'hashivim/vim-terraform' " terraform language server
@@ -102,7 +106,8 @@ call plug#begin($XDG_DATA_HOME.'/nvim/vim-plug')
 	" Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 	Plug 'nvim-treesitter/nvim-treesitter'
 	Plug 'neovim/nvim-lspconfig'
-	Plug 'kesav21/miniline.nvim'
+	Plug 'kesav21/miniline.nvim', { 'branch': 'main' }
+	Plug 'tpope/vim-fugitive'
 call plug#end()
 
 " }}}
@@ -138,4 +143,8 @@ let g:gitgutter_map_keys = 0
 let g:indentLine_char = '›'
 
 " }}}
+
+
+" TODO: figure out where to put this
+" hi! link cStructure None
 

@@ -17,4 +17,3 @@ augroup status
 	autocmd!
 	autocmd BufEnter * setlocal statusline=%!GetStatusLine()
 augroup END
-
