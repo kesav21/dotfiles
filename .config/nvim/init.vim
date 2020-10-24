@@ -40,6 +40,7 @@ let mapleader = " "
 inoremap jk <esc>
 nnoremap Q <nop>
 nnoremap Y y$
+nnoremap X xi
 " tabs
 nnoremap <silent> <tab>   :tabnext<cr>
 nnoremap <silent> <s-tab> :tabprevious<cr>
