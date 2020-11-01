@@ -18,7 +18,7 @@
 	new = green bold
 	whitespace = red reverse
 [alias]
-	s = "!{ clear; git status; }"
+	s = "!{ clear; git remote update; git status; }"
 	a = !forgitadd
 	d = !forgitdiff
 	ds = diff --staged
