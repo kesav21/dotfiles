@@ -8,6 +8,10 @@ hi! link markdownH6 GruvboxYellowBold
 
 hi! link markdownHeadingDelimiter GruvboxGray
 
+hi! link markdownCode GruvboxGray
+hi! link markdownCodeBlock GruvboxGray
+hi! link markdownCodeDelimiter GruvboxGray
+
 " This gets rid of the nasty _ italic bug in tpope's vim-markdown
 " block $$...$$
 syn region math start=/\$\$/ end=/\$\$/
