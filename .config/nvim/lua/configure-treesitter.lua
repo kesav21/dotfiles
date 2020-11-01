@@ -8,13 +8,35 @@ require'nvim-treesitter.configs'.setup{
 		"lua",
 		"javascript",
 		"query",
-		"markdown"
+		-- "markdown",
+		-- "html",
+		-- "json",
 	},
 	highlight = {
 		enable = true,
 		custom_captures = {
 			-- constant?
 			-- constant.builtin?
+
+			-- markdown
+			-- ["text.title"] = "GruvboxYellowBold",
+			-- ["text.literal"] = "GruvboxAqua",
+			-- ["text.strong"] = "GruvboxGray",
+			-- ["text.emphasis"] = "GruvboxGray",
+			-- ["text.uri"] = "GruvboxPurple",
+			-- ["none"] = "GruvboxGray",
+
+			-- html
+			-- ["tag"] = "GruvboxAqua",
+			-- ["tag.delimiter"] = "GruvboxAqua",
+			-- ["error"] = "GruvboxRed",
+
+			-- json
+			-- ["constant.builtin"] = "GruvboxPurple",
+			-- ["label"] = "GruvboxAqua",
+			-- ["string"] = "GruvboxGreen",
+			-- ["string.escape"] = "GruvboxGreen",
+			-- ["constant.builtin"] = "GruvboxPurple",
 
 			["constant.macro"] = "TSKeyword",
 			["include"] = "TSKeyword",
