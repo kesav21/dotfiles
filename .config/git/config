@@ -18,7 +18,7 @@
 	new = green bold
 	whitespace = red reverse
 [alias]
-	s = "!{ clear; ssh-add -L >/dev/null || ssh-add; git remote update; git status; }"
+	s = "!{ ssh-add -L >/dev/null || ssh-add; clear; git remote update; git status; }"
 	a = !forgitadd
 	d = !forgitdiff
 	ds = diff --staged
