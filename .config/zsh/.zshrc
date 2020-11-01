@@ -82,6 +82,7 @@ eval "$(ssh-agent)" > /dev/null
 # zplug {{{
 
 FORGIT_NO_ALIASES=1
+# VIM_MODE_TRACK_KEYMAP=no
 
 export ZPLUG_HOME="$XDG_SRC_DIR"/zplug
 source "$XDG_SRC_DIR"/zplug/init.zsh
@@ -91,6 +92,7 @@ zplug 'hlissner/zsh-autopair'
 zplug 'zdharma/fast-syntax-highlighting'
 zplug 'wfxr/forgit'
 zplug 'Aloxaf/fzf-tab'
+# zplug 'softmoth/zsh-vim-mode'
 
 zplug check || zplug install
 
