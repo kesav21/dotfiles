@@ -13,7 +13,4 @@ setlocal tabline=%!GetTabLine()
 setlocal noshowmode
 setlocal laststatus=2
 
-augroup status
-	autocmd!
-	autocmd BufEnter * setlocal statusline=%!GetStatusLine()
-augroup END
+autocmd BufEnter * setlocal statusline=%!GetStatusLine()
