@@ -134,6 +134,12 @@ let g:neoformat_sh_shfmt = {
 	\ 'args': ['-p', '-i 0', '-ci'],
 	\ }
 
+let g:neoformat_enabled_haskell = [ 'brittany' ]
+let g:neoformat_haskell_brittany = {
+	\ 'exe': 'stack',
+	\ 'args': ['exec', '--', 'brittany', '--columns 88'],
+	\ }
+
 let g:neoformat_enabled_typescript = [ 'prettier' ]
 
 let g:deoplete#enable_at_startup = 1
