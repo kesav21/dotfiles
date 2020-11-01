@@ -41,6 +41,7 @@ inoremap jk <esc>
 nnoremap Q <nop>
 nnoremap Y y$
 nnoremap X xi
+vnoremap p "_dP
 " tabs
 nnoremap <silent> <tab>   :tabnext<cr>
 nnoremap <silent> <s-tab> :tabprevious<cr>
