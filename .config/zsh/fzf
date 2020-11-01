@@ -4,9 +4,15 @@ export FZF_DEFAULT_COMMAND='echo I have disabled the default command feature'
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS"' --reverse --height=99% --exit-0'
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS"' --color=fg:#a89984,bg:#1d2021,hl:#83a598 --color=fg+:#ebdbb2,bg+:#1d2021,hl+:#83a598 --color=info:#afaf87,prompt:#cc241d,pointer:#d3869b --color=marker:#8ec07c,spinner:#1d2021,header:#83a598'
 
+select-history() {
+	fc -rl 1 |
+		perl -ne 'print if !$seen{(/^\s*[0-9]+\**\s+(.*)/, $1)}++' |
+		fzf +m -n2..,.. --tiebreak=index --bind=ctrl-r:toggle-sort
+}
+
 fzf-history() {
 	setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2> /dev/null
-	local num="$(fc -rl 1 | perl -ne 'print if !$seen{(/^\s*[0-9]+\s+(.*)/, $1)}++' | fzf | cut -d' ' -f2)"
+	local num="$(select-history)"
 	local ret=$?
 	[ -n "$num" ] && zle vi-fetch-history -n $num
 	zle reset-prompt
