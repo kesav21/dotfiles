@@ -19,6 +19,7 @@
 	whitespace = red reverse
 [alias]
 	s = "!{ ssh-add -L >/dev/null || ssh-add; clear; git remote update; git status; }"
+	ss = "!{ clear; git status; }"
 	a = !forgitadd
 	d = !forgitdiff
 	ds = diff --staged
