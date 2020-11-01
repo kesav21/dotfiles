@@ -60,3 +60,25 @@ fzf-select-dir-absolute() {
 }
 zle     -N   fzf-select-dir-absolute
 bindkey '\eC' fzf-select-dir-absolute
+
+# TODO: handle special characters like single quotes and double quotes
+rename-format() {
+	[ -n "$1" ] && {
+		maxlen="$(wc -L <<< "$1")"
+		while read line; do
+			padding="$((maxlen - ${#line} + 1))"
+			printf "mv '%s'" "$line"
+			[ "$padding" -gt 0 ] && printf ' %.0s' {1..$padding}
+			printf "'%s'\n" "$line"
+		done <<< "$1"
+	}
+}
+
+fzf-rename() {
+	setopt localoptions pipefail no_aliases 2> /dev/null
+	LBUFFER="$(mv-format "$(fd -H -tf '.*' . | fzf -m --select-1)")"
+	[ -n "$LBUFFER" ] && zle edit-command-line
+	zle reset-prompt
+}
+zle     -N   fzf-rename
+bindkey '^p' fzf-rename
