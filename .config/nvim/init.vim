@@ -48,6 +48,7 @@ nnoremap <silent> <s-tab> :tabprevious<cr>
 " leader mappings
 nnoremap          <leader>e        :tabnew <c-r>=expand('%:p:h') . '/'<cr>
 nnoremap <silent> <leader>cc       :set colorcolumn=<cr>
+nnoremap <silent> <leader>cp       :silent !xsel -ib < %<cr>
 " function key mappings
 nnoremap <F1> :make<cr>
 nnoremap <F2> :!%:p<cr>
