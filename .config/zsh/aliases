@@ -33,3 +33,5 @@ alias tfp='terraform plan -out=out'
 alias tfa='terraform apply out'
 
 alias path='tr ":" "\n" <<< $PATH'
+
+alias ghcid='stack exec -- ghcid --color=always -r'
