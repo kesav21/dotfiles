@@ -98,10 +98,10 @@ call plug#begin($XDG_DATA_HOME.'/nvim/vim-plug')
 	Plug 'Shougo/deoplete.nvim', {
 		\ 'do': ':UpdateRemotePlugins'
 		\ }                           " completion menu
-	Plug 'leafgarland/typescript-vim' " typescript highlighting
+	" Plug 'leafgarland/typescript-vim' " typescript highlighting
 	Plug 'airblade/vim-gitgutter'     " git integration
 	Plug 'Yggdroot/indentLine'
-	Plug 'peitalin/vim-jsx-typescript'
+	" Plug 'peitalin/vim-jsx-typescript'
 	Plug 'justinmk/vim-sneak'
 	" Plug 'Quramy/tsuquyomi', { 'do': 'npm -g install typescript' }
 	" Plug 'Shougo/vimproc.vim', { 'do': 'make' }
