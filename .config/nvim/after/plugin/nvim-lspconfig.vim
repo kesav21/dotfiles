@@ -9,6 +9,8 @@ nnoremap <silent> <leader>rn <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap <silent> <leader>ca <cmd>lua vim.lsp.buf.code_action()<CR>
 inoremap <silent> <c-k>      <cmd>lua vim.lsp.buf.signature_help()<CR>
 
+autocmd Filetype python setlocal omnifunc=v:lua.vim.lsp.omnifunc
+
 " set omnifunc="v:lua.vim.lsp.omnifunc"
 " sign define LspDiagnosticsErrorSign       text=✖
 " sign define LspDiagnosticsWarningSign     text=⚠
