@@ -76,7 +76,7 @@ rename-format() {
 
 fzf-rename() {
 	setopt localoptions pipefail no_aliases 2> /dev/null
-	LBUFFER="$(mv-format "$(fd -H -tf '.*' . | fzf -m --select-1)")"
+	LBUFFER="$(rename-format "$(fd -H -tf '.*' . | fzf -m --select-1)")"
 	[ -n "$LBUFFER" ] && zle edit-command-line
 	zle reset-prompt
 }
