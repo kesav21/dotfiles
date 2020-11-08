@@ -145,6 +145,12 @@ let g:neoformat_haskell_brittany = {
 
 let g:neoformat_enabled_typescript = [ 'prettier' ]
 
+let g:neoformat_enabled_go = [ 'gofmt' ]
+let g:neoformat_go_gofmt = {
+	\ 'exe': 'gofmt',
+	\ 'args': ['-s'],
+	\ }
+
 let g:deoplete#enable_at_startup = 1
 
 let g:gitgutter_enabled = 1
