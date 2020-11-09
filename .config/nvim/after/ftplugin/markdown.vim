@@ -21,4 +21,4 @@ syn match math '\$[^$].\{-}\$'
 " actually highlight the region we defined as "math"
 hi link math Statement
 
-let &makeprg='pandoc -s -t html5 --pdf-engine=wkhtmltopdf --katex --number-sections -o %:r.pdf %'
+let &l:makeprg='pandoc -s -t html5 --pdf-engine=wkhtmltopdf --katex --number-sections -o %:r.pdf %'

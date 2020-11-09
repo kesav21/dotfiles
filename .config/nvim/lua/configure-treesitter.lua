@@ -8,6 +8,7 @@ require'nvim-treesitter.configs'.setup{
 		"lua",
 		"javascript",
 		"query",
+		"go",
 		-- "markdown",
 		-- "html",
 		-- "json",
