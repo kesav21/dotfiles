@@ -138,10 +138,10 @@ let g:neoformat_sh_shfmt = {
 	\ }
 
 let g:neoformat_enabled_haskell = [ 'brittany' ]
-let g:neoformat_haskell_brittany = {
-	\ 'exe': 'stack',
-	\ 'args': ['exec', '--', 'brittany', '--columns 88'],
-	\ }
+" let g:neoformat_haskell_brittany = {
+" 	\ 'exe': 'stack',
+" 	\ 'args': ['exec', '--', 'brittany', '--columns 88'],
+" 	\ }
 
 let g:neoformat_enabled_typescript = [ 'prettier' ]
 

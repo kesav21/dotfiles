@@ -63,6 +63,10 @@ export PATH="$bindirs$PATH"
 # add ghc
 export PATH="$HOME"/.cabal/bin:"$HOME"/.ghcup/bin:"$PATH"
 
+# add stack packages
+stack_packages="$(stack path | awk -F"[: ]" '/^bin-path/ {print $3}')"
+export PATH="$stack_packages":"$PATH"
+
 # }}}
 
 # start x {{{
