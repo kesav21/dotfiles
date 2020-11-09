@@ -67,6 +67,10 @@ augroup misc
 	autocmd TextYankPost * silent! lua require('vim.highlight').on_yank({higroup='Visual', timeout=250})
 augroup END
 
+augroup fmt
+	autocmd!
+	autocmd BufWritePre * undojoin | Neoformat
+augroup END
 
 " }}}
 
