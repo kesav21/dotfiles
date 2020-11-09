@@ -21,46 +21,6 @@ fzf-history() {
 zle     -N   fzf-history
 bindkey '^R' fzf-history
 
-fzf-select-file-relative() {
-	setopt localoptions pipefail no_aliases 2> /dev/null
-	LBUFFER="${LBUFFER}$(fd -H -tf ".*" . | fzf --select-1 | tr '\n' ' ')"
-	local ret=$?
-	zle reset-prompt
-	return $ret
-}
-zle     -N   fzf-select-file-relative
-bindkey '\es' fzf-select-file-relative
-
-fzf-select-file-absolute() {
-	setopt localoptions pipefail no_aliases 2> /dev/null
-	LBUFFER="${LBUFFER}$(fd -H -tf ".*" ~ | sed "s|$HOME|~|g" | fzf --select-1 | sed "s|~|$HOME|g" | tr '\n' ' ')"
-	local ret=$?
-	zle reset-prompt
-	return $ret
-}
-zle     -N   fzf-select-file-absolute
-bindkey '\eS' fzf-select-file-absolute
-
-fzf-select-dir-relative() {
-	setopt localoptions pipefail no_aliases 2> /dev/null
-	LBUFFER="${LBUFFER}$(fd -H -td ".*" . | fzf --select-1 | tr '\n' ' ')"
-	local ret=$?
-	zle reset-prompt
-	return $ret
-}
-zle     -N   fzf-select-dir-relative
-bindkey '\ec' fzf-select-dir-relative
-
-fzf-select-dir-absolute() {
-	setopt localoptions pipefail no_aliases 2> /dev/null
-	LBUFFER="${LBUFFER}$(fd -H -td ".*" ~ | sed "s|$HOME|~|g" | fzf --select-1 | sed "s|~|$HOME|g" | tr '\n' ' ')"
-	local ret=$?
-	zle reset-prompt
-	return $ret
-}
-zle     -N   fzf-select-dir-absolute
-bindkey '\eC' fzf-select-dir-absolute
-
 # TODO: handle special characters like single quotes and double quotes
 rename-format() {
 	[ -n "$1" ] && {
@@ -74,11 +34,11 @@ rename-format() {
 	}
 }
 
-fzf-rename() {
+mv() {
 	setopt localoptions pipefail no_aliases 2> /dev/null
 	LBUFFER="$(rename-format "$(fd -HI -d1 -tf '.*' . | fzf -m --select-1)")"
 	[ -n "$LBUFFER" ] && zle edit-command-line
 	zle reset-prompt
 }
-zle     -N   fzf-rename
-bindkey '^p' fzf-rename
+# in vi normal mode, type :mv
+zle -N mv
