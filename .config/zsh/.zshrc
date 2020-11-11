@@ -72,8 +72,7 @@ source "$XDG_CONFIG_HOME"/zsh/aliases
 # set up fzf bindings
 source "$XDG_CONFIG_HOME"/zsh/fzf
 # set up node version manager
-export NVM_SOURCE="$XDG_CONFIG_HOME"/nvm
-[ -s "$NVM_SOURCE"/nvm.sh ] && source "$NVM_SOURCE"/nvm.sh
+[ -s "$NVM_DIR"/nvm.sh ] && source "$NVM_DIR"/nvm.sh
 # set up ssh
 eval "$(ssh-agent)" > /dev/null
 
