@@ -69,6 +69,9 @@ export PATH="$stack_packages":"$PATH"
 
 # }}}
 
+# set up ssh
+eval "$(ssh-agent)" > /dev/null
+
 # start x {{{
 
 systemctl -q is-active graphical.target && [ ! "$DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ] &&

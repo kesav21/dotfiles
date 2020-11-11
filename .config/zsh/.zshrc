@@ -73,8 +73,6 @@ source "$XDG_CONFIG_HOME"/zsh/aliases
 source "$XDG_CONFIG_HOME"/zsh/fzf
 # set up node version manager
 [ -s "$NVM_DIR"/nvm.sh ] && source "$NVM_DIR"/nvm.sh
-# set up ssh
-eval "$(ssh-agent)" > /dev/null
 
 # }}}
 
