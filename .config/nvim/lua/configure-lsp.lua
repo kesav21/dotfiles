@@ -1,4 +1,9 @@
-require'nvim_lsp'.tsserver.setup{}
+require'nvim_lsp'.tsserver.setup {
+	-- TODO: fix; doesn't print kk
+	on_attach = function(client)
+		print('kk')
+	end
+}
 require'nvim_lsp'.ccls.setup {
 	cmd = { "ccls", '--init={"cache": {"directory": "/tmp/ccls-cache"}}' }
 }
