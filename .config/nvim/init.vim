@@ -160,6 +160,7 @@ let g:neoformat_java_astyle = {
 
 let g:neoformat_enabled_c = []
 let g:neoformat_enabled_cpp = []
+let g:neoformat_enabled_markdown = []
 
 let g:deoplete#enable_at_startup = 1
 
