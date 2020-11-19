@@ -152,6 +152,12 @@ let g:neoformat_go_gofmt = {
 	\ 'args': ['-s'],
 	\ }
 
+let g:neoformat_enabled_java = ['astyle']
+let g:neoformat_java_astyle = {
+	\ 'exe': 'astyle',
+	\ 'args': ['--indent=tab', '<'],
+	\ }
+
 let g:neoformat_enabled_c = []
 let g:neoformat_enabled_cpp = []
 
