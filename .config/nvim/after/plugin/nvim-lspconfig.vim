@@ -11,6 +11,8 @@ inoremap <silent> <c-k>      <cmd>lua vim.lsp.buf.signature_help()<CR>
 
 autocmd Filetype python setlocal omnifunc=v:lua.vim.lsp.omnifunc
 
+setlocal completeopt-=preview
+
 " set omnifunc="v:lua.vim.lsp.omnifunc"
 " sign define LspDiagnosticsErrorSign       text=✖
 " sign define LspDiagnosticsWarningSign     text=⚠
