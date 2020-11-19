@@ -14,6 +14,7 @@ set guioptions=M
 set shortmess+=c
 set signcolumn=yes
 set inccommand=split
+set exrc secure " project specific vimrc
 
 set background=dark
 set termguicolors
