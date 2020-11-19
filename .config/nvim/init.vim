@@ -144,6 +144,7 @@ let g:neoformat_sh_shfmt = {
 let g:neoformat_enabled_haskell = [ 'brittany' ]
 
 let g:neoformat_enabled_typescript = [ 'prettier' ]
+let g:neoformat_enabled_javascript = [ 'prettier' ]
 
 let g:neoformat_enabled_go = [ 'gofmt' ]
 let g:neoformat_go_gofmt = {
