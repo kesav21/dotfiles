@@ -94,8 +94,6 @@ vim.cmd [[ augroup END ]]
 
 -- plugins {{{
 
--- local plugins
-vim.o.rtp = vim.o.rtp .. ',$HOME/projects/vim-hcl'
 vim.o.rtp = vim.o.rtp .. ',$HOME/projects/miniline.nvim'
 
 vim.call('plug#begin', os.getenv('XDG_DATA_HOME') .. '/nvim/vim-plug')
