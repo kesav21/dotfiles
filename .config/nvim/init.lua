@@ -76,12 +76,25 @@ vim.cmd [[ 	autocmd! ]]
 vim.cmd [[ 	autocmd BufWritePre * undojoin | Neoformat ]]
 vim.cmd [[ augroup END ]]
 
+vim.cmd [[ augroup commentstrings ]]
+vim.cmd [[ autocmd! ]]
+vim.cmd [[ autocmd FileType asm        setlocal commentstring=#\ %s ]]
+vim.cmd [[ autocmd FileType cpp        setlocal commentstring=//\ %s ]]
+vim.cmd [[ autocmd FileType crontab    setlocal commentstring=#\ %s ]]
+vim.cmd [[ autocmd FileType c          setlocal commentstring=//\ %s ]]
+vim.cmd [[ autocmd FileType javascript setlocal commentstring=//\ %s ]]
+vim.cmd [[ autocmd FileType markdown   setlocal commentstring=<!--\ %s\ --> ]]
+vim.cmd [[ autocmd FileType matlab     setlocal commentstring=%\ %s ]]
+vim.cmd [[ autocmd FileType typescript setlocal commentstring=//\ %s ]]
+vim.cmd [[ autocmd FileType typescript setlocal commentstring=//\ %s ]]
+vim.cmd [[ autocmd FileType xdefaults  setlocal commentstring=!\ %s ]]
+vim.cmd [[ augroup END ]]
+
 -- }}}
 
 -- plugins {{{
 
 -- local plugins
-vim.o.rtp = vim.o.rtp .. ',$HOME/projects/vim-commentary-config'
 vim.o.rtp = vim.o.rtp .. ',$HOME/projects/vim-hcl'
 vim.o.rtp = vim.o.rtp .. ',$HOME/projects/miniline.nvim'
 
