@@ -1,4 +1,4 @@
-lua require('configure-lsp')
+lua require('kesav.nvim-lspconfig')
 
 " sign define LspDiagnosticsErrorSign       text=✖
 " sign define LspDiagnosticsWarningSign     text=⚠
