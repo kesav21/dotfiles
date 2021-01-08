@@ -1,4 +1,4 @@
-lua require('configure-treesitter')
+lua require('kesav.nvim-treesitter')
 
 " set foldmethod=expr
 " set foldexpr=nvim_treesitter#foldexpr()
