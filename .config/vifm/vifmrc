@@ -27,6 +27,25 @@ endif
 
 " }}}
 
+" file preview {{{
+
+nnoremap w :view<cr>
+
+" pdf
+fileviewer *.pdf pdftotext -nopgbrk %c -
+
+" images/gifs
+fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.xpm
+	\ vifmimg draw %px %py %pw %ph %c
+	\ %pc
+	\ vifmimg clear
+fileviewer *.gif
+	\ vifmimg gifpreview %px %py %pw %ph %c
+	\ %pc
+	\ vifmimg clear
+
+" }}}
+
 " bookmarks {{{
 
 nnoremap gh  :cd $HOME<cr>
