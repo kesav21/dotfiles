@@ -62,18 +62,18 @@ vim.api.nvim_set_keymap('n', '<f2>', ':!%:p<cr>', {noremap = true})
 -- autocommands {{{
 
 vim.cmd [[ augroup misc ]]
-vim.cmd [[ 	autocmd! ]]
-vim.cmd [[ 	autocmd BufWritePre * %s/\s\+$//e ]]
-vim.cmd [[ 	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o ]]
-vim.cmd [[ 	autocmd BufWritePost *bm_dirs,*bm_files !bmgen ]]
-vim.cmd [[ 	autocmd BufWritePost *dunstrc !killall -q dunst; dunst & ]]
-vim.cmd [[ 	autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd ]]
-vim.cmd [[ 	autocmd TextYankPost * silent! lua require('vim.highlight').on_yank({higroup='Visual', timeout=250}) ]]
+vim.cmd [[ autocmd! ]]
+vim.cmd [[ autocmd BufWritePre * %s/\s\+$//e ]]
+vim.cmd [[ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o ]]
+vim.cmd [[ autocmd BufWritePost *bm_dirs,*bm_files !bmgen ]]
+vim.cmd [[ autocmd BufWritePost *dunstrc !killall -q dunst; dunst & ]]
+vim.cmd [[ autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd ]]
+vim.cmd [[ autocmd TextYankPost * silent! lua require('vim.highlight').on_yank({higroup='Visual', timeout=250}) ]]
 vim.cmd [[ augroup END ]]
 
-vim.cmd [[ augroup fmt ]]
-vim.cmd [[ 	autocmd! ]]
-vim.cmd [[ 	autocmd BufWritePre * undojoin | Neoformat ]]
+vim.cmd [[ augroup format ]]
+vim.cmd [[ autocmd! ]]
+vim.cmd [[ autocmd BufWritePre * undojoin | Neoformat ]]
 vim.cmd [[ augroup END ]]
 
 vim.cmd [[ augroup commentstrings ]]
