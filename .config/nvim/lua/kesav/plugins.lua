@@ -30,8 +30,6 @@ return require('packer').startup(function()
 	use 'kovetskiy/sxhkd-vim'           -- sxhkd highlighting
 	use { 'dkarter/bullets.vim',
 		ft = 'markdown' }               -- markdown bulleting
-	use { 'Shougo/deoplete.nvim',
-		run = ':UpdateRemotePlugins' }  -- completion menu
 	-- use 'leafgarland/typescript-vim' -- typescript highlighting
 	use 'airblade/vim-gitgutter'        -- git integration
 	use 'Yggdroot/indentLine'
@@ -48,9 +46,9 @@ return require('packer').startup(function()
 	use { 'kesav21/miniline.nvim',
 		branch = 'main' }
 	use 'tpope/vim-fugitive'
-	use 'Shougo/deoplete-lsp'
     use 'dstein64/vim-startuptime'
 	use 'neovimhaskell/haskell-vim'
+	use 'nvim-lua/completion-nvim'      -- auto complete
 	-- use 'hashivim/vim-terraform'     -- TODO: check this out
 	-- use 'nvim-lua/completion-nvim'   -- TODO: check this out
 	-- use 'sainnhe/edge'               -- TODO: check this out

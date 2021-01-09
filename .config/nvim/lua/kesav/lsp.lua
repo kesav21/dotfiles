@@ -12,8 +12,13 @@ function on_attach(client)
 	vim.api.nvim_set_keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>'    , {noremap = true, silent = true})
 	vim.api.nvim_set_keymap('i', '<c-k>'     , '<cmd>lua vim.lsp.buf.signature_help()<CR>' , {noremap = true, silent = true})
 
+	require('completion').on_attach(client)
+
 	vim.o.completeopt = "menuone,noinsert,noselect"
 	vim.bo.omnifunc = 'v:lua.vim.lsp.omnifunc'
+
+	vim.cmd [[ inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>" ]]
+	vim.cmd [[ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>" ]]
 end
 
 lspconfig.tsserver.setup {
