@@ -15,7 +15,10 @@ return require('packer').startup(function()
 		opt = true }                    -- manage packer
 	use 'gruvbox-community/gruvbox'     -- gruvbox theme
 	use 'tpope/vim-commentary'          -- commenting
-	use 'junegunn/fzf.vim'              -- file search
+	use {
+	  'nvim-telescope/telescope.nvim',
+	  requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'}
+	}                                   -- file search
 	use 'jiangmiao/auto-pairs'          -- bracket matching
 	use 'tpope/vim-surround'            -- helps surround things
 	use 'wellle/targets.vim'            -- more text objects
