@@ -1,6 +1,10 @@
 -- vim: set foldmethod=marker:
 
+-- set this before creating any mappings
+vim.g.mapleader = ' '
+
 require('kesav.plugins')
+require('kesav.telescope')
 
 -- options {{{
 
@@ -40,8 +44,6 @@ vim.cmd [[ syntax on ]]
 -- }}}
 
 -- mappings {{{
-
-vim.g.mapleader = ' '
 
 vim.api.nvim_set_keymap('i', 'jk', '<esc>', {noremap = true})
 vim.api.nvim_set_keymap('n', 'Q' , '<nop>', {noremap = true})
