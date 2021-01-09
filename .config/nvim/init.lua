@@ -1,5 +1,7 @@
 -- vim: set foldmethod=marker:
 
+require('kesav.plugins')
+
 -- options {{{
 
 vim.o.updatetime    = 40
@@ -89,47 +91,6 @@ vim.cmd [[ autocmd FileType typescript setlocal commentstring=//\ %s ]]
 vim.cmd [[ autocmd FileType typescript setlocal commentstring=//\ %s ]]
 vim.cmd [[ autocmd FileType xdefaults  setlocal commentstring=!\ %s ]]
 vim.cmd [[ augroup END ]]
-
--- }}}
-
--- plugins {{{
-
-vim.o.rtp = vim.o.rtp .. ',$HOME/projects/miniline.nvim'
-
-vim.call('plug#begin', os.getenv('XDG_DATA_HOME') .. '/nvim/vim-plug')
-
-vim.cmd [[ Plug 'gruvbox-community/gruvbox' ]] -- gruvbox theme
-vim.cmd [[ Plug 'tpope/vim-commentary' ]] -- commenting
-vim.cmd [[ Plug 'junegunn/fzf.vim' ]] -- file search
-vim.cmd [[ Plug 'jiangmiao/auto-pairs' ]] -- bracket matching
-vim.cmd [[ Plug 'tpope/vim-surround' ]] -- helps surround things
-vim.cmd [[ Plug 'wellle/targets.vim' ]] -- more text objects
-vim.cmd [[ Plug 'junegunn/vim-slash' ]] -- better searching
-vim.cmd [[ Plug 'tommcdo/vim-lion' ]] -- code align
-vim.cmd [[ Plug 'tpope/vim-repeat' ]] -- better repeating for plugins
-vim.cmd [[ Plug 'sbdchd/neoformat' ]] -- code formatter
-vim.cmd [[ Plug 'kovetskiy/sxhkd-vim' ]] -- sxhkd highlighting
-vim.cmd [[ Plug 'dkarter/bullets.vim', { 'for': 'markdown' } ]] -- markdown bulleting
-vim.cmd [[ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } ]] -- completion menu
--- vim.cmd [[ Plug 'leafgarland/typescript-vim' ]] -- typescript highlighting
-vim.cmd [[ Plug 'airblade/vim-gitgutter' ]] -- git integration
-vim.cmd [[ Plug 'Yggdroot/indentLine' ]]
--- vim.cmd [[ Plug 'peitalin/vim-jsx-typescript' ]]
--- vim.cmd [[ Plug 'justinmk/vim-sneak' ]]
--- vim.cmd [[ Plug 'Quramy/tsuquyomi', { 'do': 'npm -g install typescript' } ]]
--- vim.cmd [[ Plug 'Shougo/vimproc.vim', { 'do': 'make' } ]]
-vim.cmd [[ Plug 'nvim-treesitter/nvim-treesitter' ]]
-vim.cmd [[ Plug 'nvim-treesitter/nvim-treesitter-refactor' ]]
-vim.cmd [[ Plug 'nvim-treesitter/nvim-treesitter-textobjects' ]]
-vim.cmd [[ Plug 'neovim/nvim-lspconfig' ]]
--- vim.cmd [[ Plug 'kesav21/miniline.nvim', { 'branch': 'main' } ]]
-vim.cmd [[ Plug 'tpope/vim-fugitive' ]]
-vim.cmd [[ Plug 'Shougo/deoplete-lsp' ]]
--- vim.cmd [[ Plug 'hashivim/vim-terraform' ]] -- TODO: check this out
--- vim.cmd [[ Plug 'nvim-lua/completion-nvim' ] -- TODO: check this out
--- vim.cmd [[ Plug 'sainnhe/edge' ] -- TODO: check this out
-
-vim.call('plug#end')
 
 -- }}}
 
