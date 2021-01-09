@@ -4,6 +4,8 @@
 vim.g.mapleader = ' '
 
 require('kesav.plugins')
+require('kesav.nvim-lspconfig')
+require('kesav.nvim-treesitter')
 require('kesav.telescope')
 
 -- options {{{
