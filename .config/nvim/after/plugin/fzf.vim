@@ -1,4 +1,7 @@
 
+let g:fzf_tags_command = ''
+let g:fzf_preview_window = ''
+
 " open relative file in new tab
 nnoremap <silent> <Leader>f :call fzf#run({
 	\ 'options': '--multi',
