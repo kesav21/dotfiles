@@ -71,6 +71,7 @@ vim.cmd [[ autocmd BufWritePost *bm_dirs,*bm_files !bmgen ]]
 vim.cmd [[ autocmd BufWritePost *dunstrc !killall -q dunst; dunst & ]]
 vim.cmd [[ autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd ]]
 vim.cmd [[ autocmd TextYankPost * silent! lua require('vim.highlight').on_yank({higroup='Visual', timeout=250}) ]]
+vim.cmd [[ autocmd BufWritePost plugins.lua PackerCompile ]]
 vim.cmd [[ augroup END ]]
 
 vim.cmd [[ augroup format ]]
