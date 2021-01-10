@@ -80,7 +80,7 @@ vim.cmd [[ augroup END ]]
 
 vim.cmd [[ augroup format ]]
 vim.cmd [[ autocmd! ]]
-vim.cmd [[ autocmd Filetype typescript,javascript,python,sh,haskell,go,java autocmd BufWritePre * undojoin | Neoformat ]]
+vim.cmd [[ autocmd Filetype typescript,javascript,python,sh,haskell,go,java autocmd BufWritePre <buffer> undojoin | Neoformat ]]
 vim.cmd [[ augroup END ]]
 
 vim.cmd [[ augroup commentstrings ]]
