@@ -1,6 +1,6 @@
 local lspconfig = require('lspconfig')
 
-function on_attach(client)
+local function on_attach(client)
 	print('attached lsp client')
 
 	vim.api.nvim_set_keymap('n', 'gd'        , '<cmd>lua vim.lsp.buf.definition()<CR>'     , {noremap = true, silent = true})
@@ -32,6 +32,11 @@ lspconfig.pyls.setup {
 	on_attach = on_attach
 }
 lspconfig.gopls.setup {
+	on_attach = on_attach
+}
+lspconfig.hls.setup {
+	cmd = { "haskell-language-server-wrapper", "--lsp", "--logfile", "/home/kesav/hls.log", "--debug" },
+	filetypes = { 'haskell' },
 	on_attach = on_attach
 }
 
