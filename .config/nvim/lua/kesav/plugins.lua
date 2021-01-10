@@ -45,6 +45,10 @@ return require('packer').startup(function()
 	use 'neovim/nvim-lspconfig'
 	use { 'kesav21/miniline.nvim',
 		branch = 'main' }
+	use {
+		'tjdevries/express_line.nvim',
+		requires = {'nvim-lua/plenary.nvim'}
+	}                                   -- statusline
 	use 'tpope/vim-fugitive'
     use 'dstein64/vim-startuptime'
 	use 'neovimhaskell/haskell-vim'

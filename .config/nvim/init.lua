@@ -7,9 +7,11 @@ require('kesav.plugins')
 require('kesav.lsp')
 require('kesav.treesitter')
 require('kesav.telescope')
+require('kesav.statusline')
 
 -- options {{{
 
+vim.o.laststatus    = 2
 vim.o.updatetime    = 40
 vim.o.timeoutlen    = 1000
 vim.o.hlsearch      = true
@@ -18,6 +20,7 @@ vim.o.timeout       = true
 vim.o.exrc          = true
 vim.o.secure        = true
 vim.o.termguicolors = true
+vim.o.showmode      = false
 vim.o.background    = 'dark'
 vim.o.inccommand    = 'split'
 vim.o.clipboard     = 'unnamedplus'
