@@ -43,8 +43,6 @@ return require('packer').startup(function(use)
 	use 'nvim-treesitter/nvim-treesitter-refactor'
 	use 'nvim-treesitter/nvim-treesitter-textobjects'
 	use 'neovim/nvim-lspconfig'
-	use { 'kesav21/miniline.nvim',
-		branch = 'main' }
 	use {
 		'tjdevries/express_line.nvim',
 		requires = {'nvim-lua/plenary.nvim'}

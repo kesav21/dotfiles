@@ -8,6 +8,7 @@ require('kesav.lsp')
 require('kesav.treesitter')
 require('kesav.telescope')
 require('kesav.statusline')
+require('kesav.tabline')
 
 -- options {{{
 
