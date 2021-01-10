@@ -8,7 +8,7 @@ end
 vim.cmd [[ packadd packer.nvim ]]
 
 
-return require('packer').startup(function()
+return require('packer').startup(function(use)
 	local neoformat_ft = { 'python', 'sh', 'haskell', 'typescript', 'javascript', 'go', 'java' }
 
 	use { 'wbthomason/packer.nvim',
