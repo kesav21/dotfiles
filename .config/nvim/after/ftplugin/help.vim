@@ -1,2 +1,2 @@
-set number relativenumber
+setlocal number relativenumber
 execute("IndentLinesToggle")
