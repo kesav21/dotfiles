@@ -12,6 +12,8 @@ local function on_attach(client)
 	vim.api.nvim_set_keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>'    , {noremap = true, silent = true})
 	vim.api.nvim_set_keymap('i', '<c-k>'     , '<cmd>lua vim.lsp.buf.signature_help()<CR>' , {noremap = true, silent = true})
 
+	vim.api.nvim_set_keymap('n', '<leader>k' , '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr>', {noremap = true, silent = true})
+
 	require('completion').on_attach(client)
 
 	vim.o.completeopt = "menuone,noinsert,noselect"
