@@ -34,6 +34,9 @@ lspconfig.pyls.setup {
 lspconfig.gopls.setup {
 	on_attach = on_attach
 }
+lspconfig.vimls.setup {
+	on_attach = on_attach
+}
 lspconfig.hls.setup {
 	cmd = { "haskell-language-server-wrapper", "--lsp", "--logfile", "/home/kesav/hls.log", "--debug" },
 	filetypes = { 'haskell' },
