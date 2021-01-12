@@ -15,6 +15,27 @@ local git_branch = subscribe.buf_autocmd("el_git_branch", "BufEnter", function(w
 	end
 end)
 
+local function lsp_diagnostics(buffer, severity)
+	local count = vim.lsp.diagnostic.get_count(buffer.bufnr, severity)
+	if count > 0 then
+		return '%#StatusLsp' .. severity .. '#' .. ' ' .. count .. ' '
+	else
+		return ''
+	end
+end
+
+local function lsp_diagnostics_wrapper(_, buffer)
+	local clients = vim.lsp.buf_get_clients(buffer.bufnr)
+	if #clients > 0 then
+		return lsp_diagnostics(buffer, 'Error')
+			.. lsp_diagnostics(buffer, 'Warning')
+			.. lsp_diagnostics(buffer, 'Information')
+			.. lsp_diagnostics(buffer, 'Hint')
+	else
+		return ''
+	end
+end
+
 local function generator()
 	vim.cmd [[ hi StatusModeCyan   guifg=#1d2021 guibg=#689d6a gui=bold ]]
 	vim.cmd [[ hi StatusModeBlue   guifg=#1d2021 guibg=#458588 gui=bold ]]
@@ -24,6 +45,11 @@ local function generator()
 	vim.cmd [[ hi StatusLight      guifg=#1d2021 guibg=#a89984 ]]
 	vim.cmd [[ hi StatusDark       guifg=#ebdbb2 guibg=#3c3836 ]]
 	vim.cmd [[ hi StatusDarker     guifg=#a89984 guibg=#282828 ]]
+
+	vim.cmd [[ hi StatusLspError       guifg=#3c3836 guibg=#fb4934 ]]
+	vim.cmd [[ hi StatusLspWarning     guifg=#3c3836 guibg=#fabd2f ]]
+	vim.cmd [[ hi StatusLspInformation guifg=#3c3836 guibg=#83a598 ]]
+	vim.cmd [[ hi StatusLspHint        guifg=#3c3836 guibg=#8ec07c ]]
 
 	local config = {
 		["n"]  = {name = " N ", hi = "%#StatusModeCyan#"},
@@ -51,6 +77,7 @@ local function generator()
 		"%#StatusDark#" .. " %y ",  -- filetype
 		"%#StatusLight#" .. " %cC", -- columns
 		" %l/%LL ",                 -- lines
+		lsp_diagnostics_wrapper,    -- counts of diagnostic messages
 	}
 end
 
