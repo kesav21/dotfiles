@@ -47,7 +47,7 @@ local function generator()
 		'%#StatusDarker#' .. ' %F', -- file name
 		'%=',                       -- switch sides
 		" %m",                      -- modifiable
-		" %r",                      -- readable
+		" %r ",                     -- readable
 		"%#StatusDark#" .. " %y ",  -- filetype
 		"%#StatusLight#" .. " %cC", -- columns
 		" %l/%LL ",                 -- lines
