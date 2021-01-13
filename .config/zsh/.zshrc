@@ -74,6 +74,8 @@ source "$XDG_CONFIG_HOME"/zsh/aliases
 source "$XDG_CONFIG_HOME"/zsh/fzf
 # set up node version manager
 [ -s "$NVM_DIR"/nvm.sh ] && source "$NVM_DIR"/nvm.sh
+# configure lua package path
+eval "$(luarocks --lua-version 5.1 path)"
 
 # }}}
 
