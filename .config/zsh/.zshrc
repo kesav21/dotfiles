@@ -25,7 +25,8 @@ autoload -U colors && colors
 setopt PROMPT_SUBST
 
 __git_ps1() {
-	[ -d .git ] && echo "($(git branch --show-current))"
+	branch="$(getbranch)"
+	[ -n "$branch" ] && printf '(%s)' "$branch"
 }
 
 PROMPT='%{${ret_status}%}%{$fg[blue]%}[%~] $ %{$reset_color%}'
