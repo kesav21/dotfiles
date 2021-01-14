@@ -1,6 +1,8 @@
 
 local actions = require('telescope.actions')
 
+actions.empty = function() end
+
 require('telescope').setup {
 	defaults = {
 		mappings = {
@@ -9,27 +11,27 @@ require('telescope').setup {
 				["<c-p>"]  = actions.move_selection_previous,
 				["<c-y>"]  = actions.goto_file_selection_edit + actions.center,
 				["<c-c>"]  = actions.close,
-				["<down>"] = function() end,
-				["<up>"]   = function() end,
-				["<cr>"]   = function() end,
-				["<c-x>"]  = function() end,
-				["<c-v>"]  = function() end,
-				["<c-t>"]  = function() end,
-				["<c-u>"]  = function() end,
-				["<c-d>"]  = function() end,
+				["<down>"] = actions.empty,
+				["<up>"]   = actions.empty,
+				["<cr>"]   = actions.empty,
+				["<c-x>"]  = actions.empty,
+				["<c-v>"]  = actions.empty,
+				["<c-t>"]  = actions.empty,
+				["<c-u>"]  = actions.empty,
+				["<c-d>"]  = actions.empty,
 			},
 			n = {
-				["<esc>"]  = function() end,
-				["<cr>"]   = function() end,
-				["<c-x>"]  = function() end,
-				["<c-v>"]  = function() end,
-				["<c-t>"]  = function() end,
-				["j"]      = function() end,
-				["k"]      = function() end,
-				["<down>"] = function() end,
-				["<up>"]   = function() end,
-				["<c-u>"]  = function() end,
-				["<c-d>"]  = function() end,
+				["<esc>"]  = actions.empty,
+				["<cr>"]   = actions.empty,
+				["<c-x>"]  = actions.empty,
+				["<c-v>"]  = actions.empty,
+				["<c-t>"]  = actions.empty,
+				["j"]      = actions.empty,
+				["k"]      = actions.empty,
+				["<down>"] = actions.empty,
+				["<up>"]   = actions.empty,
+				["<c-u>"]  = actions.empty,
+				["<c-d>"]  = actions.empty,
 			},
 		},
 
