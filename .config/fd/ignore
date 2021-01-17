@@ -17,3 +17,4 @@ __pycache__
 clion
 node_modules
 dist
+.stack-work
