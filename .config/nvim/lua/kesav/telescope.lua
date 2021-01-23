@@ -19,6 +19,7 @@ require('telescope').setup {
 				["<c-t>"]  = actions.empty,
 				["<c-u>"]  = actions.empty,
 				["<c-d>"]  = actions.empty,
+				["<esc>"]  = actions.empty,
 			},
 			n = {
 				["<esc>"]  = actions.empty,
@@ -44,5 +45,6 @@ require('telescope').setup {
 }
 
 vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>lua require("kesav.telescope-pickers").find_files()<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>fd', '<cmd>lua require("kesav.telescope-pickers").find_dirs()<cr>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<leader>fh', '<cmd>lua require("kesav.telescope-pickers").help_tags()<cr>', {noremap = true})
-
+vim.api.nvim_set_keymap('t', '<c-\\>fd', '<c-\\><c-n>:lua require("kesav.telescope-pickers").terminal_cd()<cr>', {noremap = true, silent = true})
