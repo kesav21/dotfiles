@@ -6,3 +6,4 @@ setlocal expandtab
 
 let &l:makeprg = 'stack build --copy-bins'
 
+setlocal formatoptions-=ro
