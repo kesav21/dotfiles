@@ -28,11 +28,6 @@ vim.o.clipboard     = 'unnamedplus'
 vim.o.wildmode      = 'longest,list,full'
 vim.o.shortmess     = vim.o.shortmess .. 'c'
 
-vim.o.tabstop     = 4
-vim.o.shiftwidth  = 4
-vim.o.softtabstop = 4
-vim.o.expandtab   = false
-
 vim.wo.relativenumber = true
 vim.wo.number         = true
 vim.wo.cursorline     = true
@@ -41,6 +36,10 @@ vim.wo.colorcolumn    = '88'
 vim.wo.signcolumn     = 'yes'
 
 vim.bo.modeline    = true
+vim.bo.tabstop     = 4
+vim.bo.shiftwidth  = 4
+vim.bo.softtabstop = 4
+vim.bo.expandtab   = false
 
 vim.cmd [[ set listchars=tab:›─,nbsp:∙,trail:∙,extends:▶,precedes:◀ ]] -- breaks if done in lua
 
