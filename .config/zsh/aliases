@@ -2,10 +2,10 @@
 
 # vim: set foldmethod=marker:
 
-alias f='fd -H -tf ".*" . | fzf -m --select-1 --preview="bat {}" | xargs -r nvim -p'
-alias F='fd -H -tf ".*" ~ | fzf -m --select-1 --preview="bat {}" | xargs -r nvim -p'
-alias d='cd "$(fd -H -td ".*" . | fzf --select-1)"'
-alias D='cd "$(fd -H -td ".*" ~ | sed "s|$HOME|~|g" | fzf --select-1 | sed "s|~|$HOME|g")"'
+alias f='fd -H --no-ignore-vcs -tf ".*" . | fzf -m --select-1 --preview="bat {}" | xargs -r nvim -p'
+alias F='fd -H --no-ignore-vcs -tf ".*" ~ | fzf -m --select-1 --preview="bat {}" | xargs -r nvim -p'
+alias d='cd "$(fd -H --no-ignore-vcs -td ".*" . | fzf --select-1)"'
+alias D='cd "$(fd -H --no-ignore-vcs -td ".*" ~ | sed "s|$HOME|~|g" | fzf --select-1 | sed "s|~|$HOME|g")"'
 alias g='git'
 alias l='fd -HId1 .'
 alias L='ls -AlFh'
