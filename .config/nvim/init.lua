@@ -72,6 +72,9 @@ vim.api.nvim_set_keymap('n', '<leader>e' , ':tabnew <c-r>=expand("%:p:h") . "/"<
 vim.api.nvim_set_keymap('n', '<leader>cc', ':lua toggle_colorcolum()<cr>'     , {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<leader>cp', ':silent !xsel -ib < %<cr>'              , {noremap = true, silent = true})
 
+vim.api.nvim_set_keymap('n', '<leader>t'   , ':tabedit term://zsh<cr>' , {noremap = true, silent = true})
+vim.api.nvim_set_keymap('t', '<c-\\><c-\\>', '<c-\\><c-n>'             , {noremap = true, silent = true})
+
 vim.api.nvim_set_keymap('n', '<f1>', ':make<cr>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<f2>', ':!%:p<cr>', {noremap = true})
 
