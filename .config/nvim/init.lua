@@ -98,13 +98,24 @@ vim.cmd [[ autocmd! ]]
 vim.cmd [[ autocmd Filetype typescript,javascript,python,sh,haskell,go,java autocmd format BufWritePre <buffer> undojoin | Neoformat ]]
 vim.cmd [[ augroup END ]]
 
+local commentstrings = {
+	c                    = "// %s",
+	cpp                  = "// %s",
+	javascript           = "// %s",
+	typescript           = "// %s",
+	["typescript.react"] = "// %s",
+	asm                  = "# %s",
+	crontab              = "# %s",
+	markdown             = "<!-- %s -->",
+	matlab               = "% %s",
+	xdefaults            = "! %s",
+}
+
 vim.cmd [[ augroup commentstrings ]]
 vim.cmd [[ autocmd! ]]
-vim.cmd [[ autocmd FileType c,cpp,javascript,typescript,typescript.react setlocal commentstring=//\ %s ]]
-vim.cmd [[ autocmd FileType asm,crontab                                  setlocal commentstring=#\ %s ]]
-vim.cmd [[ autocmd FileType markdown                                     setlocal commentstring=<!--\ %s\ --> ]]
-vim.cmd [[ autocmd FileType matlab                                       setlocal commentstring=%\ %s ]]
-vim.cmd [[ autocmd FileType xdefaults                                    setlocal commentstring=!\ %s ]]
+for ft, cms in pairs(commentstrings) do
+	vim.cmd(string.format("autocmd FileType %s lua vim.bo.commentstring = '%s'", ft, cms))
+end
 vim.cmd [[ augroup END ]]
 
 -- }}}
