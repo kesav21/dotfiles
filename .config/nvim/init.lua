@@ -35,11 +35,35 @@ vim.wo.list           = true
 vim.wo.colorcolumn    = '88'
 vim.wo.signcolumn     = 'yes'
 
-vim.bo.modeline    = true
 vim.bo.tabstop     = 4
 vim.bo.shiftwidth  = 4
 vim.bo.softtabstop = 4
 vim.bo.expandtab   = false
+vim.bo.modeline    = true
+
+-- t break the line if it gets too long
+-- c break the comment if it gets too long
+-- r continue comment after <enter>
+-- o continue comment after o or O
+-- q format comments?
+-- w something about trailing whitespace
+-- a auto-format paragraph
+-- ac auto-format commented paragraph
+-- n indent subsequent lines of numbered lists
+-- 2 indent subsequent lines to match indent of second line
+-- v break line only at blanks inserted during the current insert command
+-- b break line only at blanks inserted before the textwidth and during the current insert command
+-- l break line only if line was shorter than textwidth before the current insert command
+-- m break at weird characters
+-- M ???
+-- B ???
+-- 1 don't break after a one-letter word
+-- ] ???
+-- j remove comment leader when joining lines
+-- p don't break after period and single space
+
+vim.bo.textwidth = 88
+vim.bo.formatoptions = 'crqnj'
 
 vim.cmd [[ set listchars=tab:›─,nbsp:∙,trail:∙,extends:▶,precedes:◀ ]] -- breaks if done in lua
 
@@ -84,7 +108,7 @@ vim.api.nvim_set_keymap('n', '<f2>', ':!%:p<cr>', {noremap = true})
 vim.cmd [[ augroup misc ]]
 vim.cmd [[ autocmd! ]]
 vim.cmd [[ autocmd BufWritePre * %s/\s\+$//e ]]
-vim.cmd [[ autocmd FileType * setlocal formatoptions-=cro ]]
+-- vim.cmd [[ autocmd FileType * setlocal formatoptions-=cro ]]
 vim.cmd [[ autocmd BufWritePost *bm_dirs,*bm_files !bmgen ]]
 vim.cmd [[ autocmd BufWritePost *dunstrc !killall -q dunst; dunst & ]]
 vim.cmd [[ autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd ]]
