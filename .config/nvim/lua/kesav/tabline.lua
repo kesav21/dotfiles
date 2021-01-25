@@ -44,8 +44,15 @@ local function buf_terminal_title(buf)
 		"-e",
 		"/proc/" .. pid .."/cwd",
 	}
-	local filepath  = vim.fn.fnamemodify(cwd_output[1], ":~")
-	return string.format("[%s] %s", shell, filepath)
+	local cwd = cwd_output[1]
+	local filepath  = vim.fn.fnamemodify(cwd, ":~:.")
+	local shortname
+	if filepath == "" then
+		shortname = "~"
+	else
+		shortname = vim.fn.pathshorten(filepath)
+	end
+	return string.format("[%s] %s", shell, shortname)
 end
 
 local function buf_help_title(buf)
