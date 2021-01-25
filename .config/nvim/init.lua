@@ -58,18 +58,18 @@ vim.api.nvim_set_keymap('n', 'Y' , 'y$'   , {noremap = true})
 vim.api.nvim_set_keymap('n', 'X' , 'xi'   , {noremap = true})
 vim.api.nvim_set_keymap('v', 'p' , '"_dP' , {noremap = true})
 
-vim.api.nvim_set_keymap('n', '<c-h>' , '<c-w><<c-w><' , {noremap = true})
-vim.api.nvim_set_keymap('n', '<c-l>' , '<c-w>><c-w>>' , {noremap = true})
+vim.api.nvim_set_keymap('n', '<c-h>', '<c-w><<c-w><', {noremap = true})
+vim.api.nvim_set_keymap('n', '<c-l>', '<c-w>><c-w>>', {noremap = true})
 
 vim.api.nvim_set_keymap('n', '<tab>'  , ':tabnext<cr>'    , {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<s-tab>', ':tabprevious<cr>', {noremap = true, silent = true})
 
 vim.api.nvim_set_keymap('n', '<leader>e' , ':tabnew <c-r>=expand("%:p:h") . "/"<cr>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>cc', ':lua toggle_colorcolumn()<cr>'     , {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<leader>cc', ':lua toggle_colorcolumn()<cr>'          , {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<leader>cp', ':silent !xsel -ib < %<cr>'              , {noremap = true, silent = true})
 
-vim.api.nvim_set_keymap('n', '<leader>t'   , ':tabedit term://zsh<cr>' , {noremap = true, silent = true})
-vim.api.nvim_set_keymap('t', '<c-\\><c-\\>', '<c-\\><c-n>'             , {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<leader>t'   , ':tabedit term://zsh<cr>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('t', '<c-\\><c-\\>', '<c-\\><c-n>'            , {noremap = true, silent = true})
 
 vim.api.nvim_set_keymap('n', '<f1>', ':make<cr>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<f2>', ':!%:p<cr>', {noremap = true})
