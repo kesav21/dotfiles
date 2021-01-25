@@ -58,6 +58,9 @@ vim.api.nvim_set_keymap('n', 'Y' , 'y$'   , {noremap = true})
 vim.api.nvim_set_keymap('n', 'X' , 'xi'   , {noremap = true})
 vim.api.nvim_set_keymap('v', 'p' , '"_dP' , {noremap = true})
 
+vim.api.nvim_set_keymap('n', '<c-h>' , '<c-w><<c-w><' , {noremap = true})
+vim.api.nvim_set_keymap('n', '<c-l>' , '<c-w>><c-w>>' , {noremap = true})
+
 vim.api.nvim_set_keymap('n', '<tab>'  , ':tabnext<cr>'    , {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<s-tab>', ':tabprevious<cr>', {noremap = true, silent = true})
 
