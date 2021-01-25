@@ -44,7 +44,7 @@ vim.cmd [[ syntax on ]]
 
 -- mappings {{{
 
-function _G.toggle_colorcolum()
+function _G.toggle_colorcolumn()
 	if vim.wo.colorcolumn == "" then
 		vim.wo.colorcolumn = "88"
 	else
@@ -65,7 +65,7 @@ vim.api.nvim_set_keymap('n', '<tab>'  , ':tabnext<cr>'    , {noremap = true, sil
 vim.api.nvim_set_keymap('n', '<s-tab>', ':tabprevious<cr>', {noremap = true, silent = true})
 
 vim.api.nvim_set_keymap('n', '<leader>e' , ':tabnew <c-r>=expand("%:p:h") . "/"<cr>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>cc', ':lua toggle_colorcolum()<cr>'     , {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<leader>cc', ':lua toggle_colorcolumn()<cr>'     , {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<leader>cp', ':silent !xsel -ib < %<cr>'              , {noremap = true, silent = true})
 
 vim.api.nvim_set_keymap('n', '<leader>t'   , ':tabedit term://zsh<cr>' , {noremap = true, silent = true})
