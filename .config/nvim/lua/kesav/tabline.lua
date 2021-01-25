@@ -35,23 +35,30 @@ local function buf_normal_title(buf)
 	end
 end
 
-local function buf_terminal_title(buf)
-	local id = vim.api.nvim_buf_get_var(buf, 'terminal_job_id')
-	local pid = vim.fn.jobpid(id)
-	local shell = firstline("/proc/" .. pid .."/cmdline")
+local function buf_terminal_cwd(pid)
 	local cwd_output = os_execute_output {
 		"readlink",
 		"-e",
-		"/proc/" .. pid .."/cwd",
+		string.format("/proc/%s/cwd", pid),
 	}
 	local cwd = cwd_output[1]
-	local filepath  = vim.fn.fnamemodify(cwd, ":~:.")
-	local shortname
-	if filepath == "" then
-		shortname = "~"
+
+	if cwd == vim.fn.getcwd() then
+		return "."
+	elseif cwd == os.getenv('HOME') then
+		return "~"
 	else
-		shortname = vim.fn.pathshorten(filepath)
+		local filepath  = vim.fn.fnamemodify(cwd, ":~:.")
+		local shortname = vim.fn.pathshorten(filepath)
+		return shortname
 	end
+end
+
+local function buf_terminal_title(buf)
+	local id = vim.api.nvim_buf_get_var(buf, 'terminal_job_id')
+	local pid = vim.fn.jobpid(id)
+	local shell = firstline(string.format("/proc/%s/cmdline", pid))
+	local shortname = buf_terminal_cwd(pid)
 	return string.format("[%s] %s", shell, shortname)
 end
 
