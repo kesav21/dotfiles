@@ -16,8 +16,8 @@ local function firstline(filename)
 end
 
 
-local function tab_highlight(tab, current)
-	if tab == current then
+local function tab_highlight(current, tab)
+	if current == tab then
 		return "%#TabSel#"
 	else
 		return "%#TabUnsel#"
@@ -94,7 +94,7 @@ function _G.tabline()
 
 	local line = ""
 	for _, tab in ipairs(tabs) do
-		line = line .. tab_highlight(tab, current) .. " " .. tab_title(tab) .. " "
+		line = line .. tab_highlight(current, tab) .. " " .. tab_title(tab) .. " "
 	end
 	return line .. "%#TabClear#"
 end
