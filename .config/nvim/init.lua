@@ -3,6 +3,7 @@
 -- set this before creating any mappings
 vim.g.mapleader = ' '
 
+require('astronauta.keymap')
 require('kesav.plugins')
 require('kesav.lsp')
 require('kesav.treesitter')
@@ -43,35 +44,40 @@ vim.cmd [[ syntax on ]]
 
 -- mappings {{{
 
-function _G.toggle_colorcolumn()
+local nnoremap = vim.keymap.nnoremap
+local inoremap = vim.keymap.inoremap
+local vnoremap = vim.keymap.vnoremap
+local tnoremap = vim.keymap.tnoremap
+
+inoremap { 'jk', '<esc>' }
+nnoremap { 'Q' , '<nop>' }
+nnoremap { 'Y' , 'y$' }
+nnoremap { 'X' , 'xi' }
+vnoremap { 'p' , '"_dP' }
+
+nnoremap { '<c-h>', '<c-w><<c-w><' }
+nnoremap { '<c-l>', '<c-w>><c-w>>' }
+
+nnoremap { '<tab>'  , ':tabnext<cr>' }
+nnoremap { '<s-tab>', ':tabprevious<cr>' }
+
+nnoremap { '<leader>e' , ':tabnew <c-r>=expand("%:p:h") . "/"<cr>' }
+nnoremap { '<leader>cp', ':silent !xsel -ib < %<cr>'              }
+
+nnoremap { '<leader>t'   , ':tabedit term://zsh<cr>' }
+tnoremap { '<c-\\><c-\\>', '<c-\\><c-n>' }
+
+nnoremap { '<f1>', ':make<cr>' }
+nnoremap { '<f2>', ':!%:p<cr>' }
+
+local function toggle_colorcolumn()
 	if vim.wo.colorcolumn == "" then
 		vim.wo.colorcolumn = "88"
 	else
 		vim.wo.colorcolumn = ""
 	end
 end
-
-vim.api.nvim_set_keymap('i', 'jk', '<esc>', {noremap = true})
-vim.api.nvim_set_keymap('n', 'Q' , '<nop>', {noremap = true})
-vim.api.nvim_set_keymap('n', 'Y' , 'y$'   , {noremap = true})
-vim.api.nvim_set_keymap('n', 'X' , 'xi'   , {noremap = true})
-vim.api.nvim_set_keymap('v', 'p' , '"_dP' , {noremap = true})
-
-vim.api.nvim_set_keymap('n', '<c-h>', '<c-w><<c-w><', {noremap = true})
-vim.api.nvim_set_keymap('n', '<c-l>', '<c-w>><c-w>>', {noremap = true})
-
-vim.api.nvim_set_keymap('n', '<tab>'  , ':tabnext<cr>'    , {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<s-tab>', ':tabprevious<cr>', {noremap = true, silent = true})
-
-vim.api.nvim_set_keymap('n', '<leader>e' , ':tabnew <c-r>=expand("%:p:h") . "/"<cr>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>cc', ':lua toggle_colorcolumn()<cr>'          , {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<leader>cp', ':silent !xsel -ib < %<cr>'              , {noremap = true, silent = true})
-
-vim.api.nvim_set_keymap('n', '<leader>t'   , ':tabedit term://zsh<cr>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('t', '<c-\\><c-\\>', '<c-\\><c-n>'            , {noremap = true, silent = true})
-
-vim.api.nvim_set_keymap('n', '<f1>', ':make<cr>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<f2>', ':!%:p<cr>', {noremap = true})
+nnoremap { '<leader>cc', toggle_colorcolumn }
 
 --- }}}
 
