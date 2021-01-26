@@ -123,33 +123,22 @@ vim.cmd [[ autocmd BufWritePre * %s/\s\+$//e ]]
 vim.cmd [[ autocmd BufWritePost *bm_dirs,*bm_files !bmgen ]]
 vim.cmd [[ autocmd BufWritePost *dunstrc !killall -q dunst; dunst & ]]
 vim.cmd [[ autocmd BufWritePost *sxhkdrc !pkill -USR1 sxhkd ]]
-vim.cmd [[ autocmd TextYankPost * silent! lua require('vim.highlight').on_yank({higroup='Visual', timeout=250}) ]]
+vim.cmd [[ autocmd TextYankPost * silent! lua require('vim.highlight').on_yank { higroup = 'Visual', timeout = 250 } ]]
 vim.cmd [[ autocmd BufWritePost plugins.lua PackerCompile ]]
 vim.cmd [[ augroup END ]]
 
-vim.cmd [[ augroup format ]]
-vim.cmd [[ autocmd! ]]
-vim.cmd [[ autocmd Filetype typescript,javascript,python,sh,haskell,go,java autocmd format BufWritePre <buffer> undojoin | Neoformat ]]
-vim.cmd [[ augroup END ]]
-
-local commentstrings = {
-	c                    = "// %s",
-	cpp                  = "// %s",
-	javascript           = "// %s",
-	typescript           = "// %s",
-	["typescript.react"] = "// %s",
-	asm                  = "# %s",
-	crontab              = "# %s",
-	markdown             = "<!-- %s -->",
-	matlab               = "% %s",
-	xdefaults            = "! %s",
-}
-
 vim.cmd [[ augroup commentstrings ]]
 vim.cmd [[ autocmd! ]]
-for ft, cms in pairs(commentstrings) do
-	vim.cmd(string.format("autocmd FileType %s lua vim.bo.commentstring = '%s'", ft, cms))
-end
+vim.cmd [[ autocmd FileType c                lua vim.bo.commentstring = "// %s" ]]
+vim.cmd [[ autocmd FileType cpp              lua vim.bo.commentstring = "// %s" ]]
+vim.cmd [[ autocmd FileType javascript       lua vim.bo.commentstring = "// %s" ]]
+vim.cmd [[ autocmd FileType typescript       lua vim.bo.commentstring = "// %s" ]]
+vim.cmd [[ autocmd FileType typescript.react lua vim.bo.commentstring = "// %s" ]]
+vim.cmd [[ autocmd FileType asm              lua vim.bo.commentstring = "# %s" ]]
+vim.cmd [[ autocmd FileType crontab          lua vim.bo.commentstring = "# %s" ]]
+vim.cmd [[ autocmd FileType markdown         lua vim.bo.commentstring = "<!-- %s -->" ]]
+vim.cmd [[ autocmd FileType matlab           lua vim.bo.commentstring = "% %s" ]]
+vim.cmd [[ autocmd FileType xdefaults        lua vim.bo.commentstring = "! %s" ]]
 vim.cmd [[ augroup END ]]
 
 -- }}}
