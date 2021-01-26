@@ -28,6 +28,8 @@ vim.o.inccommand    = 'split'
 vim.o.clipboard     = 'unnamedplus'
 vim.o.wildmode      = 'longest,list,full'
 vim.o.shortmess     = vim.o.shortmess .. 'c'
+-- breaks if done on window-scope
+vim.o.listchars     = 'tab:›─,nbsp:∙,trail:∙,extends:▶,precedes:◀'
 
 vim.wo.relativenumber = true
 vim.wo.number         = true
@@ -35,7 +37,6 @@ vim.wo.cursorline     = true
 vim.wo.list           = true
 vim.wo.colorcolumn    = '88'
 vim.wo.signcolumn     = 'yes'
-vim.wo.listchars      = 'tab:›─,nbsp:∙,trail:∙,extends:▶,precedes:◀'
 
 vim.cmd [[ filetype plugin indent on ]]
 vim.cmd [[ syntax on ]]
