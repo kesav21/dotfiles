@@ -13,6 +13,9 @@ require('kesav.tabline')
 
 -- options {{{
 
+-- some options do not report file of last modification on :verbose set?
+-- https://github.com/neovim/neovim/issues/6561
+
 vim.o.laststatus    = 2
 vim.o.updatetime    = 40
 vim.o.timeoutlen    = 1000
