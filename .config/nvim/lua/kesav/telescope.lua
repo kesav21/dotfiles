@@ -1,9 +1,14 @@
 
-local actions = require('telescope.actions')
+local telescope  = require('telescope')
+local actions    = require('telescope.actions')
+local sorters    = require('telescope.sorters')
+local previewers = require('telescope.previewers')
+local custom     = require("kesav.telescope-pickers")
+local builtin    = require("telescope.builtin")
 
 actions.empty = function() end
 
-require('telescope').setup {
+telescope.setup {
 	defaults = {
 		mappings = {
 			i = {
@@ -36,16 +41,19 @@ require('telescope').setup {
 			},
 		},
 
-		file_sorter    = require('telescope.sorters').get_fzy_sorter,
-		file_previewer = require('telescope.previewers').vim_buffer_cat.new,
+		file_sorter    = sorters.get_fzy_sorter,
+		file_previewer = previewers.vim_buffer_cat.new,
 
 		sorting_strategy = "ascending",
 		prompt_position  = "top",
 	}
 }
 
-vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>lua require("kesav.telescope-pickers").find_files()<cr>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>fd', '<cmd>lua require("kesav.telescope-pickers").find_dirs()<cr>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>fh', '<cmd>lua require("telescope.builtin").help_tags()<cr>', {noremap = true})
+local nnoremap = vim.keymap.nnoremap
+
+nnoremap { '<leader>ff', custom.find_files }
+nnoremap { '<leader>fd', custom.find_dirs }
+nnoremap { '<leader>fh', builtin.help_tags }
+
 -- this is an awkward mapping
 -- vim.api.nvim_set_keymap('t', '<c-\\>fd', '<c-\\><c-n>:lua require("kesav.telescope-pickers").terminal_cd()<cr>', {noremap = true, silent = true})
