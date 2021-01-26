@@ -52,6 +52,7 @@ return require('packer').startup(function(use)
     use 'dstein64/vim-startuptime'
 	use 'neovimhaskell/haskell-vim'
 	use 'nvim-lua/completion-nvim'      -- auto complete
+	use 'tjdevries/astronauta.nvim'
 	-- use 'hashivim/vim-terraform'     -- TODO: check this out
 	-- use 'nvim-lua/completion-nvim'   -- TODO: check this out
 	-- use 'sainnhe/edge'               -- TODO: check this out
