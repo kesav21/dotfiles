@@ -2,6 +2,9 @@
 local M = {}
 
 local builtin = require('telescope.builtin')
+local pickers = require('telescope.pickers')
+local finders = require('telescope.finders')
+local sorters = require('telescope.sorters')
 local actions = require('telescope.actions')
 
 -- local Job = require('plenary.job')
@@ -18,9 +21,10 @@ function M.find_files()
 end
 
 function M.find_dirs()
-	builtin.find_files {
+	pickers.new {
 		prompt_title = 'Find Directories',
-		find_command = { 'fd', '--hidden', '--type', 'directory', },
+		finder = finders.new_oneshot_job { 'fd', '--hidden', '--type', 'directory', },
+		sorter = sorters.get_fzy_sorter {},
 		attach_mappings = function(prompt_bufnr)
 			actions._select:replace(function()
 				local selection = actions.get_selected_entry()
@@ -29,7 +33,7 @@ function M.find_dirs()
 			end)
 			return true
 		end,
-	}
+	}:find()
 end
 
 -- function M.terminal_cd()
