@@ -34,7 +34,7 @@ vim.wo.cursorline     = true
 vim.wo.list           = true
 vim.wo.colorcolumn    = '88'
 vim.wo.signcolumn     = 'yes'
-vim.wo.listchars = 'tab:›─,nbsp:∙,trail:∙,extends:▶,precedes:◀'
+vim.wo.listchars      = 'tab:›─,nbsp:∙,trail:∙,extends:▶,precedes:◀'
 
 vim.cmd [[ filetype plugin indent on ]]
 vim.cmd [[ syntax on ]]
