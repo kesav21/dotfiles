@@ -14,14 +14,6 @@ local actions = require('telescope.actions')
 function M.find_files()
 	builtin.find_files {
 		find_command = { 'fd', '--hidden', '--type', 'file', },
-		attach_mappings = function(prompt_bufnr)
-			actions._select:replace(function()
-				local selection = actions.get_selected_entry()
-				actions.close(prompt_bufnr)
-				vim.cmd('tabedit ' .. selection.value)
-			end)
-			return true
-		end,
 	}
 end
 
@@ -64,18 +56,5 @@ end
 -- 		end,
 -- 	}
 -- end
-
-function M.help_tags()
-	builtin.help_tags {
-		attach_mappings = function(prompt_bufnr)
-			actions._select:replace(function()
-				local selection = actions.get_selected_entry()
-				actions.close(prompt_bufnr)
-				vim.cmd('tab help ' .. selection.value)
-			end)
-			return true
-		end,
-	}
-end
 
 return M

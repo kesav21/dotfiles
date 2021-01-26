@@ -9,7 +9,7 @@ require('telescope').setup {
 			i = {
 				["<c-n>"]  = actions.move_selection_next,
 				["<c-p>"]  = actions.move_selection_previous,
-				["<cr>"]   = actions.goto_file_selection_edit + actions.center,
+				["<cr>"]   = actions.tabselect + actions.center,
 				["<c-c>"]  = actions.close,
 				["<down>"] = actions.empty,
 				["<up>"]   = actions.empty,
@@ -46,6 +46,6 @@ require('telescope').setup {
 
 vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>lua require("kesav.telescope-pickers").find_files()<cr>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<leader>fd', '<cmd>lua require("kesav.telescope-pickers").find_dirs()<cr>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>fh', '<cmd>lua require("kesav.telescope-pickers").help_tags()<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>fh', '<cmd>lua require("telescope.builtin").help_tags()<cr>', {noremap = true})
 -- this is an awkward mapping
 -- vim.api.nvim_set_keymap('t', '<c-\\>fd', '<c-\\><c-n>:lua require("kesav.telescope-pickers").terminal_cd()<cr>', {noremap = true, silent = true})
