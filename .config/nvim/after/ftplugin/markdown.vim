@@ -22,3 +22,8 @@ syn match math '\$[^$].\{-}\$'
 hi link math Statement
 
 let &l:makeprg='pandoc -s -t html5 --pdf-engine=wkhtmltopdf --katex --number-sections -o %:r.pdf %'
+
+augroup project_config_markdown
+	autocmd!
+	autocmd VimEnter ~/asu/cse464/activity1.md let &l:makeprg='pandoc -s -t html5 --pdf-engine=wkhtmltopdf --katex -o %:r.pdf %'
+augroup END
