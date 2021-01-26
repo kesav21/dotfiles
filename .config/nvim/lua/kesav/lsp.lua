@@ -1,27 +1,33 @@
-local lspconfig = require('lspconfig')
+local lspconfig  = require('lspconfig')
+local completion = require('completion')
+
+local telescope_builtin = require("telescope.builtin")
+
+local nnoremap = vim.keymap.nnoremap
+local inoremap = vim.keymap.inoremap
 
 local function on_attach(client)
 	print('attached lsp client')
 
-	vim.api.nvim_set_keymap('n', 'gd'        , '<cmd>lua vim.lsp.buf.definition()<CR>'     , {noremap = true, silent = true})
-	vim.api.nvim_set_keymap('n', 'gi'        , '<cmd>lua vim.lsp.buf.implementation()<CR>' , {noremap = true, silent = true})
-	vim.api.nvim_set_keymap('n', 'gt'        , '<cmd>lua vim.lsp.buf.type_definition()<CR>', {noremap = true, silent = true})
-	vim.api.nvim_set_keymap('n', 'gr'        , '<cmd>lua vim.lsp.buf.references()<CR>'     , {noremap = true, silent = true})
-	vim.api.nvim_set_keymap('n', 'K'         , '<cmd>lua vim.lsp.buf.hover()<CR>'          , {noremap = true, silent = true})
-	vim.api.nvim_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>'         , {noremap = true, silent = true})
-	vim.api.nvim_set_keymap('i', '<c-k>'     , '<cmd>lua vim.lsp.buf.signature_help()<CR>' , {noremap = true, silent = true})
-
-	vim.api.nvim_set_keymap('n', '<leader>k' , '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr>', {noremap = true, silent = true})
-
-	vim.api.nvim_set_keymap('n', '<leader>ca', '<cmd>lua require("telescope.builtin").lsp_code_actions()<cr>' , {noremap = true})
-
-	require('completion').on_attach(client)
+	completion.on_attach(client)
 
 	vim.o.completeopt = "menuone,noinsert,noselect"
 	vim.bo.omnifunc = 'v:lua.vim.lsp.omnifunc'
 
-	vim.cmd [[ inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>" ]]
-	vim.cmd [[ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>" ]]
+	nnoremap { 'gd' , vim.lsp.buf.definition }
+	nnoremap { 'gi' , vim.lsp.buf.implementation }
+	nnoremap { 'gt' , vim.lsp.buf.type_definition }
+	nnoremap { 'gr' , vim.lsp.buf.references }
+	nnoremap { 'K'  , vim.lsp.buf.hover }
+
+	inoremap { '<c-k>' , vim.lsp.buf.signature_help }
+
+	nnoremap { '<leader>rn', vim.lsp.buf.rename }
+	nnoremap { '<leader>k' , vim.lsp.diagnostic.show_line_diagnostics }
+	nnoremap { '<leader>ca', telescope_builtin.lsp_code_actions }
+
+	vim.cmd [[ inoremap <expr> <tab>   pumvisible() ? "\<c-n>" : "\<tab>" ]]
+	vim.cmd [[ inoremap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>" ]]
 end
 
 lspconfig.tsserver.setup {
