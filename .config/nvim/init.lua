@@ -2,8 +2,11 @@
 
 -- set this before creating any mappings
 vim.g.mapleader = ' '
+-- required by colorizer
+vim.o.termguicolors = true
 
 require('astronauta.keymap')
+require('colorizer').setup()
 require('kesav.plugins')
 require('kesav.lsp')
 require('kesav.treesitter')
@@ -24,7 +27,6 @@ vim.o.incsearch     = true
 vim.o.timeout       = true
 vim.o.exrc          = true
 vim.o.secure        = true
-vim.o.termguicolors = true
 vim.o.showmode      = false
 vim.o.background    = 'dark'
 vim.o.inccommand    = 'split'

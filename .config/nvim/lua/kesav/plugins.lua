@@ -54,6 +54,7 @@ return require('packer').startup(function(use)
 	use 'nvim-lua/completion-nvim'      -- auto complete
 	use 'dense-analysis/ale'
 	use 'tjdevries/astronauta.nvim'
+	use 'norcalli/nvim-colorizer.lua'
 	-- use 'hashivim/vim-terraform'     -- TODO: check this out
 	-- use 'nvim-lua/completion-nvim'   -- TODO: check this out
 	-- use 'sainnhe/edge'               -- TODO: check this out
