@@ -12,7 +12,7 @@ require'nvim-treesitter.configs'.setup{
 		"java",
 		-- "markdown",
 		-- "html",
-		-- "json",
+		"json",
 	},
 	highlight = {
 		enable = true,
