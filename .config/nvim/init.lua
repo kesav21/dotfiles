@@ -28,6 +28,8 @@ vim.o.timeout       = true
 vim.o.exrc          = true
 vim.o.secure        = true
 vim.o.showmode      = false
+vim.o.splitbelow    = true
+vim.o.splitright    = true
 vim.o.background    = 'dark'
 vim.o.inccommand    = 'split'
 vim.o.clipboard     = 'unnamedplus'
@@ -35,6 +37,7 @@ vim.o.wildmode      = 'longest,list,full'
 vim.o.shortmess     = vim.o.shortmess .. 'c'
 -- breaks if done on window-scope
 vim.o.listchars     = 'tab:›─,nbsp:∙,trail:∙,extends:▶,precedes:◀'
+
 
 vim.wo.relativenumber = true
 vim.wo.number         = true
@@ -61,8 +64,10 @@ nnoremap { 'Y' , 'y$' }
 nnoremap { 'X' , 'xi' }
 vnoremap { 'p' , '"_dP' }
 
-nnoremap { '<c-h>', '<c-w><<c-w><' }
-nnoremap { '<c-l>', '<c-w>><c-w>>' }
+nnoremap { '<c-h>', '<c-w>h' }
+nnoremap { '<c-j>', '<c-w>j' }
+nnoremap { '<c-k>', '<c-w>k' }
+nnoremap { '<c-l>', '<c-w>l' }
 
 nnoremap { '<tab>'  , ':tabnext<cr>' }
 nnoremap { '<s-tab>', ':tabprevious<cr>' }
