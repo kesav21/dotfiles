@@ -26,7 +26,7 @@ function M.find_dirs()
 		finder = finders.new_oneshot_job { 'fd', '--hidden', '--type', 'directory', },
 		sorter = sorters.get_fzy_sorter {},
 		attach_mappings = function(prompt_bufnr)
-			actions._select:replace(function()
+			actions._goto_file_selection:replace(function()
 				local selection = actions.get_selected_entry()
 				actions.close(prompt_bufnr)
 				vim.cmd('cd ' .. selection.value)
