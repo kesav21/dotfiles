@@ -1,6 +1,9 @@
 #!/bin/sh
 
-for dir in $(ls .config); do
-	rm -r ~/.config/"$dir"
-	ln -sv "$(pwd)"/.config/"$dir" ~/.config/"$dir"
+{
+	echo .zshenv
+	realpath --relative-to=. .config/*
+} | while read -r file; do
+	rm -r ~/"$file"
+	ln -sv "$(pwd)"/"$file" ~/"$file"
 done
