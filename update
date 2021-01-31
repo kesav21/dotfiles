@@ -1,8 +1,6 @@
 #!/bin/sh
 
-git ls-files | grep -Ev '\.gitignore|README\.md|update' | while read -r file
-do
-	rm ~/"$file"
-	ln -sv "$(pwd)"/"$file" ~/"$file"
+for dir in $(ls .config); do
+	rm -r ~/.config/"$dir"
+	ln -sv "$(pwd)"/.config/"$dir" ~/.config/"$dir"
 done
-
