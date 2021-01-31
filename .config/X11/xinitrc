@@ -19,6 +19,7 @@ sxhkd "$XDG_CONFIG_HOME"/sxhkd/sxhkdrc.personal >"$XDG_CACHE_HOME"/bin/sxhkd 2>&
 dunst >"$XDG_CACHE_HOME"/bin/dunst 2>&1 &                                           # notification daemon
 picom --no-vsync -b --log-file "$XDG_CACHE_HOME"/bin/picom
 
+# sudo updatepackages >"$XDG_CACHE_HOME"/bin/updatepackages 2>&1 &
 unbuffer pulsetest >>"$XDG_CACHE_HOME"/bin/pulsetest 2>&1 &
 dwmblocks >"$XDG_CACHE_HOME"/bin/dwmblocks 2>&1 & # run dwm statusbar
 exec dwmloop                                      # run dwm
