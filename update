@@ -1,9 +1,5 @@
 #!/bin/sh
 
-{
-	echo .zshenv
-	realpath --relative-to=. .config/*
-} | while read -r file; do
-	rm -r ~/"$file"
-	ln -sv "$(pwd)"/"$file" ~/"$file"
+for file in .zshenv .config/*; do
+	ln -svf "$(pwd)"/"$file" ~/"$file"
 done
