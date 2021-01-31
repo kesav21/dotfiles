@@ -7,11 +7,18 @@
 
 hsetroot -solid "#1d2021" # set wallpaper
 
+xset -dpms
+xset s 0 0
+
+# xset dpms 300 300 300
+# xset s 180 10
+# pkill -x xss-lock
+# xss-lock -n dimscreen -- slock &
+
 sxhkd "$XDG_CONFIG_HOME"/sxhkd/sxhkdrc.personal >"$XDG_CACHE_HOME"/bin/sxhkd 2>&1 & # bind keys
 dunst >"$XDG_CACHE_HOME"/bin/dunst 2>&1 &                                           # notification daemon
 picom --no-vsync -b --log-file "$XDG_CACHE_HOME"/bin/picom
 
 unbuffer pulsetest >>"$XDG_CACHE_HOME"/bin/pulsetest 2>&1 &
-lockrc >"$XDG_CACHE_HOME"/bin/lockrc 2>&1         # set lock screen timeout
 dwmblocks >"$XDG_CACHE_HOME"/bin/dwmblocks 2>&1 & # run dwm statusbar
 exec dwmloop                                      # run dwm
