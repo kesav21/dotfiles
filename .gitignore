@@ -4,3 +4,6 @@
 
 # ignore workspace specific settings
 *.personal
+
+*vifm-help.txt
+*vifminfo.json
