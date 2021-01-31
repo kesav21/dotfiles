@@ -33,8 +33,14 @@ end
 lspconfig.tsserver.setup {
 	on_attach = on_attach
 }
-lspconfig.ccls.setup {
-	cmd = { "ccls", '--init={"cache": {"directory": "/tmp/ccls-cache"}}' },
+lspconfig.clangd.setup {
+	cmd = {
+		"clangd",
+		"--background-index",
+		"--suggest-missing-includes",
+		"--clang-tidy",
+		"--header-insertion=iwyu",
+	},
 	on_attach = on_attach
 }
 lspconfig.pyls.setup {
