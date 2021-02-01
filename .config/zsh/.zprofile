@@ -73,7 +73,7 @@ export LUA_PATH="$LUA_PATH;"/home/kesav/.local/bin/lua/?.lua
 # }}}
 
 # set up ssh
-eval "$(ssh-agent)" > /dev/null
+eval "$(ssh-agent)" >/dev/null
 
 # start x {{{
 

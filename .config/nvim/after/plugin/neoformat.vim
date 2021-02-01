@@ -7,6 +7,12 @@ let g:neoformat_sh_shfmt = {
 	\ 'args': ['-p', '-i 0', '-ci'],
 	\ }
 
+let g:neoformat_enabled_zsh = [ 'shfmt' ]
+let g:neoformat_zsh_shfmt = {
+	\ 'exe': 'shfmt',
+	\ 'args': ['-p', '-i 0', '-ci'],
+	\ }
+
 let g:neoformat_enabled_haskell = [ 'brittany' ]
 
 let g:neoformat_enabled_typescript = [ 'prettier' ]
