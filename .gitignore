@@ -8,3 +8,4 @@
 .config/nvim/plugin/packer_compiled.vim
 .config/vifm/vifm-help.txt
 .config/vifm/vifminfo.json
+.config/zsh/.zcompdump
