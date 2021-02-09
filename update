@@ -1,5 +1,5 @@
 #!/bin/sh
 
 for file in .zshenv .config/*; do
-	echo ln -svf "$(pwd)"/"$file" ~/"$file"
+	ln -svf "$(pwd)"/"$file" ~/"$file"
 done
