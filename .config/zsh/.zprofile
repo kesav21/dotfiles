@@ -57,7 +57,7 @@ export ZPLUG_HOME="$HOME"/.local/src/zplug
 # path {{{
 
 # add local scripts
-bindirs="$(du "$XDG_BIN_DIR" --exclude '.git' | cut -f2 | tr '\n' ':')"
+bindirs="$(du -L "$XDG_BIN_DIR" --exclude '.git' | cut -f2 | tr '\n' ':')"
 export PATH="$bindirs$PATH"
 
 # add ghc
