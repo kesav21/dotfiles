@@ -61,4 +61,8 @@ end
 -- 	}
 -- end
 
+function M.buffers()
+	builtin.buffers { show_all_buffers = true }
+end
+
 return M
