@@ -40,31 +40,32 @@ require'nvim-treesitter.configs'.setup{
 			-- ["string.escape"] = "GruvboxGreen",
 			-- ["constant.builtin"] = "GruvboxPurple",
 
-			["constant.macro"] = "TSKeyword",
-			["include"] = "TSKeyword",
+			-- ["constant.macro"] = "TSKeyword", -- keep
+			-- ["include"] = "TSKeyword", -- keep
 
-			["variable.builtin"] = "GruvboxAqua",
+			-- ["variable.builtin"] = "GruvboxAqua", -- keep
 
 			-- this looks weird
-			["constructor"] = "GruvboxYellow",
-			["type"] = "GruvboxYellow",
-			["type.builtin"] = "GruvboxYellow",
+			-- ["constructor"] = "GruvboxYellow", -- keep
+			-- ["type"] = "GruvboxYellow", -- keep
+			-- ["type.builtin"] = "GruvboxYellow", -- keep
 
-			["method"] = "GruvboxAqua",
-			["function"] = "GruvboxAqua",
+			-- ["method"] = "GruvboxAqua", -- keep
+			-- ["function"] = "GruvboxAqua", -- keep
 			-- a python builtin function 'chr' was in orange instead of aqua
-			["function.builtin"] = "GruvboxAqua",
+			-- ["function.builtin"] = "GruvboxAqua", -- keep
 
 			-- ["include"] = "TSKeyword",
 			-- ["operator"] = "TSKeyword",
-			["keyword.operator"] = "TSKeyword",
+			-- ["keyword.operator"] = "TSKeyword", -- keep
 
-			["punctuation.bracket"] = "TSNone",
-			["punctuation.special"] = "TSNone",
-			["punctuation.delimiter"] = "TSNone",
+			-- ["punctuation.bracket"] = "TSNone", -- keep
+			-- ["punctuation.special"] = "TSNone", -- keep
+			-- ["punctuation.delimiter"] = "TSNone", -- keep
 
 			-- ["variable.parameter"] = "TSParameter"
-			["parameter"] = "TSNone", -- for now
+			-- ["parameter"] = "TSNone", -- for now -- keep
+
 		}
 	},
 	refactor = {
@@ -105,5 +106,11 @@ require'nvim-treesitter.configs'.setup{
 			node_decremental = "gnd",
 			-- scope_incremental = "grc",
 		},
-	}
+	},
+	playground = {
+		enable = true,
+		disable = {},
+		updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+		persist_queries = false -- Whether the query persists across vim sessions
+	},
 }
