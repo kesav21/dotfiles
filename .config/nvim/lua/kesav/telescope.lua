@@ -51,6 +51,7 @@ telescope.setup {
 
 local nnoremap = vim.keymap.nnoremap
 
+nnoremap { '<leader>fb', custom.buffers }
 nnoremap { '<leader>ff', custom.find_files }
 nnoremap { '<leader>fd', custom.find_dirs }
 nnoremap { '<leader>fh', builtin.help_tags }
