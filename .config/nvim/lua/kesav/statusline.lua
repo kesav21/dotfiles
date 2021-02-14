@@ -41,7 +41,7 @@ local function generator()
 	vim.cmd [[ hi StatusModeBlue   guifg=#1d2021 guibg=#458588 gui=bold ]]
 	vim.cmd [[ hi StatusModeYellow guifg=#1d2021 guibg=#d79921 gui=bold ]]
 	vim.cmd [[ hi StatusModePink   guifg=#1d2021 guibg=#b16286 gui=bold ]]
-	vim.cmd [[ hi StatusModeGreen   guifg=#1d2021 guibg=#98971a gui=bold ]]
+	vim.cmd [[ hi StatusModeGreen  guifg=#1d2021 guibg=#98971a gui=bold ]]
 	vim.cmd [[ hi StatusModeRed    guifg=#1d2021 guibg=#cc241d gui=bold ]]
 
 	vim.cmd [[ hi StatusLight      guifg=#1d2021 guibg=#a89984 ]]
