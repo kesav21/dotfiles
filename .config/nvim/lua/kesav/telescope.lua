@@ -14,7 +14,7 @@ telescope.setup {
 			i = {
 				["<c-n>"]  = actions.move_selection_next,
 				["<c-p>"]  = actions.move_selection_previous,
-				["<cr>"]   = actions.goto_file_selection_tabedit + actions.center,
+				-- ["<cr>"]   = actions.goto_file_selection_tabedit + actions.center,
 				["<c-c>"]  = actions.close,
 				["<down>"] = actions.empty,
 				["<up>"]   = actions.empty,
