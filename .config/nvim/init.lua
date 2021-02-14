@@ -75,7 +75,7 @@ nnoremap { '<s-tab>', ':tabprevious<cr>' }
 nnoremap { '<leader>e' , ':tabnew <c-r>=expand("%:p:h") . "/"<cr>' }
 nnoremap { '<leader>cp', ':silent !xsel -ib < %<cr>'              }
 
-nnoremap { '<leader>t'   , ':tabedit term://zsh<cr>' }
+nnoremap { '<leader>t'   , ':tabedit term://zsh<cr>:set hidden<cr>' }
 tnoremap { '<c-\\><c-\\>', '<c-\\><c-n>' }
 
 nnoremap { '<f1>', ':make<cr>' }
