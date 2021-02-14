@@ -41,6 +41,7 @@ return require('packer').startup(function(use)
 	-- use { 'Shougo/vimproc.vim',
 	-- 	run = 'make' }
 	use 'nvim-treesitter/nvim-treesitter'
+	use 'nvim-treesitter/playground'
 	use 'nvim-treesitter/nvim-treesitter-refactor'
 	use 'nvim-treesitter/nvim-treesitter-textobjects'
 	use 'neovim/nvim-lspconfig'
@@ -55,6 +56,9 @@ return require('packer').startup(function(use)
 	use 'dense-analysis/ale'
 	use 'tjdevries/astronauta.nvim'
 	use 'norcalli/nvim-colorizer.lua'
+	use 'AndrewRadev/splitjoin.vim'
+	use 'andymass/vim-matlab.git'
+
 	-- use 'hashivim/vim-terraform'     -- TODO: check this out
 	-- use 'nvim-lua/completion-nvim'   -- TODO: check this out
 	-- use 'sainnhe/edge'               -- TODO: check this out
