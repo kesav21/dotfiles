@@ -1,87 +1,67 @@
-local Job = require('plenary.job')
+local iter = require('kk.iter')
 
-local function os_execute_output(cmd)
-	local command = table.remove(cmd, 1)
-	return Job:new({ command = command, args = cmd }):sync()
-end
-
-local function firstline(filename)
-	local file = io.open(filename)
-	if file then
-		for line in io.lines(filename) do
-			io.close(file)
-			return line
-		end
-	end
-end
-
-
-local function tab_highlight(current, tab)
-	if current == tab then
-		return "%#TabSel#"
+local function choose(first, second, condition)
+	if condition then
+		return first
 	else
-		return "%#TabUnsel#"
+		return second
 	end
 end
 
-local function buf_normal_title(buf)
-	local bufname = vim.api.nvim_buf_get_name(buf)
-	if bufname == "" then
-		return "[No Name]"
-	else
-		local filepath  = vim.fn.fnamemodify(bufname, ":.")
-		local shortname = vim.fn.pathshorten(filepath)
-		return shortname
+local function is_equal(a)
+	return function(b)
+		return a == b
 	end
 end
 
-local function buf_terminal_cwd(pid)
-	local cwd_output = os_execute_output {
-		"readlink",
-		"-e",
-		string.format("/proc/%s/cwd", pid),
-	}
-	local cwd = cwd_output[1]
+local function buf_islisted(b)
+	return vim.fn.buflisted(b) == 1
+end
 
-	if cwd == vim.fn.getcwd() then
-		return "."
-	elseif cwd == os.getenv('HOME') then
-		return "~"
-	else
-		local filepath  = vim.fn.fnamemodify(cwd, ":~:.")
-		local shortname = vim.fn.pathshorten(filepath)
-		return shortname
+local function buf_current_position(bufs)
+	return iter.first(
+		iter.filter_keys(
+			is_equal(vim.api.nvim_get_current_buf()),
+			iter.to_table(bufs)
+		)
+	)
+end
+
+local function buf_title()
+	local bufs = vim.api.nvim_list_bufs()
+	local listed_bufs = iter.filter(buf_islisted, iter.values(bufs))
+	return string.format(
+		"[%s/%s]",
+		buf_current_position(listed_bufs) or " ",
+		iter.length(listed_bufs)
+	)
+end
+
+-- TODO: fix
+-- when a single regular window and two telescope windows are visible,
+-- the count shows five windows
+local function tab_title(current_tabnr, tabnr)
+	local wins = vim.api.nvim_tabpage_list_wins(tabnr)
+	local highlight = choose("%#TabSel#", "%#TabUnsel#", current_tabnr == tabnr)
+	local current_winnr = vim.api.nvim_tabpage_get_win(tabnr)
+	local current_win = iter.first(iter.filter_keys(is_equal(current_winnr), wins))
+	return string.format(
+		"%s %s: [%s/%s]",
+		highlight,
+		tabnr,
+		current_win,
+		#wins
+	)
+end
+
+local function get_tab_title()
+	local current_tabnr = vim.api.nvim_get_current_tabpage()
+	local tabs = vim.api.nvim_list_tabpages()
+	local t = {}
+	for _, tabnr in ipairs(tabs) do
+		table.insert(t, tab_title(current_tabnr, tabnr))
 	end
-end
-
-local function buf_terminal_title(buf)
-	local id = vim.api.nvim_buf_get_var(buf, 'terminal_job_id')
-	local pid = vim.fn.jobpid(id)
-	local shell = firstline(string.format("/proc/%s/cmdline", pid))
-	local shortname = buf_terminal_cwd(pid)
-	return string.format("[%s] %s", shell, shortname)
-end
-
-local function buf_help_title(buf)
-	local bufname = vim.api.nvim_buf_get_name(buf)
-	local filename = vim.fn.fnamemodify(bufname, ":t")
-	return '[h] ' .. filename
-end
-
-local function tab_title(tab)
-	local win     = vim.api.nvim_tabpage_get_win(tab)
-	local buf     = vim.api.nvim_win_get_buf(win)
-	local buftype = vim.api.nvim_buf_get_option(buf, 'buftype')
-
-	if buftype == "" then
-		return buf_normal_title(buf)
-	elseif buftype == 'terminal' then
-		return buf_terminal_title(buf)
-	elseif buftype == 'help' then
-		return buf_help_title(buf)
-	else
-		return 'TODO: handle ' .. buftype
-	end
+	return table.concat(t, " ")
 end
 
 function _G.tabline()
@@ -89,14 +69,11 @@ function _G.tabline()
 	vim.cmd [[ hi TabUnsel  guifg=#a89984 guibg=#282828 ]]
 	vim.cmd [[ hi TabClear                guibg=#282828 ]]
 
-	local tabs = vim.api.nvim_list_tabpages()
-	local current = vim.api.nvim_get_current_tabpage()
-
-	local line = ""
-	for _, tab in ipairs(tabs) do
-		line = line .. tab_highlight(current, tab) .. " " .. tab_title(tab) .. " "
-	end
-	return line .. "%#TabClear#"
+	return string.format(
+		"%%#TabUnsel# %s %s %%#TabClear#",
+		buf_title(),
+		get_tab_title()
+	)
 end
 
 vim.o.showtabline = 2
