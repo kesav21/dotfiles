@@ -67,6 +67,9 @@ export PATH="$HOME"/.cabal/bin:"$HOME"/.ghcup/bin:"$PATH"
 stack_packages="$(stack path | awk -F"[: ]" '/^bin-path/ {print $3}')"
 export PATH="$stack_packages":"$PATH"
 
+# add go binaries
+export PATH=/home/kesav/go/bin:"$PATH"
+
 # add my utility files to the lua path
 export LUA_PATH="$LUA_PATH;"/home/kesav/.local/bin/lua/?.lua
 
