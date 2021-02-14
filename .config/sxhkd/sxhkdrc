@@ -1,23 +1,17 @@
 
-alt + shift + Return
+super + shift + Return
 	st
 
-alt + p
+super + p
 	dmenu_run
 
-alt + q
+super + i
 	lockmenu
 
-alt + o
+super + o
 	vifmopen
 
-alt + s
-	st -n centered -e zsh
-
-alt + c
-	st -n centered -e bc -iql
-
-alt + shift + k
+super + u
 	fzfkill
 
 Print
