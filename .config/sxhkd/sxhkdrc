@@ -5,13 +5,13 @@ super + shift + Return
 super + p
 	dmenu_run
 
-super + i
+ctrl + alt + Delete
 	lockmenu
 
 super + o
 	vifmopen
 
-super + u
+ctrl + shift + Escape
 	fzfkill
 
 Print
