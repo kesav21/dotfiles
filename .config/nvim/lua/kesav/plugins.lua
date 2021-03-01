@@ -58,8 +58,8 @@ return require('packer').startup(function(use)
 	use 'norcalli/nvim-colorizer.lua'
 	use 'AndrewRadev/splitjoin.vim'
 	use 'andymass/vim-matlab.git'
+	use 'hashivim/vim-terraform'
 
-	-- use 'hashivim/vim-terraform'     -- TODO: check this out
 	-- use 'nvim-lua/completion-nvim'   -- TODO: check this out
 	-- use 'sainnhe/edge'               -- TODO: check this out
 end)
