@@ -56,5 +56,7 @@ nnoremap { '<leader>ff', custom.find_files }
 nnoremap { '<leader>fd', custom.find_dirs }
 nnoremap { '<leader>fh', builtin.help_tags }
 
+nnoremap { '<leader>ga', custom.git_add }
+
 -- this is an awkward mapping
 -- vim.api.nvim_set_keymap('t', '<c-\\>fd', '<c-\\><c-n>:lua require("kesav.telescope-pickers").terminal_cd()<cr>', {noremap = true, silent = true})

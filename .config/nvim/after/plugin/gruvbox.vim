@@ -10,3 +10,6 @@ colorscheme gruvbox
 " hi GruvboxBlueUnderline   guifg=#83a598 gui=none
 " hi GruvboxAquaUnderline   guifg=#8ec07c gui=none
 
+hi! link DiffAdd    GruvboxGreen
+hi! link DiffChange GruvboxRed
+hi! link DiffDelete GruvboxRed
