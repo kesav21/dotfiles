@@ -14,9 +14,9 @@ local function on_attach(client)
 	vim.o.completeopt = "menuone,noinsert,noselect"
 	vim.bo.omnifunc = 'v:lua.vim.lsp.omnifunc'
 
-	nnoremap { 'gd' , vim.lsp.buf.definition }
+	nnoremap { '<c-]>' , vim.lsp.buf.definition }
 	nnoremap { 'gi' , vim.lsp.buf.implementation }
-	nnoremap { 'gt' , vim.lsp.buf.type_definition }
+	nnoremap { 'gd' , vim.lsp.buf.type_definition }
 	nnoremap { 'gr' , vim.lsp.buf.references }
 	nnoremap { 'K'  , vim.lsp.buf.hover }
 
