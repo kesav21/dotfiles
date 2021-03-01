@@ -7,6 +7,9 @@ local finders = require('telescope.finders')
 local sorters = require('telescope.sorters')
 local actions = require('telescope.actions')
 
+local utils = require('telescope.utils')
+local make_entry = require('telescope.make_entry')
+
 function M.find_files()
 	builtin.find_files {
 		find_command = { 'fd', '--hidden', '--type', 'file', },
@@ -31,6 +34,25 @@ end
 
 function M.buffers()
 	builtin.buffers { show_all_buffers = true }
+end
+
+function M.git_add()
+	local opts = { cwd = '.' }
+	local output = utils.get_os_command_output(
+		{ 'git', 'status', '--short', '--untracked-files=all' },
+		opts.cwd
+	)
+
+	if #output == 0 then
+		print("no changes found")
+	else
+		builtin.git_status {
+			finder = finders.new_table {
+				results = output,
+				entry_maker = make_entry.gen_from_git_status(opts)
+			},
+		}
+	end
 end
 
 return M
