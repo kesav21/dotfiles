@@ -64,15 +64,10 @@ nnoremap { 'Y' , 'y$' }
 nnoremap { 'X' , 'xi' }
 vnoremap { 'p' , '"_dP' }
 
-nnoremap { '<c-h>', '<c-w>h' }
-nnoremap { '<c-j>', '<c-w>j' }
-nnoremap { '<c-k>', '<c-w>k' }
-nnoremap { '<c-l>', '<c-w>l' }
+-- Make cw consistent with dw, yw, vw
+vim.cmd [[onoremap w :execute 'normal! '.v:count1.'w'<CR>]]
 
-nnoremap { '<tab>'  , ':tabnext<cr>' }
-nnoremap { '<s-tab>', ':tabprevious<cr>' }
-
-nnoremap { '<leader>e' , ':tabnew <c-r>=expand("%:p:h") . "/"<cr>' }
+nnoremap { '<leader>e' , ':e <c-r>=expand("%:p:h") . "/"<cr>' }
 nnoremap { '<leader>cp', ':silent !xsel -ib < %<cr>'              }
 
 nnoremap { '<leader>t'   , ':edit term://zsh<cr>:set hidden<cr>' }
