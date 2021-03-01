@@ -5,6 +5,8 @@ vim.g.mapleader = ' '
 -- required by colorizer
 vim.o.termguicolors = true
 
+-- http://vimcasts.org/episodes/meet-the-arglist/
+
 require('astronauta.keymap')
 require('colorizer').setup()
 require('kesav.plugins')
@@ -37,7 +39,6 @@ vim.o.wildmode      = 'longest,list,full'
 vim.o.shortmess     = vim.o.shortmess .. 'c'
 -- breaks if done on window-scope
 vim.o.listchars     = 'tab:›─,nbsp:∙,trail:∙,extends:▶,precedes:◀'
-
 
 vim.wo.relativenumber = true
 vim.wo.number         = true
@@ -133,6 +134,9 @@ end
 nnoremap { '<leader>cc', toggle_colorcolumn }
 
 --- }}}
+
+vim.cmd [[command Bd bp \| bd \#]]
+vim.cmd [[cnoreabbrev bd Bd]]
 
 vim.cmd [[ augroup misc ]]
 vim.cmd [[ autocmd! ]]
