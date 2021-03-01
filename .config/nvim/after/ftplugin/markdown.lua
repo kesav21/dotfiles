@@ -1,3 +1,6 @@
+
+vim.bo.formatoptions = 'crqj'
+
 vim.cmd [[ hi! link markdownH1 GruvboxYellowBold ]]
 vim.cmd [[ hi! link markdownH2 GruvboxYellowBold ]]
 vim.cmd [[ hi! link markdownH3 GruvboxYellowBold ]]
