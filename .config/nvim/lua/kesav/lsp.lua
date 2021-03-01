@@ -57,6 +57,10 @@ lspconfig.hls.setup {
 	filetypes = { 'haskell' },
 	on_attach = on_attach
 }
+lspconfig.terraformls.setup {
+	cmd = { "terraform-lsp" },
+	on_attach = on_attach
+}
 
 local sumneko_root_path = vim.fn.stdpath('cache') .. '/lspconfig/sumneko_lua/lua-language-server'
 local sumneko_binary = sumneko_root_path .. "/bin/Linux/lua-language-server"
