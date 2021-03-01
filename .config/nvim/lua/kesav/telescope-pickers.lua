@@ -12,14 +12,14 @@ local make_entry = require('telescope.make_entry')
 
 function M.find_files()
 	builtin.find_files {
-		find_command = { 'fd', '--hidden', '--type', 'file', },
+		find_command = { 'fd', '--hidden', '--no-ignore-vcs', '--type', 'file', },
 	}
 end
 
 function M.find_dirs()
 	pickers.new {
 		prompt_title = 'Find Directories',
-		finder = finders.new_oneshot_job { 'fd', '--hidden', '--type', 'directory', },
+		finder = finders.new_oneshot_job { 'fd', '--hidden', '--no-ignore-vcs', '--type', 'directory', },
 		sorter = sorters.get_fzy_sorter {},
 		attach_mappings = function(prompt_bufnr)
 			actions._goto_file_selection:replace(function()
