@@ -1,0 +1,260 @@
+; vim: set foldmethod=marker:
+; vim: ft=dosini
+
+; colors {{{
+
+[colors]
+
+; special
+
+foreground   = #ebdbb2
+background   = #1d2021
+background2  = #504945
+cursorColor  = #ebdbb2
+; black
+color0       = #282828
+color8       = #928374
+; red
+color1       = #cc241d
+color9       = #fb4934
+; green
+color2       = #98971a
+color10      = #b8bb26
+; yellow
+color3       = #d79921
+color11      = #fabd2f
+; blue
+color4       = #458588
+color12      = #83a598
+; magenta
+color5       = #b16286
+color13      = #d3869b
+; cyan
+color6       = #689d6a
+color14      = #8ec07c
+; white
+color7       = #a89984
+color15      = #ebdbb2
+
+; }}}
+
+; bar/example {{{
+
+[bar/example]
+
+monitor = ${env:MONITOR:}
+
+width = 99%
+height = 3%
+offset-x = 0
+offset-y = 0
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 2
+
+padding-left = 0
+padding-right = 0
+module-margin-left = 1
+module-margin-right = 0
+
+font-0 = FiraCode Nerd Font:style=Regular:size=10;0
+
+modules-left = bspwm
+modules-right = volume bluetooth ethernet time date
+
+; needed to hide polybar on video fullscreen
+wm-restack = bspwm
+
+; }}}
+
+; module/bspwm {{{
+
+[module/bspwm]
+
+type = internal/bspwm
+
+label-empty = %name%
+label-empty-underline = ${colors.background}
+label-empty-padding = 1
+
+label-occupied = %name%
+label-occupied-underline= ${colors.background2}
+label-occupied-padding = 1
+
+label-focused = %name%
+label-focused-underline= ${colors.color7}
+label-focused-padding = 1
+
+label-urgent = %name%
+label-urgent-underline = ${colors.color1}
+label-urgent-padding = 1
+
+; }}}
+
+; module/volume{{{
+
+; [module/pulseaudio]
+
+; type = internal/pulseaudio
+
+; format-volume = <label-volume> <bar-volume>
+; format-volume-underline = ${colors.color6}
+; label-volume =   %percentage%%
+
+; format-muted = <label-muted> <bar-volume>
+; format-muted-underline = ${colors.color8}
+; format-muted-foreground = ${colors.color8}
+; label-muted =   %percentage%%
+
+; bar-volume-width = 10
+; bar-volume-foreground-0 = ${colors.color6}
+; bar-volume-foreground-1 = ${colors.color6}
+; bar-volume-foreground-2 = ${colors.color6}
+; bar-volume-foreground-3 = ${colors.color6}
+; bar-volume-foreground-4 = ${colors.color6}
+; bar-volume-foreground-5 = ${colors.color6}
+; bar-volume-foreground-6 = ${colors.color1}
+; bar-volume-gradient = false
+; bar-volume-indicator = |
+; bar-volume-indicator-font = 2
+; bar-volume-fill = ─
+; bar-volume-fill-font = 2
+; bar-volume-empty = ─
+; bar-volume-empty-font = 2
+
+[module/volume]
+type = custom/script
+exec = volume
+format-underline = ${colors.color3}
+interval = 1
+tail = true
+
+; }}}
+
+; module/backlight {{{
+
+; [module/backlight]
+
+; type = internal/backlight
+; card = intel_backlight
+
+; ; TODO: implement
+; ; exec-if = [ "$MONITOR" = 'eDP-1' ]
+
+; format = <label> <bar>
+; format-underline = ${colors.color5}
+; label =   %percentage%%
+
+; bar-width = 10
+; bar-indicator = |
+; bar-indicator-font = 1
+; bar-indicator-foreground = ${colors.foreground}
+; bar-fill = ─
+; bar-fill-font = 1
+; bar-fill-foreground = ${colors.color5}
+; bar-empty = ─
+; bar-empty-font = 1
+; bar-empty-foreground = ${colors.foreground}
+
+; }}}
+
+; module/battery {{{
+
+; [module/battery]
+
+; type = internal/battery
+; battery = BAT0
+; adapter = AC
+; full-at = 100
+
+; format-discharging = <ramp-capacity> <label-discharging>
+; format-discharging-underline = ${colors.color4}
+
+; format-charging = <ramp-capacity> <label-charging>
+; format-charging-underline = ${colors.color4}
+; label-charging =  %percentage%%
+
+; ramp-capacity-0 = " "
+; ramp-capacity-1 = " "
+; ramp-capacity-2 = " "
+; ramp-capacity-3 = " "
+; ramp-capacity-4 = " "
+
+; format-full = <label-full>
+; label-full = "  %percentage%%"
+; format-full-underline = ${colors.color4}
+
+; }}}
+
+; module/bluetooth {{{
+
+[module/bluetooth]
+type = custom/script
+exec = btconnected
+format-underline = ${colors.color3}
+interval = 1
+tail = true
+
+; }}}
+
+; module/ethernet {{{
+
+; [module/ethernet]
+; type = internal/network
+; interface = enp1s0
+
+; format-connected = "  "
+; format-connected-underline = ${colors.color2}
+
+; format-disconnected = "  "
+; format-disconnected-underline = ${colors.color1}
+
+[module/ethernet]
+type = custom/script
+exec = ethernetbar
+format-underline = ${colors.color2}
+interval = 1
+tail = true
+
+; }}}
+
+; module/wifi {{{
+
+; [module/wifi]
+
+; type = internal/network
+; interface = wlp2s0
+
+; format-connected = 直  <label-connected>
+; label-connected = %essid%
+; format-connected-underline = ${colors.color2}
+
+; format-disconnected = " 睊  "
+; format-disconnected-underline = ${colors.color1}
+
+; }}}
+
+; module/time {{{
+
+[module/time]
+type = internal/date
+interval = 5
+format-underline = ${colors.color14}
+label = %time%
+time = "  %I:%M %p "
+
+; }}}
+
+; module/date {{{
+
+[module/date]
+type = internal/date
+interval = 5
+format-underline = ${colors.color13}
+label = %date%
+date = "  %a, %b %d "
+
+; }}}
+

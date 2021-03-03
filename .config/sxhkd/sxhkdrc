@@ -17,3 +17,58 @@ ctrl + shift + Escape
 Print
 	sshot -u
 
+# focus node
+super + {k,j}
+	bspc node -f {prev,next}.local.tiled
+
+# focus node on other monitor
+super + {K,J}
+	bspc node -f {prev,next}.active.tiled
+
+# close node
+super + shift + BackSpace
+	bspc node -c
+
+# coarsely resize node
+super + {h,l}
+	bspc node @/1 -z right {-10,10} 0
+
+# finely resize node
+super + shift + {h,l}
+	bspc node @/1 -z right {-1,1} 0
+
+# swap node with master
+super + Return
+	bspc node -s @/1
+
+# set node state
+# super+ {t,shift + t,f,shift + f}
+#   bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# send node to monitor
+# super + shift + {comma, period}
+#   bspc node -m {west, east} --follow
+
+# focus desktop
+alt + {1,2,3,4,5}
+	bspfix bspc desktop -f {1,2,3,4,5}
+
+# focus desktop
+super + {6,7,8,9,0}
+	bspfix bspc desktop -f {6,7,8,9,0}
+
+# send node to desktop
+alt + shift + {1,2,3,4,5}
+	bspfix bspc node -d {1,2,3,4,5} --follow
+
+# send node to desktop
+super + shift + {6,7,8,9,0}
+	bspfix bspc node -d {6,7,8,9,0} --follow
+
+# toggle desktop layout
+# super + m
+#   bspc desktop -l prev
+
+# focus monitor
+# super + {comma, period}
+#   bspc monitor -f {west, east}

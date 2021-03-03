@@ -5,8 +5,8 @@
 	rm -rf "$XDG_CACHE_HOME"/bin &&
 	mkdir "$XDG_CACHE_HOME"/bin
 
-hsetroot -solid '#1d2021' # set wallpaper
-
+hsetroot -solid '#1d2021'      # set wallpaper
+xsetroot -cursor_name left_ptr # set cursor
 xset -dpms
 xset s 0 0
 
@@ -23,5 +23,5 @@ picom --no-vsync -b --log-file "$XDG_CACHE_HOME"/bin/picom
 
 # sudo updatepackages >"$XDG_CACHE_HOME"/bin/updatepackages 2>&1 &
 unbuffer sinkmon >>"$XDG_CACHE_HOME"/bin/sinkmon 2>&1 &
-dwmblocks >"$XDG_CACHE_HOME"/bin/dwmblocks 2>&1 &
-exec dwmloop
+launchbar >"$XDG_CACHE_HOME"/bin/dwmblocks 2>&1 &
+exec bspwm -c "$XDG_CONFIG_HOME"/bspwm/bspwmrc
