@@ -135,7 +135,7 @@ nnoremap { '<leader>cc', toggle_colorcolumn }
 
 --- }}}
 
-vim.cmd [[command Bd bp \| bd \#]]
+vim.cmd [[command Bd bp|bd#]]
 vim.cmd [[cnoreabbrev bd Bd]]
 
 vim.cmd [[ augroup misc ]]
