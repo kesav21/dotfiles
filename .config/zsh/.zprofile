@@ -71,7 +71,7 @@ export PATH="$stack_packages":"$PATH"
 export PATH=/home/kesav/go/bin:"$PATH"
 
 # add my utility files to the lua path
-export LUA_PATH="$LUA_PATH;"/home/kesav/.local/bin/lua/?.lua
+export LUA_PATH="$LUA_PATH;"/home/kesav/.local/src/lua-stdlib/?.lua
 
 # }}}
 
