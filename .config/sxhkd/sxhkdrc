@@ -17,13 +17,8 @@ ctrl + shift + Escape
 Print
 	sshot -u
 
-# focus node
-super + {k,j}
-	bspc node -f {prev,next}.local.tiled
-
-# focus node on other monitor
-super + {K,J}
-	bspc node -f {prev,next}.active.tiled
+super + {j,k}
+	{bspnext,bspprev}
 
 # close node
 super + shift + BackSpace
