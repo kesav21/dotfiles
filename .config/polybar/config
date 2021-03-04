@@ -195,7 +195,7 @@ type = custom/script
 exec = btconnected
 format-underline = ${colors.color3}
 interval = 1
-tail = true
+tail = false
 
 ; }}}
 
