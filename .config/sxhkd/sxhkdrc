@@ -46,19 +46,19 @@ super + Return
 
 # focus desktop
 alt + {1,2,3,4,5}
-	bspc node -f next.floating; bspc desktop -f {1,2,3,4,5}
+	bspc node -f next.local.floating; bspc desktop -f {1,2,3,4,5}
 
 # focus desktop
 super + {6,7,8,9,0}
-	bspc node -f next.floating; bspc desktop -f {6,7,8,9,0}
+	bspc node -f next.local.floating; bspc desktop -f {6,7,8,9,0}
 
 # send node to desktop
 alt + shift + {1,2,3,4,5}
-	bspc node -f next.floating; bspc node -d {1,2,3,4,5} --follow
+	bspc node -f next.local.floating; bspc node -d {1,2,3,4,5} --follow
 
 # send node to desktop
 super + shift + {6,7,8,9,0}
-	bspc node -f next.floating; bspc node -d {6,7,8,9,0} --follow
+	bspc node -f next.local.floating; bspc node -d {6,7,8,9,0} --follow
 
 # toggle desktop layout
 # super + m
