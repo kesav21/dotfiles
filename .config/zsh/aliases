@@ -6,7 +6,7 @@ alias f='fd -H --no-ignore-vcs -tf ".*" . | fzf -m --select-1 --preview="bat {}"
 alias F='fd -H --no-ignore-vcs -tf ".*" ~ | fzf -m --select-1 --preview="bat {}" | xargs -r nvim'
 alias d='cd "$(fd -H --no-ignore-vcs -td ".*" . | fzf --select-1)"'
 alias D='cd "$(fd -H --no-ignore-vcs -td ".*" ~ | sed "s|$HOME|~|g" | fzf --select-1 | sed "s|~|$HOME|g")"'
-alias g='git'
+alias g=git
 alias v=vifmu
 alias l='fd -HId1 .'
 alias L='ls -AlFh'
@@ -26,9 +26,9 @@ alias mic='sudo make install && make clean'
 
 alias mkenv='virtualenv -p $(which python3) .env'
 alias stenv='source .env/bin/activate'
-alias killenv='deactivate'
+alias killenv=deactivate
 
-alias tf='terraform'
+alias tf=terraform
 alias tfi='terraform init'
 alias tfp='terraform plan -out=out'
 alias tfa='terraform apply out'
