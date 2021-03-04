@@ -7,6 +7,7 @@ alias F='fd -H --no-ignore-vcs -tf ".*" ~ | fzf -m --select-1 --preview="bat {}"
 alias d='cd "$(fd -H --no-ignore-vcs -td ".*" . | fzf --select-1)"'
 alias D='cd "$(fd -H --no-ignore-vcs -td ".*" ~ | sed "s|$HOME|~|g" | fzf --select-1 | sed "s|~|$HOME|g")"'
 alias g='git'
+alias v=vifmu
 alias l='fd -HId1 .'
 alias L='ls -AlFh'
 
