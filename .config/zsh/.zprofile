@@ -8,17 +8,15 @@ export XDG_CONFIG_HOME="$HOME"/.config
 export XDG_CACHE_HOME="$HOME"/.cache
 export XDG_DATA_HOME="$HOME"/.local/share
 
-export XDG_DOTFILES_DIR="$HOME"/.local/dotfiles
 export XDG_SRC_DIR="$HOME"/.local/src
-export XDG_BIN_DIR="$HOME"/.local/bin
+export XDG_PROJECTS_DIR="$HOME"/projects
+export XDG_DOTFILES_DIR="$HOME"/sync/projects/dotfiles
+export XDG_BIN_DIR="$HOME"/sync/projects/dotfiles/.local/bin
 
 export XDG_DOCUMENTS_DIR="$HOME"/Documents
 export XDG_DOWNLOADS_DIR="$HOME"/Downloads
 export XDG_MUSIC_DIR="$HOME"/Music
 export XDG_PICTURES_DIR="$HOME"/Pictures
-
-export XDG_ASU_DIR="$HOME"/asu
-export XDG_PROJECTS_DIR="$HOME"/projects
 
 # }}}
 

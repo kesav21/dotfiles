@@ -64,13 +64,9 @@ nnoremap gm  :cd $XDG_MUSIC_DIR<cr>
 nnoremap gpc :cd $XDG_PICTURES_DIR<cr>
 
 nnoremap gpr :cd $XDG_PROJECTS_DIR<cr>
-nnoremap gpe :cd $XDG_PROJECTS_DIR/project-euler<cr>
-nnoremap gpp :cd $XDG_PROJECTS_DIR/petasoft<cr>
 
-nnoremap g0 :cd ~/asu/cse408<cr>
-nnoremap g6 :cd ~/asu/cse464<cr>
-nnoremap g7 :cd ~/asu/cse470<cr>
-nnoremap g8 :cd ~/asu/cse486<cr>
+nnoremap gs :cd $HOME/sync<cr>
+nnoremap gS :cd $HOME/Sync<cr>
 
 " }}}
 
