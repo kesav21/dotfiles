@@ -42,16 +42,14 @@ alias gco='cd $XDG_CONFIG_HOME'
 alias gca='cd $XDG_CACHE_HOME'
 alias gda='cd $XDG_DATA_HOME'
 
-alias gdt='cd $XDG_DOTFILES_DIR'
-alias gls='cd $XDG_SRC_DIR'
-alias glb='cd $XDG_BIN_DIR'
-
 alias gdc='cd $XDG_DOCUMENTS_DIR'
 alias gdw='cd $XDG_DOWNLOADS_DIR'
 alias gm='cd $XDG_MUSIC_DIR'
 alias gpc='cd $XDG_PICTURES_DIR'
 
-alias gpr='cd $XDG_PROJECTS_DIR'
-
+alias gls='cd $HOME/.local/src'
+alias gpr='cd $HOME/projects'
 alias gs='cd $HOME/sync'
+alias gdt='cd $HOME/sync/projects/dotfiles'
+alias glb='cd $HOME/sync/projects/dotfiles/.local/bin'
 alias gS='cd $HOME/Sync'

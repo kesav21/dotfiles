@@ -82,19 +82,17 @@ nnoremap gco :cd $XDG_CONFIG_HOME<cr>
 nnoremap gca :cd $XDG_CACHE_HOME<cr>
 nnoremap gda :cd $XDG_DATA_HOME<cr>
 
-nnoremap gdt :cd $XDG_DOTFILES_DIR<cr>
-nnoremap gls :cd $XDG_SRC_DIR<cr>
-nnoremap glb :cd $XDG_BIN_DIR<cr>
-
 nnoremap gdc :cd $XDG_DOCUMENTS_DIR<cr>
 nnoremap gdw :cd $XDG_DOWNLOADS_DIR<cr>
 nnoremap gm  :cd $XDG_MUSIC_DIR<cr>
 nnoremap gpc :cd $XDG_PICTURES_DIR<cr>
 
-nnoremap gpr :cd $XDG_PROJECTS_DIR<cr>
-
-nnoremap gs :cd $HOME/sync<cr>
-nnoremap gS :cd $HOME/Sync<cr>
+nnoremap gls :cd $HOME/.local/src<cr>
+nnoremap gpr :cd $HOME/projects<cr>
+nnoremap gs  :cd $HOME/sync<cr>
+nnoremap gdt :cd $HOME/sync/projects/dotfiles<cr>
+nnoremap glb :cd $HOME/sync/projects/dotfiles/.local/bin<cr>
+nnoremap gS  :cd $HOME/Sync<cr>
 
 " }}}
 

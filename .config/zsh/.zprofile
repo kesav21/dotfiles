@@ -9,8 +9,6 @@ export XDG_CACHE_HOME="$HOME"/.cache
 export XDG_DATA_HOME="$HOME"/.local/share
 
 export XDG_SRC_DIR="$HOME"/.local/src
-export XDG_PROJECTS_DIR="$HOME"/projects
-export XDG_DOTFILES_DIR="$HOME"/sync/projects/dotfiles
 export XDG_BIN_DIR="$HOME"/sync/projects/dotfiles/.local/bin
 
 export XDG_DOCUMENTS_DIR="$HOME"/Documents
