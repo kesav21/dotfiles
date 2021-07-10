@@ -4,6 +4,8 @@
 vim.g.mapleader = ' '
 -- required by colorizer
 vim.o.termguicolors = true
+-- use ale's linting only
+vim.g.ale_disable_lsp = 1
 
 -- http://vimcasts.org/episodes/meet-the-arglist/
 
