@@ -52,6 +52,7 @@ bspc rule -a st-256color:centered state=floating
 bspc rule -a Pinentry-gtk-2:pinentry-gtk-2 state=floating
 bspc rule -a SimpleScreenRecorder:SimpleScreenRecorder state=floating
 bspc rule -a 'Signal Desktop Preferences:Signal' state=floating
+bspc rule -a Pcmanfm:pcmanfm state=floating
 
 bspc rule -a Signal:signal desktop=5
 bspc rule -a discord:discord desktop=4
