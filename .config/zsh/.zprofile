@@ -57,23 +57,31 @@ export ZPLUG_HOME="$HOME"/.local/src/zplug
 # path {{{
 
 # add local scripts
-bindirs="$(du -L "$XDG_BIN_DIR" --exclude '.git' | cut -f2 | tr '\n' ':')"
-export PATH="$bindirs$PATH"
+BIN_PATH="$(du -L "$XDG_BIN_DIR" --exclude '.git' | cut -f2 | tr '\n' ':')"
+export PATH="$BIN_PATH$PATH"
 
 # add ghc
 export PATH="$HOME"/.cabal/bin:"$HOME"/.ghcup/bin:"$PATH"
 
 # add stack packages
-stack_packages="$(stack path | awk -F"[: ]" '/^bin-path/ {print $3}')"
-export PATH="$stack_packages":"$PATH"
+STACK_PATH="$(stack path | awk -F"[: ]" '/^bin-path/ {print $3}')"
+export PATH="$STACK_PATH":"$PATH"
 
 # add go binaries
 export PATH=/home/kesav/go/bin:"$PATH"
 
+# configure lua package path
+# becuase luajit is a drop-in replacement for lua 5.1, use the following:
+# luarocks --lua-version 5.1 install --local luacheck
+eval "$(luarocks --lua-version 5.1 path)"
+
 # add my utility files to the lua path
-export LUA_PATH="$LUA_PATH;"/home/kesav/.local/src/lua-stdlib/?.lua
+export LUA_PATH="$LUA_PATH;"/home/kesav/sync/projects/lua-stdlib/?.lua
 
 # }}}
+
+# set up node version manager
+[ -s "$NVM_DIR"/nvm.sh ] && source "$NVM_DIR"/nvm.sh
 
 # set up ssh
 eval "$(ssh-agent)" >/dev/null
