@@ -25,6 +25,8 @@ sxhkd "$XDG_CONFIG_HOME"/sxhkd/sxhkdrc.personal >"$XDG_CACHE_HOME"/bin/sxhkd 2>&
 dunst >"$XDG_CACHE_HOME"/bin/dunst 2>&1 &
 # compositor
 picom --no-vsync -b --log-file "$XDG_CACHE_HOME"/bin/picom
+# hide cursor after five seconds
+unclutter --fork
 
 # sudo updatepackages >"$XDG_CACHE_HOME"/bin/updatepackages 2>&1 &
 unbuffer sinkmon >>"$XDG_CACHE_HOME"/bin/sinkmon 2>&1 &
