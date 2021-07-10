@@ -57,9 +57,8 @@ return require('packer').startup(function(use)
 	use 'tjdevries/astronauta.nvim'
 	use 'norcalli/nvim-colorizer.lua'
 	use 'AndrewRadev/splitjoin.vim'
-	use 'andymass/vim-matlab.git'
 	use 'hashivim/vim-terraform'
-
+	use 'JoosepAlviste/nvim-ts-context-commentstring'
 	-- use 'nvim-lua/completion-nvim'   -- TODO: check this out
 	-- use 'sainnhe/edge'               -- TODO: check this out
 end)
