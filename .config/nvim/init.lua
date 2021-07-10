@@ -41,6 +41,7 @@ vim.o.wildmode      = 'longest,list,full'
 vim.o.shortmess     = vim.o.shortmess .. 'c'
 -- breaks if done on window-scope
 vim.o.listchars     = 'tab:›─,nbsp:∙,trail:∙,extends:▶,precedes:◀'
+vim.o.backspace     = 'indent,eol,start,nostop'
 
 vim.wo.relativenumber = true
 vim.wo.number         = true
