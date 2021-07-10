@@ -26,11 +26,16 @@ setopt PROMPT_SUBST
 
 __git_ps1() {
 	branch="$(getbranch)"
-	[ -n "$branch" ] && printf '(%s)' "$branch"
+	[ -n "$branch" ] && printf '[%s]' "$branch"
 }
 
-PROMPT='%{${ret_status}%}%{$fg[blue]%}[%~] $ %{$reset_color%}'
-RPROMPT='%{$fg[magenta]%}$(__git_ps1)%{$reset_color%}'
+# PROMPT='%{${ret_status}%}%{$fg[blue]%}[%~] $ %{$reset_color%}'
+# RPROMPT='%{$fg[magenta]%}$(__git_ps1)%{$reset_color%}'
+# PROMPT_EOL_MARK=''
+
+PROMPT='%{$fg[blue]%}[%~] %{$fg[blue]%}$(__git_ps1)
+$ %{$reset_color%}'
+RPROMPT=''
 PROMPT_EOL_MARK=''
 
 # }}}
@@ -70,14 +75,10 @@ export LESS_TERMCAP_ue="$(printf '\e[0m')"
 source "$XDG_CONFIG_HOME"/zsh/vi-mode
 # set up aliases
 source "$XDG_CONFIG_HOME"/zsh/aliases
+# set up file openers
+source "$XDG_CONFIG_HOME"/zsh/openfiles
 # set up fzf bindings
 source "$XDG_CONFIG_HOME"/zsh/fzf
-# set up node version manager
-[ -s "$NVM_DIR"/nvm.sh ] && source "$NVM_DIR"/nvm.sh
-# configure lua package path
-# becuase luajit is a drop-in replacement for lua 5.1, use the following:
-# luarocks --lua-version 5.1 install --local luacheck
-eval "$(luarocks --lua-version 5.1 path)"
 
 # }}}
 

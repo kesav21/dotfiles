@@ -1,0 +1,39 @@
+#!/bin/sh
+
+f() {
+	fd --hidden --no-ignore-vcs --type file '.*' . |
+		fzf --multi --exit-0 --select-1 --print0 --preview='bat {}' |
+		xargs --null --no-run-if-empty nvim
+}
+
+F() {
+	fd --hidden --no-ignore-vcs --type file '.*' ~ |
+		fzf --multi --exit-0 --select-1 --print0 --preview='bat {}' |
+		xargs --null --no-run-if-empty nvim
+}
+
+d() {
+	cd "$(fd --hidden --no-ignore-vcs --type directory '.*' . |
+		fzf --exit-0 --select-1)"
+}
+
+D() {
+	cd "$(fd --hidden --no-ignore-vcs --type directory '.*' ~ |
+		sed 's|$HOME|~|g' |
+		fzf --exit-0 --select-1 |
+		sed 's|~|$HOME|g')"
+}
+
+p() {
+	files="$(fd --hidden --no-ignore --type file --extension pdf ".*" . |
+		fzf --multi --exit-0 --select-1 --print0)"
+	[ -n "$files" ] &&
+		zathura --fork --reparent="$(tab)" $files &
+}
+
+P() {
+	files="$(fd --hidden --no-ignore --type file --extension pdf ".*" ~ |
+		fzf --multi --exit-0 --select-1 --print0)"
+	[ -n "$files" ] &&
+		zathura --fork --reparent="$(tab)" $files &
+}
