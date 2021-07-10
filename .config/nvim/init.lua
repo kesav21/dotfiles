@@ -116,6 +116,9 @@ nnoremap { 'Y' , 'y$' }
 nnoremap { 'X' , 'xi' }
 vnoremap { 'p' , '"_dP' }
 
+nnoremap { '<c-j>' , '<c-w>w' }
+nnoremap { '<c-k>' , '<c-w>W' }
+
 -- Make cw consistent with dw, yw, vw
 vim.cmd [[onoremap w :execute 'normal! '.v:count1.'w'<CR>]]
 
