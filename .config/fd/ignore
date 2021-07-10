@@ -2,15 +2,18 @@
 *.epub
 *.opf
 *.webm
+*.webp
 *.wmv
 *.png
 *.jpg
+*.JPG
 *.db
 *.tdb
 *.sqlite
 *.o
 *.pkl
 *.tar
+*.class
 .git
 __pycache__
 .pytest_cache
@@ -19,3 +22,6 @@ clion
 node_modules
 dist
 .stack-work
+.obsidian
+.terraform
+.terraform.lock.hcl
