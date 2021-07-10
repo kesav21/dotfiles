@@ -5,6 +5,11 @@
 	rm -rf "$XDG_CACHE_HOME"/bin &&
 	mkdir "$XDG_CACHE_HOME"/bin
 
+# clear vifm Trash cache
+[ -d "$XDG_DATA_HOME"/vifm/Trash ] &&
+	rm -rf "$XDG_DATA_HOME"/vifm/Trash &&
+	mkdir "$XDG_DATA_HOME"/vifm/Trash
+
 hsetroot -solid '#1d2021'      # set wallpaper
 xsetroot -cursor_name left_ptr # set cursor
 xset -dpms
