@@ -31,18 +31,46 @@ endif
 
 nnoremap w :view<cr>
 
+" command! clear vifmimg clear
+
 " pdf
-fileviewer *.pdf pdftotext -nopgbrk %c -
+" fileviewer *.pdf pdftotext -nopgbrk %c -
 
 " images/gifs
-fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.xpm
-	\ vifmimg draw %px %py %pw %ph %c
-	\ %pc
-	\ vifmimg clear
-fileviewer *.gif
-	\ vifmimg gifpreview %px %py %pw %ph %c
-	\ %pc
-	\ vifmimg clear
+" fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.xpm
+" 	\ vifmimg draw %px %py %pw %ph %c
+" 	\ %pc
+" 	\ vifmimg clear
+" fileviewer *.gif
+" 	\ vifmimg gifpreview %px %py %pw %ph %c
+" 	\ %pc
+" 	\ vifmimg clear
+" fileviewer *.svg display %c
+
+" fileviewer *.pdf
+" 	\ vifmimg pdf %px %py %pw %ph %c
+" 	\ %pc
+" 	\ vifmimg clear
+" fileviewer *.epub
+" 	\ vifmimg epub %px %py %pw %ph %c
+" 	\ %pc
+" 	\ vifmimg clear
+" fileviewer <video/*>
+" 	\ vifmimg video %px %py %pw %ph %c
+" 	\ %pc
+" 	\ vifmimg clear
+" fileviewer <image/*>
+" 	\ vifmimg draw %px %py %pw %ph %c
+" 	\ %pc
+" 	\ vifmimg clear
+" fileviewer <audio/*>
+" 	\ vifmimg audio %px %py %pw %ph %c
+" 	\ %pc
+" 	\ vifmimg clear
+" fileviewer <font/*>
+" 	\ vifmimg font %px %py %pw %ph %c
+" 	\ %pc
+" 	\ vifmimg clear
 
 " }}}
 
