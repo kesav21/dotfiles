@@ -50,6 +50,9 @@ vim.wo.list           = true
 vim.wo.colorcolumn    = '88'
 vim.wo.signcolumn     = 'yes'
 
+vim.cmd [[ filetype plugin indent on ]]
+vim.cmd [[ syntax on ]]
+
 vim.cmd [[ augroup commentstrings ]]
 vim.cmd [[ autocmd! ]]
 vim.cmd [[ autocmd FileType c                lua vim.bo.commentstring = "// %s" ]]
@@ -93,12 +96,10 @@ vim.cmd [[ autocmd FileType * lua vim.bo.shiftwidth    = 4       ]]
 vim.cmd [[ autocmd FileType * lua vim.bo.softtabstop   = 4       ]]
 vim.cmd [[ autocmd FileType * lua vim.bo.expandtab     = false   ]]
 vim.cmd [[ autocmd FileType * lua vim.bo.modeline      = true    ]]
+vim.cmd [[ autocmd FileType * lua vim.bo.fixendofline  = false ]]
 vim.cmd [[ autocmd FileType * lua vim.bo.textwidth     = 88      ]]
 vim.cmd [[ autocmd FileType * lua vim.bo.formatoptions = 'crqj' ]] -- this doesn't work
 vim.cmd [[ augroup END ]]
-
-vim.cmd [[ filetype plugin indent on ]]
-vim.cmd [[ syntax on ]]
 
 -- }}}
 
