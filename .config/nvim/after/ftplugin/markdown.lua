@@ -1,4 +1,6 @@
 
+vim.o.joinspaces = false
+vim.wo.colorcolumn = ''
 vim.bo.formatoptions = 'rj'
 
 vim.cmd [[ hi! link markdownH1 GruvboxYellowBold ]]
@@ -28,4 +30,9 @@ vim.bo.makeprg = 'pandoc -s -t html5 --pdf-engine=wkhtmltopdf --katex --number-s
 vim.cmd [[ augroup project_config_markdown ]]
 vim.cmd [[ autocmd! ]]
 vim.cmd [[ autocmd VimEnter ~/asu/cse464/activity1.md lua vim.bo.makeprg = 'pandoc -s -t html5 --pdf-engine=wkhtmltopdf --katex -o %:r.pdf %' ]]
+vim.cmd [[ augroup END ]]
+
+vim.cmd [[ augroup format ]]
+vim.cmd [[ autocmd! ]]
+vim.cmd [[ autocmd BufWritePre * try | undojoin | Neoformat | catch /^Vim\%((\a\+)\)\=:E790/ | finally | silent Neoformat | endtry ]]
 vim.cmd [[ augroup END ]]
