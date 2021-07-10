@@ -45,8 +45,10 @@ telescope.setup {
 		file_previewer = previewers.vim_buffer_cat.new,
 
 		sorting_strategy = "ascending",
-		prompt_position  = "top",
-	}
+		layout_config = {
+			prompt_position = "top",
+		},
+	},
 }
 
 local nnoremap = vim.keymap.nnoremap
