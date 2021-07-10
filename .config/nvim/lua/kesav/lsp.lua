@@ -19,12 +19,11 @@ local function on_attach(client)
 	nnoremap { 'gd' , vim.lsp.buf.type_definition }
 	nnoremap { 'gr' , vim.lsp.buf.references }
 	nnoremap { 'K'  , vim.lsp.buf.hover }
-
 	inoremap { '<c-k>' , vim.lsp.buf.signature_help }
-
 	nnoremap { '<leader>rn', vim.lsp.buf.rename }
 	nnoremap { '<leader>k' , vim.lsp.diagnostic.show_line_diagnostics }
 	nnoremap { '<leader>ca', telescope_builtin.lsp_code_actions }
+	nnoremap { '<leader>dl', vim.lsp.diagnostic.set_loclist }
 
 	vim.cmd [[ inoremap <expr> <tab>   pumvisible() ? "\<c-n>" : "\<tab>" ]]
 	vim.cmd [[ inoremap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>" ]]
@@ -68,7 +67,7 @@ lspconfig.rust_analyzer.setup {
 
 local sumneko_root_path = vim.fn.stdpath('cache') .. '/lspconfig/sumneko_lua/lua-language-server'
 local sumneko_binary = sumneko_root_path .. "/bin/Linux/lua-language-server"
-
+-- file must have .lua extension
 lspconfig.sumneko_lua.setup {
 	cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
 	settings = {
