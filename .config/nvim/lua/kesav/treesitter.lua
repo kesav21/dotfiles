@@ -13,6 +13,9 @@ require'nvim-treesitter.configs'.setup{
 		-- "markdown",
 		-- "html",
 		"json",
+		"tsx",
+		"rust",
+		"toml",
 	},
 	highlight = {
 		enable = true,
@@ -38,7 +41,7 @@ require'nvim-treesitter.configs'.setup{
 			-- ["label"] = "GruvboxAqua",
 			-- ["string"] = "GruvboxGreen",
 			-- ["string.escape"] = "GruvboxGreen",
-			-- ["constant.builtin"] = "GruvboxPurple",
+			["constant.builtin"] = "Constant", -- keep
 
 			-- ["constant.macro"] = "TSKeyword", -- keep
 			-- ["include"] = "TSKeyword", -- keep
@@ -75,18 +78,19 @@ require'nvim-treesitter.configs'.setup{
 		},
 		navigation = {
 			enable = true,
-			keymaps = { goto_definition = "gd" }
+			-- keymaps = { goto_definition = "gd" }
 		}
 	},
 	textobjects = {
 		select = {
 			enable = true,
+			lookahead = true,
 			keymaps = {
 				["af"] = "@function.outer",
 				["if"] = "@function.inner",
 				["ac"] = "@class.outer",
-				["ic"] = "@class.inner"
-			}
+				["ic"] = "@class.inner",
+			},
 		},
 		swap = {
 			enable = true,
@@ -95,8 +99,28 @@ require'nvim-treesitter.configs'.setup{
 			},
 			swap_previous = {
 				["<leader>sp"] = "@parameter.inner",
-			}
-		}
+			},
+		},
+		move = {
+			enable = true,
+			set_jumps = true, -- whether to set jumps in the jumplist
+			goto_next_start = {
+				["]]"] = "@function.outer",
+				["]c"] = "@class.outer",
+			},
+			goto_next_end = {
+				["]["] = "@function.outer",
+				["]C"] = "@class.outer",
+			},
+			goto_previous_start = {
+				["[["] = "@function.outer",
+				["[c"] = "@class.outer",
+			},
+			goto_previous_end = {
+				["[]"] = "@function.outer",
+				["[c"] = "@class.outer",
+			},
+		},
 	},
 	incremental_selection = {
 		enable = true,
@@ -113,4 +137,32 @@ require'nvim-treesitter.configs'.setup{
 		updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
 		persist_queries = false -- Whether the query persists across vim sessions
 	},
+	query_linter = {
+		enable = true,
+		use_virtual_text = true,
+		lint_events = {"BufWrite", "CursorHold"},
+	},
+	context_commentstring = {
+		enable = true,
+	},
 }
+
+-- in queries/lua/highlights.scm
+-- ...
+-- - (function [(function_name) (identifier)] @function)
+-- + ; (function [(function_name) (identifier)] @function)
+-- ...
+-- (property_identifier) @property
+-- (method) @method
+--
+-- + (function (function_name (identifier) @function))
+-- + (function
+-- + 	(function_name
+-- + 		(function_name_field
+-- + 			(identifier)
+-- + 			. (property_identifier) @function))
+-- + 	. (parameters))
+-- ...
+-- (function_call (field_expression (property_identifier) @function) . (arguments))
+-- + (function_call (field_expression (property_identifier) @property) . (method) . (arguments))
+-- + (function_call (field_expression) . (method) @function . (arguments))
