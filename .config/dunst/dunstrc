@@ -133,7 +133,7 @@
 	#   %n  progress value if set without any extra characters
 	#   %%  Literal %
 	# Markup is allowed
-	format = "<b>%s</b>\n%b"
+	format = "<b>%s</b>\n%b%p"
 
 	# Alignment of message text.
 	# Possible values are "left", "center" and "right".
@@ -187,10 +187,10 @@
 	### Misc/Advanced ###
 
 	# dmenu path.
-	dmenu = /usr/bin/dmenu -p dunst:
+	dmenu = /usr/local/bin/dmenu -p dunst:
 
 	# Browser for opening urls in context menu.
-	browser = /usr/bin/google-chrome -new-tab
+	browser = /usr/bin/firefox
 
 	# Always run rule-defined scripts, even if the notification is suppressed
 	always_run_script = true
@@ -284,6 +284,7 @@
 	frame_color = "#ebdbb2" # gruvbox white
 	background = "#282828" # gruvbox background
 	foreground = "#ebdbb2"  # gruvbox foreground
+	highlight = "#689d6a"  # gruvbox foreground
 
 	timeout = 5
 
@@ -292,6 +293,7 @@
 	frame_color = "#689d6a" # gruvbox cyan
 	background = "#282828" # gruvbox background
 	foreground = "#ebdbb2"  # gruvbox foreground
+	highlight = "#689d6a"  # gruvbox foreground
 
 	timeout = 5
 
@@ -300,6 +302,7 @@
 	frame_color = "#cc241d" # gruvbox red
 	background = "#282828" # gruvbox background
 	foreground = "#ebdbb2"  # gruvbox foreground
+	highlight = "#cc241d"  # gruvbox foreground
 
 	timeout = 0
 
