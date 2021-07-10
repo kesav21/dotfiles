@@ -1,1 +1,0 @@
-cnoreabbrev gc G commit
