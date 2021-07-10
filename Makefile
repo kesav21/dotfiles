@@ -1,4 +1,4 @@
-modules = .zshenv $(wildcard .config/*) $(shell find .local/bin -type d ! -path .local/bin ! -path '.local/bin/.git*')
+modules = .zshenv $(wildcard .config/*)
 targets = $(foreach i, $(modules), $(HOME)/$(i))
 
 .PHONY: all
