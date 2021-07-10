@@ -17,57 +17,79 @@ ctrl + shift + Escape
 Print
 	sshot -u
 
-super + {j,k}
-	{bspnext,bspprev}
+super + {k,j}
+	bspc node -f "$(bsp_focus_node {prev,next})"
 
 # close node
 super + shift + BackSpace
-	bspc node -c
+	bspc node --close
 
 # coarsely resize node
 super + {h,l}
-	bspc node @/1 -z right {-10,10} 0
+	bspc node @/1 --resize right {-10,10} 0
+	# bspc node --resize right {-10,10} 0
 
 # finely resize node
 super + shift + {h,l}
-	bspc node @/1 -z right {-1,1} 0
+	bspc node @/1 --resize right {-1,1} 0
 
 # swap node with master
 super + Return
-	bspc node -s @/1
+	bspc node --swap @/1
 
-# set node state
-# super+ {t,shift + t,f,shift + f}
-#   bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+super + slash
+	bspc node --state '~'fullscreen
 
-# send node to monitor
-# super + shift + {comma, period}
-#   bspc node -m {west, east} --follow
+button8
+	bspc node --state '~'floating
 
-# focus desktop
-alt + {1,2,3,4,5}
-	bspc node -f next.local.floating; bspc desktop -f {1,2,3,4,5}
+button9
+	bspc node --state '~'tiled
 
 # focus desktop
-super + {6,7,8,9,0}
-	bspc node -f next.local.floating; bspc desktop -f {6,7,8,9,0}
+# alt + {1,2,3,4,5}
+# 	bspc node -f next.local.floating; bspc desktop -f {1,2,3,4,5}
+
+# focus desktop
+# super + {6,7,8,9,0}
+# 	bspc node -f next.local.floating; bspc desktop -f {6,7,8,9,0}
 
 # send node to desktop
-alt + shift + {1,2,3,4,5}
-	bspc node -f next.local.floating; bspc node -d {1,2,3,4,5} --follow
+# alt + shift + {1,2,3,4,5}
+# 	bspc node -f next.local.floating; bspc node -d {1,2,3,4,5} --follow
 
 # send node to desktop
-super + shift + {6,7,8,9,0}
-	bspc node -f next.local.floating; bspc node -d {6,7,8,9,0} --follow
+# super + shift + {6,7,8,9,0}
+# 	bspc node -f next.local.floating; bspc node -d {6,7,8,9,0} --follow
 
 # toggle desktop layout
 # super + m
-#   bspc desktop -l prev
+# 	bspc desktop -l prev
 
 # focus monitor
-# super + {comma, period}
-#   bspc monitor -f {west, east}
+super + {comma,period}
+	bspc monitor --focus {west,east}
 
-button{8,9}
-	bspc node -t {floating,tiled}
+# send node to monitor
+super + shift + {comma, period}
+	bspc node --to-monitor {west, east} --follow
+
+# focus occupied desktop
+super + {n,m}
+	bspc desktop --focus "$(bsp_local_occupied_desktop {prev,next})"
+	# eval "$(bsp_local_occupied_desktop {prev,next})"
+
+# send to occupied desktop
+super + shift + {n,m}
+	bspc node --to-desktop "$(bsp_local_occupied_desktop {prev,next})" --follow
+
+# focus desktop
+super + {u,i}
+	bspc desktop --focus "$(bsp_local_desktop {prev,next})"
+	# bsp_local_desktop {prev,next}
+	# eval "$(bsp_local_desktop {prev,next})"
+
+# send to desktop
+super + shift + {u,i}
+	bspc node --to-desktop "$(bsp_local_desktop {prev,next})" --follow
 
