@@ -1,0 +1,58 @@
+#!/bin/luajit
+
+local fileio = require('kk.fileio')
+
+if not arg[1] then
+	io.stderr:write('no argument given')
+	os.exit(1)
+end
+
+if string.sub(arg[1], 1, 1) ~= '+' and string.sub(arg[1], 1, 1) ~= '-' then
+	io.stderr:write('argument must start with either + or -')
+	os.exit(1)
+end
+
+if string.sub(arg[1], -1) ~= '%' then
+	io.stderr:write('argument must end with %')
+	os.exit(1)
+end
+
+if not tonumber(string.sub(arg[1], 1, -2)) then
+	io.stderr:write('argument must contain a number')
+	os.exit(1)
+end
+
+local diff = tonumber(string.sub(arg[1], 1, -2))
+print('parsed ' .. diff)
+
+local cache = os.getenv("XDG_CACHE_HOME")
+local newest = tonumber(fileio.firstline(cache .. '/bin/pamonitor.newest_sink_index'))
+print('newest sink ' .. newest)
+
+local currentpath = string.format("%s/bin/pamonitor.%s.volume", cache, newest)
+print('reading from ' .. currentpath)
+
+local current = tonumber(fileio.firstline(currentpath))
+print('current ' .. current)
+
+local new = current + diff
+print('new ' .. new)
+
+if new < 0 then
+	print('too low, correcting')
+	new = 0
+end
+
+if new > 100 then
+	print('too high, correcting')
+	new = 100
+end
+
+if current == new then
+	io.stderr:write('no change\n')
+	os.exit(1)
+end
+
+local command = string.format('pactl set-sink-volume %d %s', newest, arg[1])
+print('executing ' .. command)
+os.execute(command)

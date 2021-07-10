@@ -1,0 +1,5 @@
+#!/bin/sh
+
+bluetoothctl paired-devices | while read -r _ mac name; do
+	bluetoothctl info $mac | grep -q 'Connected: yes' && echo $name
+done

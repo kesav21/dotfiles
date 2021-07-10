@@ -1,0 +1,61 @@
+#!/bin/luajit
+
+local fileio = require('kk.fileio')
+
+if not arg[1] then
+	io.stderr:write('no argument given')
+	os.exit(1)
+end
+
+if string.sub(arg[1], 1, 1) ~= '+' and string.sub(arg[1], 1, 1) ~= '-' then
+	io.stderr:write('argument must start with either + or -')
+	os.exit(1)
+end
+
+if string.sub(arg[1], -1) ~= '%' then
+	io.stderr:write('argument must end with %')
+	os.exit(1)
+end
+
+if not tonumber(arg[1]:sub(1, -2)) then
+	io.stderr:write('argument must contain a number')
+	os.exit(1)
+end
+
+diff = tonumber(arg[1]:sub(1, -2))
+print('parsed ' .. diff)
+current = tonumber(fileio.firstline('/sys/class/backlight/intel_backlight/brightness'))
+print('current ' .. current)
+max = tonumber(fileio.firstline('/sys/class/backlight/intel_backlight/max_brightness'))
+print('max ' .. max)
+new = current + diff * max / 100
+print('new ' .. new)
+
+if new < 0 then
+	io.stderr:write('too low, modifying')
+	new = 0
+end
+
+if new > max then
+	io.stderr:write('too high, modifying')
+	new = max
+end
+
+if current == new then
+	io.stderr:write('no change')
+	os.exit(1)
+end
+
+file = io.open('/sys/class/backlight/intel_backlight/brightness', "w")
+if not file then
+	io.stderr:write('could not open file for writing')
+	os.exit(1)
+end
+
+io.output(file)
+if not io.write(new) then
+	io.stderr:write('write failed')
+	os.exit(1)
+end
+
+io.close(file)

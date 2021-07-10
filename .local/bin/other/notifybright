@@ -1,0 +1,44 @@
+#!/bin/luajit
+
+local fileio = require("kk.fileio")
+
+local function get_debug()
+	if arg[1] == "-v" then
+		return print
+	else
+		return function() end
+	end
+end
+
+local function get_icon(percent)
+	if percent == 100 then
+		return "notification-display-brightness-full"
+	elseif percent > 75 and percent < 100 then
+		return "notification-display-brightness-high"
+	elseif percent >= 50 and percent <= 75 then
+		return "notification-display-brightness-medium"
+	elseif percent > 0 and percent < 50 then
+		return "notification-display-brightness-low"
+	elseif percent == 0 then
+		return "notification-display-brightness-off"
+	end
+end
+
+local debug = get_debug()
+
+local current = tonumber(fileio.firstline("/sys/class/backlight/intel_backlight/brightness"))
+debug("current is " .. current)
+local max = tonumber(fileio.firstline("/sys/class/backlight/intel_backlight/max_brightness"))
+debug("max is " .. max)
+local percent = current / max * 100
+debug("percent is " .. percent)
+local icon = get_icon(percent)
+debug("icon is " .. icon)
+local command = string.format([[dunstify \
+	--hints int:value:%s \
+	--hints string:x-dunst-stack-tag:brightness \
+	--timeout 1000 \
+	--icon %s \
+	brightness]], percent, icon)
+debug("command is " .. command)
+os.execute(command)

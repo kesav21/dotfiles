@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# print class, instance, title
+xprop | awk -F\" '
+	/^WM_CLASS/ {print $4"\n"$2}
+	/^WM_NAME/ {print $2}'

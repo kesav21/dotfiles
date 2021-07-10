@@ -1,0 +1,6 @@
+#!/bin/sh
+
+find ~/asu -maxdepth 1 -type d -name 'cse*' -printf '%f\n' |
+	sort |
+	dmenu |
+	xargs -rI{} cat ~/asu/'{}'/meeting_id

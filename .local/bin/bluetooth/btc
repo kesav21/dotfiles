@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# connects a paired device
+bluetoothctl paired-devices |
+	cut -d\  -f3- |
+	dmenu |
+	xargs btid |
+	xargs bluetoothctl connect

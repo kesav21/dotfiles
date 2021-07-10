@@ -1,0 +1,10 @@
+#!/bin/sh
+
+ping -q -c 1 1.1.1.1 >/dev/null ||
+	dunstify 'Update Packages' 'Error connecting to the internet'
+
+sudo pacman -Syyu --noconfirm ||
+	dunstify 'Update Packages' 'Error updating with pacman'
+
+yay -Syyu --noconfirm ||
+	dunstify 'Update Packages' 'Error updating with yay'

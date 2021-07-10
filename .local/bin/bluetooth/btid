@@ -1,0 +1,6 @@
+#!/bin/sh
+
+[ $# -eq 0 ] && exit
+
+tmp="$@"
+bluetoothctl paired-devices | awk -v name="$tmp" '$0 ~ name {print $2}'

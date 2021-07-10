@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# are there tabs?
+tabs() {
+	xwininfo -children -root | grep -q 'tabbed'
+}
+
+# select window, get xid
+select() {
+	xwininfo | awk '/Window id/ {print $4}'
+}
+
+# is selected instance a tab?
+istab() {
+	xwininfo -children -root | grep -q "$1.*tabbed" && echo $1
+}
+
+# if there are tabs and the selected window is a tab, use tab
+# else, create tab
+tabs && istab "$(select)" || tabbed -cd

@@ -1,0 +1,33 @@
+#!/bin/sh
+
+st -n centered -e vifm -fc only &&
+	[ -s "$XDG_CONFIG_HOME"/vifm/vimfiles ] &&
+	while read -r line; do
+		case "$(file --brief --mime-type "$line")" in
+			application/pdf)
+				echo $line >>"$XDG_CONFIG_HOME"/vifm/vimfiles.pdf
+				;;
+			image*)
+				echo $line >>"$XDG_CONFIG_HOME"/vifm/vimfiles.img
+				;;
+			video*)
+				echo $line >>"$XDG_CONFIG_HOME"/vifm/vimfiles.vid
+				;;
+		esac
+	done <"$XDG_CONFIG_HOME"/vifm/vimfiles &&
+	rm "$XDG_CONFIG_HOME"/vifm/vimfiles
+
+# open pdfs
+[ -s "$XDG_CONFIG_HOME"/vifm/vimfiles.pdf ] &&
+	xargs -Ip zathura --fork -e "$(tab)" 'p' <"$XDG_CONFIG_HOME"/vifm/vimfiles.pdf &&
+	rm "$XDG_CONFIG_HOME"/vifm/vimfiles.pdf
+
+# open images
+[ -s "$XDG_CONFIG_HOME"/vifm/vimfiles.img ] &&
+	sxiv -i <"$XDG_CONFIG_HOME"/vifm/vimfiles.img &&
+	rm "$XDG_CONFIG_HOME"/vifm/vimfiles.img
+
+# open videos
+[ -s "$XDG_CONFIG_HOME"/vifm/vimfiles.vid ] &&
+	xargs mpv <"$XDG_CONFIG_HOME"/vifm/vimfiles.vid &&
+	rm "$XDG_CONFIG_HOME"/vifm/vimfiles.vid

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+pactl set-sink-mute "$(cat "$XDG_CACHE_HOME"/bin/sinkmon.newest_sink_index)" toggle

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+file="$(scrot $@ --exec 'echo $f' "$XDG_PICTURES_DIR"/screenshots/%Y-%m-%d-%H-%M-%S.png)"
+action="$(dunstify --icon "$file" --action=show,Show --hints string:x-dunst-stack-tag:sshot '')"
+[ "$action" = show ] && sxiv "$file"

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+git branch | sed 's/*//g' | tr -d ' ' | fzf | xargs -r -L 1 git branch -d

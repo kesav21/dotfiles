@@ -1,0 +1,3 @@
+#!/bin/sh
+
+git branch | sed 's/*//g' | tr -d ' ' | fzf | xargs -r -I b git checkout b

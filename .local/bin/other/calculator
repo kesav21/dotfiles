@@ -1,0 +1,3 @@
+#!/bin/sh
+
+st -n centered -e bc -iql

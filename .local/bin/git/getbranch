@@ -1,0 +1,31 @@
+#!/bin/luajit
+
+local lfs = require('lfs')
+local iter = require('kk.iter')
+local fileio = require('kk.fileio')
+
+local function parents(dir)
+	return function()
+		dir = dir .. '/..'
+		return dir
+	end
+end
+
+local function isnotroot(dir)
+	return lfs.attributes(dir).ino ~= 2
+end
+
+local function to_head_file(path)
+	return path .. '/.git/HEAD'
+end
+
+local cwd = lfs.currentdir()
+local dirs = iter.append('/', iter.insert(cwd, iter.takeUntil(isnotroot, parents(cwd))))
+local filename = iter.first(iter.filter(fileio.exists, iter.map(to_head_file, dirs)))
+if filename then
+	local line = fileio.firstline(filename)
+	local branch = string.sub(line, 17)
+	print(branch)
+else
+	os.exit(1)
+end

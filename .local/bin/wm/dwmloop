@@ -1,0 +1,7 @@
+#!/bin/sh
+
+while true; do
+	echo starting dwm >>"$XDG_CACHE_HOME"/bin/dwm
+	dwm >>"$XDG_CACHE_HOME"/bin/dwm 2>&1
+	echo killed dwm >>"$XDG_CACHE_HOME"/bin/dwm
+done

@@ -1,0 +1,11 @@
+#!/bin/luajit
+
+-- https://www.mathworks.com/matlabcentral/answers/98390-why-do-i-see-the-error-unable-to-locate-required-installation-files-when-running-the-mathworks-ins
+-- https://www.mathworks.com/matlabcentral/answers/259632-how-can-i-get-matlab-installation-files-for-use-on-an-offline-machine
+
+local filename = arg[1]
+if filename then
+	local template = [[matlab -noFigureWindows -nojvm -nosoftwareopengl -nosplash -nouserjavapath -nodesktop -nodisplay -batch "run('%s'); exit;"]]
+	local command = string.format(template, filename)
+	os.execute(command)
+end
