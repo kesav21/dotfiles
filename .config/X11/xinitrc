@@ -29,6 +29,6 @@ picom --no-vsync -b --log-file "$XDG_CACHE_HOME"/bin/picom
 unclutter --fork
 
 # sudo updatepackages >"$XDG_CACHE_HOME"/bin/updatepackages 2>&1 &
-unbuffer sinkmon >>"$XDG_CACHE_HOME"/bin/sinkmon 2>&1 &
+unbuffer pamonitor >>"$XDG_CACHE_HOME"/bin/pamonitor 2>&1 &
 launchbar >"$XDG_CACHE_HOME"/bin/launchbar 2>&1 &
 exec bspwm -c "$XDG_CONFIG_HOME"/bspwm/bspwmrc
