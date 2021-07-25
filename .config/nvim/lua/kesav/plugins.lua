@@ -61,5 +61,9 @@ return require('packer').startup(function(use)
 	use 'JoosepAlviste/nvim-ts-context-commentstring'
 	-- use 'nvim-lua/completion-nvim'   -- TODO: check this out
 	-- use 'sainnhe/edge'               -- TODO: check this out
+	use {
+		'lewis6991/gitsigns.nvim',
+		requires = { 'nvim-lua/plenary.nvim' }
+	}
 	use "mhartington/formatter.nvim"
 end)

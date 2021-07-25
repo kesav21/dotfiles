@@ -12,6 +12,7 @@ vim.g.ale_disable_lsp = 1
 require('astronauta.keymap')
 require('colorizer').setup()
 require('kesav.plugins')
+require('gitsigns').setup()
 require('kesav.lsp')
 require('kesav.treesitter')
 require('kesav.telescope')
