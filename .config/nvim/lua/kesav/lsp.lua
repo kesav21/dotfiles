@@ -86,6 +86,12 @@ lspconfig.sumneko_lua.setup {
 				},
 			},
 		},
+		-- luacheck = {
+		-- 	checkOnSave = {
+		-- 		allFeatures = true,
+		-- 		overrideCommand = { "luacheck", }
+		-- 	}
+		-- }
 	},
 	on_attach = on_attach
 }
