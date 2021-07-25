@@ -25,7 +25,7 @@ return require('packer').startup(function(use)
 	use 'junegunn/vim-slash'            -- better searching
 	use 'tommcdo/vim-lion'              -- code align
 	use 'tpope/vim-repeat'              -- better repeating for plugins
-	use 'sbdchd/neoformat'              -- code formatter
+	-- use 'sbdchd/neoformat'              -- code formatter
 	-- use { 'sbdchd/neoformat',
 	-- 	ft = neoformat_ft }             -- code formatter
 	use 'kovetskiy/sxhkd-vim'           -- sxhkd highlighting
@@ -61,4 +61,5 @@ return require('packer').startup(function(use)
 	use 'JoosepAlviste/nvim-ts-context-commentstring'
 	-- use 'nvim-lua/completion-nvim'   -- TODO: check this out
 	-- use 'sainnhe/edge'               -- TODO: check this out
+	use "mhartington/formatter.nvim"
 end)

@@ -17,6 +17,15 @@ require('kesav.treesitter')
 require('kesav.telescope')
 require('kesav.statusline')
 require('kesav.tabline')
+local ok, formatter = pcall(require, "kesav.formatter")
+if not ok then
+	print([[require("kesav.formatter") failed]])
+else
+	local ok2, _ = pcall(formatter.setup)
+	if not ok2 then
+		print([[formatter.setup() failed]])
+	end
+end
 
 -- options {{{
 
@@ -151,6 +160,11 @@ vim.cmd [[cnoreabbrev tsp TSP]]
 -- vim.cmd [[ let g:indent_guides_guide_size = 1 ]]
 -- vim.cmd [[ hi IndentGuidesOdd guibg=#282828 guifg=#ffffff ]]
 -- vim.cmd [[ hi IndentGuidesEven guibg=#32302f guifg=#ffffff ]]
+
+vim.cmd [[augroup format ]]
+vim.cmd [[autocmd! ]]
+vim.cmd [[autocmd BufWritePost * lua require("kesav.formatter").format() ]]
+vim.cmd [[augroup END ]]
 
 vim.cmd [[ augroup misc ]]
 vim.cmd [[ autocmd! ]]
