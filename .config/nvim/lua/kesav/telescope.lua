@@ -60,5 +60,7 @@ nnoremap { '<leader>fh', builtin.help_tags }
 
 nnoremap { '<leader>ga', custom.git_add }
 
+nnoremap { '<leader>ts', builtin.treesitter }
+
 -- this is an awkward mapping
 -- vim.api.nvim_set_keymap('t', '<c-\\>fd', '<c-\\><c-n>:lua require("kesav.telescope-pickers").terminal_cd()<cr>', {noremap = true, silent = true})
