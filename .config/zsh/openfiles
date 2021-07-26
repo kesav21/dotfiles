@@ -3,13 +3,13 @@
 f() {
 	fd --hidden --no-ignore-vcs --type file '.*' . |
 		fzf --multi --exit-0 --select-1 --print0 --preview='bat {}' |
-		xargs --null --no-run-if-empty nvim
+		xargs -0r nvim
 }
 
 F() {
 	fd --hidden --no-ignore-vcs --type file '.*' ~ |
 		fzf --multi --exit-0 --select-1 --print0 --preview='bat {}' |
-		xargs --null --no-run-if-empty nvim
+		xargs -0r nvim
 }
 
 d() {
