@@ -12,3 +12,5 @@ vim.cmd [[colorscheme gruvbox]]
 vim.cmd [[hi! link DiffAdd    GruvboxGreen]]
 vim.cmd [[hi! link DiffChange GruvboxRed]]
 vim.cmd [[hi! link DiffDelete GruvboxRed]]
+
+vim.cmd [[hi! link EndOfBuffer GruvboxBg0]]
