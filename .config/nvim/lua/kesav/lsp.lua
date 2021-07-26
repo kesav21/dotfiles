@@ -52,7 +52,13 @@ lspconfig.vimls.setup {
 	on_attach = on_attach
 }
 lspconfig.hls.setup {
-	cmd = { "haskell-language-server-wrapper", "--lsp", "--logfile", "/home/kesav/hls.log", "--debug" },
+	cmd = {
+		"haskell-language-server-wrapper",
+		"--lsp",
+		"--logfile",
+		"/home/kesav/hls.log",
+		"--debug"
+	},
 	filetypes = { 'haskell' },
 	on_attach = on_attach
 }
@@ -61,9 +67,23 @@ lspconfig.terraformls.setup {
 	on_attach = on_attach
 }
 lspconfig.rust_analyzer.setup {
-	on_attach = on_attach
+	on_attach = on_attach,
+	settings = {
+		["rust-analyzer"] = {
+			checkOnSave = {
+				allFeatures = true,
+				overrideCommand = {
+					"cargo",
+					"clippy",
+					"--workspace",
+					"--message-format=json",
+					"--all-targets",
+					"--all-features"
+				}
+			}
+		}
+	}
 }
-
 
 local sumneko_root_path = vim.fn.stdpath('cache') .. '/lspconfig/sumneko_lua/lua-language-server'
 local sumneko_binary = sumneko_root_path .. "/bin/Linux/lua-language-server"
