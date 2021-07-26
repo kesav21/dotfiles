@@ -2,7 +2,7 @@
 
 FORGIT_FZF_DEFAULT_OPTS="--height 100% --border "
 
-source $XDG_SRC_DIR/zplug/init.zsh
+source "$ZPLUG_HOME"/init.zsh
 zplug "wfxr/forgit"
 zplug load
 

@@ -46,7 +46,7 @@ export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
 export TERMINAL=/usr/local/bin/st
 export EDITOR=/usr/bin/nvim
 
-export ZPLUG_HOME="$HOME"/.local/src/zplug
+export ZPLUG_HOME="$XDG_SRC_DIR"/zplug
 
 # }}}
 

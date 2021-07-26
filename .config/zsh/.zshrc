@@ -87,8 +87,7 @@ source "$XDG_CONFIG_HOME"/zsh/fzf
 FORGIT_NO_ALIASES=1
 # VIM_MODE_TRACK_KEYMAP=no
 
-export ZPLUG_HOME="$XDG_SRC_DIR"/zplug
-source "$XDG_SRC_DIR"/zplug/init.zsh
+source "$ZPLUG_HOME"/init.zsh
 
 zplug 'zplug/zplug'
 zplug 'hlissner/zsh-autopair'
