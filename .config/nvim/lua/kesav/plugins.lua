@@ -50,7 +50,7 @@ return require('packer').startup(function(use)
 		requires = {'nvim-lua/plenary.nvim'}
 	}                                   -- statusline
 	use 'tpope/vim-fugitive'
-    use 'dstein64/vim-startuptime'
+	use 'dstein64/vim-startuptime'
 	use 'neovimhaskell/haskell-vim'
 	use 'nvim-lua/completion-nvim'      -- auto complete
 	-- use 'dense-analysis/ale'
