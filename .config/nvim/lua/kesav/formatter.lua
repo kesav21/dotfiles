@@ -15,7 +15,7 @@ local config = {
 	},
 	zsh = {
 		exe = "shfmt",
-		args = { "-p", "-i 0", "-ci" },
+		args = { "-i 0", "-ci" },
 		stdin = true,
 	},
 	haskell = {
