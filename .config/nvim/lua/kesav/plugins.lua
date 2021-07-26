@@ -53,7 +53,7 @@ return require('packer').startup(function(use)
     use 'dstein64/vim-startuptime'
 	use 'neovimhaskell/haskell-vim'
 	use 'nvim-lua/completion-nvim'      -- auto complete
-	use 'dense-analysis/ale'
+	-- use 'dense-analysis/ale'
 	use 'tjdevries/astronauta.nvim'
 	use 'norcalli/nvim-colorizer.lua'
 	use 'AndrewRadev/splitjoin.vim'
