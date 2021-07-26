@@ -64,7 +64,7 @@ STACK_PATH="$(stack path | awk -F"[: ]" '/^bin-path/ {print $3}')"
 export PATH="$STACK_PATH":"$PATH"
 
 # add go binaries
-export PATH=/home/kesav/go/bin:"$PATH"
+export PATH="$HOME"/go/bin:"$PATH"
 
 # configure lua package path
 # becuase luajit is a drop-in replacement for lua 5.1, use the following:
@@ -72,7 +72,7 @@ export PATH=/home/kesav/go/bin:"$PATH"
 eval "$(luarocks --lua-version 5.1 path)"
 
 # add my utility files to the lua path
-export LUA_PATH="$LUA_PATH;"/home/kesav/sync/projects/lua-stdlib/?.lua
+export LUA_PATH="$LUA_PATH;$HOME"/sync/projects/lua-stdlib/?.lua
 
 # }}}
 
