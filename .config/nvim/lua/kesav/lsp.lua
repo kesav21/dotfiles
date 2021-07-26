@@ -42,7 +42,7 @@ lspconfig.clangd.setup {
 	},
 	on_attach = on_attach
 }
-lspconfig.pyls.setup {
+lspconfig.pylsp.setup {
 	on_attach = on_attach
 }
 lspconfig.gopls.setup {
