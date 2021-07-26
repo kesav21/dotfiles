@@ -1,12 +1,15 @@
 #!/bin/sh
 
-# $1 is the low battery threshold
+while true; do
+	status="$(cat /sys/class/power_supply/BAT0/status)"
+	capacity="$(cat /sys/class/power_supply/BAT0/capacity)"
 
-export XDG_RUNTIME_DIR=/run/user/1000
-export DBUS_SESSION_BUS_ADDRESS=unix:path="$XDG_RUNTIME_DIR"/bus
+	[ "$status" = Discharging ] && [ "$capacity" -le 10 ] &&
+		dunstify --hints string:x-dunst-stack-tag:cronbat \
+			--hints int:value:"$capacity" \
+			--icon notification-battery-000 \
+			--urgency critical \
+			'Battery low'
 
-status="$(cat /sys/class/power_supply/BAT0/status)"
-capacity="$(cat /sys/class/power_supply/BAT0/capacity)"
-
-[ "$status" = Discharging ] && [ "$capacity" -le "$1" ] &&
-	dunstify -i notification-battery-000 -h string:x-dunst-stack-tag:cronbat -u critical 'Battery low'
+	sleep 1m
+done
