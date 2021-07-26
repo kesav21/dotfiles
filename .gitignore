@@ -10,3 +10,8 @@
 .config/vifm/vifm-help.txt
 .config/vifm/vifminfo.json
 .config/zsh/.zcompdump
+
+.local/bin/awscurl
+.local/bin/matlab
+.local/bin/network-events
+.local/bin/pamonitor
