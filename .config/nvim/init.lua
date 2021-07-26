@@ -9,24 +9,35 @@ vim.g.ale_disable_lsp = 1
 
 -- http://vimcasts.org/episodes/meet-the-arglist/
 
-require('astronauta.keymap')
-require('colorizer').setup()
-require('kesav.plugins')
-require('gitsigns').setup()
-require('kesav.lsp')
-require('kesav.treesitter')
-require('kesav.telescope')
-require('kesav.statusline')
-require('kesav.tabline')
-local ok, formatter = pcall(require, "kesav.formatter")
-if not ok then
-	print([[require("kesav.formatter") failed]])
-else
-	local ok2, _ = pcall(formatter.setup)
-	if not ok2 then
-		print([[formatter.setup() failed]])
+local function safe_require(module)
+	local ok, _ = pcall(require, module)
+	if not ok then
+		print(string.format([[require("%s") failed]], module))
 	end
 end
+
+local function safe_require_setup(module_name)
+	local ok, module = pcall(require, module_name)
+	if not ok then
+		print(string.format([[require("%s") failed]], module_name))
+	else
+		local ok2, _ = pcall(module.setup)
+		if not ok2 then
+			print(string.format([[%s.setup() failed]], module_name))
+		end
+	end
+end
+
+safe_require('kesav.plugins')
+safe_require('astronauta.keymap')
+safe_require_setup('colorizer')
+safe_require_setup('gitsigns')
+safe_require('kesav.lsp')
+safe_require('kesav.treesitter')
+safe_require('kesav.telescope')
+safe_require('kesav.statusline')
+safe_require('kesav.tabline')
+safe_require_setup('kesav.formatter')
 
 -- options {{{
 
