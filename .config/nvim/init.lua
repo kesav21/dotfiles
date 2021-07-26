@@ -82,6 +82,7 @@ vim.cmd [[ autocmd FileType javascript       lua vim.bo.commentstring = "// %s" 
 vim.cmd [[ autocmd FileType typescript       lua vim.bo.commentstring = "// %s" ]]
 vim.cmd [[ autocmd FileType typescript.react lua vim.bo.commentstring = "// %s" ]]
 vim.cmd [[ autocmd FileType asm              lua vim.bo.commentstring = "# %s" ]]
+vim.cmd [[ autocmd FileType toml             lua vim.bo.commentstring = "# %s" ]]
 vim.cmd [[ autocmd FileType crontab          lua vim.bo.commentstring = "# %s" ]]
 vim.cmd [[ autocmd FileType markdown         lua vim.bo.commentstring = "<!-- %s -->" ]]
 vim.cmd [[ autocmd FileType matlab           lua vim.bo.commentstring = "% %s" ]]
