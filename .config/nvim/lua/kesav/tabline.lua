@@ -1,4 +1,8 @@
-local iter = require('kk.iter')
+local has_iter, iter = pcall(require, "kk.iter")
+if not has_iter then
+	print("lua/kesav/tabline.lua: install kesav21/lua-stdlib")
+	return
+end
 
 local function choose(first, second, condition)
 	if condition then
