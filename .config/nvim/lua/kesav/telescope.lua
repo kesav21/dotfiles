@@ -1,5 +1,9 @@
+local ok, telescope = pcall(require, "telescope")
+if not ok then
+	print("lua/kesav/telescope.lua: install nvim-telescope/telescope.nvim")
+	return
+end
 
-local telescope  = require('telescope')
 local actions    = require('telescope.actions')
 local sorters    = require('telescope.sorters')
 local previewers = require('telescope.previewers')
