@@ -1,29 +1,45 @@
-local lspconfig  = require('lspconfig')
-local completion = require('completion')
-
-local telescope_builtin = require("telescope.builtin")
-
+local has_lspconfig, lspconfig = pcall(require, "lspconfig")
+if not has_lspconfig then
+	print("lua/kesav/lsp.lua: install neovim/nvim-lspconfig")
+	return
+end
+local has_completion, completion = pcall(require, "completion")
+if not has_completion then
+	print("lua/kesav/lsp.lua: install nvim-lua/completion-nvim")
+end
+local has_telescope, telescope_builtin = pcall(require, "telescope.builtin")
+if not has_telescope then
+	print("lua/kesav/lsp.lua: install nvim-telescope/telescope.nvim")
+end
+if not vim.keymap then
+	print("lua/kesav/lsp.lua: install tjdevries/astronauta.nvim")
+end
 local nnoremap = vim.keymap.nnoremap
 local inoremap = vim.keymap.inoremap
 
 local function on_attach(client)
 	print('attached lsp client')
 
-	completion.on_attach(client)
+	if has_completion then
+		vim.o.completeopt = "menuone,noinsert,noselect"
+		vim.bo.omnifunc = 'v:lua.vim.lsp.omnifunc'
+		completion.on_attach(client)
+	end
 
-	vim.o.completeopt = "menuone,noinsert,noselect"
-	vim.bo.omnifunc = 'v:lua.vim.lsp.omnifunc'
-
-	nnoremap { '<c-]>' , vim.lsp.buf.definition }
-	nnoremap { 'gi' , vim.lsp.buf.implementation }
-	nnoremap { 'gd' , vim.lsp.buf.type_definition }
-	nnoremap { 'gr' , vim.lsp.buf.references }
-	nnoremap { 'K'  , vim.lsp.buf.hover }
-	inoremap { '<c-k>' , vim.lsp.buf.signature_help }
-	nnoremap { '<leader>rn', vim.lsp.buf.rename }
-	nnoremap { '<leader>k' , vim.lsp.diagnostic.show_line_diagnostics }
-	nnoremap { '<leader>ca', telescope_builtin.lsp_code_actions }
-	nnoremap { '<leader>dl', vim.lsp.diagnostic.set_loclist }
+	if vim.keymap then
+		nnoremap { '<c-]>' , vim.lsp.buf.definition }
+		nnoremap { 'gi' , vim.lsp.buf.implementation }
+		nnoremap { 'gd' , vim.lsp.buf.type_definition }
+		nnoremap { 'gr' , vim.lsp.buf.references }
+		nnoremap { 'K'  , vim.lsp.buf.hover }
+		inoremap { '<c-k>' , vim.lsp.buf.signature_help }
+		nnoremap { '<leader>rn', vim.lsp.buf.rename }
+		nnoremap { '<leader>k' , vim.lsp.diagnostic.show_line_diagnostics }
+		nnoremap { '<leader>dl', vim.lsp.diagnostic.set_loclist }
+		if has_telescope then
+			nnoremap { '<leader>ca', telescope_builtin.lsp_code_actions }
+		end
+	end
 
 	vim.cmd [[ inoremap <expr> <tab>   pumvisible() ? "\<c-n>" : "\<tab>" ]]
 	vim.cmd [[ inoremap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>" ]]
