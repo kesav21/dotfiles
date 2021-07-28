@@ -19,6 +19,6 @@ nnoremap { '<c-k>' , '<c-w>W' }
 
 -- make cw consistent with dw, yw, vw
 local function consistent_cw()
-	vim.fn.execute("normal! " .. vim.v.count1 .. "w")
+	vim.cmd(string.format("normal! %sw", vim.v.count1))
 end
 onoremap { 'w', consistent_cw }
