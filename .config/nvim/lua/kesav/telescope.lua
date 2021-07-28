@@ -42,10 +42,8 @@ telescope.setup {
 				["<c-d>"]  = actions.empty,
 			},
 		},
-
 		file_sorter    = sorters.get_fzy_sorter,
 		file_previewer = previewers.vim_buffer_cat.new,
-
 		sorting_strategy = "ascending",
 		layout_config = {
 			prompt_position = "top",
