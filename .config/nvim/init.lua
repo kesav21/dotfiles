@@ -12,18 +12,18 @@ vim.g.ale_disable_lsp = 1
 local function safe_require(module)
 	local ok, _ = pcall(require, module)
 	if not ok then
-		print(string.format([[require("%s") failed]], module))
+		print(string.format([[init.lua: require("%s") failed]], module))
 	end
 end
 
 local function safe_require_setup(module_name)
 	local ok, module = pcall(require, module_name)
 	if not ok then
-		print(string.format([[require("%s") failed]], module_name))
+		print(string.format([[init.lua: require("%s") failed]], module_name))
 	else
 		local ok2, _ = pcall(module.setup)
 		if not ok2 then
-			print(string.format([[%s.setup() failed]], module_name))
+			print(string.format([[init.lua: %s.setup() failed]], module_name))
 		end
 	end
 end
