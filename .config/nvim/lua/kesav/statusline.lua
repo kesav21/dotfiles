@@ -1,3 +1,9 @@
+local has_el, el = pcall(require, "el")
+if not has_el then
+	print("lua/kesav/statusline.lua: install tjdevries/express_line.nvim")
+	return
+end
+
 local extensions = require('el.extensions')
 local subscribe = require('el.subscribe')
 
@@ -84,4 +90,4 @@ local function generator()
 	}
 end
 
-return require('el').setup { generator = generator }
+return el.setup { generator = generator }
