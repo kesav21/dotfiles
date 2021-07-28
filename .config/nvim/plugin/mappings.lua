@@ -1,3 +1,8 @@
+if not vim.keymap then
+	print("plugin/mappings.lua: install tjdevries/astronauta.nvim")
+	return
+end
+
 local nnoremap = vim.keymap.nnoremap
 local inoremap = vim.keymap.inoremap
 local vnoremap = vim.keymap.vnoremap
