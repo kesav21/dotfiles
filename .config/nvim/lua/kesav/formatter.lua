@@ -1,6 +1,10 @@
 local M = {}
 
-local formatter = require('formatter')
+local has_formatter, formatter = pcall(require, "formatter")
+if not has_formatter then
+	print("lua/kesav/formatter.lua: install mhartington/formatter.nvim")
+	return
+end
 
 local config = {
 	python = {
@@ -90,21 +94,25 @@ function M.get_formatter()
 end
 
 function M.setup()
-	local t = {}
-	for key, value in pairs(config) do
-		t[key] = { function() return value end }
+	if has_formatter then
+		local t = {}
+		for key, value in pairs(config) do
+			t[key] = { function() return value end }
+		end
+		formatter.setup {
+			logging = false,
+			filetype = t,
+		}
 	end
-	formatter.setup {
-		logging = false,
-		filetype = t,
-	}
 end
 
 function M.format()
-	for key, _ in pairs(config) do
-		if vim.bo.filetype == key then
-			vim.cmd [[FormatWrite]]
-			return
+	if has_formatter then
+		for key, _ in pairs(config) do
+			if vim.bo.filetype == key then
+				vim.cmd [[FormatWrite]]
+				return
+			end
 		end
 	end
 end
