@@ -26,8 +26,9 @@ local function safe_require_setup(module_name)
 	end
 end
 
+vim.cmd [[runtime plugin/astronauta.vim]]
+
 safe_require('kesav.plugins')
-safe_require('astronauta.keymap')
 safe_require_setup('colorizer')
 safe_require_setup('gitsigns')
 safe_require('kesav.lsp')
