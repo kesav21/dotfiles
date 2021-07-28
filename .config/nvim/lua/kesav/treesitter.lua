@@ -1,4 +1,10 @@
-require'nvim-treesitter.configs'.setup{
+local has_treesitter, treesitter = pcall(require, "nvim-treesitter.configs")
+if not has_treesitter then
+	print("lua/kesav/treesitter.lua: install nvim-treesitter/nvim-treesitter")
+	return
+end
+
+treesitter.setup {
 	ensure_installed = {
 		"c",
 		"cpp",
