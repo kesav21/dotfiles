@@ -18,8 +18,11 @@ vnoremap { 'p' , '"_dP' }
 nnoremap { '<c-j>' , '<c-w>w' }
 nnoremap { '<c-k>' , '<c-w>W' }
 
--- Make cw consistent with dw, yw, vw
-vim.cmd [[onoremap w :execute 'normal! '.v:count1.'w'<CR>]]
+-- make cw consistent with dw, yw, vw
+local function consistent_cw()
+	vim.fn.execute("normal! " .. vim.v.count1 .. "w")
+end
+onoremap { 'w', consistent_cw }
 
 nnoremap { '<leader>e' , ':e <c-r>=expand("%:p:h") . "/"<cr>' }
 nnoremap { '<leader>cp', ':silent !xsel -ib < %<cr>'              }
