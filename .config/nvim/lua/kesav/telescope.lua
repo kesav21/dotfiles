@@ -3,8 +3,6 @@ local telescope  = require('telescope')
 local actions    = require('telescope.actions')
 local sorters    = require('telescope.sorters')
 local previewers = require('telescope.previewers')
-local custom     = require("kesav.telescope-pickers")
-local builtin    = require("telescope.builtin")
 
 actions.empty = function() end
 
@@ -51,16 +49,7 @@ telescope.setup {
 	},
 }
 
-local nnoremap = vim.keymap.nnoremap
-
-nnoremap { '<leader>fb', custom.buffers }
-nnoremap { '<leader>ff', custom.find_files }
-nnoremap { '<leader>fd', custom.find_dirs }
-nnoremap { '<leader>fh', builtin.help_tags }
-
-nnoremap { '<leader>ga', custom.git_add }
-
-nnoremap { '<leader>ts', builtin.treesitter }
-
--- this is an awkward mapping
--- vim.api.nvim_set_keymap('t', '<c-\\>fd', '<c-\\><c-n>:lua require("kesav.telescope-pickers").terminal_cd()<cr>', {noremap = true, silent = true})
+vim.cmd [[cnoreabbrev fb lua require("telescope.builtin").buffers { show_all_buffers = true }]]
+vim.cmd [[cnoreabbrev ff lua require("telescope.builtin").find_files { find_command = { 'fd', '--hidden', '--no-ignore-vcs', '--type', 'file' } }]]
+vim.cmd [[cnoreabbrev fh lua require("telescope.builtin").help_tags()]]
+vim.cmd [[cnoreabbrev ts lua require("telescope.builtin").treesitter()]]
