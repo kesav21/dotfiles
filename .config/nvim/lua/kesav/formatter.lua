@@ -3,7 +3,6 @@ local M = {}
 local has_formatter, formatter = pcall(require, "formatter")
 if not has_formatter then
 	print("lua/kesav/formatter.lua: install mhartington/formatter.nvim")
-	return
 end
 
 local config = {
