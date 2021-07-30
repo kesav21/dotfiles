@@ -36,5 +36,7 @@
 	stc = stash clear
 [pull]
 	rebase = false
+[commit]
+	gpgsign = true
 [include]
 	path = config.personal
