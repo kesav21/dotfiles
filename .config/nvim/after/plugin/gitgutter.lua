@@ -6,8 +6,7 @@ end
 vim.g.gitgutter_enabled = 1
 vim.g.gitgutter_map_keys = 0
 
-vim.cmd [[cnoreabbrev hunks GitGutterQuickFix]]
-vim.cmd [[cnoreabbrev stage GitGutterStageHunk]]
-vim.cmd [[cnoreabbrev unstage GitGutterUndoHunk]]
+vim.cmd [[command! Hunks GitGutterQuickFix | copen]]
+vim.cmd [[cnoreabbrev hunks Hunks]]
 
 vim.cmd [[GitGutterSignsDisable]]

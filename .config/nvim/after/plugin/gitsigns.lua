@@ -1,0 +1,6 @@
+vim.cmd [[cnoreabbrev nh Gitsigns next_hunk]]
+vim.cmd [[cnoreabbrev ph Gitsigns prev_hunk]]
+vim.cmd [[cnoreabbrev stage Gitsigns stage_hunk]]
+vim.cmd [[cnoreabbrev unstage Gitsigns undo_stage_hunk]]
+vim.cmd [[cnoreabbrev reset Gitsigns reset_hunk]]
+vim.cmd [[cnoreabbrev preview Gitsigns preview_hunk]]
