@@ -1,7 +1,6 @@
-
 vim.o.joinspaces = false
-vim.wo.colorcolumn = ''
-vim.bo.formatoptions = 'rj'
+vim.wo.colorcolumn = ""
+vim.bo.formatoptions = "rj"
 
 vim.cmd [[ hi! link markdownH1 GruvboxYellowBold ]]
 vim.cmd [[ hi! link markdownH2 GruvboxYellowBold ]]
@@ -25,7 +24,8 @@ vim.cmd [[ syn match math '\$[^$].\{-}\$' ]]
 -- actually highlight the region we defined as "math"
 vim.cmd [[ hi link math Statement ]]
 
-vim.bo.makeprg = 'pandoc -s -t html5 --pdf-engine=wkhtmltopdf --katex --number-sections -o %:r.pdf %'
+vim.bo.makeprg =
+	"pandoc -s -t html5 --pdf-engine=wkhtmltopdf --katex --number-sections -o %:r.pdf %"
 
 vim.cmd [[ augroup project_config_markdown ]]
 vim.cmd [[ autocmd! ]]

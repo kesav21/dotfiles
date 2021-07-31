@@ -1,5 +1,5 @@
 if not vim.keymap then
-	print("plugin/mappings.lua: install tjdevries/astronauta.nvim")
+	print "plugin/mappings.lua: install tjdevries/astronauta.nvim"
 	return
 end
 
@@ -9,19 +9,19 @@ local vnoremap = vim.keymap.vnoremap
 local tnoremap = vim.keymap.tnoremap
 local onoremap = vim.keymap.onoremap
 
-inoremap { 'jk', '<esc>' }
-nnoremap { 'Q' , '<nop>' }
-nnoremap { 'Y' , 'y$' }
-nnoremap { 'X' , 'xi' }
-vnoremap { 'p' , '"_dP' }
+inoremap { "jk", "<esc>" }
+nnoremap { "Q", "<nop>" }
+nnoremap { "Y", "y$" }
+nnoremap { "X", "xi" }
+vnoremap { "p", '"_dP' }
 
-nnoremap { '<c-j>' , '<c-w>w' }
-nnoremap { '<c-k>' , '<c-w>W' }
+nnoremap { "<c-j>", "<c-w>w" }
+nnoremap { "<c-k>", "<c-w>W" }
 
-tnoremap { '<c-\\><c-\\>' , '<c-\\><c-n>' }
+tnoremap { "<c-\\><c-\\>", "<c-\\><c-n>" }
 
 -- make cw consistent with dw, yw, vw
 local function consistent_cw()
 	vim.cmd(string.format("normal! %sw", vim.v.count1))
 end
-onoremap { 'w', consistent_cw }
+onoremap { "w", consistent_cw }

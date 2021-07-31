@@ -1,6 +1,6 @@
 local has_treesitter, treesitter = pcall(require, "nvim-treesitter.configs")
 if not has_treesitter then
-	print("lua/kesav/treesitter.lua: install nvim-treesitter/nvim-treesitter")
+	print "lua/kesav/treesitter.lua: install nvim-treesitter/nvim-treesitter"
 	return
 end
 
@@ -74,18 +74,17 @@ treesitter.setup {
 
 			-- ["variable.parameter"] = "TSParameter"
 			-- ["parameter"] = "TSNone", -- for now -- keep
-
-		}
+		},
 	},
 	refactor = {
 		smart_rename = {
 			enable = true,
-			keymaps = { smart_rename = "<leader>r" }
+			keymaps = { smart_rename = "<leader>r" },
 		},
 		navigation = {
 			enable = true,
 			-- keymaps = { goto_definition = "gd" }
-		}
+		},
 	},
 	textobjects = {
 		select = {
@@ -141,12 +140,12 @@ treesitter.setup {
 		enable = true,
 		disable = {},
 		updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-		persist_queries = false -- Whether the query persists across vim sessions
+		persist_queries = false, -- Whether the query persists across vim sessions
 	},
 	query_linter = {
 		enable = true,
 		use_virtual_text = true,
-		lint_events = {"BufWrite", "CursorHold"},
+		lint_events = { "BufWrite", "CursorHold" },
 	},
 	context_commentstring = {
 		enable = true,

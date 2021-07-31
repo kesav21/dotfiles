@@ -1,32 +1,32 @@
 -- some options do not report file of last modification on :verbose set?
 -- https://github.com/neovim/neovim/issues/6561
 
-vim.o.laststatus    = 2
-vim.o.updatetime    = 40
-vim.o.timeoutlen    = 1000
-vim.o.hlsearch      = true
-vim.o.incsearch     = true
-vim.o.timeout       = true
-vim.o.exrc          = true
-vim.o.secure        = true
-vim.o.showmode      = false
-vim.o.splitbelow    = true
-vim.o.splitright    = true
-vim.o.background    = 'dark'
-vim.o.inccommand    = 'split'
-vim.o.clipboard     = 'unnamedplus'
-vim.o.wildmode      = 'longest,list,full'
-vim.o.shortmess     = vim.o.shortmess .. 'c'
+vim.o.laststatus = 2
+vim.o.updatetime = 40
+vim.o.timeoutlen = 1000
+vim.o.hlsearch = true
+vim.o.incsearch = true
+vim.o.timeout = true
+vim.o.exrc = true
+vim.o.secure = true
+vim.o.showmode = false
+vim.o.splitbelow = true
+vim.o.splitright = true
+vim.o.background = "dark"
+vim.o.inccommand = "split"
+vim.o.clipboard = "unnamedplus"
+vim.o.wildmode = "longest,list,full"
+vim.o.shortmess = vim.o.shortmess .. "c"
 -- breaks if done on window-scope
-vim.o.listchars     = 'tab:›─,nbsp:∙,trail:∙,extends:▶,precedes:◀'
-vim.o.backspace     = 'indent,eol,start,nostop'
+vim.o.listchars = "tab:›─,nbsp:∙,trail:∙,extends:▶,precedes:◀"
+vim.o.backspace = "indent,eol,start,nostop"
 
 vim.wo.relativenumber = true
-vim.wo.number         = true
-vim.wo.cursorline     = true
-vim.wo.list           = true
-vim.wo.colorcolumn    = '88'
-vim.wo.signcolumn     = 'yes'
+vim.wo.number = true
+vim.wo.cursorline = true
+vim.wo.list = true
+vim.wo.colorcolumn = "88"
+vim.wo.signcolumn = "yes"
 
 vim.cmd [[ filetype plugin indent on ]]
 vim.cmd [[ syntax on ]]

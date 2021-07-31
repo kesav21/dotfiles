@@ -1,11 +1,11 @@
 local has_el, el = pcall(require, "el")
 if not has_el then
-	print("lua/kesav/statusline.lua: install tjdevries/express_line.nvim")
+	print "lua/kesav/statusline.lua: install tjdevries/express_line.nvim"
 	return
 end
 
-local extensions = require('el.extensions')
-local subscribe = require('el.subscribe')
+local extensions = require "el.extensions"
+local subscribe = require "el.subscribe"
 
 local function mode(config)
 	return function()
@@ -14,31 +14,35 @@ local function mode(config)
 	end
 end
 
-local git_branch = subscribe.buf_autocmd("el_git_branch", "BufEnter", function(window, buffer)
-	local branch = extensions.git_branch(window, buffer)
-	if branch then
-		return "%#StatusDark#" ..  " שׂ " .. branch .. " "
+local git_branch = subscribe.buf_autocmd(
+	"el_git_branch",
+	"BufEnter",
+	function(window, buffer)
+		local branch = extensions.git_branch(window, buffer)
+		if branch then
+			return "%#StatusDark#" .. " שׂ " .. branch .. " "
+		end
 	end
-end)
+)
 
 local function lsp_diagnostics(buffer, severity)
 	local count = vim.lsp.diagnostic.get_count(buffer.bufnr, severity)
 	if count > 0 then
-		return '%#StatusLsp' .. severity .. '#' .. ' ' .. count .. ' '
+		return "%#StatusLsp" .. severity .. "#" .. " " .. count .. " "
 	else
-		return ''
+		return ""
 	end
 end
 
 local function lsp_diagnostics_wrapper(_, buffer)
 	local clients = vim.lsp.buf_get_clients(buffer.bufnr)
 	if #clients > 0 then
-		return lsp_diagnostics(buffer, 'Error')
-			.. lsp_diagnostics(buffer, 'Warning')
-			.. lsp_diagnostics(buffer, 'Information')
-			.. lsp_diagnostics(buffer, 'Hint')
+		return lsp_diagnostics(buffer, "Error")
+			.. lsp_diagnostics(buffer, "Warning")
+			.. lsp_diagnostics(buffer, "Information")
+			.. lsp_diagnostics(buffer, "Hint")
 	else
-		return ''
+		return ""
 	end
 end
 
@@ -60,33 +64,33 @@ local function generator()
 	vim.cmd [[ hi StatusLspHint        guifg=#3c3836 guibg=#8ec07c ]]
 
 	local config = {
-		["n"]  = {name = " N ", hi = "%#StatusModeAqua#"},
-		["v"]  = {name = " V ", hi = "%#StatusModeYellow#"},
-		["V"]  = {name = " V ", hi = "%#StatusModeYellow#"},
-		[""] = {name = " V ", hi = "%#StatusModeYellow#"},
-		["i"]  = {name = " I ", hi = "%#StatusModeBlue#"},
-		["ic"] = {name = " I ", hi = "%#StatusModeBlue#"},
-		["c"]  = {name = " C ", hi = "%#StatusModePink#"},
-		["t"]  = {name = " T ", hi = "%#StatusModeGreen#"},
+		["n"] = { name = " N ", hi = "%#StatusModeAqua#" },
+		["v"] = { name = " V ", hi = "%#StatusModeYellow#" },
+		["V"] = { name = " V ", hi = "%#StatusModeYellow#" },
+		[""] = { name = " V ", hi = "%#StatusModeYellow#" },
+		["i"] = { name = " I ", hi = "%#StatusModeBlue#" },
+		["ic"] = { name = " I ", hi = "%#StatusModeBlue#" },
+		["c"] = { name = " C ", hi = "%#StatusModePink#" },
+		["t"] = { name = " T ", hi = "%#StatusModeGreen#" },
 	}
 
 	setmetatable(config, {
 		__index = function(_, m)
-			return {name = " " .. m .. " ", hi = "%#StatusModeRed#"}
-		end
+			return { name = " " .. m .. " ", hi = "%#StatusModeRed#" }
+		end,
 	})
 
 	return {
-		mode(config),               -- mode
-		git_branch,                 -- git branch
-		'%#StatusDarker#' .. ' %F', -- file name
-		'%=',                       -- switch sides
-		" %m",                      -- modifiable
-		" %r ",                     -- readable
-		"%#StatusDark#" .. " %y ",  -- filetype
+		mode(config), -- mode
+		git_branch, -- git branch
+		"%#StatusDarker#" .. " %F", -- file name
+		"%=", -- switch sides
+		" %m", -- modifiable
+		" %r ", -- readable
+		"%#StatusDark#" .. " %y ", -- filetype
 		"%#StatusLight#" .. " %cC", -- columns
-		" %l/%LL ",                 -- lines
-		lsp_diagnostics_wrapper,    -- counts of diagnostic messages
+		" %l/%LL ", -- lines
+		lsp_diagnostics_wrapper, -- counts of diagnostic messages
 	}
 end
 

@@ -2,7 +2,7 @@ local M = {}
 
 local has_formatter, formatter = pcall(require, "formatter")
 if not has_formatter then
-	print("lua/kesav/formatter.lua: install mhartington/formatter.nvim")
+	print "lua/kesav/formatter.lua: install mhartington/formatter.nvim"
 end
 
 local config = {
@@ -101,12 +101,13 @@ function M.setup()
 	if has_formatter then
 		local t = {}
 		for key, value in pairs(config) do
-			t[key] = { function() return value end }
+			t[key] = {
+				function()
+					return value
+				end,
+			}
 		end
-		formatter.setup {
-			logging = false,
-			filetype = t,
-		}
+		formatter.setup { logging = false, filetype = t }
 	end
 end
 

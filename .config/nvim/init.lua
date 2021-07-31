@@ -1,5 +1,5 @@
 -- set this before creating any mappings
-vim.g.mapleader = ' '
+vim.g.mapleader = " "
 -- required by colorizer
 vim.o.termguicolors = true
 -- use ale's linting only
@@ -28,12 +28,12 @@ end
 
 vim.cmd [[runtime plugin/astronauta.vim]]
 
-safe_require('kesav.plugins')
-safe_require_setup('colorizer')
-safe_require_setup('gitsigns')
-safe_require('kesav.lsp')
-safe_require('kesav.treesitter')
-safe_require('kesav.telescope')
-safe_require('kesav.statusline')
-safe_require('kesav.tabline')
-safe_require_setup('kesav.formatter')
+safe_require "kesav.plugins"
+safe_require_setup "colorizer"
+safe_require_setup "gitsigns"
+safe_require "kesav.lsp"
+safe_require "kesav.treesitter"
+safe_require "kesav.telescope"
+safe_require "kesav.statusline"
+safe_require "kesav.tabline"
+safe_require_setup "kesav.formatter"

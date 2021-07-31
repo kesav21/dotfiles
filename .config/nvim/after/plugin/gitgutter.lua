@@ -1,5 +1,5 @@
-if vim.fn.exists(":GitGutterSignsDisable") ~= 2 then
-	print("after/plugin/gitgutter.lua: install airblade/vim-gitgutter")
+if vim.fn.exists ":GitGutterSignsDisable" ~= 2 then
+	print "after/plugin/gitgutter.lua: install airblade/vim-gitgutter"
 	return
 end
 

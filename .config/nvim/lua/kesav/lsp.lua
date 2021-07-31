@@ -1,43 +1,43 @@
 local has_lspconfig, lspconfig = pcall(require, "lspconfig")
 if not has_lspconfig then
-	print("lua/kesav/lsp.lua: install neovim/nvim-lspconfig")
+	print "lua/kesav/lsp.lua: install neovim/nvim-lspconfig"
 	return
 end
 local has_completion, completion = pcall(require, "completion")
 if not has_completion then
-	print("lua/kesav/lsp.lua: install nvim-lua/completion-nvim")
+	print "lua/kesav/lsp.lua: install nvim-lua/completion-nvim"
 end
 local has_telescope, telescope_builtin = pcall(require, "telescope.builtin")
 if not has_telescope then
-	print("lua/kesav/lsp.lua: install nvim-telescope/telescope.nvim")
+	print "lua/kesav/lsp.lua: install nvim-telescope/telescope.nvim"
 end
 if not vim.keymap then
-	print("lua/kesav/lsp.lua: install tjdevries/astronauta.nvim")
+	print "lua/kesav/lsp.lua: install tjdevries/astronauta.nvim"
 end
 local nnoremap = vim.keymap.nnoremap
 local inoremap = vim.keymap.inoremap
 
 local function on_attach(client)
-	print('attached lsp client')
+	print "attached lsp client"
 
 	if has_completion then
 		vim.o.completeopt = "menuone,noinsert,noselect"
-		vim.bo.omnifunc = 'v:lua.vim.lsp.omnifunc'
+		vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
 		completion.on_attach(client)
 	end
 
 	if vim.keymap then
-		nnoremap { '<c-]>' , vim.lsp.buf.definition }
-		nnoremap { 'gi' , vim.lsp.buf.implementation }
-		nnoremap { 'gd' , vim.lsp.buf.type_definition }
-		nnoremap { 'gr' , vim.lsp.buf.references }
-		nnoremap { 'K'  , vim.lsp.buf.hover }
-		inoremap { '<c-k>' , vim.lsp.buf.signature_help }
-		nnoremap { '<leader>rn', vim.lsp.buf.rename }
-		nnoremap { '<leader>k' , vim.lsp.diagnostic.show_line_diagnostics }
-		nnoremap { '<leader>dl', vim.lsp.diagnostic.set_loclist }
+		nnoremap { "<c-]>", vim.lsp.buf.definition }
+		nnoremap { "gi", vim.lsp.buf.implementation }
+		nnoremap { "gd", vim.lsp.buf.type_definition }
+		nnoremap { "gr", vim.lsp.buf.references }
+		nnoremap { "K", vim.lsp.buf.hover }
+		inoremap { "<c-k>", vim.lsp.buf.signature_help }
+		nnoremap { "<leader>rn", vim.lsp.buf.rename }
+		nnoremap { "<leader>k", vim.lsp.diagnostic.show_line_diagnostics }
+		nnoremap { "<leader>dl", vim.lsp.diagnostic.set_loclist }
 		if has_telescope then
-			nnoremap { '<leader>ca', telescope_builtin.lsp_code_actions }
+			nnoremap { "<leader>ca", telescope_builtin.lsp_code_actions }
 		end
 	end
 
@@ -46,7 +46,7 @@ local function on_attach(client)
 end
 
 lspconfig.tsserver.setup {
-	on_attach = on_attach
+	on_attach = on_attach,
 }
 lspconfig.clangd.setup {
 	cmd = {
@@ -56,16 +56,16 @@ lspconfig.clangd.setup {
 		"--clang-tidy",
 		"--header-insertion=iwyu",
 	},
-	on_attach = on_attach
+	on_attach = on_attach,
 }
 lspconfig.pylsp.setup {
-	on_attach = on_attach
+	on_attach = on_attach,
 }
 lspconfig.gopls.setup {
-	on_attach = on_attach
+	on_attach = on_attach,
 }
 lspconfig.vimls.setup {
-	on_attach = on_attach
+	on_attach = on_attach,
 }
 lspconfig.hls.setup {
 	cmd = {
@@ -73,14 +73,14 @@ lspconfig.hls.setup {
 		"--lsp",
 		"--logfile",
 		"/home/kesav/hls.log",
-		"--debug"
+		"--debug",
 	},
-	filetypes = { 'haskell' },
-	on_attach = on_attach
+	filetypes = { "haskell" },
+	on_attach = on_attach,
 }
 lspconfig.terraformls.setup {
 	cmd = { "terraform-lsp" },
-	on_attach = on_attach
+	on_attach = on_attach,
 }
 lspconfig.rust_analyzer.setup {
 	on_attach = on_attach,
@@ -94,31 +94,32 @@ lspconfig.rust_analyzer.setup {
 					"--workspace",
 					"--message-format=json",
 					"--all-targets",
-					"--all-features"
-				}
-			}
-		}
-	}
+					"--all-features",
+				},
+			},
+		},
+	},
 }
 
-local sumneko_root_path = vim.fn.stdpath('cache') .. '/lspconfig/sumneko_lua/lua-language-server'
+local sumneko_root_path = vim.fn.stdpath "cache"
+	.. "/lspconfig/sumneko_lua/lua-language-server"
 local sumneko_binary = sumneko_root_path .. "/bin/Linux/lua-language-server"
 -- file must have .lua extension
 lspconfig.sumneko_lua.setup {
-	cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
+	cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
 	settings = {
 		Lua = {
 			runtime = {
-				version = 'LuaJIT',
-				path = vim.split(package.path, ';'),
+				version = "LuaJIT",
+				path = vim.split(package.path, ";"),
 			},
 			diagnostics = {
-				globals = {'vim'},
+				globals = { "vim" },
 			},
 			workspace = {
 				library = {
-					[vim.fn.expand('$VIMRUNTIME/lua')] = true,
-					[vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+					[vim.fn.expand "$VIMRUNTIME/lua"] = true,
+					[vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
 				},
 			},
 		},
@@ -129,5 +130,5 @@ lspconfig.sumneko_lua.setup {
 		-- 	}
 		-- }
 	},
-	on_attach = on_attach
+	on_attach = on_attach,
 }

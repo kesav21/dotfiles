@@ -5,7 +5,7 @@ vim.g.gruvbox_contrast_light = "hard"
 
 local has_gruvbox, _ = pcall(vim.cmd, "colorscheme gruvbox")
 if not has_gruvbox then
-	print("after/plugin/gruvbox.lua: install gruvbox-community/gruvbox")
+	print "after/plugin/gruvbox.lua: install gruvbox-community/gruvbox"
 	return
 end
 
