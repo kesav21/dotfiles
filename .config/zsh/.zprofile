@@ -66,6 +66,9 @@ export PATH="$STACK_PATH":"$PATH"
 # add go binaries
 export PATH="$HOME"/go/bin:"$PATH"
 
+# add cargo binaries
+export PATH="$HOME"/.cargo/bin:"$PATH"
+
 # configure lua package path
 # becuase luajit is a drop-in replacement for lua 5.1, use the following:
 # luarocks --lua-version 5.1 install --local luacheck
