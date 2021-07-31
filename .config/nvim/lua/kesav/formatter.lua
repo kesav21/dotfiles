@@ -46,6 +46,11 @@ local config = {
 		args = { "--indent=tab", "<" },
 		stdin = false,
 	},
+	lua = {
+		exe = "stylua",
+		args = { "--search-parent-directories" },
+		stdin = false,
+	},
 	-- c = {
 	-- 	exe = "astyle",
 	-- 	args = {
