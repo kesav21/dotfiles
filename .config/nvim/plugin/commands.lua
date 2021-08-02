@@ -2,7 +2,7 @@ if not _G.kesav then
 	_G.kesav = {}
 end
 
-vim.cmd [[command Bd bp|bd#]]
+vim.cmd [[command! Bd bp|bd#]]
 vim.cmd [[cnoreabbrev bd Bd]]
 
 vim.cmd [[cnoreabbrev tsp TSP]]
