@@ -1,7 +1,9 @@
 -- set this before creating any mappings
 vim.g.mapleader = " "
 -- required by colorizer
-vim.o.termguicolors = true
+if os.getenv "TERM" ~= "linux" then
+	vim.o.termguicolors = true
+end
 -- use ale's linting only
 vim.g.ale_disable_lsp = 1
 
@@ -29,7 +31,9 @@ end
 vim.cmd [[runtime plugin/astronauta.vim]]
 
 safe_require "kesav.plugins"
-safe_require_setup "colorizer"
+if os.getenv "TERM" ~= "linux" then
+	safe_require_setup "colorizer"
+end
 safe_require_setup "gitsigns"
 safe_require "kesav.lsp"
 safe_require "kesav.treesitter"
