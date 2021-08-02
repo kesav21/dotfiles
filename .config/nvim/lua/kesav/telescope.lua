@@ -4,9 +4,13 @@ if not ok then
 	return
 end
 
+local action_set = require "telescope.actions.set"
+local action_state = require "telescope.actions.state"
 local actions = require "telescope.actions"
-local sorters = require "telescope.sorters"
+local finders = require "telescope.finders"
+local pickers = require "telescope.pickers"
 local previewers = require "telescope.previewers"
+local sorters = require "telescope.sorters"
 
 actions.empty = function() end
 
@@ -55,3 +59,29 @@ vim.cmd [[cnoreabbrev fb lua require("telescope.builtin").buffers { show_all_buf
 vim.cmd [[cnoreabbrev ff lua require("telescope.builtin").find_files { find_command = { 'fd', '--hidden', '--no-ignore-vcs', '--type', 'file' } }]]
 vim.cmd [[cnoreabbrev fh lua require("telescope.builtin").help_tags()]]
 vim.cmd [[cnoreabbrev ts lua require("telescope.builtin").treesitter()]]
+
+if not _G.kesav then
+	_G.kesav = {}
+end
+
+-- lua print(vim.inspect(kesav))
+-- lua print(vim.inspect(vim.api.nvim_get_runtime_file("**", false)))
+-- lua loadfile(vim.api.nvim_get_runtime_file("plugin/commands.lua", false)[1])()
+-- lua loadfile(vim.api.nvim_get_runtime_file("lua/kesav/telescope.lua", false)[1])()
+function _G.kesav.loadfilename()
+	return pickers.new({
+		prompt_title = "Load Runtime Files",
+		finder = finders.new_table(vim.api.nvim_get_runtime_file("**", true)),
+		sorter = sorters.get_fzy_sorter(),
+		attach_mappings = function()
+			action_set.select:replace(function(prompt_bufnr)
+				local selection = action_state.get_selected_entry()
+				actions.close(prompt_bufnr)
+				local module = loadfile(selection.display)
+				module()
+			end)
+			return true
+		end,
+	}):find()
+end
+vim.cmd [[cnoreabbrev ld lua kesav.loadfilename()]]
