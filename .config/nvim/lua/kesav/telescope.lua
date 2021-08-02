@@ -7,6 +7,7 @@ end
 local action_set = require "telescope.actions.set"
 local action_state = require "telescope.actions.state"
 local actions = require "telescope.actions"
+local builtin = require "telescope.builtin"
 local finders = require "telescope.finders"
 local pickers = require "telescope.pickers"
 local previewers = require "telescope.previewers"
@@ -55,14 +56,24 @@ telescope.setup {
 	},
 }
 
-vim.cmd [[cnoreabbrev fb lua require("telescope.builtin").buffers { show_all_buffers = true }]]
-vim.cmd [[cnoreabbrev ff lua require("telescope.builtin").find_files { find_command = { 'fd', '--hidden', '--no-ignore-vcs', '--type', 'file' } }]]
-vim.cmd [[cnoreabbrev fh lua require("telescope.builtin").help_tags()]]
-vim.cmd [[cnoreabbrev ts lua require("telescope.builtin").treesitter()]]
-
 if not _G.kesav then
 	_G.kesav = {}
 end
+
+function _G.kesav.buffers()
+	builtin.buffers { show_all_buffers = true }
+end
+vim.cmd [[cnoreabbrev fb lua kesav.buffers()]]
+
+function _G.kesav.find_files()
+	return builtin.find_files {
+		find_command = { "fd", "--hidden", "--no-ignore-vcs", "--type", "file" },
+	}
+end
+vim.cmd [[cnoreabbrev ff lua kesav.find_files()]]
+
+vim.cmd [[cnoreabbrev fh lua require("telescope.builtin").help_tags()]]
+vim.cmd [[cnoreabbrev ts lua require("telescope.builtin").treesitter()]]
 
 -- lua print(vim.inspect(kesav))
 -- lua print(vim.inspect(vim.api.nvim_get_runtime_file("**", false)))
