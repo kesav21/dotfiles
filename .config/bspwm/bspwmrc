@@ -43,4 +43,5 @@ bspc rule -a SimpleScreenRecorder:SimpleScreenRecorder state=floating
 bspc rule -a Pcmanfm:pcmanfm state=floating
 
 bspc rule -a Signal:signal desktop=5
-bspc rule -a discord:discord desktop=4
+bspc rule -a discord:discord desktop=5
+bspc rule -a Slack:slack desktop=5
