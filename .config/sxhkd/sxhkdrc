@@ -67,3 +67,9 @@ super + {u,i}
 # send to desktop
 super + shift + {u,i}
 	bspc node --to-desktop "$(bsp_local_desktop {prev,next})" --follow
+
+super + y; super + {h,j,k,l}
+	bspc node --presel-dir {west,south,north,east}
+
+super + shift + y
+	bspc node @/ --balance
