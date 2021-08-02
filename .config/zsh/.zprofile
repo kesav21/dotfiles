@@ -85,6 +85,26 @@ export LUA_PATH="$LUA_PATH;$HOME"/sync/projects/lua-stdlib/?.lua
 # set up ssh
 eval "$(ssh-agent)" >/dev/null
 
+if [ "$TERM" = linux ]; then
+	echo -en "\e]P01d2021" # #1d2021 normal black
+	echo -en "\e]P8928374" # #928374 bright black (looks yellow/tan)
+	echo -en "\e]P1cc241d" # #cc241d normal red
+	echo -en "\e]P9fb4934" # #fb4934 bright red
+	echo -en "\e]P298971a" # #98971a normal green (looks yellow/tan)
+	echo -en "\e]PAb8bb26" # #b8bb26 bright green (looks yellow/tan)
+	echo -en "\e]P3d79921" # #d79921 normal yellow (looks yellow/tan)
+	echo -en "\e]PBfabd2f" # #fabd2f bright yellow (looks yellow/tan)
+	echo -en "\e]P4458588" # #458588 normal blue
+	echo -en "\e]PC83a598" # #83a598 bright blue (looks grey)
+	echo -en "\e]P5b16286" # #b16286 normal magenta
+	echo -en "\e]PDd3869b" # #d3869b bright magenta (looks grey)
+	echo -en "\e]P6689d6a" # #689d6a normal cyan (looks green)
+	echo -en "\e]PE8ec07c" # #8ec07c bright cyan (looks yellow/tan)
+	echo -en "\e]P7a89984" # #a89984 normal white (looks grey)
+	echo -en "\e]PFebdbb2" # #ebdbb2 bright white (looks grey)
+	clear
+fi
+
 # start x {{{
 
 systemctl -q is-active graphical.target && [ ! "$DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ] &&
