@@ -17,7 +17,7 @@ Print
 	sshot -u
 
 super + {k,j}
-	bspc node -f "$(bsp_focus_node {prev,next})"
+	bsp_focus_node_or_monitor {prev,next}
 
 # close node
 super + shift + BackSpace
@@ -43,14 +43,6 @@ button8
 
 button9
 	bspc node --state '~'tiled
-
-# focus monitor
-super + {comma,period}
-	bspc monitor --focus {west,east}
-
-# send node to monitor
-super + shift + {comma, period}
-	bspc node --to-monitor {west, east} --follow
 
 # focus occupied desktop
 super + {n,m}
