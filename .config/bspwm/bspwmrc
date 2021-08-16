@@ -27,21 +27,21 @@ bspc config pointer_follows_monitor true
 
 # rules
 
-bspc rule -r '*'
-bspc rule -a '*' state=tiled
+bspc rule --remove '*'
+bspc rule --add '*' state=tiled
 
-bspc rule -a zoom:zoom state=floating
-bspc rule -a Bspwm:motion_recorder state=floating
-bspc rule -a firefox:Firefox state=floating
-bspc rule -a firefox:firefox state=floating
-bspc rule -a firefox:Toolkit state=floating
-bspc rule -a Discord:discord state=floating
-bspc rule -a Pavucontrol:pavucontrol state=floating
-bspc rule -a st-256color:centered state=floating
-bspc rule -a Pinentry-gtk-2:pinentry-gtk-2 state=floating
-bspc rule -a SimpleScreenRecorder:SimpleScreenRecorder state=floating
-bspc rule -a Pcmanfm:pcmanfm state=floating
+bspc rule --add zoom:zoom state=floating
+bspc rule --add Bspwm:motion_recorder state=floating
+bspc rule --add firefox:Firefox state=floating
+bspc rule --add firefox:firefox state=floating
+bspc rule --add firefox:Toolkit state=floating
+bspc rule --add Discord:discord state=floating
+bspc rule --add Pavucontrol:pavucontrol state=floating
+bspc rule --add st-256color:centered state=floating
+bspc rule --add Pinentry-gtk-2:pinentry-gtk-2 state=floating
+bspc rule --add SimpleScreenRecorder:SimpleScreenRecorder state=floating
+bspc rule --add Pcmanfm:pcmanfm state=floating
 
-bspc rule -a Signal:signal desktop=5
-bspc rule -a discord:discord desktop=5
-bspc rule -a Slack:slack desktop=5
+bspc rule --add Signal:signal desktop=5
+bspc rule --add discord:discord desktop=5
+bspc rule --add Slack:slack desktop=5
