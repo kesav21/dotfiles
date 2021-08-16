@@ -1,38 +1,5 @@
-#!/bin/luajit
+#!/bin/sh
 
-local fileio = require('kk.fileio')
-
-local function get_mute_icon(mute)
-	if mute == "false" then
-		return "墳"
-	elseif mute == "true" then
-		return "ﱝ"
-	else
-		io.stderr:write(string.format('muteicon: %s is not 0 or 1', mute))
-		os.exit(1)
-	end
-end
-
-local debug
-if #arg == 1 and arg[1] == "-v" then
-	debug = print
-else
-	debug = function() end
-end
-
-local cache = os.getenv("XDG_CACHE_HOME")
-debug("cache is " .. cache)
-local newest_path = cache .. '/bin/pamonitor.newest_sink_index'
-debug('reading from ' .. newest_path)
-local newest = tonumber(fileio.firstline(newest_path))
-debug('newest sink is ' .. newest)
-local mute_path = string.format('%s/bin/pamonitor.%s.mute', cache, newest)
-debug('reading from ' .. mute_path)
-local mute_icon = get_mute_icon(fileio.firstline(mute_path))
-debug('mute is ' .. mute_icon)
-local volume_path = string.format('%s/bin/pamonitor.%s.volume', cache, newest)
-debug('reading from ' .. volume_path)
-local volume = tonumber(fileio.firstline(volume_path))
-debug('volume is ' .. volume)
-
-print(string.format('%s %s%%', mute_icon, volume))
+printf '%s %s%%' \
+	"$(sed -e 's/false/墳/;s/true/ﱝ/' "$XDG_CACHE_HOME"/bin/pamonitor.mute)" \
+	"$(cat "$XDG_CACHE_HOME"/bin/pamonitor.volume)"
