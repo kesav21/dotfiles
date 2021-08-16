@@ -29,7 +29,7 @@ local config = {
 	javascript = {
 		exe = "prettier",
 		args = {},
-		stdin = false,
+		stdin = true,
 	},
 	typescript = {
 		exe = "prettier",
@@ -49,6 +49,16 @@ local config = {
 	lua = {
 		exe = "stylua",
 		args = { "--search-parent-directories" },
+		stdin = false,
+	},
+	rust = {
+		exe = "rustfmt",
+		args = { "--edition", "2018", "--emit", "stdout" },
+		stdin = true,
+	},
+	terraform = {
+		exe = "terraform",
+		args = { "fmt" },
 		stdin = false,
 	},
 	-- c = {
