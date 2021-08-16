@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=readpdf
+Comment=Open PDFs in tabs
+Exec=zathura-tabbed %F
+Terminal=false
+NoDisplay=true
+Categories=Office;Viewer;
+MimeType=application/pdf;application/oxps;application/epub+zip;

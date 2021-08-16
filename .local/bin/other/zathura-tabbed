@@ -1,0 +1,3 @@
+#!/bin/sh
+
+[ "$#" -ge 1 ] && IFS="\0" zathura --fork --reparent "$(tab)" "$@"
