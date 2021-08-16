@@ -11,7 +11,7 @@ super + shift + space
 	vifmopen
 
 ctrl + shift + Escape
-	fzfkill
+	dmenu_kill
 
 Print
 	sshot -u
