@@ -9,6 +9,7 @@
 .config/nvim/plugin/packer_compiled.lua
 .config/vifm/vifm-help.txt
 .config/vifm/vifminfo.json
+.config/vifm/vimfiles
 .config/zsh/.zcompdump
 
 .local/bin/awscurl
