@@ -16,3 +16,7 @@
 .local/bin/matlab
 .local/bin/network-events
 .local/bin/pamonitor
+
+.local/bin/colortheme
+.local/bin/rover
+.local/bin/sawyerbrink
