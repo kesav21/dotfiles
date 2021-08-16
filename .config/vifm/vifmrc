@@ -33,6 +33,8 @@ nnoremap w :view<cr>
 
 " command! clear vifmimg clear
 
+filetype * handlr open %f
+
 " pdf
 " fileviewer *.pdf pdftotext -nopgbrk %c -
 
