@@ -44,24 +44,16 @@ button8
 button9
 	bspc node --state '~'tiled
 
-# focus occupied desktop
-super + {n,m}
-	bspc desktop --focus "$(bsp_local_occupied_desktop {prev,next})"
-
-# send to occupied desktop
-super + shift + {n,m}
-	bspc node --to-desktop "$(bsp_local_occupied_desktop {prev,next})" --follow
-
-# focus desktop
-super + {u,i}
-	bspc desktop --focus "$(bsp_local_desktop {prev,next})"
-
-# send to desktop
-super + shift + {u,i}
-	bspc node --to-desktop "$(bsp_local_desktop {prev,next})" --follow
-
 super + y; super + {h,j,k,l}
 	bspc node --presel-dir {west,south,north,east}
 
 super + shift + y
 	bspc node @/ --balance
+
+# focus desktop
+super + {y,u,i,o,p}
+	bspc desktop --focus focused:^{1,2,3,4,5}
+
+# focus desktop
+super + shift + {y,u,i,o,p}
+	bspc node --to-desktop focused:^{1,2,3,4,5} --follow
