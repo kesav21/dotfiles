@@ -3,13 +3,13 @@
 f() {
 	fd --hidden --no-ignore-vcs --type file '.*' . |
 		fzf --multi --exit-0 --select-1 --print0 --preview='bat {}' |
-		xargs -0r nvim
+		xargs -0r handlr open
 }
 
 F() {
 	fd --hidden --no-ignore-vcs --type file '.*' ~ |
 		fzf --multi --exit-0 --select-1 --print0 --preview='bat {}' |
-		xargs -0r nvim
+		xargs -0r handlr open
 }
 
 d() {
@@ -25,15 +25,13 @@ D() {
 }
 
 p() {
-	files="$(fd --hidden --no-ignore --type file --extension pdf ".*" . |
-		fzf --multi --exit-0 --select-1 --print0)"
-	[ -n "$files" ] &&
-		zathura --fork --reparent="$(tab)" $files &
+	fd --hidden --no-ignore --type file --extension pdf ".*" . |
+		fzf --multi --exit-0 --select-1 --print0 |
+		xargs -0r handlr open
 }
 
 P() {
-	files="$(fd --hidden --no-ignore --type file --extension pdf ".*" ~ |
-		fzf --multi --exit-0 --select-1 --print0)"
-	[ -n "$files" ] &&
-		zathura --fork --reparent="$(tab)" $files &
+	fd --hidden --no-ignore --type file --extension pdf ".*" ~ |
+		fzf --multi --exit-0 --select-1 --print0 |
+		xargs -0r handlr open
 }
