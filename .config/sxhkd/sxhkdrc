@@ -1,13 +1,13 @@
 super + shift + Return
 	st
 
-super + p
+super + space
 	dmenu_run
 
 ctrl + alt + Delete
 	lockmenu
 
-super + o
+super + shift + space
 	vifmopen
 
 ctrl + shift + Escape
