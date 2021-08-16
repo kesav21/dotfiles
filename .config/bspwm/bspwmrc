@@ -2,7 +2,7 @@
 
 # monitors
 
-xrandr | awk '/ connected/ {print $1}' | xargs -I{} bspc monitor {} -d 1 2 3 4 5
+bspc query --monitors --names | xargs -I{} bspc monitor {} --reset-desktops 1 2 3 4 5
 
 # settings
 
