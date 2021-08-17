@@ -44,12 +44,6 @@ button8
 button9
 	bspc node --state \~tiled
 
-super + y; super + {h,j,k,l}
-	bspc node --presel-dir {west,south,north,east}
-
-super + shift + y
-	bspc node @/ --balance
-
 # focus desktop
 super + {y,u,i,o,p}
 	bspc desktop --focus focused:^{1,2,3,4,5}
