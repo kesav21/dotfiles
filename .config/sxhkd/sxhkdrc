@@ -1,21 +1,28 @@
+# open terminal
 super + shift + Return
 	st
 
+# launch applications
 super + space
 	dmenu_run
 
+# open lock menu
 ctrl + alt + Delete
 	lockmenu
 
+# open files
 super + shift + space
 	vifmopen
 
+# kill processes
 ctrl + shift + Escape
 	dmenu_kill
 
+# screenshot focused node
 Print
 	sshot --focused
 
+# move across nodes or monitors
 super + {k,j}
 	bsp_focus_node_or_monitor {prev,next}
 
@@ -35,12 +42,15 @@ super + shift + {h,l}
 super + Return
 	bspc node --swap @/1
 
+# fullscreen focused node
 super + slash
 	bspc node --state \~fullscreen
 
+# float focused node
 button8
 	bspc node --state \~floating
 
+# tile focused node
 button9
 	bspc node --state \~tiled
 
@@ -48,6 +58,6 @@ button9
 super + {y,u,i,o,p}
 	bspc desktop --focus focused:^{1,2,3,4,5}
 
-# focus desktop
+# move node to desktop
 super + shift + {y,u,i,o,p}
 	bspc node --to-desktop focused:^{1,2,3,4,5} --follow
