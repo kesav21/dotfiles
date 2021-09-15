@@ -25,3 +25,5 @@ dist
 .obsidian
 .terraform
 .terraform.lock.hcl
+go.mod
+go.sum
