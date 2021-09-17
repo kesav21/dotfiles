@@ -125,7 +125,7 @@ function M.format()
 	if has_formatter then
 		for key, _ in pairs(config) do
 			if vim.bo.filetype == key then
-				vim.cmd [[silent Format]]
+				vim.cmd [[silent FormatWrite]]
 				return
 			end
 		end
