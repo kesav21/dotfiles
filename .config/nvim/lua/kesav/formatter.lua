@@ -39,7 +39,7 @@ local config = {
 	go = {
 		exe = "gofmt",
 		args = { "-s" },
-		stdin = false,
+		stdin = true,
 	},
 	java = {
 		exe = "astyle",
