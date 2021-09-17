@@ -19,3 +19,5 @@ vim.cmd [[hi! link DiffChange GruvboxRed]]
 vim.cmd [[hi! link DiffDelete GruvboxRed]]
 
 vim.cmd [[hi! link EndOfBuffer GruvboxBg0]]
+
+vim.cmd [[hi! LineNr guibg=#282828 guifg=#a89984]]
