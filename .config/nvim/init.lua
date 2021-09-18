@@ -1,14 +1,3 @@
--- set this before creating any mappings
-vim.g.mapleader = " "
--- required by colorizer
-if os.getenv "TERM" ~= "linux" then
-	vim.o.termguicolors = true
-end
--- use ale's linting only
-vim.g.ale_disable_lsp = 1
-
--- http://vimcasts.org/episodes/meet-the-arglist/
-
 local function safe_require(module)
 	local ok, _ = pcall(require, module)
 	if not ok then
@@ -27,6 +16,20 @@ local function safe_require_setup(module_name)
 		end
 	end
 end
+
+-- verb se fo?
+-- http://vimcasts.org/episodes/meet-the-arglist/
+-- nvim +scriptnames +q --headless -- kk.lua 2>&1 |
+-- 	awk -v RS='\r\n' -F': ' '{print $2}'
+
+-- set this before creating any mappings
+vim.g.mapleader = " "
+-- required by colorizer
+if os.getenv "TERM" ~= "linux" then
+	vim.o.termguicolors = true
+end
+-- use ale's linting only
+vim.g.ale_disable_lsp = 1
 
 vim.cmd [[runtime plugin/astronauta.vim]]
 
