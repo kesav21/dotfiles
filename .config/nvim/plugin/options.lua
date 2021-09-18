@@ -21,15 +21,21 @@ vim.o.shortmess = vim.o.shortmess .. "c"
 vim.o.listchars = "tab:›─,nbsp:∙,trail:∙,extends:▶,precedes:◀"
 vim.o.backspace = "indent,eol,start,nostop"
 
-vim.wo.relativenumber = true
-vim.wo.number = true
-vim.wo.cursorline = true
-vim.wo.list = true
-vim.wo.colorcolumn = "88"
-vim.wo.signcolumn = "yes"
+vim.o.relativenumber = true
+vim.o.number = true
+vim.o.cursorline = true
+vim.o.list = true
+vim.o.colorcolumn = "88"
+vim.o.signcolumn = "yes"
 
-vim.cmd [[ filetype plugin indent on ]]
-vim.cmd [[ syntax on ]]
+-- breaks if done on buffer-scope
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
+vim.o.softtabstop = 4
+vim.o.expandtab = false
+vim.o.modeline = true
+vim.o.fixendofline = false
+vim.o.textwidth = 88
 
 vim.cmd [[ augroup commentstrings ]]
 vim.cmd [[ autocmd! ]]
@@ -47,7 +53,6 @@ vim.cmd [[ autocmd FileType matlab           lua vim.bo.commentstring = "% %s" ]
 vim.cmd [[ autocmd FileType xdefaults        lua vim.bo.commentstring = "! %s" ]]
 vim.cmd [[ augroup END ]]
 
--- formatoptions
 -- t break the line if it gets too long
 -- c break the comment if it gets too long
 -- r continue comment after <enter>
@@ -68,15 +73,10 @@ vim.cmd [[ augroup END ]]
 -- ] ???
 -- j remove comment leader when joining lines
 -- p don't break after period and single space
-
-vim.cmd [[ augroup buffer_local_options ]]
+--
+-- override the formatoptions set by runtime/ftplugin
+--
+vim.cmd [[ augroup set_formatoptions ]]
 vim.cmd [[ autocmd! ]]
-vim.cmd [[ autocmd FileType * lua vim.bo.tabstop       = 4       ]]
-vim.cmd [[ autocmd FileType * lua vim.bo.shiftwidth    = 4       ]]
-vim.cmd [[ autocmd FileType * lua vim.bo.softtabstop   = 4       ]]
-vim.cmd [[ autocmd FileType * lua vim.bo.expandtab     = false   ]]
-vim.cmd [[ autocmd FileType * lua vim.bo.modeline      = true    ]]
-vim.cmd [[ autocmd FileType * lua vim.bo.fixendofline  = false ]]
-vim.cmd [[ autocmd FileType * lua vim.bo.textwidth     = 88      ]]
-vim.cmd [[ autocmd FileType * lua vim.bo.formatoptions = 'crqj' ]] -- this doesn't work
+vim.cmd [[ autocmd Filetype * lua vim.bo.formatoptions = 'crqj' ]]
 vim.cmd [[ augroup END ]]
