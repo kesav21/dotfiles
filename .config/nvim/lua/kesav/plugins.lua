@@ -65,7 +65,6 @@ return require("packer").startup(function(use)
 		requires = { "nvim-lua/plenary.nvim" },
 	}
 	use "mhartington/formatter.nvim"
-
 	use {
 		"phaazon/hop.nvim",
 		as = "hop",
@@ -73,4 +72,5 @@ return require("packer").startup(function(use)
 			require("hop").setup {}
 		end,
 	}
+	use "simrat39/rust-tools.nvim"
 end)
