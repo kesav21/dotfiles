@@ -18,8 +18,8 @@ vnoremap { "p", '"_dP' }
 nnoremap { "<c-w>w", "<nop>" }
 nnoremap { "<c-w><c-w>", "<nop>" }
 
-nnoremap { "<c-j>", "<c-w>w" }
-nnoremap { "<c-k>", "<c-w>W" }
+nnoremap { "<c-j>", ":bn<cr>" }
+nnoremap { "<c-k>", ":bp<cr>" }
 
 nnoremap { "<c-h>", "<c-w><" }
 nnoremap { "<c-l>", "<c-w>>" }
