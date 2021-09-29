@@ -1,0 +1,13 @@
+#!/bin/zsh
+
+FORGIT_FZF_DEFAULT_OPTS='--height 100% --border'
+FORGIT_LOG_FORMAT='%C(auto)%h %s'
+source "$ZPLUG_HOME"/init.zsh
+zplug wfxr/forgit
+zplug load
+
+case "$1" in
+	add) forgit::add ;;
+	diff) forgit::diff ;;
+	log) forgit::log ;;
+esac

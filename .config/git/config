@@ -18,25 +18,34 @@
 	new = green bold
 	whitespace = red reverse
 [alias]
+	# simple aliases
+	c = commit --gpg-sign
+	ds = diff --staged
+	mkb = checkout -b
+	st = stash
+	stc = stash clear
+	# ssh-add aliases
 	s = "!{ ssh-add -L >/dev/null || ssh-add; clear; git remote update; git status; }"
 	ss = "!{ clear; git status; }"
-	a = !forgitadd
-	d = !forgitdiff
-	ds = diff --staged
-	c = commit --gpg-sign
-	co = !checkoutbranch
-	mkb = checkout -b
-	rmb = !removebranch
-	mg = !mergebranch
-	l = !forgitlog
 	pl = "!{ ssh-add -L >/dev/null || ssh-add; git pull; }"
 	ps = "!{ ssh-add -L >/dev/null || ssh-add; git push; }"
 	cl = "!f() { ssh-add -L >/dev/null || ssh-add; git clone $@; }; f"
-	st = stash
-	stc = stash clear
+	# custom aliases
+	l = !git_aliases log
+	b = !git_aliases checkout
+	rmb = !git_aliases remove
+	# forgit aliases
+	a = !forgit_aliases add
+	d = !forgit_aliases diff
+	ll = !forgit_aliases log
 [pull]
 	rebase = false
 [commit]
 	gpgsign = true
 [include]
 	path = config.personal
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

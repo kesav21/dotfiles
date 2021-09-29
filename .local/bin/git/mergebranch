@@ -1,7 +1,0 @@
-#!/bin/sh
-
-branch=$(git branch --show-current)
-[ "$branch" = 'master' ] && echo 'already in master' && exit
-
-git checkout master
-git merge "$branch"

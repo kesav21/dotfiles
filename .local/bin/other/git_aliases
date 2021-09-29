@@ -1,0 +1,25 @@
+#!/bin/sh
+
+case "$1" in
+	log)
+		git log --color=always --format='%h %s' |
+			fzf --with-nth=2.. |
+			cut -d' ' -f1 |
+			xargs -r git diff
+		;;
+	checkout)
+		git branch | tr -d '* ' | {
+			[ -n "$2" ] &&
+				fzf --exit-0 --select-1 --filter "$2" | head -1 ||
+				fzf --exit-0 --select-1
+		} | xargs -r git checkout
+		;;
+	remove)
+		git branch | tr -d '* ' | fzf | xargs -r git branch -d
+		;;
+esac
+
+# merge)
+# 	branch="$(git branch --show-current)"
+# 	[ "$branch" != master ] && git checkout master && git merge "$branch"
+# 	;;
