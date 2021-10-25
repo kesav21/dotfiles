@@ -15,6 +15,8 @@ Add that folder to `$PATH`.
 Some scripts require config files.
 These config files are expected to be in `$XDG_CONFIG_HOME/bin`.
 
+- resetmon: `"$XDG_CONFIG_HOME"/bin/screenlayout`
+
 ## logs
 
 Logs are stored in `$XDG_CACHE_HOME/bin`.
