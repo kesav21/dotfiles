@@ -1,0 +1,51 @@
+#!/bin/sh
+
+path="$(find "$PASSWORD_STORE_DIR" -regex '.*\.gpg' |
+	sed -e "s|^$PASSWORD_STORE_DIR/||" -e 's|\.gpg$||' |
+	sort |
+	dmenu)"
+
+[ -z "$path" ] && exit 1
+
+content="$(pass "$path")"
+
+[ -z "$content" ] && exit 1
+
+url="$(echo "$content" | awk '/url/ {print $2}')"
+if [ -n "$url" ]; then
+	# printf '%s' "$url" | xsel -ib
+	case "$(dunstify \
+		--icon status/dialog-password \
+		--timeout 0 \
+		--action default,copy \
+		--hints string:x-dunst-stack-tag:passmenu2_url \
+		passmenu2 url)" in
+		default) firefox --new-tab "$url" ;;
+	esac &
+fi
+
+login="$(echo "$content" | awk '/login/ {print $2}')"
+if [ -n "$login" ]; then
+	# printf '%s' "$login" | xsel -ib
+	case "$(dunstify \
+		--icon status/dialog-password \
+		--timeout 0 \
+		--action default,copy \
+		--hints string:x-dunst-stack-tag:passmenu2_login \
+		passmenu2 login)" in
+		default) xdotool type "$login" ;;
+	esac &
+fi
+
+password="$(echo "$content" | head -1)"
+if [ -n "$password" ]; then
+	# printf '%s' "$password" | xsel -ib
+	case "$(dunstify \
+		--icon status/dialog-password \
+		--timeout 0 \
+		--action default,copy \
+		--hints string:x-dunst-stack-tag:passmenu2_password \
+		passmenu2 password)" in
+		default) xdotool type "$password" ;;
+	esac &
+fi

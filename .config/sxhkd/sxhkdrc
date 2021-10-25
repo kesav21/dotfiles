@@ -57,3 +57,6 @@ super + {y,u,i,o,p}
 # move node to desktop
 super + shift + {y,u,i,o,p}
 	bspc node --to-desktop focused:^{1,2,3,4,5} --follow
+
+super + backslash
+	passmenu2
