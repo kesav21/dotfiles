@@ -1,0 +1,6 @@
+#!/bin/sh
+
+echo "$1" |
+	xargs realpath |
+	sed -e "s|^$PASSWORD_STORE_DIR/||" -e 's/\.gpg$//' |
+	xargs pass

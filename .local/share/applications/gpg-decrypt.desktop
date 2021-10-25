@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=gpg decrypt
+Comment=Decrypt GPG keys
+Exec=gpg --decrypt '%F'
+Terminal=true
+NoDisplay=true
