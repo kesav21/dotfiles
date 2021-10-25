@@ -76,7 +76,7 @@ lspconfig.hls.setup {
 		"haskell-language-server-wrapper",
 		"--lsp",
 		"--logfile",
-		"/home/kesav/hls.log",
+		"/home/kesav/.cache/bin/hls.log",
 		"--debug",
 	},
 	filetypes = { "haskell" },
