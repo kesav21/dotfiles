@@ -37,7 +37,6 @@ safe_require "kesav.plugins"
 if os.getenv "TERM" ~= "linux" then
 	safe_require_setup "colorizer"
 end
-safe_require_setup "gitsigns"
 safe_require "kesav.lsp"
 safe_require "kesav.treesitter"
 safe_require "kesav.telescope"
