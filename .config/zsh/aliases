@@ -5,12 +5,6 @@ alias v=vifmrun
 alias l='fd --hidden --no-ignore --max-depth 1 .'
 alias L='ls -lAFh'
 
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-alias .....='cd ../../../..'
-alias ......='cd ../../../../..'
-
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
 alias ls='ls --color=always'
@@ -35,21 +29,3 @@ kb() {
 	xmodmap -e 'keycode 135 = Control_R NoSymbol Control_R'
 	xmodmap -e 'add Control = Control_R'
 }
-
-alias gh='cd $HOME'
-
-alias gco='cd $XDG_CONFIG_HOME'
-alias gca='cd $XDG_CACHE_HOME'
-alias gda='cd $XDG_DATA_HOME'
-
-alias gdc='cd $XDG_DOCUMENTS_DIR'
-alias gdw='cd $XDG_DOWNLOADS_DIR'
-alias gm='cd $XDG_MUSIC_DIR'
-alias gpc='cd $XDG_PICTURES_DIR'
-
-alias gls='cd $HOME/.local/src'
-alias gpr='cd $HOME/projects'
-alias gs='cd $HOME/sync'
-alias gdt='cd $HOME/sync/projects/dotfiles'
-alias glb='cd $HOME/sync/projects/dotfiles/.local/bin'
-alias gS='cd $HOME/Sync'

@@ -12,18 +12,6 @@ F() {
 		xargs -0r handlr open
 }
 
-d() {
-	cd "$(fd --hidden --no-ignore-vcs --type directory '.*' . |
-		fzf --exit-0 --select-1)"
-}
-
-D() {
-	cd "$(fd --hidden --no-ignore-vcs --type directory '.*' ~ |
-		sed 's|$HOME|~|g' |
-		fzf --exit-0 --select-1 |
-		sed 's|~|$HOME|g')"
-}
-
 p() {
 	fd --hidden --no-ignore --type file --extension pdf ".*" . |
 		fzf --multi --exit-0 --select-1 --print0 |
@@ -35,3 +23,79 @@ P() {
 		fzf --multi --exit-0 --select-1 --print0 |
 		xargs -0r handlr open
 }
+
+# ds() { dirs -p; }
+
+# d  push dir
+# dp pop dir
+# de edit dirs
+# dl list dirs
+
+# if input is in directory stack, rotates the input to the top of the directory stack
+# if input is not in directory stack, adds input to the top of the directory stack
+_pd() {
+	if [ -n "$1" ]; then
+		# realpath resolves various relative paths to absolute path e.g. ..
+		num="$(dirs -lpv | awk -v dir="$(realpath $1)" '$2 == dir {print $1}')"
+		if [ -n "$num" ]; then
+			pushd -q +"$num"
+			dirs -p
+		else
+			pushd -q "$1"
+			dirs -p
+		fi
+	fi
+}
+
+d() {
+	dir="$(fd --hidden --no-ignore-vcs --type directory '.*' . | {
+		[ -n "$1" ] &&
+			fzf --exit-0 --select-1 --filter "$1" | head -1 ||
+			fzf --exit-0 --select-1
+	})"
+	_pd "$dir"
+}
+
+D() {
+	dir="$(fd --hidden --no-ignore-vcs --type directory '.*' ~ | {
+		[ -n "$1" ] &&
+			fzf --exit-0 --select-1 --filter "$1" | head -1 ||
+			sed 's|$HOME|~|g' | fzf --exit-0 --select-1 | sed 's|~|$HOME|g'
+	})"
+	_pd "$dir"
+}
+
+dh() {
+	num="$(dirs -pv | fzf --exit-0 --select-1 --with-nth=2 | cut -f1)"
+	[ -n "$num" ] && pushd -q +"$num" && dirs -p
+}
+
+back() { popd >/dev/null 2>&1; }
+
+alias ..='_pd ..'
+alias ...='_pd ../..'
+alias ....='_pd ../../..'
+alias .....='_pd ../../../..'
+alias ......='_pd ../../../../..'
+
+alias gh='_pd "$HOME"'
+
+alias gco='_pd "$XDG_CONFIG_HOME"'
+alias gca='_pd "$XDG_CACHE_HOME"'
+alias gda='_pd "$XDG_DATA_HOME"'
+
+alias gdc='_pd "$XDG_DOCUMENTS_DIR"'
+alias gdw='_pd "$XDG_DOWNLOADS_DIR"'
+alias gm='_pd "$XDG_MUSIC_DIR"'
+alias gpc='_pd "$XDG_PICTURES_DIR"'
+
+alias gls='_pd "$XDG_SRC_DIR"'
+alias gpr='_pd "$HOME"/projects'
+alias gs='_pd "$HOME"/sync'
+alias gdt='_pd "$HOME"/sync/projects/dotfiles'
+alias gdn='_pd "$HOME"/sync/projects/dotfiles/.config/nvim'
+alias glb='_pd "$XDG_BIN_DIR"'
+alias gS='_pd "$HOME"/Sync'
+
+# alias pushd='echo use d'
+# alias cd='echo use d'
