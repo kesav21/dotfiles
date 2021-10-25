@@ -13,7 +13,16 @@ inoremap { "jk", "<esc>" }
 nnoremap { "Q", "<nop>" }
 nnoremap { "Y", "y$" }
 nnoremap { "X", "xi" }
-vnoremap { "p", '"_dP' }
+
+local function visual_paste()
+	vim.fn.feedkeys '"_d'
+	if vim.fn.col "." == vim.fn.col "$" - 1 then
+		vim.fn.feedkeys "p"
+	else
+		vim.fn.feedkeys "P"
+	end
+end
+vnoremap { "p", visual_paste }
 
 nnoremap { "<c-w>w", "<nop>" }
 nnoremap { "<c-w><c-w>", "<nop>" }
