@@ -1,15 +1,19 @@
 #!/bin/sh
 
 f() {
-	fd --hidden --no-ignore-vcs --type file '.*' . |
-		fzf --multi --exit-0 --select-1 --print0 --preview='bat {}' |
-		xargs -0r handlr open
+	fd --hidden --no-ignore-vcs --type file '.*' . | {
+		[ -n "$1" ] &&
+			fzf --exit-0 --select-1 --filter "$1" | head -1 | xargs -r handlr open ||
+			fzf --exit-0 --select-1 --multi --preview='bat {}' --print0 | xargs -0r handlr open
+	}
 }
 
 F() {
-	fd --hidden --no-ignore-vcs --type file '.*' ~ |
-		fzf --multi --exit-0 --select-1 --print0 --preview='bat {}' |
-		xargs -0r handlr open
+	fd --hidden --no-ignore-vcs --type file '.*' ~ | {
+		[ -n "$1" ] &&
+			fzf --exit-0 --select-1 --filter "$1" | head -1 | xargs -r handlr open ||
+			fzf --exit-0 --select-1 --multi --preview='bat {}' --print0 | xargs -0r handlr open
+	}
 }
 
 p() {
