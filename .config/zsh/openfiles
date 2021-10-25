@@ -16,6 +16,17 @@ F() {
 	}
 }
 
+p() {
+	fd --hidden --no-ignore --type file --extension gpg --absolute-path '.*' "$PASSWORD_STORE_DIR" |
+		sed -e "s|^$PASSWORD_STORE_DIR/||" -e 's/\.gpg$//' |
+		{
+			[ -n "$1" ] &&
+				fzf --exit-0 --select-1 --print0 --preview 'pass {}' --filter "$1" | head -1 ||
+				fzf --exit-0 --select-1 --print0 --preview 'pass {}'
+		} |
+		xargs -0r pass edit
+}
+
 # ds() { dirs -p; }
 
 # d  push dir
