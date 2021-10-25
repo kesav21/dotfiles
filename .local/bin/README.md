@@ -16,6 +16,7 @@ Some scripts require config files.
 These config files are expected to be in `$XDG_CONFIG_HOME/bin`.
 
 - resetmon: `"$XDG_CONFIG_HOME"/bin/screenlayout`
+- firefox2: `"$XDG_CONFIG_HOME"/bin/firefox2`
 
 ## logs
 
