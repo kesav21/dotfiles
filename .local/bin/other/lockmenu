@@ -1,7 +1,8 @@
 #!/bin/sh
 
-case "$(echo lock quit reboot shutdown | tr ' ' '\n' | dmenu)" in
+case "$(echo lock reset quit reboot shutdown | tr ' ' '\n' | dmenu)" in
 	lock) slock ;;
+	reset) . "$XDG_CONFIG_HOME"/bspwm/bspwmrc ;;
 	quit) bspc quit ;;
 	reboot) reboot ;;
 	shutdown) shutdown now ;;
