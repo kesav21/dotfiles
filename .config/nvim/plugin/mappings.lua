@@ -17,12 +17,13 @@ vnoremap { "p", '"_dP' }
 
 nnoremap { "<c-w>w", "<nop>" }
 nnoremap { "<c-w><c-w>", "<nop>" }
+nnoremap { "<a-j>", "<c-w>w" }
+nnoremap { "<a-k>", "<c-w>W" }
+nnoremap { "<a-h>", "<c-w><" }
+nnoremap { "<a-l>", "<c-w>>" }
 
 nnoremap { "<c-j>", ":bn<cr>" }
 nnoremap { "<c-k>", ":bp<cr>" }
-
-nnoremap { "<c-h>", "<c-w><" }
-nnoremap { "<c-l>", "<c-w>>" }
 
 tnoremap { "<c-\\><c-\\>", "<c-\\><c-n>" }
 
