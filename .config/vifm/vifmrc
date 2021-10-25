@@ -38,6 +38,8 @@ filetype * handlr open %f
 " pdf
 " fileviewer *.pdf pdftotext -nopgbrk %c -
 
+fileviewer *.gpg passview %f
+
 " images/gifs
 " fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.xpm
 " 	\ vifmimg draw %px %py %pw %ph %c
