@@ -14,7 +14,7 @@ hsetroot -solid '#1d2021'      # set wallpaper
 xsetroot -cursor_name left_ptr # set cursor
 
 xset dpms 600 600 600
-xset s 300 10
+xset s 570 15
 xss-lock -n dimscreen -- slock &
 
 # bind keys
