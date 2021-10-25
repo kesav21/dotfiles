@@ -1,0 +1,24 @@
+[Added Associations]
+application/vnd.oasis.opendocument.text=openoffice4-writer.desktop;
+
+[Default Applications]
+application/javascript=nvim.desktop;
+application/json=nvim.desktop;
+application/x-awk=nvim.desktop;
+application/x-executable=do-nothing.desktop;
+application/x-yaml=nvim.desktop;
+application/xml=nvim.desktop;
+image/jpeg=sxiv.desktop;
+image/png=sxiv.desktop;
+text/markdown=nvim.desktop;
+text/rust=nvim.desktop;
+text/x-awk=nvim.desktop;
+text/x-go=nvim.desktop;
+text/x-lua=nvim.desktop;
+text/x-matlab=nvim.desktop;
+text/x-python=nvim.desktop;
+text/x-python3=nvim.desktop;
+text/x-script.python=nvim.desktop;
+text/x-shellscript=nvim.desktop;
+text/xml=nvim.desktop;
+x-scheme-handler/terminal=st.desktop;
