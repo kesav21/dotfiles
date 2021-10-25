@@ -16,18 +16,6 @@ F() {
 	}
 }
 
-p() {
-	fd --hidden --no-ignore --type file --extension pdf ".*" . |
-		fzf --multi --exit-0 --select-1 --print0 |
-		xargs -0r handlr open
-}
-
-P() {
-	fd --hidden --no-ignore --type file --extension pdf ".*" ~ |
-		fzf --multi --exit-0 --select-1 --print0 |
-		xargs -0r handlr open
-}
-
 # ds() { dirs -p; }
 
 # d  push dir
