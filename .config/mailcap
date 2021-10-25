@@ -1,0 +1,2 @@
+application/pdf; handlr open %s;
+text/html; firefox %s;
