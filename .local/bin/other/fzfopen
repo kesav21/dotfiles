@@ -1,0 +1,8 @@
+#!/bin/sh
+
+st -n centered -e zsh -c 'source "$XDG_CONFIG_HOME"/zsh/fzf &&
+	fd --no-ignore --hidden --type file . ~ |
+	fzf --multi >"$XDG_CACHE_HOME"/bin/vifmopen' &&
+	[ -s "$XDG_CACHE_HOME"/bin/vifmopen ] &&
+	xargs handlr open <"$XDG_CACHE_HOME"/bin/vifmopen &&
+	rm "$XDG_CACHE_HOME"/bin/vifmopen

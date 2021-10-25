@@ -1,5 +1,0 @@
-#!/bin/sh
-
-st -n centered -e vifm -fc only &&
-	[ -s "$XDG_CONFIG_HOME"/vifm/vimfiles ] &&
-	xargs handlr open <"$XDG_CONFIG_HOME"/vifm/vimfiles

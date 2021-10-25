@@ -6,6 +6,10 @@ super + shift + Return
 super + space
 	dmenu_run
 
+# open files
+super + shift + space
+	fzfopen
+
 # open lock menu
 ctrl + alt + Delete
 	lockmenu
