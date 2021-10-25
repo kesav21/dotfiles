@@ -20,8 +20,7 @@ export XDG_PICTURES_DIR="$HOME"/Pictures
 
 # move stuff out of $HOME {{{
 
-export GNUPGHOME="$XDG_DATA_HOME"/gnupg
-export PASSWORD_STORE_DIR="$XDG_DATA_HOME"/pass
+export GNUPGHOME="${XDG_DATA_HOME:-${HOME:-/home/$LOGNAME}/.local/share}/gnupg"
 
 export _JAVA_AWT_WM_NONREPARENTING=1
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
@@ -83,7 +82,7 @@ export LUA_PATH="$LUA_PATH;$HOME"/sync/projects/lua-stdlib/?.lua
 [ -s "$NVM_DIR"/nvm.sh ] && source "$NVM_DIR"/nvm.sh
 
 # set up ssh
-eval "$(ssh-agent)" >/dev/null
+export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 
 if [ "$TERM" = linux ]; then
 	echo -en "\e]P01d2021" # #1d2021 normal black
