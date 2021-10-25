@@ -10,10 +10,6 @@ super + space
 ctrl + alt + Delete
 	lockmenu
 
-# open files
-super + shift + space
-	vifmopen
-
 # kill processes
 ctrl + shift + Escape
 	dmenu_kill
