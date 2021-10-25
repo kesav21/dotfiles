@@ -20,4 +20,11 @@ vim.cmd [[hi! link DiffDelete GruvboxRed]]
 
 vim.cmd [[hi! link EndOfBuffer GruvboxBg0]]
 
-vim.cmd [[hi! LineNr guibg=#282828 guifg=#a89984]]
+vim.cmd [[hi! SignColumn  guibg=#1d2021 guifg=#a89984]]
+vim.cmd [[hi! GitAdd      guibg=#1d2021 guifg=#b8bb26]]
+vim.cmd [[hi! GitChange   guibg=#1d2021 guifg=#8ec07c]]
+vim.cmd [[hi! GitDelete   guibg=#1d2021 guifg=#fb4934]]
+vim.cmd [[hi! LineNr      guibg=#1d2021 guifg=#a89984]]
+vim.cmd [[hi! GitAddNr    guibg=#1d2021 guifg=#b8bb26]]
+vim.cmd [[hi! GitChangeNr guibg=#1d2021 guifg=#8ec07c]]
+vim.cmd [[hi! GitDeleteNr guibg=#1d2021 guifg=#fb4934]]
