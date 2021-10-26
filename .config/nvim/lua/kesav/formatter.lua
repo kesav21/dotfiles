@@ -28,12 +28,12 @@ local config = {
 	},
 	javascript = {
 		exe = "prettier",
-		args = {},
-		stdin = true,
+		args = { "-w" },
+		stdin = false,
 	},
 	typescript = {
 		exe = "prettier",
-		args = {},
+		args = { "-w" },
 		stdin = false,
 	},
 	go = {
