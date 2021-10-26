@@ -63,4 +63,7 @@ super + shift + {y,u,i,o,p}
 	bspc node --to-desktop focused:^{1,2,3,4,5} --follow
 
 super + backslash
-	passmenu2
+	passmenu2 go
+
+super + bar
+	passmenu2 copy

@@ -20,7 +20,10 @@ if [ -n "$url" ]; then
 		--action default,copy \
 		--hints string:x-dunst-stack-tag:passmenu2_url \
 		passmenu2 url)" in
-		default) firefox --new-tab "$url" ;;
+		default) case "$1" in
+			go) firefox --new-tab "$url" ;;
+			copy) echo $url | xsel -ib ;;
+		esac ;;
 	esac &
 fi
 
@@ -33,7 +36,10 @@ if [ -n "$login" ]; then
 		--action default,copy \
 		--hints string:x-dunst-stack-tag:passmenu2_login \
 		passmenu2 login)" in
-		default) xdotool type "$login" ;;
+		default) case "$1" in
+			go) xdotool type "$login" ;;
+			copy) echo $login | xsel -ib ;;
+		esac ;;
 	esac &
 fi
 
@@ -46,6 +52,9 @@ if [ -n "$password" ]; then
 		--action default,copy \
 		--hints string:x-dunst-stack-tag:passmenu2_password \
 		passmenu2 password)" in
-		default) xdotool type "$password" ;;
+		default) case "$1" in
+			go) xdotool type "$password" ;;
+			copy) echo $password | xsel -ib ;;
+		esac ;;
 	esac &
 fi
