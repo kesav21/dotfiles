@@ -20,6 +20,8 @@ vim.o.shortmess = vim.o.shortmess .. "c"
 -- breaks if done on window-scope
 vim.o.listchars = "tab:›─,nbsp:∙,trail:∙,extends:▶,precedes:◀"
 vim.o.backspace = "indent,eol,start,nostop"
+vim.o.backup = false
+vim.o.writebackup = false
 
 vim.o.relativenumber = true
 vim.o.number = true
