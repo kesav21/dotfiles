@@ -25,7 +25,7 @@ autoload -U colors && colors
 setopt PROMPT_SUBST
 
 __git_ps1() {
-	branch="$(git rev-parse --abbrev-ref HEAD 2>/dev/null)"
+	branch="$(git branch --show-current 2>/dev/null)"
 	[ -n "$branch" ] && printf '[%s]' "$branch"
 }
 
