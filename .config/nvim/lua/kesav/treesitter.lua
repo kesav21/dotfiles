@@ -22,6 +22,7 @@ treesitter.setup {
 		"tsx",
 		"rust",
 		"toml",
+		"yaml",
 	},
 	highlight = {
 		enable = true,
