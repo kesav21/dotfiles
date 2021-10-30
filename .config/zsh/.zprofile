@@ -71,8 +71,8 @@ export PATH="$BIN_PATH$PATH"
 export PATH="$HOME"/.cabal/bin:"$HOME"/.ghcup/bin:"$PATH"
 
 # add stack packages
-STACK_PATH="$(stack path | awk -F"[: ]" '/^bin-path/ {print $3}')"
-export PATH="$STACK_PATH":"$PATH"
+# STACK_PATH="$(stack path | awk -F"[: ]" '/^bin-path/ {print $3}')"
+# export PATH="$STACK_PATH":"$PATH"
 
 # add go binaries
 export PATH="$HOME"/go/bin:"$PATH"
