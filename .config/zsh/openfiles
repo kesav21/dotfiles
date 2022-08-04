@@ -3,16 +3,16 @@
 f() {
 	fd --hidden --no-ignore-parent --type file '.*' . | {
 		[ -n "$1" ] &&
-			fzf --exit-0 --select-1 --filter "$1" | head -1 | xargs -r handlr open ||
-			fzf --exit-0 --select-1 --multi --preview='bat {}' --print0 | xargs -0r handlr open
+			fzf --exit-0 --select-1 --filter "$1" | head -1 | xargs -r nvim ||
+			fzf --exit-0 --select-1 --multi --preview='bat {}' --print0 | xargs -0r nvim
 	}
 }
 
 F() {
 	fd --hidden --no-ignore-parent --type file '.*' ~ | {
 		[ -n "$1" ] &&
-			fzf --exit-0 --select-1 --filter "$1" | head -1 | xargs -r handlr open ||
-			fzf --exit-0 --select-1 --multi --preview='bat {}' --print0 | xargs -0r handlr open
+			fzf --exit-0 --select-1 --filter "$1" | head -1 | xargs -r nvim ||
+			fzf --exit-0 --select-1 --multi --preview='bat {}' --print0 | xargs -0r nvim
 	}
 }
 

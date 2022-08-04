@@ -4,9 +4,8 @@ alias g=git
 alias v=vifmrun
 alias l='fd --hidden --no-ignore --max-depth 1 .'
 alias L='ls -lAFh'
-alias o='handlr open'
+alias o=open
 
-alias diff='diff --color=auto'
 alias grep='grep --color=auto'
 alias ls='ls --color=always'
 

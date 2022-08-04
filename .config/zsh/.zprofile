@@ -2,8 +2,8 @@
 
 # vim: set foldmethod=marker:
 
-export TERMINAL=/usr/bin/alacritty
-export EDITOR=/usr/bin/nvim
+export TERMINAL=/opt/homebrew/bin/alacritty
+export EDITOR=/opt/homebrew/bin/nvim
 
 # set up xdg directories {{{
 
@@ -55,13 +55,15 @@ export SSB_HOME="$XDG_DATA_HOME"/zoom
 export STACK_ROOT="$XDG_DATA_HOME"/stack
 export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority
 export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
-export ZPLUG_HOME="$XDG_SRC_DIR"/zplug
+export ZPLUG_HOME=/opt/homebrew/opt/zplug
 export _JAVA_AWT_WM_NONREPARENTING=1
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 
 # }}}
 
 # path {{{
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # add local scripts
 BIN_PATH="$(du -L "$XDG_BIN_DIR" | cut -f2 | tr '\n' :)"
@@ -120,9 +122,6 @@ if [ "$TERM" = linux ]; then
 fi
 
 # start x {{{
-
-systemctl -q is-active graphical.target && [ ! "$DISPLAY" ] && [ "$XDG_VTNR" -eq 1 ] &&
-	exec startx "$XDG_CONFIG_HOME"/X11/xinitrc >"$XDG_CACHE_HOME"/X11/xinitrc 2>&1
 
 export GPG_TTY="$(tty)"
 

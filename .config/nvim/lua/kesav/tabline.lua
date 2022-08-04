@@ -48,9 +48,8 @@ local function tab_title(current_tabnr, tabnr)
 	local wins = vim.api.nvim_tabpage_list_wins(tabnr)
 	local highlight = choose("%#TabSel#", "%#TabUnsel#", current_tabnr == tabnr)
 	local current_winnr = vim.api.nvim_tabpage_get_win(tabnr)
-	local current_win = iter.first(
-		iter.filter_keys(is_equal(current_winnr), wins)
-	)
+	local current_win =
+		iter.first(iter.filter_keys(is_equal(current_winnr), wins))
 	return string.format("%s %s: [%s/%s]", highlight, tabnr, current_win, #wins)
 end
 

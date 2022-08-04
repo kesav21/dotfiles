@@ -22,10 +22,18 @@ colors:
     white:   '#a89984'
 
 font:
-  size: 10.0
+  size: 15.0
   normal:
-    family: FiraCode Nerd Font
+    family: Fira Code
     style: Regular
   bold:
-    family: FiraCode Nerd Font
+    family: Fira Code
     style: Bold
+
+window:
+  dimensions:
+    columns: 95
+    lines: 55
+  position:
+    x: 1713
+    y: 0
