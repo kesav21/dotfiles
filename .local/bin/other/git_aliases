@@ -1,5 +1,12 @@
 #!/bin/sh
 
+inflipx() {
+	case "$(pwd)" in
+		/home/kesav/projects/flipx-io/*) true ;;
+		*) false ;;
+	esac
+}
+
 case "$1" in
 	log)
 		git log --color=always --format='%h %s' |
@@ -8,14 +15,48 @@ case "$1" in
 			xargs -r git diff
 		;;
 	checkout)
-		git branch | tr -d '* ' | {
-			[ -n "$2" ] &&
-				fzf --exit-0 --select-1 --filter "$2" | head -1 ||
-				fzf --exit-0 --select-1
-		} | xargs -r git checkout
+		# filter out origin/HEAD and origin/main
+		branch="$(git branch --all --format '%(refname:short)' |
+			grep -v origin/HEAD |
+			grep -v origin/master |
+			grep -v origin/main |
+			fzf --exit-0 --select-1)"
+		case "$branch" in
+			'') ;;
+			origin*) git checkout --track "$branch" ;;
+			*) git checkout "$branch" ;;
+		esac
 		;;
 	remove)
-		git branch | tr -d '* ' | fzf | xargs -r git branch -d
+		git branch | tr -d '* ' | fzf -m | xargs -r git branch -D
+		;;
+	push)
+		ssh-add -L >/dev/null || ssh-add
+		branch="$(git rev-parse --abbrev-ref HEAD)"
+		case "$(pwd)" in
+			/home/kesav/projects/flipx-io/*)
+				[ "$branch" = main ] &&
+					echo Cannot push to master in flipx-io workspace. &&
+					exit 1
+				;;
+		esac
+		git ls-remote --exit-code --heads origin "$branch" >/dev/null &&
+			git push ||
+			git push --set-upstream origin "$branch"
+		;;
+	push_force)
+		ssh-add -L >/dev/null || ssh-add
+		branch="$(git rev-parse --abbrev-ref HEAD)"
+		case "$(pwd)" in
+			/home/kesav/projects/flipx-io/*)
+				[ "$branch" = main ] &&
+					echo Cannot push to master in flipx-io workspace. &&
+					exit 1
+				;;
+		esac
+		git ls-remote --exit-code --heads origin "$branch" >/dev/null &&
+			git push --force ||
+			echo $branch does not exist
 		;;
 esac
 

@@ -1,0 +1,46 @@
+#!/bin/luajit
+
+
+local function read(command)
+	local f = io.popen(command, "r")
+	local s = assert(f:read('*a'))
+	f:close()
+	return s
+end
+
+local function get_icon(mute)
+	if tonumber(mute) == 1 then
+		-- is muted
+		return "notification-display-brightness-off"
+	else
+		-- is not muted
+		return "notification-display-brightness-full"
+	end
+end
+
+local volume = tonumber(read("pulsemixer --get-volume | cut -d' ' -f1"))
+print(volume)
+
+local mute_icon = get_icon(read("pulsemixer --get-mute"))
+print(mute_icon)
+
+local command = string.format([[dunstify \
+	--hints int:value:%s \
+	--hints string:x-dunst-stack-tag:volume \
+	--timeout 1000 \
+	--icon %s \
+	volume]], volume, mute_icon)
+os.execute(command)
+
+-- let status = Command::new("dunstify")
+-- .arg("--hints")
+-- .arg(format!("int:value:{}", sink.volume))
+-- .arg("--hints")
+-- .arg("string:x-dunst-stack-tag:change_volume")
+-- .arg("--timeout")
+-- .arg("1000")
+-- .arg("--icon")
+-- .arg(icon)
+-- .arg("Volume")
+-- .status()
+-- .map_err(|status| format!("failed to notify volume ({}). {}", sink, status))?;

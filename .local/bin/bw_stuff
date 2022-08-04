@@ -1,0 +1,103 @@
+#!/bin/sh
+
+bw.lsf() {
+	bw list folders | jq -r '.[].name'
+}
+
+bw.mkf() {
+	printf '{"name":"%s"}' "$1" |
+		bw encode |
+		xargs bw create folder
+}
+
+bw.rmf() {
+	bw list folders |
+		jq -r --arg name "$1" '.[] | select(.name == $name).id' |
+		xargs bw delete folder
+}
+
+bw.lsi() {
+	if [ -n "$1" ]; then
+		bw list folders |
+			jq -r --arg name "$1" '.[] | select(.name == $name).id' |
+			xargs bw list items --folderid
+	else
+		bw list items
+	fi | jq
+	# | jq -r '.[].name'
+}
+
+read_password() {
+	printf 'password: '
+	stty -echo
+	IFS= read -r password
+	stty echo
+	printf '\n'
+}
+
+# # positional arguments: folder name, item name, item url, item username
+# # stdin: password
+# bw.mki() {
+# 	folderid="$(bw list folders |
+# 		jq -r --arg name "$1" '.[] | select(.name == $name).id')"
+# 	# password="$(read_password)"
+# 	read_password
+# 	printf '{
+# 	"folderId": "%s",
+# 	"name": "%s",
+# 	"type": 1,
+# 	"login": {
+# 		"uris": [{"uri": "%s"}],
+# 		"username": "%s",
+# 		"password": "%s"
+# 	}
+# }' "$folderid" "$2" "$3" "$4" "$password" |
+# 		bw encode |
+# 		bw create item
+# }
+
+# stdin:
+# folder name
+# item name
+# item url
+# item username
+# password
+bw.mki() {
+	read -r folder_name
+	read -r item_name
+	read -r item_url
+	read -r item_username
+	read -r item_password
+	folder_id="$(bw list folders |
+		jq -r --arg name "$folder_name" '.[] | select(.name == $name).id')"
+	printf '{
+	"folderId": "%s",
+	"name": "%s",
+	"type": 1,
+	"login": {
+		"uris": [{"uri": "%s"}],
+		"username": "%s",
+		"password": "%s"
+	}
+}' "$folder_id" "$item_name" "$item_url" "$item_username" "$item_password" |
+		bw encode |
+		bw create item
+}
+
+bw sync
+
+# bw.lsf
+# bw.mkf alt
+# bw.rmf alt
+
+# bw.lsi
+bw.lsi main
+
+# echo 'alt
+# instagram.com
+# https://instagram2.com
+# eidolon.1
+# kk' | bw.mki
+
+# bw get template item --pretty
+# bw get template item.login --pretty

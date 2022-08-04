@@ -1,0 +1,10 @@
+#!/bin/sh
+
+echo $PATH |
+	tr : '\n' |
+	while read -r line; do
+		[ -d "$line" ] && find -L "$line" -executable -type f,l -printf '%f\n'
+	done |
+	sort -u |
+	dmenu |
+	sh &

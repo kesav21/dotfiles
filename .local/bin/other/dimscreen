@@ -2,16 +2,22 @@
 
 setbr() {
 	# get all connected monitors
-	# set gamma to $1
+	# set brightness to $1
 	xrandr --current |
 		awk '/ connected/ {print $1}' |
 		xargs -I {} xrandr --output '{}' --brightness "$1"
 }
 
-# fake brightness control
+# dim screen
 setbr 0.5
-# reset brightness on exit
-trap 'exit 0' TERM INT
-trap 'setbr 1' EXIT
+# brighten screen on exit
+trap 'setbr 1' TERM INT EXIT
 sleep 2147483647 &
 wait
+
+# xrandr --output HDMI-0 --brightness 0.5
+# sleep 1
+# xrandr --output HDMI-0 --brightness 1
+# xrandr --output DP-1 --brightness 0.5
+# sleep 1
+# xrandr --output DP-1 --brightness 1

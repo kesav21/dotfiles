@@ -26,8 +26,3 @@ vim.cmd [[ hi link math Statement ]]
 
 vim.bo.makeprg =
 	"pandoc -s -t html5 --pdf-engine=wkhtmltopdf --katex --number-sections -o %:r.pdf %"
-
-vim.cmd [[ augroup project_config_markdown ]]
-vim.cmd [[ autocmd! ]]
-vim.cmd [[ autocmd VimEnter ~/asu/cse464/activity1.md lua vim.bo.makeprg = 'pandoc -s -t html5 --pdf-engine=wkhtmltopdf --katex -o %:r.pdf %' ]]
-vim.cmd [[ augroup END ]]

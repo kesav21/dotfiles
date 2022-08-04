@@ -1,5 +1,5 @@
 #!/bin/sh
 
-printf '%s %s%%' \
-	"$(sed -e 's/false/墳/;s/true/ﱝ/' "$XDG_CACHE_HOME"/bin/pamonitor.mute)" \
-	"$(cat "$XDG_CACHE_HOME"/bin/pamonitor.volume)"
+printf '%s %s%%\n' \
+	"$(pulsemixer --get-mute | sed -e 's/0/墳/;s/1/ﱝ/')" \
+	"$(pulsemixer --get-volume | cut -d' ' -f1)"

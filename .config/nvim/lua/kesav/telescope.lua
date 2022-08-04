@@ -56,30 +56,27 @@ telescope.setup {
 	},
 }
 
-if not _G.kesav then
-	_G.kesav = {}
-end
-
-function _G.kesav.buffers()
-	builtin.buffers { show_all_buffers = true }
-end
-vim.cmd [[cnoreabbrev fb lua kesav.buffers()]]
-
-function _G.kesav.find_files()
+-- vim.keymap.set("n", "<leader>fs", builtin.grep_string)
+vim.keymap.set("n", "<leader>fr", builtin.registers)
+vim.keymap.set("n", "<leader>fg", builtin.live_grep)
+vim.keymap.set("n", "<leader>fb", builtin.current_buffer_fuzzy_find)
+vim.keymap.set("n", "<leader>fh", builtin.help_tags)
+vim.keymap.set("n", "<leader>ts", builtin.treesitter)
+vim.keymap.set("n", "<leader>ch", builtin.command_history)
+vim.keymap.set("n", "<leader>sh", builtin.search_history)
+vim.keymap.set("n", "<leader><leader>gs", builtin.git_status)
+vim.keymap.set("n", "<leader>ff", function()
 	return builtin.find_files {
-		find_command = { "fd", "--hidden", "--no-ignore-vcs", "--type", "file" },
+		find_command = {
+			"fd",
+			"--hidden",
+			"--no-ignore-vcs",
+			"--type",
+			"file",
+		},
 	}
-end
-vim.cmd [[cnoreabbrev ff lua kesav.find_files()]]
-
-vim.cmd [[cnoreabbrev fh lua require("telescope.builtin").help_tags()]]
-vim.cmd [[cnoreabbrev ts lua require("telescope.builtin").treesitter()]]
-
--- lua print(vim.inspect(kesav))
--- lua print(vim.inspect(vim.api.nvim_get_runtime_file("**", false)))
--- lua loadfile(vim.api.nvim_get_runtime_file("plugin/commands.lua", false)[1])()
--- lua loadfile(vim.api.nvim_get_runtime_file("lua/kesav/telescope.lua", false)[1])()
-function _G.kesav.loadfilename()
+end)
+vim.keymap.set("n", "<leader>ld", function()
 	return pickers.new({
 		prompt_title = "Load Runtime Files",
 		finder = finders.new_table(vim.api.nvim_get_runtime_file("**", true)),
@@ -94,5 +91,6 @@ function _G.kesav.loadfilename()
 			return true
 		end,
 	}):find()
-end
-vim.cmd [[cnoreabbrev ld lua kesav.loadfilename()]]
+end)
+
+telescope.load_extension "ui-select"

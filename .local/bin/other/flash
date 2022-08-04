@@ -1,0 +1,5 @@
+#!/bin/sh
+
+config="$HOME"/Downloads/"$(ls -Art "$HOME"/Downloads | tail -n 1)"
+
+wally-cli "$config" && rm "$config"

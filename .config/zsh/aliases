@@ -10,23 +10,87 @@ alias diff='diff --color=auto'
 alias grep='grep --color=auto'
 alias ls='ls --color=always'
 
+alias me='make edit'
 alias mi='sudo make install'
 alias mic='sudo make install && make clean'
 
 alias mkenv='virtualenv -p "$(which python3)" .env'
 alias stenv='source .env/bin/activate'
-alias killenv=deactivate
+alias stopenv=deactivate
 
 alias tf=terraform
 alias tfi='terraform init'
-alias tfp='terraform plan -out=plan'
-alias tfa='terraform apply plan'
+alias tfp='terraform plan'
+alias tfa='terraform apply -auto-approve'
+alias tfpp='terraform plan -out=plan'
+alias tfap='terraform apply -auto-approve plan'
 
 alias path='tr : "\n" <<< $PATH'
 
+alias nslookup='getent hosts'
+
 alias ghcid='stack exec -- ghcid --color=always -r'
 
-kb() {
-	xmodmap -e 'keycode 135 = Control_R NoSymbol Control_R'
-	xmodmap -e 'add Control = Control_R'
+alias golint='golangci-lint run'
+
+# time a command
+timec() {
+	start="$(date +%s)"
+	$@
+	stop="$(date +%s)"
+	echo $stop - $start | bc
+}
+
+alias ft='aws sso login'
+# admin() { eval "$(sawyer_admin $@)"; }
+# alias db=sawyer_db
+# alias token=sawyer_login_cognito
+
+stopdb() {
+	docker ps -aq | xargs -r docker stop
+	docker ps -aq | xargs -r docker rm
+	docker volume ls --filter dangling=true -q | xargs -r docker volume rm
+}
+
+# https://www.postgresql.org/docs/current/libpq-envars.html
+# https://github.com/docker-library/docs/tree/master/postgres#environment-variables
+# https://stackoverflow.com/questions/34658836/docker-is-in-volume-in-use-but-there-arent-any-docker-containers
+startdb() {
+	docker ps -aq | xargs -r docker stop
+	docker ps -aq | xargs -r docker rm
+	docker volume ls --filter dangling=true -q | xargs -r docker volume rm
+	# docker network prune -f
+	# docker rmi -f $(docker images --filter dangling=true -qa)
+	# docker rmi -f $(docker images -qa)
+	aws sts get-caller-identity >/dev/null 2>&1 || aws sso login
+	export PGPORT=5432
+	export PGUSER=postgres
+	export PGPASSWORD=password
+	docker run -p "$PGPORT":"$PGPORT" -e POSTGRES_USER="$PGUSER" -e POSTGRES_PASSWORD="$PGPASSWORD" -d postgres:13.7
+	sleep 3
+	psql -h localhost -d postgres -f ~/projects/flipx-io/backend-infra/scripts/sql/init.sql
+	sleep 1
+	psql -h localhost -d postgres -f ~/projects/flipx-io/backend-infra/scripts/sql/populate.sql
+	# export PAGER='less -S'
+	psql -h localhost -d postgres
+	# \setenv PAGER 'less -S'
+}
+
+lambda() {
+	aws sts get-caller-identity >/dev/null 2>&1 || aws sso login
+	go mod tidy &&
+		REGION=us-east-1 \
+			DB_HOST=localhost \
+			DB_PORT=5432 \
+			DB_NAME=postgres \
+			DB_USER=postgres \
+			DB_PASS="$(aws ssm get-parameter \
+				--name db_password \
+				--with-decryption \
+				--query Parameter.Value \
+				--output text)" go run "$(basename "$(pwd)")".go
+}
+
+lambdajq() {
+	lambda 2>&1 | jq -R 'fromjson? | select(type == "object")'
 }

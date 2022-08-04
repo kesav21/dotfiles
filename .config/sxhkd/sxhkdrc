@@ -10,10 +10,6 @@ super + space
 super + shift + space
 	fzfopen
 
-# open lock menu
-ctrl + alt + Delete
-	lockmenu
-
 # kill processes
 ctrl + shift + Escape
 	dmenu_kill
@@ -22,21 +18,9 @@ ctrl + shift + Escape
 Print
 	sshot --focused
 
-# move across nodes or monitors
-super + {k,j}
-	bsp_focus_node_or_monitor {prev,next}
-
 # close node
 super + shift + BackSpace
 	bspc node --close
-
-# coarsely resize node
-super + {h,l}
-	bspc node @/1 --resize right {-10,10} 0
-
-# finely resize node
-super + shift + {h,l}
-	bspc node @/1 --resize right {-1,1} 0
 
 # swap node with master
 super + Return
@@ -54,16 +38,62 @@ button8
 button9
 	bspc node --state \~tiled
 
-# focus desktop
-super + {y,u,i,o,p}
-	bspc desktop --focus focused:^{1,2,3,4,5}
+# super + backslash
+# 	passmenu2 go
 
-# move node to desktop
-super + shift + {y,u,i,o,p}
-	bspc node --to-desktop focused:^{1,2,3,4,5} --follow
+# super + bar
+# 	passmenu2 copy
 
-super + backslash
-	passmenu2 go
+# super + semicolon
+# 	pkill pulsemixer; st -n centered -e pulsemixer
 
-super + bar
-	passmenu2 copy
+# super + colon
+# 	pkill pulsemixer
+
+#######################################################################################
+
+# # focus nodes or monitors
+# super + {k,j}
+# 	bsp_focus_node_or_monitor {prev,next}
+
+# # move focused node to other nodes or monitors
+# super + shift + {k,j}
+# 	bsp_move_node {prev,next}
+
+# # coarsely resize node
+# super + {h,l}
+# 	bspc node @/1 --resize right {-10,10} 0
+
+# # finely resize node
+# super + shift + {h,l}
+# 	bspc node @/1 --resize right {-1,1} 0
+
+# # focus desktop
+# super + {y,u,i,o,p}
+# 	bspc desktop --focus focused:^{1,2,3,4,5}
+
+# # move node to desktop
+# super + shift + {y,u,i,o,p}
+# 	bspc node --to-desktop focused:^{1,2,3,4,5} --follow
+
+#######################################################################################
+
+# # focus nodes or monitors
+# super + {i,e}
+# 	bsp_focus_node_or_monitor {prev,next}
+
+# # coarsely resize node
+# super + {n,o}
+# 	bspc node @/1 --resize right {-10,10} 0
+
+# # finely resize node
+# super + shift + {n,o}
+# 	bspc node @/1 --resize right {-1,1} 0
+
+# # focus desktop
+# super + {l,u,y,bracketleft,bracketright}
+# 	bspc desktop --focus focused:^{1,2,3,4,5}
+
+# # move node to desktop
+# super + shift + {l,u,y,bracketleft,bracketright}
+# 	bspc node --to-desktop focused:^{1,2,3,4,5} --follow

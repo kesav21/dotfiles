@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# setxkbmap us &&
+# 	xset r 66
+
+pkill -x sxhkd
+while pgrep -x sxhkd >/dev/null; do true; done
+
+sxhkd "$XDG_CONFIG_HOME"/sxhkd/sxhkdrc.personal \
+	"$XDG_CONFIG_HOME"/sxhkd/sxhkdrc.qwerty >"$XDG_CACHE_HOME"/bin/sxhkd 2>&1 &
+
+rm -f "$XDG_CACHE_HOME"/bin/colemak

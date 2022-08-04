@@ -1,0 +1,14 @@
+#!/bin/sh
+
+pacmd set-card-profile alsa_card.pci-0000_2b_00.1 output:hdmi-stereo-extra1
+
+# card_name'TU116 High Definition Audio Controller'
+# card_id=pci-0000_2b_00
+# profile_speakers_name='Digital Stereo (HDMI 2) Output'
+# profile_speakers_id=hdmi-stereo-extra1
+# profile_headphones_name='Digital Stereo (HDMI) Output'
+# profile_headphones_id=hdmi-stereo
+# case "$1" in
+# 	speakers) pacmd set-card-profile alsa_card."$card_id" output:"$profile_speakers_id" ;;
+# 	headphones) pacmd set-card-profile alsa_card."$card_id" output:"$profile_headphones_id" ;;
+# esac

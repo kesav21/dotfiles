@@ -3,54 +3,54 @@ if not has_lspconfig then
 	print "lua/kesav/lsp.lua: install neovim/nvim-lspconfig"
 	return
 end
-local has_completion, completion = pcall(require, "completion")
-if not has_completion then
-	print "lua/kesav/lsp.lua: install nvim-lua/completion-nvim"
-end
-local has_telescope, telescope_builtin = pcall(require, "telescope.builtin")
-if not has_telescope then
-	print "lua/kesav/lsp.lua: install nvim-telescope/telescope.nvim"
+local has_cmp_nvim_lsp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+if not has_cmp_nvim_lsp then
+	print "lua/kesav/lsp.lua: install simrat39/rust-tools.nvim"
 end
 local has_rusttools, rusttools = pcall(require, "rust-tools")
 if not has_rusttools then
 	print "lua/kesav/lsp.lua: install simrat39/rust-tools.nvim"
 end
-if not vim.keymap then
-	print "lua/kesav/lsp.lua: install tjdevries/astronauta.nvim"
-end
-local nnoremap = vim.keymap.nnoremap
-local inoremap = vim.keymap.inoremap
 
-local function on_attach(client)
+local function on_attach()
 	print "attached lsp client"
 
-	if has_completion then
-		vim.o.completeopt = "menuone,noinsert,noselect"
-		vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
-		completion.on_attach(client)
+	vim.keymap.set("n", "<c-]>", vim.lsp.buf.definition)
+	vim.keymap.set("n", "gi", vim.lsp.buf.implementation)
+	vim.keymap.set("n", "gd", vim.lsp.buf.type_definition)
+	vim.keymap.set("n", "gr", vim.lsp.buf.references)
+	vim.keymap.set("i", "<c-k>", vim.lsp.buf.signature_help)
+	vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename)
+	vim.keymap.set("n", "<leader>dd", vim.lsp.diagnostic.show_line_diagnostics)
+	vim.keymap.set("n", "<leader>de", vim.diagnostic.goto_next)
+	vim.keymap.set("n", "<leader>di", vim.diagnostic.goto_prev)
+	vim.keymap.set("n", "<leader>dl", "<cmd>Telescope diagnostics<cr>")
+	vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action)
+	vim.keymap.set("n", "<leader>lr", "<cmd>LspRestart<cr>")
+
+	-- use :LspRestart instead
+	-- vim.cmd [[ command! RestartLsp lua vim.lsp.stop_client(vim.lsp.get_active_clients()) ]]
+
+	if
+		vim.fn.filereadable(vim.fn.expand "$XDG_CACHE_HOME/bin/colemak") == 1
+	then
+		vim.keymap.set("n", "O", vim.lsp.buf.hover)
+	else
+		vim.keymap.set("n", "K", vim.lsp.buf.hover)
 	end
 
-	if vim.keymap then
-		nnoremap { "<c-]>", vim.lsp.buf.definition }
-		nnoremap { "gi", vim.lsp.buf.implementation }
-		nnoremap { "gd", vim.lsp.buf.type_definition }
-		nnoremap { "gr", vim.lsp.buf.references }
-		nnoremap { "K", vim.lsp.buf.hover }
-		inoremap { "<c-k>", vim.lsp.buf.signature_help }
-		nnoremap { "<leader>rn", vim.lsp.buf.rename }
-		nnoremap { "<leader>k", vim.lsp.diagnostic.show_line_diagnostics }
-		nnoremap { "<leader>dl", vim.lsp.diagnostic.set_loclist }
-		if has_telescope then
-			nnoremap { "<leader>ca", telescope_builtin.lsp_code_actions }
-		end
-	end
-
-	vim.cmd [[ inoremap <expr> <tab>   pumvisible() ? "\<c-n>" : "\<tab>" ]]
-	vim.cmd [[ inoremap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>" ]]
+	-- TODO: convert this to vim.keymap.set
+	vim.cmd [[inoremap <expr> <tab>   pumvisible() ? "\<c-n>" : "\<tab>"]]
+	vim.cmd [[inoremap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"]]
 end
+
+local capabilities = cmp_nvim_lsp.update_capabilities(
+	vim.lsp.protocol.make_client_capabilities()
+)
 
 lspconfig.tsserver.setup {
 	on_attach = on_attach,
+	capabilities = capabilities,
 }
 lspconfig.clangd.setup {
 	cmd = {
@@ -61,15 +61,19 @@ lspconfig.clangd.setup {
 		"--header-insertion=iwyu",
 	},
 	on_attach = on_attach,
+	capabilities = capabilities,
 }
 lspconfig.pylsp.setup {
 	on_attach = on_attach,
+	capabilities = capabilities,
 }
 lspconfig.gopls.setup {
 	on_attach = on_attach,
+	capabilities = capabilities,
 }
 lspconfig.vimls.setup {
 	on_attach = on_attach,
+	capabilities = capabilities,
 }
 lspconfig.hls.setup {
 	cmd = {
@@ -81,10 +85,12 @@ lspconfig.hls.setup {
 	},
 	filetypes = { "haskell" },
 	on_attach = on_attach,
+	capabilities = capabilities,
 }
 lspconfig.terraformls.setup {
 	cmd = { "terraform-lsp" },
 	on_attach = on_attach,
+	capabilities = capabilities,
 }
 
 local sumneko_root_path = vim.fn.stdpath "cache"
@@ -117,6 +123,7 @@ lspconfig.sumneko_lua.setup {
 		-- }
 	},
 	on_attach = on_attach,
+	capabilities = capabilities,
 }
 
 rusttools.setup {
@@ -203,6 +210,7 @@ rusttools.setup {
 		-- capabilities = lsp.capabilities,
 		-- on_init = lsp.on_init,
 		on_attach = on_attach,
+		capabilities = capabilities,
 
 		settings = {
 			["rust-analyzer"] = {

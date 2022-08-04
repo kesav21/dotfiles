@@ -31,12 +31,17 @@ end
 -- use ale's linting only
 vim.g.ale_disable_lsp = 1
 
-vim.cmd [[runtime plugin/astronauta.vim]]
-
 safe_require "kesav.plugins"
+safe_require "kesav.completion"
 safe_require "kesav.lsp"
 safe_require "kesav.treesitter"
 safe_require "kesav.telescope"
+safe_require "kesav.comment"
 safe_require "kesav.statusline"
 safe_require "kesav.tabline"
 safe_require_setup "kesav.formatter"
+
+-- TODO: decide mappings for this
+-- local nnoremap = vim.keymap.nnoremap
+-- nnoremap { "<space>tsw", signs.toggle_word_diff }
+-- nnoremap { "<space>tsh", signs.toggle_word_diff }

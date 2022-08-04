@@ -1,0 +1,37 @@
+#!/bin/sh
+
+alias g=git
+alias v=vifmrun
+alias l='fd --hidden --no-ignore --max-depth 1 .'
+alias L='ls -lAFh'
+alias o='handlr open'
+
+alias diff='diff --color=auto'
+alias grep='grep --color=auto'
+alias ls='ls --color=always'
+
+alias mi='sudo make install'
+alias mic='sudo make install && make clean'
+
+alias mkenv='virtualenv -p "$(which python3)" .env'
+alias stenv='source .env/bin/activate'
+alias stopenv=deactivate
+
+alias tf=terraform
+alias tfi='terraform init'
+alias tfp='terraform plan'
+alias tfa='terraform apply -auto-approve'
+
+alias path='tr : "\n" <<< $PATH'
+
+alias ghcid='stack exec -- ghcid --color=always -r'
+
+alias ft='aws sso login'
+# admin() { eval "$(sawyer_admin $@)"; }
+# alias db=sawyer_db
+# alias token=sawyer_login_cognito
+
+kb() {
+	xmodmap -e 'keycode 135 = Control_R NoSymbol Control_R'
+	xmodmap -e 'add Control = Control_R'
+}

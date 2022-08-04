@@ -3,6 +3,9 @@
 ping -q -c 1 1.1.1.1 >/dev/null ||
 	dunstify 'Update Packages' 'Error connecting to the internet'
 
+# sudo pacman-key --refresh-keys
+# sudo pacman -S archlinux-keyring
+
 sudo pacman -Syyu --noconfirm ||
 	dunstify 'Update Packages' 'Error updating with pacman'
 

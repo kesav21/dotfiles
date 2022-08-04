@@ -6,7 +6,6 @@ setopt interactivecomments
 
 HISTSIZE=10000
 SAVEHIST=10000
-HISTFILE="$XDG_CACHE_HOME"/zsh/history
 
 # completion {{{
 

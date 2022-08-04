@@ -1,0 +1,27 @@
+# open lock menu
+super + shift + Tab
+	lockmenu
+
+# focus nodes or monitors
+super + {i,e}
+	bsp_focus_node_or_monitor {prev,next}
+
+# move focused node to other nodes or monitors
+super + shift + {i,e}
+	bsp_move_node {prev,next}
+
+# coarsely resize node
+super + {n,o}
+	bspc node @/1 --resize right {-10,10} 0
+
+# finely resize node
+super + shift + {n,o}
+	bspc node @/1 --resize right {-1,1} 0
+
+# focus desktop
+super + {j,l,u,y,bracketleft,bracketright}
+	bspc desktop --focus focused:^{1,2,3,4,5,6}
+
+# move node to desktop
+super + shift + {j,l,u,y,bracketleft,bracketright}
+	bspc node --to-desktop focused:^{1,2,3,4,5,6} --follow

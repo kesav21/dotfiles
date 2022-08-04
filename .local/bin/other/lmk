@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# if there are any arguments, execute them as a command
+# [ "$#" -ne 0 ] && $SHELL -e $@
+
+dunstify done

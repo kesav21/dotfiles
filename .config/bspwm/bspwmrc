@@ -2,12 +2,13 @@
 
 # monitors
 
-bspc query --monitors --names | xargs -I{} bspc monitor {} --reset-desktops 1 2 3 4 5
+bspc query --monitors --names | xargs -I{} bspc monitor {} --reset-desktops 1 2 3 4 5 6
 
 # settings
 
 bspc config border_width 3
 bspc config window_gap 0
+bspc config top_padding 50
 
 bspc config split_ratio 0.50
 bspc config removal_adjustment false
@@ -39,9 +40,16 @@ bspc rule --add Discord:discord state=floating
 bspc rule --add Pavucontrol:pavucontrol state=floating
 bspc rule --add st-256color:centered state=floating
 bspc rule --add Pinentry-gtk-2:pinentry-gtk-2 state=floating
+bspc rule --add Signal-desktop:signal-desktop state=floating # signal download window
 bspc rule --add SimpleScreenRecorder:SimpleScreenRecorder state=floating
 bspc rule --add Pcmanfm:pcmanfm state=floating
 
-bspc rule --add Signal:signal desktop=5
-bspc rule --add discord:discord desktop=5
-bspc rule --add Slack:slack desktop=5
+bspc rule --add Lxappearance:lxappearance state=floating
+
+# Nvidia-settings
+# nvidia-settings
+# Really quit?
+
+# bspc rule --add Signal:signal desktop=5
+# bspc rule --add discord:discord desktop=5
+# bspc rule --add Slack:slack desktop=5

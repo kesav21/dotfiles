@@ -33,7 +33,7 @@ export GNUPGHOME="${XDG_DATA_HOME:-${HOME:-/home/$LOGNAME}/.local/share}"/gnupg
 export GOPATH="$XDG_DATA_HOME"/go
 export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 export GTK_RC_FILES="$XDG_CONFIG_HOME"/gtk-1.0/gtkrc
-export HISTFILE="$XDG_STATE_HOME"/zsh/history
+export HISTFILE="$XDG_CACHE_HOME"/zsh/history
 export IPYTHONDIR="$XDG_CONFIG_HOME"/ipython
 export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME"/jupyter
 export LESSHISTFILE="$XDG_CACHE_HOME"/less/history
@@ -64,21 +64,24 @@ export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 # path {{{
 
 # add local scripts
-BIN_PATH="$(du -L "$XDG_BIN_DIR" --exclude '.git' | cut -f2 | tr '\n' ':')"
+BIN_PATH="$(du -L "$XDG_BIN_DIR" --exclude .git | cut -f2 | tr '\n' :)"
 export PATH="$BIN_PATH$PATH"
 
 # add ghc
-export PATH="$HOME"/.cabal/bin:"$HOME"/.ghcup/bin:"$PATH"
+export PATH="$CABAL_DIR"/bin:"$HOME"/.ghcup/bin:"$PATH"
 
 # add stack packages
 # STACK_PATH="$(stack path | awk -F"[: ]" '/^bin-path/ {print $3}')"
 # export PATH="$STACK_PATH":"$PATH"
 
 # add go binaries
-export PATH="$HOME"/go/bin:"$PATH"
+export PATH="$GOPATH"/bin:"$PATH"
 
 # add cargo binaries
-export PATH="$HOME"/.cargo/bin:"$PATH"
+export PATH="$XDG_DATA_HOME"/cargo/bin:"$PATH"
+
+# add globally installed npm binaries to path
+export PATH="$XDG_DATA_HOME"/npm/bin:"$PATH"
 
 # configure lua package path
 # becuase luajit is a drop-in replacement for lua 5.1, use the following:

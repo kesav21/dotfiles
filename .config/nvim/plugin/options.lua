@@ -29,6 +29,7 @@ vim.o.cursorline = true
 vim.o.list = true
 vim.o.colorcolumn = "88"
 vim.o.signcolumn = "yes"
+vim.o.wrap = false
 
 -- breaks if done on buffer-scope
 vim.o.tabstop = 4
@@ -39,21 +40,44 @@ vim.o.modeline = true
 vim.o.fixendofline = false
 vim.o.textwidth = 88
 
-vim.cmd [[ augroup commentstrings ]]
-vim.cmd [[ autocmd! ]]
-vim.cmd [[ autocmd FileType c                lua vim.bo.commentstring = "// %s" ]]
-vim.cmd [[ autocmd FileType cpp              lua vim.bo.commentstring = "// %s" ]]
-vim.cmd [[ autocmd FileType javascript       lua vim.bo.commentstring = "// %s" ]]
-vim.cmd [[ autocmd FileType typescript       lua vim.bo.commentstring = "// %s" ]]
-vim.cmd [[ autocmd FileType typescript.react lua vim.bo.commentstring = "// %s" ]]
-vim.cmd [[ autocmd FileType asm              lua vim.bo.commentstring = "# %s" ]]
-vim.cmd [[ autocmd FileType toml             lua vim.bo.commentstring = "# %s" ]]
-vim.cmd [[ autocmd FileType crontab          lua vim.bo.commentstring = "# %s" ]]
-vim.cmd [[ autocmd FileType desktop          lua vim.bo.commentstring = "# %s" ]]
-vim.cmd [[ autocmd FileType markdown         lua vim.bo.commentstring = "<!-- %s -->" ]]
-vim.cmd [[ autocmd FileType matlab           lua vim.bo.commentstring = "% %s" ]]
-vim.cmd [[ autocmd FileType xdefaults        lua vim.bo.commentstring = "! %s" ]]
-vim.cmd [[ augroup END ]]
+local auto = require "kesav.auto"
+
+-- local commentstrings = auto.group "commentstrings"
+-- commentstrings {
+-- 	event = { "Filetype" },
+-- 	pattern = { "c", "cpp", "javascript", "typescript", "typescript.react" },
+-- 	callback = function()
+-- 		vim.bo.commentstring = "// %s"
+-- 	end,
+-- }
+-- commentstrings {
+-- 	event = { "Filetype" },
+-- 	pattern = { "asm", "toml", "crontab", "desktop" },
+-- 	callback = function()
+-- 		vim.bo.commentstring = "# %s"
+-- 	end,
+-- }
+-- commentstrings {
+-- 	event = { "Filetype" },
+-- 	pattern = { "markdown" },
+-- 	callback = function()
+-- 		vim.bo.commentstring = "<!-- %s -->"
+-- 	end,
+-- }
+-- commentstrings {
+-- 	event = { "Filetype" },
+-- 	pattern = { "matlab" },
+-- 	callback = function()
+-- 		vim.bo.commentstring = "% %s"
+-- 	end,
+-- }
+-- commentstrings {
+-- 	event = { "Filetype" },
+-- 	pattern = { "xdefaults" },
+-- 	callback = function()
+-- 		vim.bo.commentstring = "! %s"
+-- 	end,
+-- }
 
 -- t break the line if it gets too long
 -- c break the comment if it gets too long
@@ -78,7 +102,11 @@ vim.cmd [[ augroup END ]]
 --
 -- override the formatoptions set by runtime/ftplugin
 --
-vim.cmd [[ augroup set_formatoptions ]]
-vim.cmd [[ autocmd! ]]
-vim.cmd [[ autocmd Filetype * lua vim.bo.formatoptions = 'crqj' ]]
-vim.cmd [[ augroup END ]]
+local setfo = auto.group "setfo"
+setfo {
+	event = { "Filetype" },
+	pattern = { "*" },
+	callback = function()
+		vim.bo.formatoptions = "crqj"
+	end,
+}

@@ -24,11 +24,10 @@ Logs are stored in `$XDG_CACHE_HOME/bin`.
 
 ## todo
 
+- audio
+	* write script to set port to headphones
+	* write script to set port to speakers
+	* write script to set profile to analog stereo duplex
+	* write script to set profile to digital stereo (hdmi) output
 - figure out why lock screen freezes
-- integrate bitwarden into workflow
-- integrate xdg-open into workflow
-	* drawback: xdg-open can't handle multiple files
-- eliminate the need for pavucontrol
-	* switch all sink-inputs to newest sink automatically
-	* display volume of newest sink
-	* change volume of newest sink
+

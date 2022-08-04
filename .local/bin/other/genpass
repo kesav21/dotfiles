@@ -1,0 +1,15 @@
+#!/bin/sh
+
+genword() {
+	word="$(shuf -n1 /usr/share/dict/american-english | tr -cd '[:alpha:]')"
+	head="$(echo $word | cut -c1-1 | tr '[a-z]' '[A-Z]')"
+	tail="$(echo $word | cut -c2- | tr '[A-Z]' '[a-z]')"
+	printf '%s%s\n' "$head" "$tail"
+}
+
+genword
+genword
+genword
+
+RANDOM="$$"
+echo $RANDOM | cut -c1

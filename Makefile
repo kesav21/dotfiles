@@ -1,4 +1,4 @@
-modules = .zshenv .pam_environment $(wildcard .config/*) .local/share/applications
+modules = .tmux.conf .zshenv .pam_environment $(wildcard .config/*) .local/share/applications
 targets = $(foreach i, $(modules), $(HOME)/$(i))
 
 .PHONY: all

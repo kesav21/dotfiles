@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# setxkbmap us &&
+# 	xmodmap "$HOME"/Downloads/colemak-1.0/xmodmap/xmodmap.colemak &&
+# 	xset r 66
+
+pkill -x sxhkd
+while pgrep -x sxhkd >/dev/null; do true; done
+
+sxhkd "$XDG_CONFIG_HOME"/sxhkd/sxhkdrc.personal \
+	"$XDG_CONFIG_HOME"/sxhkd/sxhkdrc.colemak >"$XDG_CACHE_HOME"/bin/sxhkd 2>&1 &
+
+touch "$XDG_CACHE_HOME"/bin/colemak
