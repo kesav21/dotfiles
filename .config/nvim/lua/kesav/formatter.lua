@@ -58,8 +58,8 @@ local config = {
 	},
 	terraform = {
 		exe = "terraform",
-		args = { "fmt" },
-		stdin = false,
+		args = { "fmt", "-" },
+		stdin = true,
 	},
 	-- c = {
 	-- 	exe = "astyle",

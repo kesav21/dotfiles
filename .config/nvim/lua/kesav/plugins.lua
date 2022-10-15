@@ -77,6 +77,7 @@ return packer.startup {
 				vim.keymap.set("n", "n", "<left>")
 			end,
 		}
+		vim.g.lion_create_maps = 0
 		use {
 			"tommcdo/vim-lion",
 			config = function()
@@ -117,7 +118,10 @@ return packer.startup {
 				require("colorizer").setup()
 			end,
 		}
+		vim.g.splitjoin_split_mapping = "gS"
+		vim.g.splitjoin_join_mapping = "gI"
 		use "AndrewRadev/splitjoin.vim"
+
 		use "hashivim/vim-terraform"
 		-- use "JoosepAlviste/nvim-ts-context-commentstring"
 		use {
@@ -205,6 +209,9 @@ return packer.startup {
 		use "onsails/lspkind.nvim"
 		--
 		use "numToStr/Comment.nvim"
+		-- use "jooize/vim-colemak"
+		-- silent! source "$HOME/.vim/bundle/vim-colemak/plugin/colemak.vim"
+
 		--
 		-- TODO: check these out
 		-- use "arthurxavierx/vim-caser"

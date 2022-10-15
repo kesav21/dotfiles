@@ -27,8 +27,8 @@
 	st = stash
 	stc = stash clear
 	# ssh-add aliases
-	s = "!{ clear; git status; }"
-	ss = "!{ ssh-add -L >/dev/null || ssh-add; clear; git remote update; git remote prune origin; git status; }"
+	s = "!{ clear -x; git status; }"
+	ss = "!{ ssh-add -L >/dev/null || ssh-add; clear -x; git remote update; git remote prune origin; git status; }"
 	pl = "!{ ssh-add -L >/dev/null || ssh-add; git pull; }"
 	cl = "!f() { ssh-add -L >/dev/null || ssh-add; git clone $@; }; f"
 	# custom aliases

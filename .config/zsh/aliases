@@ -65,7 +65,7 @@ startdb() {
 	aws sts get-caller-identity >/dev/null 2>&1 || aws sso login
 	export PGPORT=5432
 	export PGUSER=postgres
-	export PGPASSWORD=password
+	export PGPASSWORD=postgres
 	docker run -p "$PGPORT":"$PGPORT" -e POSTGRES_USER="$PGUSER" -e POSTGRES_PASSWORD="$PGPASSWORD" -d postgres:13.7
 	sleep 3
 	psql -h localhost -d postgres -f ~/projects/flipx-io/backend-infra/scripts/sql/init.sql
@@ -84,11 +84,8 @@ lambda() {
 			DB_PORT=5432 \
 			DB_NAME=postgres \
 			DB_USER=postgres \
-			DB_PASS="$(aws ssm get-parameter \
-				--name db_password \
-				--with-decryption \
-				--query Parameter.Value \
-				--output text)" go run "$(basename "$(pwd)")".go
+			DB_PASS=postgres \
+			go run "$(basename "$(pwd)")".go
 }
 
 lambdajq() {

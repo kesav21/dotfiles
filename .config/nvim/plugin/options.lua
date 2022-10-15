@@ -22,6 +22,7 @@ vim.o.listchars = "tab:›─,nbsp:∙,trail:∙,extends:▶,precedes:◀"
 vim.o.backspace = "indent,eol,start,nostop"
 vim.o.backup = false
 vim.o.writebackup = false
+vim.o.mouse = ""
 
 vim.o.relativenumber = true
 vim.o.number = true

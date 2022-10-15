@@ -7,7 +7,7 @@ require("Comment").setup {
 	mappings = {
 		basic = true,
 		extra = true,
-		extended = true,
+		-- extended = true,
 	},
 	toggler = {
 		line = "gvv",

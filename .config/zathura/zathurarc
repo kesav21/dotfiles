@@ -4,19 +4,6 @@ set statusbar-v-padding 0
 
 set page-padding 1
 
-map u scroll half-up
-map d scroll half-down
-
-map D toggle_page_mode
-
-map r reload
-map R rotate
-
-map K zoom in
-map J zoom out
-
-map i recolor
-
 set selection-clipboard clipboard
 
 set font "FiraCode Nerd Font regular 12"
@@ -39,4 +26,37 @@ set statusbar-fg "#ebdbb2"
 
 set recolor-lightcolor "#1d2021"
 set recolor-darkcolor "#f9f5d7"
+
+# qwerty
+
+# map u scroll half-up
+# map d scroll half-down
+
+# map D toggle_page_mode
+
+# map r reload
+# map R rotate
+
+# map K zoom in
+# map J zoom out
+
+# map i recolor
+
+# colemak
+
+map u scroll half-up
+map d scroll half-down
+
+map D toggle_page_mode
+
+map r reload
+map R rotate
+
+map e scroll down
+map i scroll up
+
+map E zoom in
+map I zoom out
+
+map l recolor
 

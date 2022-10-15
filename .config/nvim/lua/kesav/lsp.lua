@@ -16,17 +16,20 @@ local function on_attach()
 	print "attached lsp client"
 
 	vim.keymap.set("n", "<c-]>", vim.lsp.buf.definition)
-	vim.keymap.set("n", "gi", vim.lsp.buf.implementation)
+	vim.keymap.set("n", "gm", vim.lsp.buf.implementation)
 	vim.keymap.set("n", "gd", vim.lsp.buf.type_definition)
 	vim.keymap.set("n", "gr", vim.lsp.buf.references)
 	vim.keymap.set("i", "<c-k>", vim.lsp.buf.signature_help)
 	vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename)
-	vim.keymap.set("n", "<leader>dd", vim.lsp.diagnostic.show_line_diagnostics)
-	vim.keymap.set("n", "<leader>de", vim.diagnostic.goto_next)
-	vim.keymap.set("n", "<leader>di", vim.diagnostic.goto_prev)
 	vim.keymap.set("n", "<leader>dl", "<cmd>Telescope diagnostics<cr>")
 	vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action)
 	vim.keymap.set("n", "<leader>lr", "<cmd>LspRestart<cr>")
+
+	vim.keymap.set("n", "<leader>dd", function()
+		vim.diagnostic.open_float(0, { scope = "line" })
+	end)
+	vim.keymap.set("n", "<leader>de", vim.diagnostic.goto_next)
+	vim.keymap.set("n", "<leader>di", vim.diagnostic.goto_prev)
 
 	-- use :LspRestart instead
 	-- vim.cmd [[ command! RestartLsp lua vim.lsp.stop_client(vim.lsp.get_active_clients()) ]]
@@ -88,7 +91,6 @@ lspconfig.hls.setup {
 	capabilities = capabilities,
 }
 lspconfig.terraformls.setup {
-	cmd = { "terraform-lsp" },
 	on_attach = on_attach,
 	capabilities = capabilities,
 }
@@ -133,7 +135,7 @@ rusttools.setup {
 
 		-- Whether to show hover actions inside the hover window
 		-- This overrides the default hover handler
-		hover_with_actions = true,
+		-- hover_with_actions = true,
 
 		runnables = {
 			-- whether to use telescope for selection menu or not

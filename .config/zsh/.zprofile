@@ -2,7 +2,7 @@
 
 # vim: set foldmethod=marker:
 
-export TERMINAL=/usr/local/bin/st
+export TERMINAL=/usr/bin/alacritty
 export EDITOR=/usr/bin/nvim
 
 # set up xdg directories {{{
