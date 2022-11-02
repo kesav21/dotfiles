@@ -1,5 +1,8 @@
 " vim: filetype=vim :set foldmethod=marker:
 
+" use :sort then hit s to sort by file size
+" use :invert o to display the largest file first
+
 " settings {{{
 
 set number relativenumber
