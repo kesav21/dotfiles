@@ -12,6 +12,53 @@ if not has_rusttools then
 	print "lua/kesav/lsp.lua: install simrat39/rust-tools.nvim"
 end
 
+-- config must be a table
+-- and
+-- config.server must be a string
+-- and
+-- either
+--     config must not be nil
+--     config.cmd must not be nil
+--     config.cmd must have index 1
+--     config.cmd[1] must not be empty
+--     config.cmd[1] must exist on the path
+-- or
+--     lspconfig must be a table
+--     lspconfig[config.server] must be a table
+--     lspconfig[config.server].cmd must be a table
+--     lspconfig[config.server].cmd[1] must be a string
+--     lspconfig[config.server].cmd[1] must exist on the path
+--
+-- if (ok1 and exists1) or (ok2 and exists2) then
+--     local ok3, _ = pcall(lspconfig[config.server].setup, config)
+--     if not ok3 then
+--         print("not good 1")
+--     end
+-- else
+--     print("not good 2")
+-- end
+--
+local function setup(config)
+	local ok1, _ = pcall(function()
+		local cmd = config.cmd[1]
+		if vim.fn.executable(cmd) ~= 1 then
+			error()
+		end
+	end)
+	local ok2, _ = pcall(function()
+		local cmd =
+			lspconfig[config.server].document_config.default_config.cmd[1]
+		if vim.fn.executable(cmd) ~= 1 then
+			error()
+		end
+	end)
+	if ok1 or ok2 then
+		pcall(function()
+			lspconfig[config.server].setup(config)
+		end)
+	end
+end
+
 local function on_attach()
 	print "attached lsp client"
 
@@ -34,28 +81,49 @@ local function on_attach()
 	-- use :LspRestart instead
 	-- vim.cmd [[ command! RestartLsp lua vim.lsp.stop_client(vim.lsp.get_active_clients()) ]]
 
-	if
-		vim.fn.filereadable(vim.fn.expand "$XDG_CACHE_HOME/bin/colemak") == 1
-	then
-		vim.keymap.set("n", "O", vim.lsp.buf.hover)
-	else
-		vim.keymap.set("n", "K", vim.lsp.buf.hover)
-	end
+	vim.keymap.set("n", "I", vim.lsp.buf.hover)
 
 	-- TODO: convert this to vim.keymap.set
 	vim.cmd [[inoremap <expr> <tab>   pumvisible() ? "\<c-n>" : "\<tab>"]]
 	vim.cmd [[inoremap <expr> <s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"]]
 end
 
-local capabilities = cmp_nvim_lsp.update_capabilities(
+local capabilities = cmp_nvim_lsp.default_capabilities(
 	vim.lsp.protocol.make_client_capabilities()
 )
 
-lspconfig.tsserver.setup {
+setup {
+	server = "tsserver",
 	on_attach = on_attach,
 	capabilities = capabilities,
 }
-lspconfig.clangd.setup {
+
+setup {
+	server = "pylsp",
+	on_attach = on_attach,
+	capabilities = capabilities,
+}
+
+setup {
+	server = "gopls",
+	on_attach = on_attach,
+	capabilities = capabilities,
+}
+
+setup {
+	server = "vimls",
+	on_attach = on_attach,
+	capabilities = capabilities,
+}
+
+setup {
+	server = "terraformls",
+	on_attach = on_attach,
+	capabilities = capabilities,
+}
+
+setup {
+	server = "clangd",
 	cmd = {
 		"clangd",
 		"--background-index",
@@ -66,19 +134,9 @@ lspconfig.clangd.setup {
 	on_attach = on_attach,
 	capabilities = capabilities,
 }
-lspconfig.pylsp.setup {
-	on_attach = on_attach,
-	capabilities = capabilities,
-}
-lspconfig.gopls.setup {
-	on_attach = on_attach,
-	capabilities = capabilities,
-}
-lspconfig.vimls.setup {
-	on_attach = on_attach,
-	capabilities = capabilities,
-}
-lspconfig.hls.setup {
+
+setup {
+	server = "hls",
 	cmd = {
 		"haskell-language-server-wrapper",
 		"--lsp",
@@ -95,38 +153,63 @@ lspconfig.terraformls.setup {
 	capabilities = capabilities,
 }
 
-local sumneko_root_path = vim.fn.stdpath "cache"
-	.. "/lspconfig/sumneko_lua/lua-language-server"
-local sumneko_binary = sumneko_root_path .. "/bin/Linux/lua-language-server"
--- file must have .lua extension
-lspconfig.sumneko_lua.setup {
-	cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
-	settings = {
-		Lua = {
-			runtime = {
-				version = "LuaJIT",
-				path = vim.split(package.path, ";"),
-			},
-			diagnostics = {
-				globals = { "vim" },
-			},
-			workspace = {
-				library = {
-					[vim.fn.expand "$VIMRUNTIME/lua"] = true,
-					[vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
-				},
-			},
-		},
-		-- luacheck = {
-		-- 	checkOnSave = {
-		-- 		allFeatures = true,
-		-- 		overrideCommand = { "luacheck", }
-		-- 	}
-		-- }
-	},
-	on_attach = on_attach,
-	capabilities = capabilities,
-}
+-- -- file must have .lua extension for the lsp to work
+-- lspconfig.sumneko_lua.setup {
+-- 	settings = {
+-- 		Lua = {
+-- 			runtime = {
+-- 				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+-- 				version = "LuaJIT",
+-- 			},
+-- 			diagnostics = {
+-- 				-- Get the language server to recognize the `vim` global
+-- 				globals = { "vim" },
+-- 			},
+-- 			workspace = {
+-- 				-- Make the server aware of Neovim runtime files
+-- 				library = vim.api.nvim_get_runtime_file("", true),
+-- 			},
+-- 			-- Do not send telemetry data containing a randomized but unique identifier
+-- 			telemetry = {
+-- 				enable = false,
+-- 			},
+-- 		},
+-- 	},
+-- }
+
+-- -- file must have .lua extension for the lsp to work
+-- local sumneko_root_path = vim.fn.stdpath "cache"
+-- 	.. "/lspconfig/sumneko_lua/lua-language-server"
+-- local sumneko_binary = sumneko_root_path .. "/bin/Linux/lua-language-server"
+-- setup {
+-- 	server = "sumneko_lua",
+-- 	cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
+-- 	settings = {
+-- 		Lua = {
+-- 			runtime = {
+-- 				version = "LuaJIT",
+-- 				path = vim.split(package.path, ";"),
+-- 			},
+-- 			diagnostics = {
+-- 				globals = { "vim" },
+-- 			},
+-- 			workspace = {
+-- 				library = {
+-- 					[vim.fn.expand "$VIMRUNTIME/lua"] = true,
+-- 					[vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
+-- 				},
+-- 			},
+-- 		},
+-- 		-- luacheck = {
+-- 		-- 	checkOnSave = {
+-- 		-- 		allFeatures = true,
+-- 		-- 		overrideCommand = { "luacheck", }
+-- 		-- 	}
+-- 		-- }
+-- 	},
+-- 	on_attach = on_attach,
+-- 	capabilities = capabilities,
+-- }
 
 rusttools.setup {
 	tools = { -- rust-tools options

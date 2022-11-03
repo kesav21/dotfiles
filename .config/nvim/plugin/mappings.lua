@@ -1,79 +1,80 @@
+local mappings = {
+	--
+	n = "h",
+	e = "j",
+	i = "k",
+	o = "l",
+	--
+	h = "i",
+	j = "e",
+	k = "o",
+	l = "n",
+}
+
+local modes = { "n", "x", "o" }
+
+local transformations = {
+	function(s)
+		return s
+	end,
+	function(s)
+		return string.upper(s)
+	end,
+	function(s)
+		return "g" .. s
+	end,
+	function(s)
+		return "g" .. string.upper(s)
+	end,
+	function(s)
+		return "<c-" .. s .. ">"
+	end,
+	function(s)
+		return "<c-w>" .. s
+	end,
+}
+
+for lhs, rhs in pairs(mappings) do
+	for _, mode in ipairs(modes) do
+		for _, f in ipairs(transformations) do
+			vim.keymap.set(mode, f(lhs), f(rhs))
+		end
+	end
+end
+
+-- special cases
 vim.cmd [[
-
-" :h index
-
-" neio
-nnoremap n h| xnoremap n h| onoremap n h|
-nnoremap e j| xnoremap e j| onoremap e <nop>|
-nnoremap i k| xnoremap i k| onoremap i <nop>|
-nnoremap o l| xnoremap o l| onoremap o l|
-
-nnoremap N H| xnoremap N H| onoremap N H|
-nnoremap E J| xnoremap E J| onoremap E J|
-nnoremap I K| xnoremap I K| onoremap I K|
-nnoremap O L| xnoremap O L| onoremap O L|
-
-nnoremap gn gh| xnoremap gn gh| onoremap gn gh| " start select mode
-nnoremap ge gj| xnoremap ge gj| onoremap ge gj| " like j, but when wrap on go N screen lines down
-nnoremap gi gk| xnoremap gi gk| onoremap gi gk| " like k, but when wrap on go N screen lines up
-nnoremap go <Plug>LionRight| xnoremap go <Plug>VLionRight| onoremap go <nop>| " aligns with vim-lion
-
-nnoremap gN gH| xnoremap gN gH| onoremap gN gH| " start select line mode
-nnoremap gE gJ| xnoremap gE gJ| onoremap gE gJ| " join lines without inserting space 
-nnoremap gI gK| xnoremap gI gK| onoremap gI gK| " joins line with split-join
-nnoremap gO <Plug>LionLeft| xnoremap gO <Plug>VLionLeft| onoremap gO <nop>| " aligns with vim-lion
-
-nnoremap <c-n> <c-h>| xnoremap <c-n> <c-h>|
-nnoremap <c-e> <c-j>| xnoremap <c-e> <c-j>|
-nnoremap <c-i> <c-k>| xnoremap <c-i> <c-k>|
-nnoremap <c-o> <c-l>| xnoremap <c-o> <c-l>|
-
-nnoremap <c-w>n <c-w>h| xnoremap <c-w>n <c-w>h|
-nnoremap <c-w>e <c-w>j| xnoremap <c-w>e <c-w>j|
-nnoremap <c-w>i <c-w>k| xnoremap <c-w>i <c-w>k|
-nnoremap <c-w>o <c-w>l| xnoremap <c-w>o <c-w>l|
-
-" visual mode
-xnoremap <silent> <expr> L (mode() =~# "[V]" ? "\<C-V>0o$I" : "I")|
+onoremap e <nop>
+onoremap i <nop>
+nnoremap go <Plug>LionRight
+xnoremap go <Plug>VLionRight
+onoremap go <nop>
+nnoremap gO <Plug>LionLeft
+xnoremap gO <Plug>VLionLeft
+onoremap gO <nop>
+xnoremap <silent> <expr> H (mode() =~# "[V]" ? "\<C-V>0o$I" : "I")|
 xnoremap <silent> <expr> A (mode() =~# "[V]" ? "\<C-V>0o$A" : "A")|
-
-" hjkl
-nnoremap h i| xnoremap h i| onoremap h i| " insert at cursor
-nnoremap j e| xnoremap j e| onoremap j e| " forward, end of word
-nnoremap k o| xnoremap k o| onoremap k o| " insert line below
-nnoremap l n| xnoremap l n| onoremap l n| " go to next match
-
-nnoremap H I| xnoremap H I| onoremap H I| " insert at start of line
-nnoremap J E| xnoremap J E| onoremap J E| " forward, end of WORD
-nnoremap K O| xnoremap K O| onoremap K O| " insert line above
-nnoremap L N| xnoremap L N| onoremap L N| " go to previous match
-
-nnoremap gh gI| xnoremap gh gI| onoremap gh gI| " like I, but always start in column 1
-nnoremap gj ge| xnoremap gj ge| onoremap gj ge| " go backward to the end of the previous word
-nnoremap gk go| xnoremap gk go| onoremap gk go| " cursor to byte N in the buffer
-nnoremap gl gn| xnoremap gl gn| onoremap gl gn| " select the next match
-
-nnoremap gH gi| xnoremap gH gi| onoremap gH gi| " like i, but first move to the \|'^\| mark
-nnoremap gJ gE| xnoremap gJ gE| onoremap gJ gE| " go backward to the end of the previous WORD
-nnoremap gK gO| xnoremap gK gO| onoremap gK gO| " shows table of contents in :h
-nnoremap gL gN| xnoremap gL gN| onoremap gL gN| " select the previous match
-
-nnoremap <c-h> <c-i>| xnoremap <c-h> <c-i>|
-nnoremap <c-j> <c-e>| xnoremap <c-j> <c-e>|
-nnoremap <c-k> <c-o>| xnoremap <c-k> <c-o>|
-nnoremap <c-l> <c-n>| xnoremap <c-l> <c-n>|
-
 ]]
 
 vim.keymap.set("n", "<leader>e", ":bn<cr>")
 vim.keymap.set("n", "<leader>i", ":bp<cr>")
-
 vim.keymap.set("n", "<c-w>w", "<nop>")
 vim.keymap.set("n", "<c-w><c-w>", "<nop>")
 vim.keymap.set("n", "<leader>cpf", "silent !xsel -ib < %")
 vim.keymap.set("n", "<leader>rf", "!%:p")
-vim.keymap.set("n", "<leader><leader>x", ":call kesav#save_and_exec()<cr>")
-vim.keymap.set("n", "<leader>nf", function()
+
+-- vim.keymap.set("n", "<leader><leader>x", ":call kesav#save_and_exec()<cr>")
+vim.keymap.set("n", "<leader><leader>x", function()
+	if vim.bo.filetype == "vim" then
+		vim.cmd [[silent! write]]
+		vim.cmd [[source %]]
+	elseif vim.bo.filetype == "lua" then
+		vim.cmd [[silent! write]]
+		vim.cmd [[luafile %]]
+	end
+end)
+
+vim.keymap.set("n", "<leader>newf", function()
 	vim.api.nvim_feedkeys(
 		string.format(
 			":edit %s/",
@@ -92,6 +93,10 @@ vim.keymap.set("n", "<leader>cc", function()
 end)
 
 vim.keymap.set("t", "<c-\\><c-\\>", "<c-\\><c-n>")
+
+-- replace currently selected text with default register without yanking it
+-- https://superuser.com/questions/321547/how-do-i-replace-paste-yanked-text-in-vim-without-yanking-the-deleted-lines
+vim.cmd [[vnoremap p "_dP]]
 
 local function do_word_motion(wordmotion, endmotion)
 	return function()

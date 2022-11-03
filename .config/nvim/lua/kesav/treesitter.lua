@@ -80,12 +80,28 @@ treesitter.setup {
 	refactor = {
 		smart_rename = {
 			enable = true,
-			keymaps = { smart_rename = "<leader>r" },
+			keymaps = {
+				smart_rename = "<leader>r",
+			},
 		},
 		navigation = {
 			enable = true,
 			-- keymaps = { goto_definition = "gd" }
 		},
+		navigation = {
+			enable = true,
+			keymaps = {
+				goto_next_usage = "]u",
+				goto_previous_usage = "[u",
+			},
+		},
+		-- highlight_definitions = {
+		-- 	enable = true,
+		-- 	clear_on_cursor_move = true,
+		-- },
+		-- highlight_current_scope = {
+		-- 	enable = true
+		-- },
 	},
 	textobjects = {
 		select = {
@@ -93,38 +109,78 @@ treesitter.setup {
 			lookahead = true,
 			keymaps = {
 				["af"] = "@function.outer",
-				["if"] = "@function.inner",
+				["hf"] = "@function.inner",
 				["ac"] = "@class.outer",
-				["ic"] = "@class.inner",
+				["hc"] = "@class.inner",
+				["aa"] = "@parameter.outer",
+				["ha"] = "@parameter.inner",
+				["ai"] = "@conditional.outer",
+				["hi"] = "@conditional.inner",
+				["al"] = "@loop.outer",
+				["hl"] = "@loop.inner",
+				-- ["ab"] = "@block.outer",
+				-- ["hb"] = "@block.inner",
+				["as"] = "@statement.outer",
+				-- ["hs"] = "@statement.inner", -- does not exist
+				-- ["am"] = "@comment.outer",
+				-- ["hm"] = "@comment.inner", -- does not exist
+				-- ["ac"] = "@call.outer",
+				-- ["hc"] = "@call.inner",
 			},
 		},
 		swap = {
 			enable = true,
 			swap_next = {
-				["<leader>sn"] = "@parameter.inner",
+				["<leader>nf"] = "@function.outer",
+				["<leader>nc"] = "@class.outer",
+				["<leader>na"] = "@parameter.inner",
+				["<leader>ni"] = "@conditional.outer",
+				["<leader>nl"] = "@loop.outer",
+				["<leader>ns"] = "@statement.outer",
 			},
 			swap_previous = {
-				["<leader>sp"] = "@parameter.inner",
+				["<leader>pf"] = "@function.outer",
+				["<leader>pc"] = "@class.outer",
+				["<leader>pa"] = "@parameter.inner",
+				["<leader>pi"] = "@conditional.outer",
+				["<leader>pl"] = "@loop.outer",
+				["<leader>ps"] = "@statement.outer",
 			},
 		},
 		move = {
 			enable = true,
 			set_jumps = true, -- whether to set jumps in the jumplist
 			goto_next_start = {
-				["]]"] = "@function.outer",
+				["]f"] = "@function.outer",
 				["]c"] = "@class.outer",
+				["]a"] = "@parameter.inner",
+				["]i"] = "@conditional.outer",
+				["]l"] = "@loop.outer",
+				["]s"] = "@statement.outer",
 			},
 			goto_next_end = {
-				["]["] = "@function.outer",
+				["]F"] = "@function.outer",
 				["]C"] = "@class.outer",
+				["]A"] = "@parameter.inner",
+				["]I"] = "@conditional.outer",
+				["]L"] = "@loop.outer",
+				["]S"] = "@statement.outer",
 			},
 			goto_previous_start = {
-				["[["] = "@function.outer",
+				["[f"] = "@function.outer",
 				["[c"] = "@class.outer",
+				["[a"] = "@parameter.inner",
+				["[i"] = "@conditional.outer",
+				["[l"] = "@loop.outer",
+				["[s"] = "@statement.outer",
 			},
 			goto_previous_end = {
-				["[]"] = "@function.outer",
-				["[c"] = "@class.outer",
+				["[F"] = "@function.outer",
+				["[C"] = "@class.outer",
+				["[A"] = "@parameter.inner",
+				["[I"] = "@conditional.outer",
+				["[L"] = "@loop.outer",
+				["[S"] = "@statement.outer",
 			},
 		},
 	},
