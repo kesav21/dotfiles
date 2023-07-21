@@ -27,22 +27,7 @@ set statusbar-fg "#ebdbb2"
 set recolor-lightcolor "#1d2021"
 set recolor-darkcolor "#f9f5d7"
 
-# qwerty
-
-# map u scroll half-up
-# map d scroll half-down
-
-# map D toggle_page_mode
-
-# map r reload
-# map R rotate
-
-# map K zoom in
-# map J zoom out
-
-# map i recolor
-
-# colemak
+# keybindings
 
 map u scroll half-up
 map d scroll half-down

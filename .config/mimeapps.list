@@ -17,6 +17,7 @@ application/xml=nvim.desktop;
 image/jpeg=sxiv.desktop;
 image/png=sxiv.desktop;
 text/csv=nvim.desktop;
+text/javascript=nvim.desktop;
 text/markdown=nvim.desktop;
 text/plain=nvim.desktop;
 text/rust=nvim.desktop;

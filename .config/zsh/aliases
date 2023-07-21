@@ -91,3 +91,24 @@ lambda() {
 lambdajq() {
 	lambda 2>&1 | jq -R 'fromjson? | select(type == "object")'
 }
+
+resetgpg() {
+	gpg-connect-agent reloadagent /bye
+}
+
+setupgpg() {
+	gpg-connect-agent reloadagent /bye
+	testgpg
+}
+
+testgpg() {
+	cleartext="$HOME"/sync/passwords/kk
+	ciphertext="$HOME"/sync/passwords/kk.gpg
+	rm -rf "$cleartext" "$ciphertext"
+	echo kk >"$cleartext"
+	gpg -qs "$cleartext"
+	rm -rf "$cleartext" "$ciphertext"
+	echo kk >"$cleartext"
+	gpg -qe "$cleartext"
+	rm -rf "$cleartext" "$ciphertext"
+}

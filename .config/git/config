@@ -24,23 +24,24 @@
 	ds = diff --staged
 	mkb = checkout -b
 	mvb = branch -m
+	pl = pull
 	st = stash
 	stc = stash clear
-	# ssh-add aliases
+	# function aliases
+	cl = "!f() { git clone $@; }; f"
 	s = "!{ clear -x; git status; }"
-	ss = "!{ ssh-add -L >/dev/null || ssh-add; clear -x; git remote update; git remote prune origin; git status; }"
-	pl = "!{ ssh-add -L >/dev/null || ssh-add; git pull; }"
-	cl = "!f() { ssh-add -L >/dev/null || ssh-add; git clone $@; }; f"
-	# custom aliases
-	l = !git_aliases log
+	ss = "!{ clear -x; git remote update; git remote prune origin; git status; }"
+	# script aliases
 	b = !git_aliases checkout
-	rmb = !git_aliases remove
+	ll = !git_aliases log
 	ps = !git_aliases push
 	psf = !git_aliases push_force
+	rmb = !git_aliases remove
+	u = !git_aliases upload
 	# forgit aliases
 	a = !forgit_aliases add
 	d = !forgit_aliases diff
-	ll = !forgit_aliases log
+	l = !forgit_aliases log
 [pull]
 	rebase = false
 [commit]

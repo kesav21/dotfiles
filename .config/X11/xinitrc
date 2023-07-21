@@ -27,8 +27,16 @@ sxhkd "$XDG_CONFIG_HOME"/sxhkd/sxhkdrc.personal \
 	"$XDG_CONFIG_HOME"/sxhkd/sxhkdrc.colemak >"$XDG_CACHE_HOME"/bin/sxhkd 2>&1 &
 # notification daemon
 dunst >"$XDG_CACHE_HOME"/bin/dunst 2>&1 &
+
+# display
+xrandr \
+	--output HDMI-0 --primary --mode 2560x1440 --pos 2560x0 --rotate normal \
+	--output DP-1 --mode 2560x1440 --pos 0x0 --rotate normal
 # compositor
-picom --no-vsync -b --log-file "$XDG_CACHE_HOME"/bin/picom
+picom --vsync -b --log-file "$XDG_CACHE_HOME"/bin/picom
+# seq 0 2 | xargs -l1 -I{} picom -b -d :0.{} --log-file "$XDG_CACHE_HOME"/bin/picom
+# DISPLAY=:0 picom -b --log-file "$XDG_CACHE_HOME"/bin/picom
+# nvidia-settings --assign CurrentMetaMode='nvidia-auto-select +0+0 {ForceFullCompositionPipeline=On}'
 # hide cursor after five seconds
 unclutter --fork
 

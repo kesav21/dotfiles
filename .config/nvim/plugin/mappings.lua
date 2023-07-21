@@ -58,8 +58,8 @@ xnoremap <silent> <expr> A (mode() =~# "[V]" ? "\<C-V>0o$A" : "A")|
 
 vim.keymap.set("n", "<leader>e", ":bn<cr>")
 vim.keymap.set("n", "<leader>i", ":bp<cr>")
-vim.keymap.set("n", "<c-w>w", "<nop>")
-vim.keymap.set("n", "<c-w><c-w>", "<nop>")
+-- vim.keymap.set("n", "<c-w>w", "<nop>")
+-- vim.keymap.set("n", "<c-w><c-w>", "<nop>")
 vim.keymap.set("n", "<leader>cpf", "silent !xsel -ib < %")
 vim.keymap.set("n", "<leader>rf", "!%:p")
 
@@ -96,7 +96,9 @@ vim.keymap.set("t", "<c-\\><c-\\>", "<c-\\><c-n>")
 
 -- replace currently selected text with default register without yanking it
 -- https://superuser.com/questions/321547/how-do-i-replace-paste-yanked-text-in-vim-without-yanking-the-deleted-lines
-vim.cmd [[vnoremap p "_dP]]
+-- vim.cmd [[vnoremap p "_dP]] -- doesn't work at the end of the line
+-- vim.cmd [[vnoremap p "_dp]] -- doesn't work everywhere else
+vim.cmd [[vnoremap p "0p]]
 
 local function do_word_motion(wordmotion, endmotion)
 	return function()
