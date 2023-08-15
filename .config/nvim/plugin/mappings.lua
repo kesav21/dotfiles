@@ -84,6 +84,7 @@ vim.keymap.set("n", "<leader>newf", function()
 		true
 	)
 end)
+
 vim.keymap.set("n", "<leader>cc", function()
 	if vim.wo.colorcolumn == "" then
 		vim.wo.colorcolumn = "88"
@@ -97,8 +98,13 @@ vim.keymap.set("t", "<c-\\><c-\\>", "<c-\\><c-n>")
 -- replace currently selected text with default register without yanking it
 -- https://superuser.com/questions/321547/how-do-i-replace-paste-yanked-text-in-vim-without-yanking-the-deleted-lines
 -- vim.cmd [[vnoremap p "_dP]] -- doesn't work at the end of the line
--- vim.cmd [[vnoremap p "_dp]] -- doesn't work everywhere else
-vim.cmd [[vnoremap p "0p]]
+vim.keymap.set("v", "p", function()
+	if vim.fn.col "." == vim.fn.col "$" - 1 then
+		vim.api.nvim_feedkeys([["_dp]], "v", true)
+	else
+		vim.api.nvim_feedkeys([["_dP]], "v", true)
+	end
+end)
 
 local function do_word_motion(wordmotion, endmotion)
 	return function()
