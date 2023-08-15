@@ -55,23 +55,21 @@ return packer.startup {
 				vim.cmd [[hi! link Special GruvboxNone]]
 			end,
 		}
-		-- use {
-		-- 	"tpope/vim-commentary",
-		-- 	config = function()
-		-- 		vim.cmd [[nmap <c-_> <Plug>CommentaryLine]]
-		-- 		vim.cmd [[vmap <c-_> <Plug>Commentary]]
-		-- 	end,
-		-- }
 		use {
 			"nvim-telescope/telescope.nvim",
 			requires = { "nvim-lua/popup.nvim", "nvim-lua/plenary.nvim" },
 		}
-		use "jiangmiao/auto-pairs"
+		use {
+			"windwp/nvim-autopairs",
+			config = function()
+				require("nvim-autopairs").setup {}
+			end,
+		}
 		use "tpope/vim-surround"
 		use "wellle/targets.vim"
 		use {
 			"junegunn/vim-slash",
-			opt = true, -- this forces config to run after plugin load, not sure why
+			opt = true,
 			config = function()
 				vim.cmd [[nnoremap <plug>(slash-after) zz]]
 				vim.keymap.set("n", "n", "<left>")

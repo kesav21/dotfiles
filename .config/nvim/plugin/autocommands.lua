@@ -39,15 +39,6 @@ misc {
 	end,
 }
 misc {
-	event = { "BufWritePost" },
-	pattern = { "*plugins.lua" },
-	callback = function()
-		-- print "kk"
-		-- vim.cmd [[silent !source <afile> | PackerCompile]]
-		vim.cmd [[PackerCompile]]
-	end,
-}
-misc {
 	event = { "TextYankPost" },
 	pattern = { "*" },
 	callback = function()
@@ -57,3 +48,10 @@ misc {
 		}
 	end,
 }
+
+vim.cmd [[
+	augroup packer_compile
+		autocmd!
+		autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+	augroup end
+]]

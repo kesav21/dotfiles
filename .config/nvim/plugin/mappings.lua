@@ -128,6 +128,13 @@ end
 vim.keymap.set("o", "w", do_word_motion("w", "e"))
 vim.keymap.set("o", "W", do_word_motion("W", "E"))
 
+vim.keymap.set("n", "<leader>mv", function()
+	vim.fn.execute "%normal yss'0YA | $pHmv "
+	vim.api.nvim_feedkeys("gg0", "n", true)
+	-- vim.api.nvim_feedkeys("gohp|", "n", true) -- this doesn't work
+	-- vim.fn.execute "normal <Plug>LionRight |" -- this also doesn't work
+end)
+
 -- vim.cmd [[
 -- function s:DoWordMotion(wordmotion, endmotion)
 -- 	let before = line('.')

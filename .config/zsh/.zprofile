@@ -64,7 +64,7 @@ export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 # path {{{
 
 # add local scripts
-BIN_PATH="$(du -L "$XDG_BIN_DIR" --exclude .git | cut -f2 | tr '\n' :)"
+BIN_PATH="$(du -L "$XDG_BIN_DIR" | cut -f2 | tr '\n' :)"
 export PATH="$BIN_PATH$PATH"
 
 # add ghc

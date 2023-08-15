@@ -70,7 +70,7 @@ vim.keymap.set("n", "<leader>ff", function()
 		find_command = {
 			"fd",
 			"--hidden",
-			"--no-ignore-vcs",
+			"--no-ignore-parent",
 			"--type",
 			"file",
 		},
