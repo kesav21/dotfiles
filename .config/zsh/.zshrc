@@ -93,7 +93,6 @@ zplug 'hlissner/zsh-autopair'
 zplug 'zdharma/fast-syntax-highlighting'
 zplug 'wfxr/forgit'
 zplug 'Aloxaf/fzf-tab'
-# zplug 'softmoth/zsh-vim-mode'
 
 zplug check || zplug install
 

@@ -28,13 +28,15 @@ bindkey '^R' fzf-history
 # TODO: handle special characters like single quotes and double quotes
 rename-format() {
 	[ -n "$1" ] && {
-		maxlen="$(wc -L <<<"$1")"
-		while read line; do
+		maxlen="$(echo "$1" | wc -L)"
+		echo "$1" | while read line; do
 			padding="$((maxlen - ${#line} + 1))"
-			printf "mv '%s'" "$line"
+			printf "mv '%s' | " "$line"
+			# printf "\n%s" "$maxlen"
+			# printf "\n%s" "${#line}"
 			[ "$padding" -gt 0 ] && printf ' %.0s' {1..$padding}
 			printf "'%s'\n" "$line"
-		done <<<"$1"
+		done
 	}
 }
 
