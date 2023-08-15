@@ -14,3 +14,4 @@
 /.local/bin/colortheme
 /.local/bin/network-events
 /.local/bin/pamonitor
+/.local/bin/rust-analyzer
