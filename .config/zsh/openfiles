@@ -92,7 +92,7 @@ alias gdw='_pd "$XDG_DOWNLOADS_DIR"'
 alias gm='_pd "$XDG_MUSIC_DIR"'
 alias gpc='_pd "$XDG_PICTURES_DIR"'
 
-alias gv='_pd "$XDG_DOCUMENTS_DIR"/obsidian-vault'
+alias gv='_pd "$XDG_DOCUMENTS_DIR"/obsidian-vault/main'
 alias gls='_pd "$XDG_SRC_DIR"'
 alias gpr='_pd "$HOME"/projects'
 alias gs='_pd "$HOME"/sync'
